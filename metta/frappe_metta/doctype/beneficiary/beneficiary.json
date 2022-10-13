@@ -97,7 +97,7 @@
    "default": "No",
    "fieldname": "is_identity_proof_available",
    "fieldtype": "Select",
-   "label": "Is Identitity Proof Available",
+   "label": "Is Identitity Proof Available?",
    "options": "Yes\nNo\nCan't Say"
   },
   {
@@ -289,7 +289,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-13 13:45:38.859971",
+ "modified": "2022-10-13 13:48:45.997484",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Beneficiary",
