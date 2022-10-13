@@ -44,7 +44,11 @@
   "column_break_31",
   "fathers_name",
   "education_section",
-  "education_level"
+  "education_level",
+  "is_employeed",
+  "column_break_40",
+  "employment_type",
+  "other_employment_type"
  ],
  "fields": [
   {
@@ -243,25 +247,49 @@
    "depends_on": "eval:doc.chronic_illness==\"Other\"",
    "fieldname": "other_chronic_illness",
    "fieldtype": "Data",
-   "label": "Other Chronic Illness",
+   "label": "Please Specify",
    "mandatory_depends_on": "eval:doc.chronic_illness==\"Other\""
   },
   {
    "fieldname": "education_section",
    "fieldtype": "Section Break",
-   "label": "Education"
+   "label": "Education & Employment"
   },
   {
    "fieldname": "education_level",
    "fieldtype": "Link",
    "label": "Education Level",
    "options": "Education Level"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_employeed",
+   "fieldtype": "Check",
+   "label": "Is Employeed?"
+  },
+  {
+   "depends_on": "eval:doc.is_employeed",
+   "fieldname": "employment_type",
+   "fieldtype": "Select",
+   "label": "Employment Type",
+   "options": "Labor\nHospitality\nRestaurants\nHousework\nBegging\nOther"
+  },
+  {
+   "depends_on": "eval:doc.is_employeed==1&&doc.employment_type==\"Other\"",
+   "fieldname": "other_employment_type",
+   "fieldtype": "Data",
+   "label": "Please Specify",
+   "mandatory_depends_on": "eval:doc.is_employeed==1&&doc.employment_type==\"Other\""
+  },
+  {
+   "fieldname": "column_break_40",
+   "fieldtype": "Column Break"
   }
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-13 13:37:17.329085",
+ "modified": "2022-10-13 13:45:38.859971",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Beneficiary",
