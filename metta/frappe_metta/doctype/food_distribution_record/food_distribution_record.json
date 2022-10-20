@@ -23,6 +23,8 @@
   {
    "fieldname": "food_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Food Type",
    "options": "Breakfast\nLunch\nDinner\nFestive Special Meals"
   },
@@ -51,7 +53,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-20 22:26:54.202409",
+ "modified": "2022-10-20 22:35:10.401840",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Food Distribution Record",
@@ -72,5 +74,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "food_type"
 }
