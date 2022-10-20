@@ -23,6 +23,7 @@
    "fieldname": "beneficiary",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Beneficiary",
    "options": "Beneficiary",
    "reqd": 1
@@ -31,6 +32,7 @@
    "fieldname": "entitlement_type",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Entitlement Type",
    "options": "Entitlement Type",
    "reqd": 1
@@ -38,6 +40,8 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Documentation Pending\nIn Process\nCompleted\nRejected"
   },
@@ -85,7 +89,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-20 21:43:43.891814",
+ "modified": "2022-10-20 21:47:20.044042",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Entitlement Request",
