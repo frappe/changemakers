@@ -1,12 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "prompt",
  "creation": "2022-10-13 14:12:03.023421",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "home_name",
   "state",
   "district",
   "zone",
@@ -16,13 +16,6 @@
   "full_time_staff"
  ],
  "fields": [
-  {
-   "fieldname": "home_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Home Name",
-   "reqd": 1
-  },
   {
    "fieldname": "state",
    "fieldtype": "Link",
@@ -76,10 +69,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-13 14:12:03.023421",
+ "modified": "2022-10-24 23:09:01.086516",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Shelter Home",
+ "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
   {
