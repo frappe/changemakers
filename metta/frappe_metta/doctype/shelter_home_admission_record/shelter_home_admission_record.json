@@ -29,8 +29,14 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2022-10-24 23:03:19.898205",
+ "links": [
+  {
+   "group": "Exit",
+   "link_doctype": "Shelter Home Exit Record",
+   "link_fieldname": "admission_record"
+  }
+ ],
+ "modified": "2022-10-24 23:06:15.592865",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Shelter Home Admission Record",
