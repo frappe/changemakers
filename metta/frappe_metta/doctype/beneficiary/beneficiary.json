@@ -288,8 +288,19 @@
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2022-10-13 13:48:45.997484",
+ "links": [
+  {
+   "group": "General",
+   "link_doctype": "Entitlement Request",
+   "link_fieldname": "beneficiary"
+  },
+  {
+   "group": "Health",
+   "link_doctype": "Hospitalisation Record",
+   "link_fieldname": "beneficiary"
+  }
+ ],
+ "modified": "2022-10-24 22:52:51.112773",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Beneficiary",
