@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Metta</span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":3}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Metta</span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":4}}]",
  "creation": "2022-10-13 13:51:43.725589",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -10,7 +10,7 @@
  "idx": 0,
  "label": "Metta",
  "links": [],
- "modified": "2022-10-20 22:39:37.032814",
+ "modified": "2022-12-02 18:05:36.556645",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Metta",
