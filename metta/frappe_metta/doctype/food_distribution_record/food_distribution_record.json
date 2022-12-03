@@ -11,14 +11,20 @@
   "column_break_2",
   "packets_taken_for_distribution",
   "drop_off_details_section",
-  "drop_offs"
+  "drop_offs",
+  "section_break_7",
+  "packets_distributed",
+  "column_break_8",
+  "packets_returned",
+  "amended_from"
  ],
  "fields": [
   {
    "default": "Today",
    "fieldname": "date_of_distribution",
    "fieldtype": "Date",
-   "label": "Date of Distribution"
+   "label": "Date of Distribution",
+   "reqd": 1
   },
   {
    "fieldname": "food_type",
@@ -49,11 +55,42 @@
    "fieldtype": "Int",
    "label": "Packets Taken For Distribution",
    "non_negative": 1
+  },
+  {
+   "fieldname": "packets_distributed",
+   "fieldtype": "Int",
+   "label": "Packets Distributed",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "packets_returned",
+   "fieldtype": "Int",
+   "label": "Packets Returned",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Food Distribution Record",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2022-10-20 22:39:53.828892",
+ "modified": "2022-12-04 00:55:39.454532",
  "modified_by": "Administrator",
  "module": "Frappe Metta",
  "name": "Food Distribution Record",
