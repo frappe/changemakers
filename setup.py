@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 with open("requirements.txt") as f:
 	install_requires = f.read().strip().split("\n")
 
-# get version from __version__ variable in metta/__init__.py
-from metta import __version__ as version
+# get version from __version__ variable in changemakers/__init__.py
+from changemakers import __version__ as version
 
 setup(
-	name="metta",
+	name="changemakers",
 	version=version,
 	description="APF NGO Core App",
 	author="hussain@frappe.io",

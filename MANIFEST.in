@@ -4,15 +4,15 @@ include *.json
 include *.md
 include *.py
 include *.txt
-recursive-include metta *.css
-recursive-include metta *.csv
-recursive-include metta *.html
-recursive-include metta *.ico
-recursive-include metta *.js
-recursive-include metta *.json
-recursive-include metta *.md
-recursive-include metta *.png
-recursive-include metta *.py
-recursive-include metta *.svg
-recursive-include metta *.txt
-recursive-exclude metta *.pyc
+recursive-include changemakers *.css
+recursive-include changemakers *.csv
+recursive-include changemakers *.html
+recursive-include changemakers *.ico
+recursive-include changemakers *.js
+recursive-include changemakers *.json
+recursive-include changemakers *.md
+recursive-include changemakers *.png
+recursive-include changemakers *.py
+recursive-include changemakers *.svg
+recursive-include changemakers *.txt
+recursive-exclude changemakers *.pyc

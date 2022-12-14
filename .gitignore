@@ -3,5 +3,5 @@
 *.egg-info
 *.swp
 tags
-metta/docs/current
+changemakers/docs/current
 node_modules/

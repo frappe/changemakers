@@ -1,0 +1,58 @@
+{
+ "charts": [],
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":4}}]",
+ "creation": "2022-10-13 13:51:43.725589",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "users",
+ "idx": 0,
+ "label": "Changemakers",
+ "links": [],
+ "modified": "2022-12-02 18:05:36.556645",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Changemakers",
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "New Beneficiary",
+   "link_to": "Beneficiary",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "New Distribution",
+   "link_to": "Food Distribution Record",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{} Total",
+   "label": "All Distributions",
+   "link_to": "Food Distribution Record",
+   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{} Records",
+   "label": "All Beneficiaries",
+   "link_to": "Beneficiary",
+   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
+   "type": "DocType"
+  }
+ ],
+ "title": "Changemakers"
+}

@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2022-10-13 12:40:48.391178",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "entitlement_type"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "entitlement_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Entitlement Type",
+   "options": "Entitlement Type"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-10-13 12:43:22.235451",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Identity Proof Type",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
