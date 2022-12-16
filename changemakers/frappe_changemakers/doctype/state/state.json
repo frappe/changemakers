@@ -7,6 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "code",
+  "column_break_lqnd",
   "country"
  ],
  "fields": [
@@ -15,15 +17,23 @@
    "fieldname": "country",
    "fieldtype": "Data",
    "label": "Country"
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Code"
+  },
+  {
+   "fieldname": "column_break_lqnd",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-13 12:20:44.496570",
+ "modified": "2022-12-16 09:48:12.965483",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "State",
- "name_case": "Title Case",
  "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
