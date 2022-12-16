@@ -7,6 +7,9 @@ app_description = "Empowering the people that do good."
 app_email = "hussain@frappe.io"
 app_license = "AGPL"
 
+
+fixtures = ["State"]
+
 # Includes in <head>
 # ------------------
 
@@ -42,7 +45,7 @@ app_license = "AGPL"
 
 # website user home page (by Role)
 # role_home_page = {
-#	"Role": "home_page"
+# 	"Role": "home_page"
 # }
 
 # Generators
@@ -56,8 +59,8 @@ app_license = "AGPL"
 
 # add methods and filters to jinja environment
 # jinja = {
-#	"methods": "changemakers.utils.jinja_methods",
-#	"filters": "changemakers.utils.jinja_filters"
+# 	"methods": "changemakers.utils.jinja_methods",
+# 	"filters": "changemakers.utils.jinja_filters"
 # }
 
 # Installation
@@ -83,11 +86,11 @@ app_license = "AGPL"
 # Permissions evaluated in scripted ways
 
 # permission_query_conditions = {
-#	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
 # has_permission = {
-#	"Event": "frappe.desk.doctype.event.event.has_permission",
+# 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # DocType Class
@@ -95,7 +98,7 @@ app_license = "AGPL"
 # Override standard doctype classes
 
 # override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
+# 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
 
 # Document Events
@@ -103,32 +106,32 @@ app_license = "AGPL"
 # Hook on document methods and events
 
 # doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
+# 	"*": {
+# 		"on_update": "method",
+# 		"on_cancel": "method",
+# 		"on_trash": "method"
+# 	}
 # }
 
 # Scheduled Tasks
 # ---------------
 
 # scheduler_events = {
-#	"all": [
-#		"changemakers.tasks.all"
-#	],
-#	"daily": [
-#		"changemakers.tasks.daily"
-#	],
-#	"hourly": [
-#		"changemakers.tasks.hourly"
-#	],
-#	"weekly": [
-#		"changemakers.tasks.weekly"
-#	],
-#	"monthly": [
-#		"changemakers.tasks.monthly"
-#	],
+# 	"all": [
+# 		"changemakers.tasks.all"
+# 	],
+# 	"daily": [
+# 		"changemakers.tasks.daily"
+# 	],
+# 	"hourly": [
+# 		"changemakers.tasks.hourly"
+# 	],
+# 	"weekly": [
+# 		"changemakers.tasks.weekly"
+# 	],
+# 	"monthly": [
+# 		"changemakers.tasks.monthly"
+# 	],
 # }
 
 # Testing
@@ -140,14 +143,14 @@ app_license = "AGPL"
 # ------------------------------
 #
 # override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "changemakers.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "changemakers.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-#	"Task": "changemakers.task.get_dashboard_data"
+# 	"Task": "changemakers.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -159,29 +162,29 @@ app_license = "AGPL"
 # --------------------
 
 # user_data_fields = [
-#	{
-#		"doctype": "{doctype_1}",
-#		"filter_by": "{filter_by}",
-#		"redact_fields": ["{field_1}", "{field_2}"],
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_2}",
-#		"filter_by": "{filter_by}",
-#		"partial": 1,
-#	},
-#	{
-#		"doctype": "{doctype_3}",
-#		"strict": False,
-#	},
-#	{
-#		"doctype": "{doctype_4}"
-#	}
+# 	{
+# 		"doctype": "{doctype_1}",
+# 		"filter_by": "{filter_by}",
+# 		"redact_fields": ["{field_1}", "{field_2}"],
+# 		"partial": 1,
+# 	},
+# 	{
+# 		"doctype": "{doctype_2}",
+# 		"filter_by": "{filter_by}",
+# 		"partial": 1,
+# 	},
+# 	{
+# 		"doctype": "{doctype_3}",
+# 		"strict": False,
+# 	},
+# 	{
+# 		"doctype": "{doctype_4}"
+# 	}
 # ]
 
 # Authentication and authorization
 # --------------------------------
 
 # auth_hooks = [
-#	"changemakers.auth.validate"
+# 	"changemakers.auth.validate"
 # ]

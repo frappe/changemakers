@@ -1,0 +1,290 @@
+[
+ {
+  "code": "AP",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.898341",
+  "name": "Andhra Pradesh"
+ },
+ {
+  "code": "AR",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.923322",
+  "name": "Arunachal Pradesh"
+ },
+ {
+  "code": "AS",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.924295",
+  "name": "Assam"
+ },
+ {
+  "code": "BR",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.925163",
+  "name": "Bihar"
+ },
+ {
+  "code": "CG",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.925915",
+  "name": "Chhattisgarh"
+ },
+ {
+  "code": "GA",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.926676",
+  "name": "Goa"
+ },
+ {
+  "code": "GJ",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.927519",
+  "name": "Gujarat"
+ },
+ {
+  "code": "HR",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.928354",
+  "name": "Haryana"
+ },
+ {
+  "code": "HP",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.929214",
+  "name": "Himachal Pradesh"
+ },
+ {
+  "code": "JK",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.930024",
+  "name": "Jammu and Kashmir"
+ },
+ {
+  "code": "JH",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.930816",
+  "name": "Jharkhand"
+ },
+ {
+  "code": "KA",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.931601",
+  "name": "Karnataka"
+ },
+ {
+  "code": "KL",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.932511",
+  "name": "Kerala"
+ },
+ {
+  "code": "MP",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.933363",
+  "name": "Madhya Pradesh"
+ },
+ {
+  "code": "MH",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.934119",
+  "name": "Maharashtra"
+ },
+ {
+  "code": "MN",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.934868",
+  "name": "Manipur"
+ },
+ {
+  "code": "ML",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.935662",
+  "name": "Meghalaya"
+ },
+ {
+  "code": "MZ",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.936458",
+  "name": "Mizoram"
+ },
+ {
+  "code": "NL",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.937256",
+  "name": "Nagaland"
+ },
+ {
+  "code": "OR",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.938063",
+  "name": "Orissa"
+ },
+ {
+  "code": "PB",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.939164",
+  "name": "Punjab"
+ },
+ {
+  "code": "RJ",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.939975",
+  "name": "Rajasthan"
+ },
+ {
+  "code": "SK",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.940720",
+  "name": "Sikkim"
+ },
+ {
+  "code": "TN",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.941465",
+  "name": "Tamil Nadu"
+ },
+ {
+  "code": "TR",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.942217",
+  "name": "Tripura"
+ },
+ {
+  "code": "UK",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.942987",
+  "name": "Uttarakhand"
+ },
+ {
+  "code": "UP",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.943784",
+  "name": "Uttar Pradesh"
+ },
+ {
+  "code": "WB",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.944545",
+  "name": "West Bengal"
+ },
+ {
+  "code": "TS",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.945296",
+  "name": "Telangana"
+ },
+ {
+  "code": "AN",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.946040",
+  "name": "Andaman and Nicobar Islands"
+ },
+ {
+  "code": "CH",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.946793",
+  "name": "Chandigarh"
+ },
+ {
+  "code": "DH",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.947555",
+  "name": "Dadra and Nagar Haveli"
+ },
+ {
+  "code": "DD",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.948330",
+  "name": "Daman and Diu"
+ },
+ {
+  "code": "DL",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.949074",
+  "name": "Delhi"
+ },
+ {
+  "code": "LD",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.949815",
+  "name": "Lakshadweep"
+ },
+ {
+  "code": "PY",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-16 10:00:33.950552",
+  "name": "Pondicherry"
+ }
+]
