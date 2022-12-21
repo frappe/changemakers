@@ -1,9 +1,25 @@
 # Copyright (c) 2022, hussain@frappe.io and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests.utils import FrappeTestCase
 
 
+
 class TestBeneficiary(FrappeTestCase):
-	pass
+	def test_should_be_less_than_120(self):
+		test_beneficiary = frappe.get_doc(
+			{
+				"doctype": "Beneficiary",
+				"first_name": "John",
+				"age": 120,
+				"gender": "Male",
+			}
+		)
+
+		with self.assertRaises(frappe.exceptions.ValidationError):
+			test_beneficiary.insert()
+		
+		test_beneficiary.age = 78
+		test_beneficiary.insert()
+		self.assertIsNotNone(test_beneficiary.name)
