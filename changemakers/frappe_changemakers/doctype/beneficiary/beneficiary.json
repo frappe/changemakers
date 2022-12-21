@@ -184,7 +184,8 @@
   {
    "fieldname": "poc_phone",
    "fieldtype": "Data",
-   "label": "POC Phone"
+   "label": "POC Phone",
+   "options": "Phone"
   },
   {
    "fieldname": "age",
@@ -349,7 +350,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2022-12-21 07:16:58.897823",
+ "modified": "2022-12-21 07:28:52.111226",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
