@@ -5,6 +5,8 @@ import frappe
 from frappe.model.document import Document
 from changemakers.utils.data import is_valid_indian_phone_number
 
+class InvalidAgeException(Exception):
+    pass
 
 class Beneficiary(Document):
     def validate(self):
@@ -13,7 +15,7 @@ class Beneficiary(Document):
 
     def validate_age(self):
         if not (self.age < 120):
-            frappe.throw(f"Value of {frappe.bold('Age')} should be less than 120!")
+            frappe.throw(f"Value of {frappe.bold('Age')} should be less than 120!", InvalidAgeException)
 
     def validate_phone_number_fields(self):
         if self.poc_phone and not is_valid_indian_phone_number(self.poc_phone):

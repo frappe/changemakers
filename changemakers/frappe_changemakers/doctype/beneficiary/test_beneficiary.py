@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.tests.utils import FrappeTestCase
+from changemakers.frappe_changemakers.doctype.beneficiary.beneficiary import InvalidAgeException
 
 
 
@@ -17,7 +18,7 @@ class TestBeneficiary(FrappeTestCase):
 			}
 		)
 
-		with self.assertRaises(frappe.exceptions.ValidationError):
+		with self.assertRaises(InvalidAgeException):
 			test_beneficiary.insert()
 		
 		test_beneficiary.age = 78
