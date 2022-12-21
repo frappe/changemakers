@@ -9,6 +9,8 @@ from changemakers.frappe_changemakers.doctype.beneficiary.beneficiary import Inv
 
 class TestBeneficiary(FrappeTestCase):
 	def test_should_be_less_than_120(self):
+		frappe.get_doc(doctype="Gender", gender="Male").insert(ignore_if_duplicate=True)
+
 		test_beneficiary = frappe.get_doc(
 			{
 				"doctype": "Beneficiary",
