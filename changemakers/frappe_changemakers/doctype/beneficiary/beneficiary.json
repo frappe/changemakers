@@ -10,6 +10,7 @@
   "personal_information_section",
   "first_name",
   "gender",
+  "phone_number",
   "column_break_3",
   "last_name",
   "age",
@@ -27,6 +28,7 @@
   "identity_section",
   "is_identity_proof_available",
   "column_break_17",
+  "section_break_glmz",
   "identity_proofs",
   "health_section",
   "disability_condition",
@@ -43,6 +45,12 @@
   "spouses_name",
   "column_break_31",
   "fathers_name",
+  "native_place_section",
+  "native_state",
+  "column_break_iefk",
+  "native_district",
+  "section_break_myup",
+  "native_full_address",
   "education_section",
   "education_level",
   "is_employeed",
@@ -60,25 +68,25 @@
   {
    "fieldname": "district",
    "fieldtype": "Link",
-   "label": "District",
+   "label": "City/District",
    "options": "District"
   },
   {
    "fieldname": "zone",
    "fieldtype": "Link",
-   "label": "Zone",
+   "label": "Zone/Block",
    "options": "Zone"
   },
   {
    "fieldname": "ward",
    "fieldtype": "Link",
-   "label": "Ward",
+   "label": "Ward/GP",
    "options": "Ward"
   },
   {
    "fieldname": "habitation",
    "fieldtype": "Link",
-   "label": "Habitation",
+   "label": "Hotspot Name/Habitation",
    "options": "Habitation"
   },
   {
@@ -103,7 +111,7 @@
   {
    "depends_on": "eval:doc.is_identity_proof_available==\"Yes\"",
    "fieldname": "identity_proofs",
-   "fieldtype": "Table MultiSelect",
+   "fieldtype": "Table",
    "label": "Identity Proofs",
    "options": "Identity Proof Type"
   },
@@ -176,7 +184,8 @@
   {
    "fieldname": "poc_phone",
    "fieldtype": "Data",
-   "label": "POC Phone"
+   "label": "POC Phone",
+   "options": "Phone"
   },
   {
    "fieldname": "age",
@@ -284,6 +293,47 @@
   {
    "fieldname": "column_break_40",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "section_break_glmz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "native_place_section",
+   "fieldtype": "Section Break",
+   "label": "Native Place"
+  },
+  {
+   "fieldname": "native_state",
+   "fieldtype": "Link",
+   "label": "State",
+   "options": "State"
+  },
+  {
+   "fieldname": "column_break_iefk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "native_district",
+   "fieldtype": "Link",
+   "label": "District",
+   "options": "District"
+  },
+  {
+   "fieldname": "section_break_myup",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Include block, GP, village or any other identifier info",
+   "fieldname": "native_full_address",
+   "fieldtype": "Small Text",
+   "label": "Full Address"
   }
  ],
  "image_field": "image",
@@ -300,11 +350,10 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2022-10-24 22:52:51.112773",
+ "modified": "2022-12-21 07:54:01.397208",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
- "name_case": "UPPER CASE",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
