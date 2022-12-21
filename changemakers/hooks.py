@@ -8,7 +8,7 @@ app_email = "hussain@frappe.io"
 app_license = "AGPL"
 
 
-fixtures = ["State"]
+fixtures = ["State", "Role Profile"]
 
 # Includes in <head>
 # ------------------
