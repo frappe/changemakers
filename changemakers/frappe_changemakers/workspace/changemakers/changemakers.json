@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":4}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":4}}]",
  "creation": "2022-10-13 13:51:43.725589",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -10,7 +10,7 @@
  "idx": 0,
  "label": "Changemakers",
  "links": [],
- "modified": "2022-12-02 18:05:36.556645",
+ "modified": "2022-12-22 16:27:59.965429",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Changemakers",
@@ -26,6 +26,24 @@
    "doc_view": "New",
    "label": "New Beneficiary",
    "link_to": "Beneficiary",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Healthcare Providers",
+   "link_to": "Healthcare Provider",
+   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{} Records",
+   "label": "Hospitalisation Record",
+   "link_to": "Hospitalisation Record",
+   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
    "type": "DocType"
   },
   {
