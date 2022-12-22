@@ -22,6 +22,13 @@
   "specified_condition",
   "section_break_prmb",
   "rescue_location",
+  "section_break_sslw",
+  "state",
+  "zone",
+  "habitation",
+  "column_break_itmb",
+  "district",
+  "ward",
   "post_rescue_details_section",
   "was_referred_to_hospital",
   "hospital",
@@ -155,7 +162,8 @@
   },
   {
    "fieldname": "section_break_prmb",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Rescue Location Details"
   },
   {
    "fieldname": "police_procedure_section",
@@ -212,12 +220,51 @@
    "fieldname": "other_remarks",
    "fieldtype": "Long Text",
    "label": "Other Remarks"
+  },
+  {
+   "fieldname": "section_break_sslw",
+   "fieldtype": "Section Break",
+   "label": "Rescue Location"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "label": "City/District",
+   "options": "District"
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "label": "Zone/Block",
+   "options": "Zone"
+  },
+  {
+   "fieldname": "habitation",
+   "fieldtype": "Link",
+   "label": "Hotspot Name/Habitation",
+   "options": "Habitation"
+  },
+  {
+   "fieldname": "column_break_itmb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "label": "State",
+   "options": "State"
+  },
+  {
+   "fieldname": "ward",
+   "fieldtype": "Link",
+   "label": "Ward/GP",
+   "options": "Ward"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-22 17:19:36.972771",
+ "modified": "2022-12-22 21:42:07.003726",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Rescue",
