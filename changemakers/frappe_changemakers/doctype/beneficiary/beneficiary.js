@@ -3,33 +3,8 @@
 
 frappe.ui.form.on("Beneficiary", {
   setup: (frm) => {
-    frm.trigger("set_query_for_district");
+    changemakers.utils.set_query_for_district(frm);
   },
-  state: (frm) => {
-    frm.trigger("set_query_for_district");
-
-    // Clear the district if it does not belong to that state
-    frappe.db.get_value("District", frm.doc.district, "state", (r) => {
-      if (r.state != frm.doc.state) {
-        frm.set_value("district", "");
-      }
-    });
-  },
-  district: (frm) => {
-    if (frm.doc.district) {
-      frappe.db.get_value("District", frm.doc.district, "state", (r) => {
-        frm.set_value("state", r.state);
-      });
-    }
-  },
-  set_query_for_district: (frm) => {
-    frm.set_query("district", () => {
-      return {
-        filters: {
-          state: frm.doc.state,
-        },
-        orderby: "name",
-      };
-    });
-  },
+  state: changemakers.utils.handle_state_field,
+  district: changemakers.utils.handle_district_field,
 });

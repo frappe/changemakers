@@ -36,7 +36,7 @@ fixtures = [
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/changemakers/css/changemakers.css"
-# app_include_js = "/assets/changemakers/js/changemakers.js"
+app_include_js = "/assets/changemakers/js/changemakers.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/changemakers/css/changemakers.css"
