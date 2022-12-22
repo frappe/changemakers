@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"paragraph\",\"data\":{\"text\":\"&nbsp;Manage Beneficiaries\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Shelter Services\",\"col\":12}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Shelter Homes\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Entry Record\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Exit Record\",\"col\":4}},{\"type\":\"spacer\",\"data\":{\"col\":12}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"paragraph\",\"data\":{\"text\":\"&nbsp;Manage Beneficiaries\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Rescues\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Rescue\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Rescues\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Shelter Services\",\"col\":12}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Shelter Homes\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Entry Record\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Exit Record\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}}]",
  "creation": "2022-10-13 13:51:43.725589",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -10,7 +10,7 @@
  "idx": 0,
  "label": "Changemakers",
  "links": [],
- "modified": "2022-12-22 16:38:01.180498",
+ "modified": "2022-12-22 22:08:48.690413",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Changemakers",
@@ -34,11 +34,29 @@
    "type": "DocType"
   },
   {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "All Beneficiaries",
+   "link_to": "Beneficiary",
+   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
+   "type": "DocType"
+  },
+  {
    "color": "Cyan",
    "doc_view": "List",
    "format": "{}",
    "label": "Healthcare Providers",
    "link_to": "Healthcare Provider",
+   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Hospitalisation Record",
+   "link_to": "Hospitalisation Record",
    "stats_filter": "{\"name\":[\"is\",\"set\"]}",
    "type": "DocType"
   },
@@ -50,11 +68,27 @@
    "type": "DocType"
   },
   {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "New Rescue",
+   "link_to": "Rescue",
+   "type": "DocType"
+  },
+  {
    "color": "Green",
    "doc_view": "List",
-   "format": "{} Records",
-   "label": "Hospitalisation Record",
-   "link_to": "Hospitalisation Record",
+   "format": "{}",
+   "label": "All Distributions",
+   "link_to": "Food Distribution Record",
+   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "All Rescues",
+   "link_to": "Rescue",
    "stats_filter": "{\"name\":[\"is\",\"set\"]}",
    "type": "DocType"
   },
@@ -70,24 +104,6 @@
    "doc_view": "New",
    "label": "New Distribution",
    "link_to": "Food Distribution Record",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "format": "{} Total",
-   "label": "All Distributions",
-   "link_to": "Food Distribution Record",
-   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "format": "{} Records",
-   "label": "All Beneficiaries",
-   "link_to": "Beneficiary",
-   "stats_filter": "{\"name\":[\"is\",\"set\"]}",
    "type": "DocType"
   }
  ],
