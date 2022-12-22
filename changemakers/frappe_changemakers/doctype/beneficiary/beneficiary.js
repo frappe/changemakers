@@ -4,7 +4,11 @@
 frappe.ui.form.on("Beneficiary", {
   setup: (frm) => {
     changemakers.utils.set_query_for_district(frm);
+    changemakers.utils.set_query_for_zone(frm);
+    changemakers.utils.set_query_for_ward(frm);
   },
   state: changemakers.utils.handle_state_field,
   district: changemakers.utils.handle_district_field,
+  zone: changemakers.utils.handle_zone_field,
+  ward: changemakers.utils.handle_ward_field,
 });
