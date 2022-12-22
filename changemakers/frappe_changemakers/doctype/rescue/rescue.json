@@ -1,0 +1,244 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-12-22 16:52:21.341397",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rescue_by",
+  "column_break_wbgx",
+  "rescued_at",
+  "beneficiary_details_section",
+  "beneficiary",
+  "gender",
+  "column_break_xprg",
+  "age",
+  "contact_number",
+  "section_break_jpaw",
+  "condition",
+  "column_break_amtb",
+  "specified_condition",
+  "section_break_prmb",
+  "rescue_location",
+  "post_rescue_details_section",
+  "was_referred_to_hospital",
+  "hospital",
+  "column_break_qtfd",
+  "was_referred_to_shelter_home",
+  "shelter_home",
+  "police_procedure_section",
+  "police_station",
+  "column_break_ycpt",
+  "police_memo",
+  "section_break_zcfc",
+  "other_remarks",
+  "section_break_vjqi",
+  "amended_from",
+  "column_break_sfhj"
+ ],
+ "fields": [
+  {
+   "fieldname": "rescue_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Rescue By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Rescue",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_vjqi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_sfhj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beneficiary",
+   "fieldtype": "Link",
+   "label": "Beneficiary",
+   "options": "Beneficiary",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wbgx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rescued_at",
+   "fieldtype": "Datetime",
+   "label": "Rescue Date and Time",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "beneficiary.age",
+   "fetch_if_empty": 1,
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "beneficiary.gender",
+   "fetch_if_empty": 1,
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "beneficiary.phone_number",
+   "fetch_if_empty": 1,
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_jpaw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "condition",
+   "fieldtype": "Select",
+   "label": "Condition",
+   "options": "Basic Illness\nSerious Illness\nOther"
+  },
+  {
+   "fieldname": "column_break_amtb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.condition===\"Other\"",
+   "fieldname": "specified_condition",
+   "fieldtype": "Data",
+   "label": "Please Specify Condition",
+   "mandatory_depends_on": "eval:doc.condition===\"Other\""
+  },
+  {
+   "fieldname": "rescue_location",
+   "fieldtype": "Geolocation",
+   "label": "Rescue Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "police_station",
+   "fieldtype": "Small Text",
+   "label": "Police Station"
+  },
+  {
+   "fieldname": "police_memo",
+   "fieldtype": "Attach",
+   "label": "Police Memo"
+  },
+  {
+   "fieldname": "beneficiary_details_section",
+   "fieldtype": "Section Break",
+   "label": "Beneficiary Details"
+  },
+  {
+   "fieldname": "column_break_xprg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_prmb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "police_procedure_section",
+   "fieldtype": "Section Break",
+   "label": "Police Procedure"
+  },
+  {
+   "fieldname": "column_break_ycpt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "post_rescue_details_section",
+   "fieldtype": "Section Break",
+   "label": "Post Rescue Details"
+  },
+  {
+   "default": "No",
+   "fieldname": "was_referred_to_hospital",
+   "fieldtype": "Select",
+   "label": "Was Referred to Hospital?",
+   "options": "Yes\nNo\nNot Willing To Go"
+  },
+  {
+   "fieldname": "column_break_qtfd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "No",
+   "fieldname": "was_referred_to_shelter_home",
+   "fieldtype": "Select",
+   "label": "Was Referred to Shelter Home?",
+   "options": "Yes\nNo\nNot Willing To God"
+  },
+  {
+   "depends_on": "eval:doc.was_referred_to_shelter_home==\"Yes\"",
+   "fieldname": "shelter_home",
+   "fieldtype": "Link",
+   "label": "Shelter Home",
+   "mandatory_depends_on": "eval:doc.was_referred_to_shelter_home==\"Yes\"",
+   "options": "Shelter Home"
+  },
+  {
+   "depends_on": "eval:doc.was_referred_to_hospital==\"Yes\"",
+   "fieldname": "hospital",
+   "fieldtype": "Small Text",
+   "label": "Hospital",
+   "mandatory_depends_on": "eval:doc.was_referred_to_hospital==\"Yes\""
+  },
+  {
+   "fieldname": "section_break_zcfc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "other_remarks",
+   "fieldtype": "Long Text",
+   "label": "Other Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-12-22 17:19:36.972771",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Rescue",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_views": 1
+}
