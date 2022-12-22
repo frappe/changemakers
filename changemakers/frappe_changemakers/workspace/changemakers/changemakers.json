@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":4}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"paragraph\",\"data\":{\"text\":\"&nbsp;Manage Beneficiaries\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":4}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Shelter Services\",\"col\":12}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Shelter Homes\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Entry Record\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Exit Record\",\"col\":4}},{\"type\":\"spacer\",\"data\":{\"col\":12}}]",
  "creation": "2022-10-13 13:51:43.725589",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -10,14 +10,19 @@
  "idx": 0,
  "label": "Changemakers",
  "links": [],
- "modified": "2022-12-22 16:27:59.965429",
+ "modified": "2022-12-22 16:38:01.180498",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Changemakers",
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
- "quick_lists": [],
+ "quick_lists": [
+  {
+   "document_type": "Shelter Home",
+   "label": "Shelter Homes"
+  }
+ ],
  "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [
@@ -38,12 +43,26 @@
    "type": "DocType"
   },
   {
+   "color": "Cyan",
+   "doc_view": "New",
+   "label": "Create Entry Record",
+   "link_to": "Shelter Home Admission Record",
+   "type": "DocType"
+  },
+  {
    "color": "Green",
    "doc_view": "List",
    "format": "{} Records",
    "label": "Hospitalisation Record",
    "link_to": "Hospitalisation Record",
    "stats_filter": "{\"name\":[\"is\",\"set\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "New",
+   "label": "Create Exit Record",
+   "link_to": "Shelter Home Exit Record",
    "type": "DocType"
   },
   {
