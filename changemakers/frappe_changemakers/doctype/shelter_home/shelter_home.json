@@ -7,12 +7,17 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "address_section",
   "state",
-  "district",
-  "zone",
   "ward",
+  "column_break_agxr",
+  "district",
   "pincode",
+  "column_break_jalt",
+  "zone",
+  "details_section",
   "capacity",
+  "column_break_eqit",
   "full_time_staff"
  ],
  "fields": [
@@ -65,11 +70,33 @@
    "fieldtype": "Int",
    "label": "Full Time Staff",
    "non_negative": 1
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_agxr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jalt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "column_break_eqit",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-24 23:09:01.086516",
+ "modified": "2022-12-22 16:32:20.180253",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
