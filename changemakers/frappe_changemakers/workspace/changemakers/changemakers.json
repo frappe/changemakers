@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"paragraph\",\"data\":{\"text\":\"&nbsp;Manage Beneficiaries\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Rescues\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Rescue\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Rescues\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Shelter Services\",\"col\":12}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Shelter Homes\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Entry Record\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Exit Record\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"type\":\"paragraph\",\"data\":{\"text\":\"&nbsp;Manage Beneficiaries\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Rescues\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Rescue\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Rescues\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Cases\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Case\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open Cases\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":3}},{\"type\":\"paragraph\",\"data\":{\"text\":\"Shelter Services\",\"col\":12}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Shelter Homes\",\"col\":4}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Entry Record\",\"col\":3}},{\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Exit Record\",\"col\":3}},{\"type\":\"spacer\",\"data\":{\"col\":12}}]",
  "creation": "2022-10-13 13:51:43.725589",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -10,7 +10,7 @@
  "idx": 0,
  "label": "Changemakers",
  "links": [],
- "modified": "2022-12-22 22:08:48.690413",
+ "modified": "2022-12-23 17:01:34.951040",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Changemakers",
@@ -26,6 +26,13 @@
  "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "New Case",
+   "link_to": "Case",
+   "type": "DocType"
+  },
   {
    "color": "Grey",
    "doc_view": "New",
@@ -104,6 +111,15 @@
    "doc_view": "New",
    "label": "New Distribution",
    "link_to": "Food Distribution Record",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Open Cases",
+   "link_to": "Case",
+   "stats_filter": "{\"docstatus\":[\"=\",\"0\"]}",
    "type": "DocType"
   }
  ],
