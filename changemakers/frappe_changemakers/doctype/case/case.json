@@ -7,24 +7,30 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "section_break_zguo",
   "title",
-  "type",
   "description",
+  "column_break_fkgv",
+  "type",
+  "status",
+  "priority",
+  "amended_from",
+  "location_section",
   "is_beneficiary_in_shelter_home",
-  "shelter_home",
   "state",
-  "district",
   "zone",
+  "column_break_eyby",
+  "shelter_home",
+  "district",
   "ward",
   "habitation",
-  "priority",
-  "status",
-  "amended_from",
+  "beneficiary_details_section",
+  "is_beneficiary_traced",
   "beneficiary",
-  "age",
   "gender",
-  "contact_number",
-  "is_beneficiary_traced"
+  "column_break_jywm",
+  "age",
+  "contact_number"
  ],
  "fields": [
   {
@@ -120,9 +126,14 @@
    "reqd": 1
   },
   {
+   "default": "New",
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Status",
+   "options": "New\nIn Follow Up\nSpam\nUntraced\nClosed",
    "reqd": 1
   },
   {
@@ -160,12 +171,39 @@
    "fieldname": "is_beneficiary_traced",
    "fieldtype": "Check",
    "label": "Is Beneficiary Traced?"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "fieldname": "column_break_eyby",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_zguo",
+   "fieldtype": "Section Break",
+   "label": "Case Details"
+  },
+  {
+   "fieldname": "column_break_fkgv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beneficiary_details_section",
+   "fieldtype": "Section Break",
+   "label": "Beneficiary Details"
+  },
+  {
+   "fieldname": "column_break_jywm",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-23 16:44:00.098393",
+ "modified": "2022-12-23 16:56:28.863130",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
@@ -187,7 +225,28 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Cyan",
+   "title": "New"
+  },
+  {
+   "color": "Yellow",
+   "title": "In Follow Up"
+  },
+  {
+   "color": "Green",
+   "title": "Closed"
+  },
+  {
+   "color": "Red",
+   "title": "Spam"
+  },
+  {
+   "color": "Orange",
+   "title": "Untraced"
+  }
+ ],
  "track_changes": 1,
  "track_seen": 1,
  "track_views": 1
