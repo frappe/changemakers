@@ -1,0 +1,194 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2022-12-23 16:33:03.271918",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "type",
+  "description",
+  "is_beneficiary_in_shelter_home",
+  "shelter_home",
+  "state",
+  "district",
+  "zone",
+  "ward",
+  "habitation",
+  "priority",
+  "status",
+  "amended_from",
+  "beneficiary",
+  "age",
+  "gender",
+  "contact_number",
+  "is_beneficiary_traced"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Shelter\nMedical\nFood\nEntitlement\nIdentified a Family\nLegal\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_beneficiary_in_shelter_home",
+   "fieldtype": "Check",
+   "label": "Is the beneficiary in shelter home?"
+  },
+  {
+   "fieldname": "shelter_home",
+   "fieldtype": "Link",
+   "label": "Shelter Home",
+   "options": "Shelter Home"
+  },
+  {
+   "fetch_from": "shelter_home.state",
+   "fetch_if_empty": 1,
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "label": "State",
+   "options": "State",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "shelter_home.district",
+   "fetch_if_empty": 1,
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "label": "District",
+   "options": "District",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "shelter_home.zone",
+   "fetch_if_empty": 1,
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "label": "Zone",
+   "options": "Zone",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "shelter_home.ward",
+   "fetch_if_empty": 1,
+   "fieldname": "ward",
+   "fieldtype": "Link",
+   "label": "Ward",
+   "options": "Ward",
+   "reqd": 1
+  },
+  {
+   "fetch_from": ".",
+   "fieldname": "habitation",
+   "fieldtype": "Link",
+   "label": "Habitation",
+   "options": "Habitation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Case",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Urgent\nHigh\nMedium\nLow",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "reqd": 1
+  },
+  {
+   "fieldname": "beneficiary",
+   "fieldtype": "Link",
+   "label": "Beneficiary",
+   "options": "Beneficiary",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "beneficiary.age",
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "beneficiary.gender",
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "beneficiary.phone_number",
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "options": "Phone",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_beneficiary_traced",
+   "fieldtype": "Check",
+   "label": "Is Beneficiary Traced?"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-12-23 16:44:00.098393",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Case",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}
