@@ -224,11 +224,11 @@
   "name": "West Bengal"
  },
  {
-  "code": "TS",
+  "code": "TG",
   "country": "India",
   "docstatus": 0,
   "doctype": "State",
-  "modified": "2022-12-16 10:00:33.945296",
+  "modified": "2022-12-21 22:54:22.330742",
   "name": "Telangana"
  },
  {
@@ -246,22 +246,6 @@
   "doctype": "State",
   "modified": "2022-12-16 10:00:33.946793",
   "name": "Chandigarh"
- },
- {
-  "code": "DH",
-  "country": "India",
-  "docstatus": 0,
-  "doctype": "State",
-  "modified": "2022-12-16 10:00:33.947555",
-  "name": "Dadra and Nagar Haveli"
- },
- {
-  "code": "DD",
-  "country": "India",
-  "docstatus": 0,
-  "doctype": "State",
-  "modified": "2022-12-16 10:00:33.948330",
-  "name": "Daman and Diu"
  },
  {
   "code": "DL",
@@ -286,5 +270,13 @@
   "doctype": "State",
   "modified": "2022-12-16 10:00:33.950552",
   "name": "Pondicherry"
+ },
+ {
+  "code": "DN",
+  "country": "India",
+  "docstatus": 0,
+  "doctype": "State",
+  "modified": "2022-12-21 22:58:03.036242",
+  "name": "Dadra and Nagar Haveli and Daman and Diu"
  }
 ]
