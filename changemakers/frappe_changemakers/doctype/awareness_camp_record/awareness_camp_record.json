@@ -1,0 +1,192 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:AWARENESS-CAMP-{####}",
+ "creation": "2022-12-26 19:47:29.226164",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "camp_details_section",
+  "date_of_camp",
+  "camp_type",
+  "specified_camp_type",
+  "num_attendees",
+  "column_break_lctw",
+  "time_of_camp",
+  "camp_location",
+  "specified_camp_location",
+  "section_break_kccz",
+  "agenda",
+  "column_break_mjoy",
+  "action_points",
+  "address_section",
+  "state",
+  "zone",
+  "habitation",
+  "column_break_zuln",
+  "district",
+  "ward",
+  "section_break_muyq",
+  "geolocation"
+ ],
+ "fields": [
+  {
+   "fieldname": "date_of_camp",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Camp",
+   "reqd": 1
+  },
+  {
+   "fieldname": "camp_details_section",
+   "fieldtype": "Section Break",
+   "label": "Camp Details"
+  },
+  {
+   "fieldname": "time_of_camp",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Time of Camp",
+   "reqd": 1
+  },
+  {
+   "fieldname": "camp_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Camp Type",
+   "options": "Legal\nPersonal Hygiene\nEntitlements\nOutreach\nOthers",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.camp_type==\"Others\"",
+   "fieldname": "specified_camp_type",
+   "fieldtype": "Data",
+   "label": "Specify Other Camp Type",
+   "mandatory_depends_on": "eval:doc.camp_type==\"Others\""
+  },
+  {
+   "fieldname": "camp_location",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Camp Location",
+   "options": "Shelter home\nHotspot\nNGO's\nColleges\nSchools\nCorporate Offices\nApartment Complex\nOthers",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.camp_location==\"Others\"",
+   "fieldname": "specified_camp_location",
+   "fieldtype": "Data",
+   "label": "Specify Other Camp Location",
+   "mandatory_depends_on": "eval:doc.camp_location==\"Others\""
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "label": "State",
+   "options": "State",
+   "reqd": 1
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "label": "Zone",
+   "options": "Zone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "habitation",
+   "fieldtype": "Link",
+   "label": "Habitation",
+   "options": "Habitation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_zuln",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "label": "District",
+   "options": "District",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ward",
+   "fieldtype": "Link",
+   "label": "Ward",
+   "options": "Ward",
+   "reqd": 1
+  },
+  {
+   "fieldname": "num_attendees",
+   "fieldtype": "Int",
+   "label": "Number of Attendees",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_lctw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kccz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "agenda",
+   "fieldtype": "Small Text",
+   "label": "Agenda"
+  },
+  {
+   "fieldname": "column_break_mjoy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "action_points",
+   "fieldtype": "Small Text",
+   "label": "Key Action Points"
+  },
+  {
+   "fieldname": "section_break_muyq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "geolocation",
+   "fieldtype": "Geolocation",
+   "label": "Geolocation"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-12-26 20:05:18.580788",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Awareness Camp Record",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
