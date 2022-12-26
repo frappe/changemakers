@@ -54,9 +54,8 @@
   },
   {
    "fieldname": "pincode",
-   "fieldtype": "Data",
+   "fieldtype": "Int",
    "label": "Pincode",
-   "length": 6,
    "non_negative": 1
   },
   {
