@@ -25,6 +25,7 @@
   "ward",
   "habitation",
   "follow_up_details_section",
+  "family_meeting_status",
   "followups",
   "beneficiary_details_section",
   "is_beneficiary_traced",
@@ -212,12 +213,19 @@
    "fieldtype": "Table",
    "label": "Followups",
    "options": "Case Followup"
+  },
+  {
+   "depends_on": "eval:doc.type=='Identified a Family'",
+   "fieldname": "family_meeting_status",
+   "fieldtype": "Select",
+   "label": "Family Meeting Status",
+   "options": "Meeting went well and the Beneficiary returned to home\nMeeting went well but the Beneficiary didn\u2019t go home\nFamily members did not come\nBeneficiary didn\u2019t go for the meeting\nMismatch"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-26 13:51:15.507465",
+ "modified": "2022-12-26 14:02:00.640477",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
