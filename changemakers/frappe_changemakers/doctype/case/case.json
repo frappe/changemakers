@@ -24,6 +24,8 @@
   "district",
   "ward",
   "habitation",
+  "follow_up_details_section",
+  "followups",
   "beneficiary_details_section",
   "is_beneficiary_traced",
   "beneficiary",
@@ -38,6 +40,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Title",
+   "length": 30,
    "reqd": 1
   },
   {
@@ -78,7 +81,7 @@
    "fetch_if_empty": 1,
    "fieldname": "district",
    "fieldtype": "Link",
-   "label": "District",
+   "label": "City/District",
    "options": "District",
    "reqd": 1
   },
@@ -87,7 +90,7 @@
    "fetch_if_empty": 1,
    "fieldname": "zone",
    "fieldtype": "Link",
-   "label": "Zone",
+   "label": "Zone/Block",
    "options": "Zone",
    "reqd": 1
   },
@@ -96,15 +99,15 @@
    "fetch_if_empty": 1,
    "fieldname": "ward",
    "fieldtype": "Link",
-   "label": "Ward",
+   "label": "Ward/GP",
    "options": "Ward",
    "reqd": 1
   },
   {
-   "fetch_from": ".",
+   "fetch_from": "shelter_home.",
    "fieldname": "habitation",
    "fieldtype": "Link",
-   "label": "Habitation",
+   "label": "Hotspot Name/Habitation",
    "options": "Habitation",
    "reqd": 1
   },
@@ -198,12 +201,23 @@
   {
    "fieldname": "column_break_jywm",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "follow_up_details_section",
+   "fieldtype": "Section Break",
+   "label": "Follow Up Details"
+  },
+  {
+   "fieldname": "followups",
+   "fieldtype": "Table",
+   "label": "Followups",
+   "options": "Case Followup"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-23 16:56:28.863130",
+ "modified": "2022-12-26 13:51:15.507465",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
