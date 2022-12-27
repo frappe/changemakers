@@ -2,17 +2,19 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Hot reload works</ion-title>
+        <ion-title>Hi Hussain!</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Hot Reload works</ion-title>
+          <ion-title size="large">Hi Hussain!</ion-title>
         </ion-toolbar>
       </ion-header>
 
-      <div class="flex flex-col self-center items-center justify-center h-full space-y-3">
+      <div
+        class="flex flex-col self-center items-center justify-center h-full space-y-3"
+      >
         <Button appearance="primary">Hello FrappeUI</Button>
 
         <Badge color="yellow">Hello</Badge>
@@ -23,8 +25,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
 import {
   IonPage,
   IonHeader,
@@ -32,17 +33,17 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/vue";
-import ExploreContainer from "@/components/ExploreContainer.vue";
 
-export default defineComponent({
-  name: "Tab1Page",
-  components: {
-    ExploreContainer,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonPage,
-  },
-});
+import { createDocumentResource } from "frappe-ui";
+
+
+const user = createDocumentResource({
+  doctype: 'User',
+  name: 'Administrator',
+  onSuccess(d) {
+    console.log(d);
+  }
+})
+
+user.reload();
 </script>
