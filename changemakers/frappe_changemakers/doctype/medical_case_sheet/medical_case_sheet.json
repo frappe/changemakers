@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-12-27 13:06:57.633840",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vitals_taken",
+  "column_break_biht",
+  "section_break_bedp",
+  "chief_complaint",
+  "past_medical_history",
+  "social_history",
+  "column_break_fyhg",
+  "history_of_present_illness",
+  "medication_history",
+  "allergies"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "vitals_taken",
+   "fieldtype": "Check",
+   "label": "Vitals Taken?"
+  },
+  {
+   "fieldname": "column_break_biht",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_bedp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "chief_complaint",
+   "fieldtype": "Small Text",
+   "label": "Chief Complaint"
+  },
+  {
+   "fieldname": "past_medical_history",
+   "fieldtype": "Small Text",
+   "label": "Past Medical History"
+  },
+  {
+   "fieldname": "social_history",
+   "fieldtype": "Small Text",
+   "label": "Social History"
+  },
+  {
+   "fieldname": "column_break_fyhg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "history_of_present_illness",
+   "fieldtype": "Small Text",
+   "label": "History Of Present Illness"
+  },
+  {
+   "fieldname": "medication_history",
+   "fieldtype": "Small Text",
+   "label": "Medication History"
+  },
+  {
+   "fieldname": "allergies",
+   "fieldtype": "Small Text",
+   "label": "Allergies"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-12-27 13:14:19.099214",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Medical Case Sheet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_views": 1
+}
