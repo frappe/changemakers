@@ -1,0 +1,218 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:HEALTH-CAMP-{####}",
+ "creation": "2022-12-27 12:45:03.724942",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date_time_section",
+  "camp_date",
+  "column_break_yeke",
+  "camp_time",
+  "patients_details_section",
+  "number_of_males",
+  "number_of_children",
+  "total_patients_screened",
+  "column_break_rsms",
+  "number_of_females",
+  "number_of_others",
+  "location_section",
+  "camp_location",
+  "column_break_fxnc",
+  "specified_camp_location",
+  "section_break_xgxk",
+  "state",
+  "zone",
+  "habitation",
+  "column_break_oahi",
+  "district",
+  "ward",
+  "medical_details_section",
+  "total_medicines_dispensed",
+  "total_referrals_done",
+  "column_break_wwkx",
+  "total_diagnostics_done"
+ ],
+ "fields": [
+  {
+   "fieldname": "camp_date",
+   "fieldtype": "Date",
+   "label": "Camp Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_yeke",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "camp_time",
+   "fieldtype": "Time",
+   "label": "Camp Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "patients_details_section",
+   "fieldtype": "Section Break",
+   "label": "Patients Details"
+  },
+  {
+   "fieldname": "number_of_males",
+   "fieldtype": "Int",
+   "label": "Number Of Males"
+  },
+  {
+   "fieldname": "number_of_children",
+   "fieldtype": "Int",
+   "label": "Number Of Children"
+  },
+  {
+   "fieldname": "total_patients_screened",
+   "fieldtype": "Int",
+   "label": "Total Patients Screened",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rsms",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "number_of_females",
+   "fieldtype": "Int",
+   "label": "Number Of Females"
+  },
+  {
+   "fieldname": "number_of_others",
+   "fieldtype": "Int",
+   "label": "Number Of Others"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "fieldname": "camp_location",
+   "fieldtype": "Select",
+   "label": "Camp Location",
+   "options": "Govt Aided Shelter Home\nPrivate Shelter Home\nHotspot\nOthers",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_xgxk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "State",
+   "options": "State",
+   "reqd": 1
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Zone/Block",
+   "options": "Zone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "habitation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Hotspot Name/Habitation",
+   "options": "Habitation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_oahi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "City/District",
+   "options": "District",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ward",
+   "fieldtype": "Link",
+   "label": "Ward/GP",
+   "options": "Ward",
+   "reqd": 1
+  },
+  {
+   "fieldname": "medical_details_section",
+   "fieldtype": "Section Break",
+   "label": "Medical Details"
+  },
+  {
+   "fieldname": "total_medicines_dispensed",
+   "fieldtype": "Int",
+   "label": "Total Medicines Dispensed"
+  },
+  {
+   "fieldname": "total_referrals_done",
+   "fieldtype": "Int",
+   "label": "Total Referrals Done"
+  },
+  {
+   "fieldname": "column_break_wwkx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_diagnostics_done",
+   "fieldtype": "Int",
+   "label": "Total Diagnostics Done"
+  },
+  {
+   "fieldname": "column_break_fxnc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.camp_location==\"Others\"",
+   "fieldname": "specified_camp_location",
+   "fieldtype": "Data",
+   "label": "Please Specify Camp Location",
+   "mandatory_depends_on": "eval:doc.camp_location==\"Others\""
+  },
+  {
+   "fieldname": "date_time_section",
+   "fieldtype": "Section Break",
+   "label": "Date & Time"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-12-27 13:03:38.040460",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Health Camp Record",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
