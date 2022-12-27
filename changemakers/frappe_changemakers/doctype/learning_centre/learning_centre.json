@@ -1,0 +1,179 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2022-12-27 13:22:20.568074",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date_of_commencement",
+  "capacity",
+  "column_break_fbbr",
+  "type",
+  "address_section",
+  "state",
+  "zone",
+  "habitation",
+  "column_break_vkgq",
+  "district",
+  "ward",
+  "pin_code",
+  "section_break_goye",
+  "full_address",
+  "landmark",
+  "poc_section",
+  "poc_name",
+  "poc_alternate_phone",
+  "column_break_hask",
+  "poc_phone"
+ ],
+ "fields": [
+  {
+   "fieldname": "date_of_commencement",
+   "fieldtype": "Date",
+   "label": "Date Of Commencement",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Micro Learning Centre\nTution Centre",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "State",
+   "options": "State",
+   "reqd": 1
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Link",
+   "label": "Zone/Block",
+   "options": "Zone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "habitation",
+   "fieldtype": "Link",
+   "label": "Hotspot Name/Habitation",
+   "options": "Habitation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vkgq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "label": "City/District",
+   "options": "District",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ward",
+   "fieldtype": "Link",
+   "label": "Ward/GP",
+   "options": "Ward",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_goye",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "full_address",
+   "fieldtype": "Small Text",
+   "label": "Full Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pin_code",
+   "fieldtype": "Int",
+   "label": "Pin Code",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_fbbr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "landmark",
+   "fieldtype": "Data",
+   "label": "Landmark"
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "label": "Capacity",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "poc_section",
+   "fieldtype": "Section Break",
+   "label": "Point Of Contact"
+  },
+  {
+   "fieldname": "poc_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "POC Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "poc_alternate_phone",
+   "fieldtype": "Data",
+   "label": "POC Alternate Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_hask",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "poc_phone",
+   "fieldtype": "Data",
+   "label": "POC Phone",
+   "options": "Phone"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-12-27 16:09:52.653394",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Learning Centre",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
