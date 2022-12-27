@@ -1,0 +1,10 @@
+{
+  "name": "myApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "server": {
+    "url": "http://localhost:5173/"
+  }
+}
