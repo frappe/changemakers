@@ -12,6 +12,12 @@
   "column_break_3",
   "beneficiary",
   "discharged_at",
+  "section_break_qmpd",
+  "patient_id",
+  "illness_description",
+  "column_break_ovbv",
+  "under_doctor",
+  "discharge_summary",
   "section_break_6",
   "bill_amount"
  ],
@@ -55,11 +61,40 @@
    "fieldname": "bill_amount",
    "fieldtype": "Currency",
    "label": "Bill Amount"
+  },
+  {
+   "fieldname": "section_break_qmpd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "From the Hospital",
+   "fieldname": "patient_id",
+   "fieldtype": "Data",
+   "label": "Patient ID"
+  },
+  {
+   "fieldname": "illness_description",
+   "fieldtype": "Small Text",
+   "label": "Illness Description"
+  },
+  {
+   "fieldname": "column_break_ovbv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "under_doctor",
+   "fieldtype": "Data",
+   "label": "Admitted Under Doctor"
+  },
+  {
+   "fieldname": "discharge_summary",
+   "fieldtype": "Small Text",
+   "label": "Discharge / Medical Summary"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-20 22:04:58.798803",
+ "modified": "2022-12-29 08:17:41.461688",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Hospitalisation Record",

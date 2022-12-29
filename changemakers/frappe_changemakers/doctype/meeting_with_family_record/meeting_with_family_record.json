@@ -9,14 +9,19 @@
  "field_order": [
   "beneficiary",
   "age",
+  "is_in_shelter",
+  "shelter_home",
   "column_break_gzfi",
   "contact",
   "gender",
+  "shelter_incharge",
+  "habitation",
   "meeting_details_section",
   "meeting_date",
   "meeting_outcome",
   "column_break_zzzd",
   "meeting_time",
+  "other_notes",
   "police_formalities_section",
   "police_station",
   "column_break_kjnh",
@@ -106,11 +111,44 @@
    "fieldname": "police_memo",
    "fieldtype": "Attach",
    "label": "Police Memo"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_in_shelter",
+   "fieldtype": "Check",
+   "label": "Is in shelter home?"
+  },
+  {
+   "depends_on": "eval:doc.is_in_shelter==true",
+   "fieldname": "shelter_home",
+   "fieldtype": "Link",
+   "label": "Shelter Home",
+   "mandatory_depends_on": "eval:doc.is_in_shelter==true",
+   "options": "Shelter Home"
+  },
+  {
+   "depends_on": "eval:doc.is_in_shelter==true",
+   "fieldname": "shelter_incharge",
+   "fieldtype": "Data",
+   "label": "Shelter Incharge"
+  },
+  {
+   "depends_on": "eval:doc.is_in_shelter==false",
+   "fieldname": "habitation",
+   "fieldtype": "Link",
+   "label": "Habitation",
+   "options": "Habitation"
+  },
+  {
+   "description": "Departure Location, etc.",
+   "fieldname": "other_notes",
+   "fieldtype": "Long Text",
+   "label": "Other Notes"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-29 07:34:03.218429",
+ "modified": "2022-12-29 08:10:41.691910",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Meeting with Family Record",
