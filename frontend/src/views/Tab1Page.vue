@@ -1,17 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Hi Hussain!</ion-title>
-      </ion-toolbar>
-    </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Hi Hussain!</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
       <div
         class="flex flex-col self-center items-center justify-center h-full space-y-3"
       >
@@ -19,7 +8,7 @@
 
         <Badge color="yellow">Hello</Badge>
 
-        <h1 className="text-3xl font-bold text-green-700">Hello world!</h1>
+        <h1 className="text-3xl font-bold text-blue-700">Hello world!</h1>
       </div>
     </ion-content>
   </ion-page>
@@ -36,14 +25,17 @@ import {
 
 import { createDocumentResource } from "frappe-ui";
 
+import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary";
 
 const user = createDocumentResource({
-  doctype: 'User',
-  name: 'Administrator',
-  onSuccess(d) {
-    console.log(d);
-  }
-})
+  doctype: "Beneficiary",
+  name: "BENE-2022-12-00002",
+  onSuccess(d: Beneficiary) {
+    console.log(d.age);
+  },
+});
+
+const beneficiary: Beneficiary = user.doc;
 
 user.reload();
 </script>
