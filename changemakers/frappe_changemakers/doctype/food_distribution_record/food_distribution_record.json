@@ -10,6 +10,7 @@
   "food_type",
   "column_break_2",
   "packets_taken_for_distribution",
+  "transported_by",
   "drop_off_details_section",
   "drop_offs",
   "section_break_7",
@@ -67,7 +68,8 @@
    "fieldname": "packets_returned",
    "fieldtype": "Int",
    "label": "Packets Returned",
-   "non_negative": 1
+   "non_negative": 1,
+   "read_only": 1
   },
   {
    "fieldname": "column_break_8",
@@ -85,12 +87,18 @@
    "options": "Food Distribution Record",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "description": "Vehicle/Reg No. Person Name",
+   "fieldname": "transported_by",
+   "fieldtype": "Data",
+   "label": "Transported By"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-04 00:55:39.454532",
+ "modified": "2022-12-29 08:27:44.139707",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Food Distribution Record",
