@@ -1,6 +1,6 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "autoincrement",
  "creation": "2022-12-26 18:19:13.320208",
  "default_view": "List",
  "doctype": "DocType",
@@ -56,12 +56,16 @@
   {
    "fieldname": "meeting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Meeting Date",
    "reqd": 1
   },
   {
    "fieldname": "meeting_time",
    "fieldtype": "Time",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Meeting Time",
    "reqd": 1
   },
@@ -106,10 +110,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-26 19:43:02.176375",
+ "modified": "2022-12-29 07:34:03.218429",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Meeting with Family Record",
+ "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
   {
@@ -125,7 +130,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "beneficiary"
 }
