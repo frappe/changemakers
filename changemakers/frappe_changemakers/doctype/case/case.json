@@ -7,6 +7,10 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "assignment_information_section",
+  "organisation",
+  "column_break_vvbt",
+  "assigned_to",
   "section_break_zguo",
   "title",
   "description",
@@ -24,16 +28,25 @@
   "district",
   "ward",
   "habitation",
-  "follow_up_details_section",
-  "family_meeting_outcome",
-  "followups",
   "beneficiary_details_section",
   "is_beneficiary_traced",
   "beneficiary",
   "gender",
   "column_break_jywm",
   "age",
-  "contact_number"
+  "contact_number",
+  "updates_section",
+  "medical_update",
+  "food_update",
+  "entitlement",
+  "legal_update",
+  "column_break_vjme",
+  "shelter_update",
+  "admitted_to_shelter",
+  "other_update",
+  "follow_up_details_section",
+  "family_meeting_outcome",
+  "followups"
  ],
  "fields": [
   {
@@ -144,8 +157,8 @@
    "fieldname": "beneficiary",
    "fieldtype": "Link",
    "label": "Beneficiary",
-   "options": "Beneficiary",
-   "reqd": 1
+   "mandatory_depends_on": "eval:doc.is_beneficiary_traced==true",
+   "options": "Beneficiary"
   },
   {
    "fetch_from": "beneficiary.age",
@@ -220,12 +233,88 @@
    "fieldtype": "Select",
    "label": "Family Meeting Outcome",
    "options": "Meeting went well and the Beneficiary returned to home\nMeeting went well but the Beneficiary didn\u2019t go home\nFamily members did not come\nBeneficiary didn\u2019t go for the meeting\nMismatch"
+  },
+  {
+   "fieldname": "assignment_information_section",
+   "fieldtype": "Section Break",
+   "label": "Assignment Information"
+  },
+  {
+   "fieldname": "organisation",
+   "fieldtype": "Link",
+   "label": "Organisation",
+   "options": "Organisation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vvbt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "updates_section",
+   "fieldtype": "Section Break",
+   "label": "Updates"
+  },
+  {
+   "depends_on": "eval:doc.type==\"Shelter\" && doc.is_beneficiary_traced==true",
+   "fieldname": "shelter_update",
+   "fieldtype": "Select",
+   "label": "Shelter Update",
+   "options": "Not Willing To Come\nAdmitted"
+  },
+  {
+   "depends_on": "eval:doc.type==\"Shelter\" && doc.is_beneficiary_traced==true && doc.shelter_update==\"Admitted\"",
+   "fieldname": "admitted_to_shelter",
+   "fieldtype": "Link",
+   "label": "Admitted To Shelter",
+   "mandatory_depends_on": "eval:doc.shelter_update==\"Admitted\"",
+   "options": "Shelter Home"
+  },
+  {
+   "fieldname": "column_break_vjme",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "medical_update",
+   "fieldtype": "Select",
+   "label": "Medical Update",
+   "options": "Hospitalised\nTreatment Done\nReferred To Other Organisation"
+  },
+  {
+   "fieldname": "food_update",
+   "fieldtype": "Select",
+   "label": "Food Update",
+   "options": "Resolved and reported\nFood escalation"
+  },
+  {
+   "fieldname": "entitlement",
+   "fieldtype": "Select",
+   "label": "Entitlement Update",
+   "options": "In Process\nResolved"
+  },
+  {
+   "fieldname": "legal_update",
+   "fieldtype": "Select",
+   "label": "Legal Update",
+   "options": "Complaint registered\nReferred to agency"
+  },
+  {
+   "fieldname": "other_update",
+   "fieldtype": "Small Text",
+   "label": "Other Update"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-26 19:40:52.813071",
+ "modified": "2022-12-29 08:04:04.268141",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
