@@ -4,11 +4,8 @@
       <div
         class="flex flex-col self-center items-center justify-center h-full space-y-3"
       >
-        <Button appearance="primary">Hello FrappeUI</Button>
-
-        <Badge color="yellow">Hello</Badge>
-
-        <h1 className="text-3xl font-bold text-blue-700">Hello world!</h1>
+        <h2 class="text-gray-700 font-medium text-7xl">{{ beneficiaryDoc.doc && beneficiaryDoc.doc.gender }}</h2>
+        <Badge color="green">Completed</Badge>
       </div>
     </ion-content>
   </ion-page>
@@ -17,9 +14,6 @@
 <script lang="ts" setup>
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
 } from "@ionic/vue";
 
@@ -27,15 +21,13 @@ import { createDocumentResource } from "frappe-ui";
 
 import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary";
 
-const user = createDocumentResource({
+const beneficiaryDoc = createDocumentResource({
   doctype: "Beneficiary",
   name: "BENE-2022-12-00002",
   onSuccess(d: Beneficiary) {
-    console.log(d.age);
+    console.log(d.gender);
   },
 });
 
-const beneficiary: Beneficiary = user.doc;
-
-user.reload();
+beneficiaryDoc.reload();
 </script>
