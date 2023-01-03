@@ -1,7 +1,7 @@
-import { createApp } from "vue"
+import { InjectionKey, createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
-import { session } from "./data/session"
+import { Session, session } from "./data/session"
 
 import {
 	Button,
@@ -23,6 +23,10 @@ import "./theme/variables.css"
 
 import "./main.css"
 import { userResource } from "./data/user"
+import {
+	sessionInjectionKey,
+	userResourceInjectionKey,
+} from "./typing/InjectionKeys"
 
 const app = createApp(App)
 setConfig("resourceFetcher", frappeRequest)
@@ -36,8 +40,8 @@ app.component("Button", Button)
 app.component("Badge", Badge)
 app.component("Input", Input)
 
-app.provide("$session", session)
-app.provide("$user", userResource)
+app.provide(sessionInjectionKey, session)
+app.provide(userResourceInjectionKey, userResource)
 
 router.isReady().then(() => {
 	app.mount("#app")
