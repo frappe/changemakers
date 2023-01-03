@@ -1,5 +1,6 @@
 labels:
   rescue: Rescue
+  Toggle Language: Toggle Language
 navigation:
   dashboard: Dashboard
   account: Account

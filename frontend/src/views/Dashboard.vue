@@ -5,16 +5,16 @@
 				class="flex flex-col self-center items-center justify-center h-full space-y-3"
 			>
 				<h2 class="text-gray-700 font-medium text-7xl">
-					{{ beneficiaryDoc.doc && beneficiaryDoc.doc.gender }}
+					{{ beneficiaryDoc.doc && beneficiaryDoc.doc.age }}
 				</h2>
 				<Badge color="green">{{ t("labels.rescue") }}</Badge>
-				
+
 				<div>
 					<FrappeIcons.BeneficiaryIcon />
 					<FrappeIcons.RescueIcon />
 				</div>
 
-				<Button @click="toggleLanguage">Toggle Language</Button>
+				<Button @click="toggleLanguage">{{ t("labels.Toggle Language") }} </Button>
 			</div>
 		</ion-content>
 	</ion-page>
