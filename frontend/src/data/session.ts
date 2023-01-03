@@ -12,7 +12,14 @@ export function sessionUser() {
 	return _sessionUser
 }
 
-export const session = reactive({
+export interface Session {
+	login: { loading: boolean; submit: () => void; reset: () => void }
+	logout: { loading: boolean; submit: () => void; reset: () => void }
+	user: null | string
+	isLoggedIn: boolean
+}
+
+export const session: Session = reactive({
 	login: createResource({
 		url: "login",
 		makeParams({ email, password }) {

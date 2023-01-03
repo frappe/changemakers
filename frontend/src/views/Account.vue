@@ -19,6 +19,8 @@
 
 <script lang="ts" setup>
 import { inject } from "vue"
+import { UserResource } from "@/data/user"
+import { Session } from "@/data/session"
 
 import {
 	IonPage,
@@ -28,6 +30,6 @@ import {
 	IonContent,
 } from "@ionic/vue"
 
-const session = inject("$session")
-const user = inject("$user")
+const session: Session = inject("$session")
+const user: UserResource = inject("$user")
 </script>
