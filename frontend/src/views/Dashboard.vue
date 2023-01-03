@@ -20,8 +20,9 @@ import {
 import { createDocumentResource } from "frappe-ui";
 
 import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary";
+import { DocumentResource } from "@/typing/resource";
 
-const beneficiaryDoc = createDocumentResource({
+const beneficiaryDoc: DocumentResource<Beneficiary> = createDocumentResource({
   doctype: "Beneficiary",
   name: "BENE-2022-12-00002",
   onSuccess(d: Beneficiary) {
