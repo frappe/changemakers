@@ -12,8 +12,17 @@ export function sessionUser() {
 	return _sessionUser
 }
 
+interface LoginCredentials {
+	email: string
+	password: string
+}
+
 export interface Session {
-	login: { loading: boolean; submit: () => void; reset: () => void }
+	login: {
+		loading: boolean
+		submit: (credentials: LoginCredentials) => void
+		reset: () => void
+	}
 	logout: { loading: boolean; submit: () => void; reset: () => void }
 	user: null | string
 	isLoggedIn: boolean
