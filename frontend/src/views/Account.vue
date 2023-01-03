@@ -10,7 +10,6 @@
 				<h2 class="text-gray-900 font-bold text-4xl">
 					{{ user.data.first_name }}
 				</h2>
-
 				<Button @click="session.logout.submit()">Log Out</Button>
 			</div>
 		</ion-content>
@@ -19,7 +18,6 @@
 
 <script lang="ts" setup>
 import { inject } from "vue"
-import { UserResource } from "@/data/user"
 
 import {
 	sessionInjectionKey,
@@ -35,5 +33,5 @@ import {
 } from "@ionic/vue"
 
 const session = inject(sessionInjectionKey)
-const user: UserResource = inject(userResourceInjectionKey)
+const user = inject(userResourceInjectionKey)
 </script>
