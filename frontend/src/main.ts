@@ -1,7 +1,7 @@
-import { InjectionKey, createApp } from "vue"
+import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
-import { Session, session } from "./data/session"
+import { session } from "./data/session"
 
 import {
 	Button,
