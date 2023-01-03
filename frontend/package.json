@@ -17,12 +17,14 @@
     "@capacitor/ios": "^4.3.0",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
+    "@intlify/unplugin-vue-i18n": "^0.8.1",
     "@ionic/vue": "^6.0.0",
     "@ionic/vue-router": "^6.0.0",
     "core-js": "^3.6.5",
     "frappe-ui": "^0.0.95",
     "ionicons": "^6.0.3",
     "vue": "^3.2.21",
+    "vue-i18n": "8",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {

@@ -7,23 +7,29 @@
 				<h2 class="text-gray-700 font-medium text-7xl">
 					{{ beneficiaryDoc.doc && beneficiaryDoc.doc.gender }}
 				</h2>
-				<Badge color="green">Completed</Badge>
+				<Badge color="green">{{ t("labels.rescue") }}</Badge>
+				
 				<div>
 					<FrappeIcons.BeneficiaryIcon />
 					<FrappeIcons.RescueIcon />
 				</div>
+
+				<Button @click="toggleLanguage">Toggle Language</Button>
 			</div>
 		</ion-content>
 	</ion-page>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from "vue-i18n"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 
 import { createDocumentResource } from "frappe-ui"
 import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary"
 import { DocumentResource } from "@/typing/resource"
+
+const { t, locale } = useI18n()
 
 const beneficiaryDoc: DocumentResource<Beneficiary> = createDocumentResource({
 	doctype: "Beneficiary",
@@ -34,4 +40,12 @@ const beneficiaryDoc: DocumentResource<Beneficiary> = createDocumentResource({
 })
 
 beneficiaryDoc.reload()
+
+function toggleLanguage() {
+	if (locale.value == "en") {
+		locale.value = "hi"
+	} else {
+		locale.value = "en"
+	}
+}
 </script>
