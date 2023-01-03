@@ -4,4 +4,5 @@
 *.swp
 tags
 changemakers/docs/current
+changemakers/public/node_modules
 node_modules/
