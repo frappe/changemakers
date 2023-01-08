@@ -11,7 +11,7 @@
 					required
 					name="email"
 					type="text"
-					placeholder="dilpreet@mail.com"
+					placeholder="johndoe@mail.com"
 					label="User ID"
 				/>
 				<Input
@@ -31,6 +31,7 @@
 
 <script lang="ts" setup>
 import { inject } from "vue"
+import { Input } from "frappe-ui"
 
 import {
 	IonPage,

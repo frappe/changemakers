@@ -6,11 +6,21 @@
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
-			<div v-if="user.data" class="flex flex-col items-center">
+			<div v-if="user.data" class="flex flex-col m-6">
 				<h2 class="text-gray-900 font-bold text-4xl">
 					{{ user.data.first_name }}
 				</h2>
-				<Button @click="session.logout.submit()">Log Out</Button>
+
+				<div class="items-start flex-col justify-start">
+					<Input
+						class="mb-2"
+						:label="t('preferences.language')"
+						type="select"
+						:options="availableLanguages"
+						v-model="locale"
+					/>
+				</div>
+				<Button @click="session.logout.submit()">{{ t("auth.logout") }}</Button>
 			</div>
 		</ion-content>
 	</ion-page>
@@ -18,6 +28,7 @@
 
 <script lang="ts" setup>
 import { inject } from "vue"
+import { useI18n } from "vue-i18n"
 
 import {
 	sessionInjectionKey,
@@ -34,4 +45,11 @@ import {
 
 const session = inject(sessionInjectionKey)
 const user = inject(userResourceInjectionKey)
+
+const { t, locale } = useI18n()
+
+const availableLanguages = [
+	{ value: "en", label: "English" },
+	{ value: "hi", label: "हिंदी" },
+]
 </script>

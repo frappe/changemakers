@@ -4,3 +4,7 @@ labels:
 navigation:
   dashboard: Dashboard
   account: Account
+auth:
+  logout: Log Out
+preferences:
+  language: Preferred Language

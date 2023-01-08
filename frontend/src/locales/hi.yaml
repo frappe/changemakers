@@ -4,3 +4,7 @@ labels:
 navigation:
   account: खाता
   dashboard: डैशबोर्ड
+auth:
+  logout: लॉग आउट
+preferences:
+  language: पसंदीदा भाषा

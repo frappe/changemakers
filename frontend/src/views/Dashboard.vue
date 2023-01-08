@@ -13,8 +13,6 @@
 					<FrappeIcons.BeneficiaryIcon />
 					<FrappeIcons.RescueIcon />
 				</div>
-
-				<Button @click="toggleLanguage">{{ t("labels.Toggle Language") }} </Button>
 			</div>
 		</ion-content>
 	</ion-page>
@@ -29,20 +27,12 @@ import { createDocumentResource } from "frappe-ui"
 import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary"
 import { DocumentResource } from "@/typing/resource"
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 
 const beneficiaryDoc: DocumentResource<Beneficiary> = createDocumentResource({
 	doctype: "Beneficiary",
-	name: "BENE-2022-12-00002"
+	name: "BENE-2022-12-00002",
 })
 
 beneficiaryDoc.reload()
-
-function toggleLanguage() {
-	if (locale.value == "en") {
-		locale.value = "hi"
-	} else {
-		locale.value = "en"
-	}
-}
 </script>
