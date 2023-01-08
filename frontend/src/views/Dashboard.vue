@@ -1,20 +1,26 @@
 <template class="bg-black">
 	<ion-page>
-		<ion-content :fullscreen="true" class="">
+		<ion-content :fullscreen="true">
 			<div class="m-4">
 				<div>
 					<h2 class="font-semibold text-xl text-gray-900">
 						{{ t("dashboard.quick_links.header") }}
 					</h2>
 					<div class="grid grid-cols-2 gap-5 mt-3">
-						<a
-							class="flex flex-col shadow-md bg-white p-[14px] items-center rounded-lg gap-3"
+						<RouterLink
+							:to="{ name: 'RescueList' }"
+							v-slot="{ href }"
 						>
-							<FrappeIcons.RescueIcon />
-							<h3 class="font-medium text-base text-gray-900">
-								{{ t("dashboard.quick_links.rescue", "Rescue") }}
-							</h3>
-						</a>
+							<a
+								:href="href"
+								class="flex flex-col shadow-md bg-white p-[14px] items-center rounded-lg gap-3"
+							>
+								<FrappeIcons.RescueIcon />
+								<h3 class="font-medium text-base text-gray-900">
+									{{ t("dashboard.quick_links.rescue", "Rescue") }}
+								</h3>
+							</a>
+						</RouterLink>
 					</div>
 				</div>
 			</div>
@@ -24,6 +30,7 @@
 
 <script lang="ts" setup>
 import { useI18n } from "vue-i18n"
+import { RouterLink } from "vue-router"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 
