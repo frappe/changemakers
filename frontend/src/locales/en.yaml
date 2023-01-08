@@ -9,5 +9,9 @@ auth:
   login: Log In
   email: Email
   password: Password
+  sign_up: Sign Up
 preferences:
   language: Preferred Language
+dashboard:
+  quick_links: 
+    header: Quick Links

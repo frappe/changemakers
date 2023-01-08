@@ -1,17 +1,21 @@
-<template>
+<template class="bg-black">
 	<ion-page>
-		<ion-content :fullscreen="true">
-			<div
-				class="flex flex-col self-center items-center justify-center h-full space-y-3"
-			>
-				<h2 class="text-gray-700 font-medium text-7xl">
-					{{ beneficiaryDoc.doc && beneficiaryDoc.doc.age }}
-				</h2>
-				<Badge color="green">{{ t("labels.rescue") }}</Badge>
-
+		<ion-content :fullscreen="true" class="">
+			<div class="m-4">
 				<div>
-					<FrappeIcons.BeneficiaryIcon />
-					<FrappeIcons.RescueIcon />
+					<h2 class="font-semibold text-xl text-gray-900">
+						{{ t("dashboard.quick_links.header") }}
+					</h2>
+					<div class="grid grid-cols-2 gap-5 mt-3">
+						<a
+							class="flex flex-col shadow-md bg-white p-[14px] items-center rounded-lg gap-3"
+						>
+							<FrappeIcons.RescueIcon />
+							<h3 class="font-medium text-base text-gray-900">
+								{{ t("dashboard.quick_links.rescue", "Rescue") }}
+							</h3>
+						</a>
+					</div>
 				</div>
 			</div>
 		</ion-content>

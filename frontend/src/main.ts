@@ -11,6 +11,7 @@ import {
 	frappeRequest,
 	pageMetaPlugin,
 	resourcesPlugin,
+	Card
 } from "frappe-ui"
 
 import { IonicVue } from "@ionic/vue"
@@ -30,12 +31,12 @@ import {
 
 import { createI18n } from "vue-i18n"
 
-// Import messages
+// Import messages from yaml files
 import messages from "@intlify/unplugin-vue-i18n/messages"
 
 const i18n = createI18n({
 	legacy: false,
-	locale: "en",
+	locale: "en", // TODO: fetch from preferences later
 	fallbackLocale: "en",
 	messages,
 })
@@ -51,6 +52,7 @@ app.use(IonicVue)
 app.component("Button", Button)
 app.component("Badge", Badge)
 app.component("Input", Input)
+app.component("Card",  Card)
 
 app.provide(sessionInjectionKey, session)
 app.provide(userResourceInjectionKey, userResource)
