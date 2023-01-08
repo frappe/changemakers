@@ -6,5 +6,8 @@ navigation:
   dashboard: डैशबोर्ड
 auth:
   logout: लॉग आउट
+  login: लॉग इन करें
+  email: ईमेल
+  password: पासवर्ड
 preferences:
   language: पसंदीदा भाषा

@@ -6,5 +6,8 @@ navigation:
   account: Account
 auth:
   logout: Log Out
+  login: Log In
+  email: Email
+  password: Password
 preferences:
   language: Preferred Language

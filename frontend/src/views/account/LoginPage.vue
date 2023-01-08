@@ -12,18 +12,18 @@
 					name="email"
 					type="text"
 					placeholder="johndoe@mail.com"
-					label="User ID"
+					:label="t('auth.email')"
 				/>
 				<Input
 					required
 					name="password"
 					type="password"
 					placeholder="••••••"
-					label="Password"
+					:label="t('auth.password')"
 				/>
-				<Button :loading="session.login.loading" appearance="primary"
-					>Login</Button
-				>
+				<Button :loading="session.login.loading" appearance="primary">{{
+					t("auth.login")
+				}}</Button>
 			</form>
 		</ion-content>
 	</ion-page>
@@ -32,6 +32,7 @@
 <script lang="ts" setup>
 import { inject } from "vue"
 import { Input } from "frappe-ui"
+import { useI18n } from "vue-i18n"
 
 import {
 	IonPage,
@@ -40,8 +41,10 @@ import {
 	IonTitle,
 	IonContent,
 } from "@ionic/vue"
+
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
 
+const { t } = useI18n()
 const session = inject(sessionInjectionKey)
 
 function submit(e) {
