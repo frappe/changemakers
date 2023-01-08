@@ -33,10 +33,7 @@ const { t, locale } = useI18n()
 
 const beneficiaryDoc: DocumentResource<Beneficiary> = createDocumentResource({
 	doctype: "Beneficiary",
-	name: "BENE-2022-12-00002",
-	onSuccess(d: Beneficiary) {
-		console.log(d.gender)
-	},
+	name: "BENE-2022-12-00002"
 })
 
 beneficiaryDoc.reload()
