@@ -1,17 +1,12 @@
 <template>
 	<ion-page>
 		<ion-header class="bg-white">
-			<ion-toolbar>
-				<ion-buttons slot="start">
-					<ion-back-button></ion-back-button>
-				</ion-buttons>
+			<div class="flex flex-row items-center p-4">
 				<ion-title class="text-gray-900 font-semibold text-xl p-0"
 					>Rescues</ion-title
 				>
-				<ion-buttons slot="end">
-					<Button class="bg-gray-900 text-white hover:bg-gray-800">New</Button>
-				</ion-buttons>
-			</ion-toolbar>
+				<Button class="bg-gray-800 text-white hover:bg-gray-800">New</Button>
+			</div>
 		</ion-header>
 		<ion-content :fullscreen="true">
 			<div class="m-4">
@@ -52,15 +47,7 @@
 <script lang="ts" setup>
 import { inject } from "vue"
 import { createListResource, FeatherIcon } from "frappe-ui"
-import {
-	IonPage,
-	IonContent,
-	IonHeader,
-	IonToolbar,
-	IonBackButton,
-	IonButtons,
-	IonTitle,
-} from "@ionic/vue"
+import { IonPage, IonContent, IonHeader, IonToolbar } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 
 // Type imports
