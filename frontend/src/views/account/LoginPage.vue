@@ -1,46 +1,38 @@
 <template>
 	<ion-page>
-		<ion-header>
-			<ion-toolbar>
-				<ion-title>Login to Changemakers</ion-title>
-			</ion-toolbar>
-		</ion-header>
 		<ion-content :fullscreen="true">
-			<form class="flex flex-col m-4 space-y-3" @submit.prevent="submit">
-				<Input
-					required
-					name="email"
-					type="text"
-					placeholder="johndoe@mail.com"
-					:label="t('auth.email')"
-				/>
-				<Input
-					required
-					name="password"
-					type="password"
-					placeholder="••••••"
-					:label="t('auth.password')"
-				/>
-				<Button :loading="session.login.loading" appearance="primary">{{
-					t("auth.login")
-				}}</Button>
-			</form>
+			<div class="h-full flex flex-col justify-center m-4">
+				<Card title="Login to Changemakers">
+					<form class="flex flex-col space-y-3" @submit.prevent="submit">
+						<Input
+							required
+							name="email"
+							type="text"
+							placeholder="johndoe@mail.com"
+							:label="t('auth.email')"
+						/>
+						<Input
+							required
+							name="password"
+							type="password"
+							placeholder="••••••"
+							:label="t('auth.password')"
+						/>
+						<Button :loading="session.login.loading" appearance="primary">{{
+							t("auth.login")
+						}}</Button>
+					</form>
+				</Card>
+			</div>
 		</ion-content>
 	</ion-page>
 </template>
 
 <script lang="ts" setup>
 import { inject } from "vue"
-import { Input } from "frappe-ui"
 import { useI18n } from "vue-i18n"
 
-import {
-	IonPage,
-	IonHeader,
-	IonToolbar,
-	IonTitle,
-	IonContent,
-} from "@ionic/vue"
+import { IonPage, IonContent } from "@ionic/vue"
 
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
 

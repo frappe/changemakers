@@ -4,7 +4,6 @@ module.exports = {
 		"./index.html",
 		"./src/**/*.{js,ts,jsx,tsx,vue}",
 		"./node_modules/frappe-ui/src/components/**/*.{vue,js,ts}",
-		"./frappe-ui/src/components/**/*.{vue,js,ts}",
 	],
 	theme: {
 		extend: {},

@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .form-input,
+    .form-textarea,
+    .form-select {
+      @apply rounded-md border-0 bg-gray-100 py-1 text-base leading-5 placeholder-gray-700 focus:bg-gray-200 focus:shadow-none focus:ring-0;
+    }
+  
+    .form-checkbox {
+      @apply rounded-md bg-gray-100 text-blue-500 focus:ring-0 focus-visible:ring-1;
+    }
+  }
+  

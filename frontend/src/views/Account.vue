@@ -7,20 +7,19 @@
 		</ion-header>
 		<ion-content :fullscreen="true">
 			<div v-if="user.data" class="flex flex-col m-6">
-				<h2 class="text-gray-900 font-bold text-4xl">
-					{{ user.data.first_name }}
-				</h2>
-
-				<div class="items-start flex-col justify-start">
-					<Input
-						class="mb-2"
-						:label="t('preferences.language')"
-						type="select"
-						:options="availableLanguages"
-						v-model="locale"
-					/>
-				</div>
-				<Button appearance="white" @click="session.logout.submit()">{{ t("auth.logout") }}</Button>
+				<Card :title="t('label.preferences', 'Preferences')" class="mb-4">
+					<div class="items-start flex-col justify-start">
+						<Input
+							:label="t('preferences.language')"
+							type="select"
+							:options="availableLanguages"
+							v-model="locale"
+						/>
+					</div>
+				</Card>
+				<Button appearance="white" @click="session.logout.submit()">{{
+					t("auth.logout")
+				}}</Button>
 			</div>
 		</ion-content>
 	</ion-page>
