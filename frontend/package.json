@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
+    "build": "vite build --base=/assets/changemakers/frontend/ && yarn copy-html-entry",
+    "copy-html-entry": "cp ../changemakers/public/frontend/index.html ../changemakers/www/c.html",
     "ionic:serve": "vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
   },
