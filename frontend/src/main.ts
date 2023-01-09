@@ -2,6 +2,7 @@ import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
 import { session } from "./data/session"
+import dayjs from "@/utils/dayjs"
 
 import {
 	Button,
@@ -11,7 +12,7 @@ import {
 	frappeRequest,
 	pageMetaPlugin,
 	resourcesPlugin,
-	Card
+	Card,
 } from "frappe-ui"
 
 import { IonicVue } from "@ionic/vue"
@@ -25,6 +26,7 @@ import "./theme/variables.css"
 import "./main.css"
 import { userResource } from "./data/user"
 import {
+	dayjsInjectionKey,
 	sessionInjectionKey,
 	userResourceInjectionKey,
 } from "./typing/InjectionKeys"
@@ -52,10 +54,13 @@ app.use(IonicVue)
 app.component("Button", Button)
 app.component("Badge", Badge)
 app.component("Input", Input)
-app.component("Card",  Card)
+app.component("Card", Card)
 
 app.provide(sessionInjectionKey, session)
 app.provide(userResourceInjectionKey, userResource)
+app.provide(dayjsInjectionKey, dayjs)
+
+app.config.globalProperties.$dayjs = dayjs
 
 router.isReady().then(() => {
 	app.mount("#app")
