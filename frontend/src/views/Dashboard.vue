@@ -17,7 +17,7 @@
 							>
 								<FrappeIcons.RescueIcon />
 								<h3 class="font-medium text-base text-gray-900">
-									{{ t("dashboard.quick_links.rescue", "Rescue") }}
+									{{ t("labels.rescue", "Rescue") }}
 								</h3>
 							</a>
 						</RouterLink>
