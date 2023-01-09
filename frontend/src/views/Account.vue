@@ -20,7 +20,7 @@
 						v-model="locale"
 					/>
 				</div>
-				<Button @click="session.logout.submit()">{{ t("auth.logout") }}</Button>
+				<Button appearance="white" @click="session.logout.submit()">{{ t("auth.logout") }}</Button>
 			</div>
 		</ion-content>
 	</ion-page>

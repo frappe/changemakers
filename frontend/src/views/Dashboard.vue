@@ -35,8 +35,8 @@ import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 
 import { createDocumentResource } from "frappe-ui"
-import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary"
 import { DocumentResource } from "@/typing/resource"
+import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary"
 
 const { t } = useI18n()
 
