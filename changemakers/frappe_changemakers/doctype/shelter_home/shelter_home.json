@@ -30,10 +30,10 @@
   "num_vacant_available",
   "details_section",
   "organisation_type",
-  "establishment_year",
-  "column_break_eqit",
-  "full_time_staff",
   "specified_organisation_type",
+  "column_break_eqit",
+  "establishment_year",
+  "full_time_staff",
   "is_80g_available",
   "property_details_tab",
   "ownership_of_property",
@@ -183,8 +183,7 @@
   {
    "fieldname": "website",
    "fieldtype": "Data",
-   "label": "Website",
-   "options": "URL"
+   "label": "Website"
   },
   {
    "fieldname": "capacity_details_section",
@@ -280,7 +279,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-10 16:20:09.613119",
+ "modified": "2023-01-10 16:41:50.720291",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
