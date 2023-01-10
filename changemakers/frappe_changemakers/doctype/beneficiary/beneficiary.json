@@ -9,10 +9,10 @@
  "field_order": [
   "personal_information_section",
   "first_name",
-  "gender",
+  "last_name",
   "phone_number",
   "column_break_3",
-  "last_name",
+  "gender",
   "age",
   "column_break_4",
   "religion",
@@ -350,7 +350,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2022-12-21 07:54:01.397208",
+ "modified": "2023-01-10 14:40:42.094732",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
