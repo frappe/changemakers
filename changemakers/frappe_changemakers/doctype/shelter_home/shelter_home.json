@@ -132,7 +132,7 @@
   },
   {
    "fieldname": "pin_code",
-   "fieldtype": "Int",
+   "fieldtype": "Data",
    "label": "Pin Code",
    "non_negative": 1
   },
@@ -280,7 +280,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-10 16:10:05.846500",
+ "modified": "2023-01-10 16:20:09.613119",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
