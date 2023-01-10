@@ -9,6 +9,7 @@ from frappe.model.document import Document
 class FoodDistributionRecord(Document):
     def before_save(self):
         self.set_distributed_packets()
+        self.set_returned_packets()
 
     def on_submit(self):
         self.set_returned_packets()
