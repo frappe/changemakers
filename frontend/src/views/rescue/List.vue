@@ -5,7 +5,7 @@
 				<ion-title class="text-gray-900 font-semibold text-xl p-0"
 					>Rescues</ion-title
 				>
-				<Button class="bg-gray-800 text-white hover:bg-gray-800">New</Button>
+				<Button class="bg-gray-900 text-white hover:bg-gray-800">New</Button>
 			</div>
 		</ion-header>
 		<ion-content :fullscreen="true">
@@ -47,7 +47,7 @@
 <script lang="ts" setup>
 import { inject } from "vue"
 import { createListResource, FeatherIcon } from "frappe-ui"
-import { IonPage, IonContent, IonHeader, IonToolbar } from "@ionic/vue"
+import { IonPage, IonContent, IonHeader, IonTitle } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 
 // Type imports
