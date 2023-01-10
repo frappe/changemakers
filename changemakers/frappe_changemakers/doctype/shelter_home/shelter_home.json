@@ -45,7 +45,8 @@
   "services_tab",
   "conducts_medical_camps",
   "does_entitlements",
-  "conducts_regular_vocational_training_workshops"
+  "conducts_regular_vocational_training_workshops",
+  "image"
  ],
  "fields": [
   {
@@ -268,11 +269,18 @@
    "fieldname": "conducts_regular_vocational_training_workshops",
    "fieldtype": "Check",
    "label": "Conducts Regular Vocational Training Workshops"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
   }
  ],
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-27 12:40:24.613533",
+ "modified": "2023-01-10 16:10:05.846500",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
