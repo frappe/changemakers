@@ -56,7 +56,7 @@
   {
    "fieldname": "patients_details_section",
    "fieldtype": "Section Break",
-   "label": "Patients Details"
+   "label": "Patients Screened"
   },
   {
    "fieldname": "number_of_males",
@@ -191,7 +191,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-27 13:03:38.040460",
+ "modified": "2023-01-10 15:24:37.241617",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Record",
