@@ -10,3 +10,6 @@ changemakers/www/c.html
 node_modules/
 build
 frontend/frappe-ui
+/test-results/
+/playwright-report/
+/playwright/.cache/

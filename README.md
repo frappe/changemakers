@@ -4,3 +4,11 @@
   </a>
 </p>
 <h1 style="font-size: 16px" align="center">For the Real Changemakers.</h1>
+
+
+<p align="center">
+
+![Server Tests](https://github.com/frappe/changemakers/actions/workflows/ci.yml/badge.svg)
+![e2e Tests](https://github.com/frappe/changemakers/actions/workflows/playwright.yml/badge.svg)
+
+</p>
