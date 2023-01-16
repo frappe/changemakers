@@ -80,11 +80,11 @@ jobs:
           bench --site changemakers.localhost execute frappe.tests.ui_test_helpers.create_test_user
 
       - name: Install Playwright Browsers
-        working-directory: /home/runner/frappe-bench/apps/frappe_dynamic_og
+        working-directory: /home/runner/frappe-bench/apps/changemakers
         run: yarn playwright install --with-deps
 
       - name: Run Playwright tests
-        working-directory: /home/runner/frappe-bench/apps/frappe_dynamic_og
+        working-directory: /home/runner/frappe-bench/apps/changemakers
         run: yarn playwright test
 
       - name: Upload Playwright Tests Report
@@ -92,5 +92,5 @@ jobs:
         if: always()
         with:
           name: playwright-report
-          path: /home/runner/frappe-bench/apps/frappe_dynamic_og/playwright-report/
+          path: /home/runner/frappe-bench/apps/changemakers/playwright-report/
           retention-days: 30

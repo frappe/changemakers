@@ -41,7 +41,7 @@ sed -i 's/schedule:/# schedule:/g' Procfile
 sed -i 's/socketio:/# socketio:/g' Procfile
 sed -i 's/redis_socketio:/# redis_socketio:/g' Procfile
 
-bench get-app frappe_dynamic_og "${GITHUB_WORKSPACE}"
+bench get-app changemakers "${GITHUB_WORKSPACE}"
 
 bench start &> bench_run_logs.txt &
 
@@ -49,6 +49,6 @@ CI=Yes bench build --force --production &
 build_pid=$!
 
 bench --site changemakers.localhost reinstall --yes
-bench --site changemakers.localhost install-app frappe_dynamic_og
+bench --site changemakers.localhost install-app changemakers
 
 wait $build_pid
