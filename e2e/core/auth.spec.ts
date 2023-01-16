@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test("user can login", async ({ page }) => {
-  await page.goto("http://changemakers.localhost:8000/c");
+  await page.goto("/c");
 
   await page.getByPlaceholder("johndoe@mail.com").click();
   await page.getByPlaceholder("johndoe@mail.com").fill("Administrator");
