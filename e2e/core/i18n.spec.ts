@@ -1,27 +1,33 @@
-import { test, expect, request } from "@playwright/test";
-
-test.use({ storageState: "storageState.json" });
+import { test, expect } from "@playwright/test";
 
 test("language switcher works", async ({ page }) => {
-  // Login
+  await login(page);
+
   // Navigate to "Account"
-  await page.goto("/c");
-
-  const accountLink = await page.getByText("Dashboard");
-  expect(accountLink).toBeDefined();
-
   await page
     .getByRole("tab", { name: "Person Account" })
     .locator("svg")
     .click();
 
-  const logOutButton = await page.getByText("Log Out");
-  expect(logOutButton).toBeDefined();
+  let logOutButton = await page.getByRole("button", { name: "Log Out" });
+  let logoutButtonText = await logOutButton.textContent();
+  expect(logoutButtonText).toBe("Log Out");
+
+  // switch language
+  await page
+    .getByRole("combobox", { name: "Preferred Language" })
+    .selectOption("हिंदी");
 
   // Expect the button text to be changed.
-//   await page
-//     .getByRole("combobox", { name: "Preferred Language" })
-//     .selectOption("हिंदी");
-
-//     expect(logOutButton).toHaveText("Log Out");
+  logOutButton = await page.getByRole("button", { name: "लॉग आउट" });
+  expect(logOutButton).toBeDefined();
 });
+
+async function login(page) {
+  await page.goto("/c/login");
+  await page.getByPlaceholder("johndoe@mail.com").click();
+  await page.getByPlaceholder("johndoe@mail.com").fill("Administrator");
+  await page.getByPlaceholder("johndoe@mail.com").press("Tab");
+  await page.getByPlaceholder("••••••").fill("admin");
+  await page.getByRole("button", { name: "Log In" }).click();
+}
