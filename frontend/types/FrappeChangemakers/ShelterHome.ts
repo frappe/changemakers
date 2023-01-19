@@ -17,8 +17,8 @@ export interface ShelterHome{
 	ward: string
 	/**	District : Link - District	*/
 	district: string
-	/**	Pin Code : Data	*/
-	pin_code?: string
+	/**	Pin Code : Int	*/
+	pin_code?: number
 	/**	Zone : Link - Zone	*/
 	zone: string
 	/**	Full Address : Small Text	*/
@@ -39,12 +39,12 @@ export interface ShelterHome{
 	num_vacant_available?: number
 	/**	Organisation Type : Select	*/
 	organisation_type?: "Trust" | "Society" | "Others"
-	/**	Specified Organisation Type : Data	*/
-	specified_organisation_type?: string
 	/**	Establishment Year : Int	*/
 	establishment_year?: number
 	/**	Full Time Staff : Int	*/
 	full_time_staff?: number
+	/**	Specified Organisation Type : Data	*/
+	specified_organisation_type?: string
 	/**	Is 80G Available? : Check	*/
 	is_80g_available?: 0 | 1
 	/**	Ownership Of Property : Select	*/
@@ -61,6 +61,4 @@ export interface ShelterHome{
 	does_entitlements?: 0 | 1
 	/**	Conducts Regular Vocational Training Workshops : Check	*/
 	conducts_regular_vocational_training_workshops?: 0 | 1
-	/**	Image : Attach Image	*/
-	image?: string
 }

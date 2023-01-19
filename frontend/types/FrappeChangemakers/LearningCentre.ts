@@ -26,8 +26,8 @@ export interface LearningCentre{
 	district: string
 	/**	Ward/GP : Link - Ward	*/
 	ward: string
-	/**	Pin Code : Data	*/
-	pin_code?: string
+	/**	Pin Code : Int	*/
+	pin_code?: number
 	/**	Full Address : Small Text	*/
 	full_address: string
 	/**	Landmark : Data	*/

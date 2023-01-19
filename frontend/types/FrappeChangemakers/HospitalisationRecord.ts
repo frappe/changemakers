@@ -18,14 +18,6 @@ export interface HospitalisationRecord{
 	beneficiary: string
 	/**	Discharged At : Datetime	*/
 	discharged_at?: string
-	/**	Patient ID : Data - From the Hospital	*/
-	patient_id?: string
-	/**	Illness Description : Small Text	*/
-	illness_description?: string
-	/**	Admitted Under Doctor : Data	*/
-	under_doctor?: string
-	/**	Discharge / Medical Summary : Small Text	*/
-	discharge_summary?: string
 	/**	Bill Amount : Currency	*/
 	bill_amount?: number
 }
