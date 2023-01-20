@@ -94,7 +94,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-29 08:17:41.461688",
+ "modified": "2023-01-20 19:00:52.268341",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Hospitalisation Record",
@@ -112,6 +112,27 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin (Partner)",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Partner SMT",
+   "share": 1
   }
  ],
  "sort_field": "modified",

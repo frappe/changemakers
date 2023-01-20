@@ -350,7 +350,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-01-10 14:40:42.094732",
+ "modified": "2023-01-20 18:49:49.617476",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
@@ -366,6 +366,30 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Partner SMT",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin (Partner)",
+   "select": 1,
    "share": 1,
    "write": 1
   }
