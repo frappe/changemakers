@@ -422,6 +422,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@formvuelate/plugin-vee-validate@^3.9.1":
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/@formvuelate/plugin-vee-validate/-/plugin-vee-validate-3.9.1.tgz#75922d01dfe6a2b0eaca4ec6bd63997f25984cfd"
+  integrity sha512-BP4vG14y8T6B9p8l6s/XY4DNHKrAFUSBCzYmdJ6NqxpFeLXudqJMHEQ6hLXcJ4ugLVUUviqATkTr+/x+mn15ng==
+
 "@headlessui/vue@^1.5.0":
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.3.tgz#116d13391552436ea1e9e88c69f0e9d7d2585c45"
@@ -1527,6 +1532,11 @@
   dependencies:
     "@vue/compiler-dom" "3.2.45"
     "@vue/shared" "3.2.45"
+
+"@vue/devtools-api@^6.0.0-beta.15":
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.5.0.tgz#98b99425edee70b4c992692628fa1ea2c1e57d07"
+  integrity sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==
 
 "@vue/devtools-api@^6.1.4":
   version "6.4.4"
@@ -3055,6 +3065,11 @@ form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
+
+formvuelate@^3.9.1:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/formvuelate/-/formvuelate-3.9.1.tgz#3552ef20bfa7dc5599d37566caaf93cbb2299d23"
+  integrity sha512-dYs4l03v6x/+YMUG4HpohSrpcHXcclyywW9/BanrG8rXbnHmMYt3l4XQKHynjyfQ8HEhKZEZqLVQIrpY0tVYMw==
 
 fraction.js@^4.2.0:
   version "4.2.0"
@@ -5595,12 +5610,12 @@ v8-to-istanbul@^8.1.0:
     convert-source-map "^1.6.0"
     source-map "^0.7.3"
 
-vee-validate@^4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-4.7.3.tgz#0200c2f1151d28d9fb6fdb6c59c01170146094be"
-  integrity sha512-1MwHLOzCrabSeChySZVVMamWStcucM1hHxapoebY9mJ7KWOvncMG19a7AlPl38zpE9pcD+G3CHKLvviGmTl5BQ==
+vee-validate@^4.5.8:
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-4.5.8.tgz#8e394978ef3b74e589b869c626cd2a7d391ac81c"
+  integrity sha512-XZx2J93rlET49CdIIoxG9R6wQNoT3RxUUw9ar3QbIhczpzbtlm4BQ+TpCA9DoYHKFlApcXnE28WU7m4quoPsCA==
   dependencies:
-    "@vue/devtools-api" "^6.1.4"
+    "@vue/devtools-api" "^6.0.0-beta.15"
 
 verror@1.10.0:
   version "1.10.0"
