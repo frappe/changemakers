@@ -23,6 +23,8 @@
 						</RouterLink>
 					</div>
 				</div>
+
+
 			</div>
 		</ion-content>
 	</ion-page>
