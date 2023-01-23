@@ -44,24 +44,28 @@ const i18n = createI18n({
 })
 
 const app = createApp(App)
+
+// FrappeUI Config
 setConfig("resourceFetcher", frappeRequest)
 app.use(resourcesPlugin)
 app.use(pageMetaPlugin)
-app.use(router)
-
-app.use(IonicVue)
 
 app.component("Button", Button)
 app.component("Badge", Badge)
 app.component("Input", Input)
 app.component("Card", Card)
 
+app.use(router)
+app.use(IonicVue)
+
+// Globals
 app.provide(sessionInjectionKey, session)
 app.provide(userResourceInjectionKey, userResource)
 app.provide(dayjsInjectionKey, dayjs)
 
 app.config.globalProperties.$dayjs = dayjs
 
+// Mount App
 router.isReady().then(() => {
 	app.mount("#app")
 })

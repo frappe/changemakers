@@ -1,14 +1,15 @@
 <template>
 	<ion-page>
-		<ion-header class="bg-white">
-			<div class="flex flex-row items-center p-4">
-				<ion-title class="text-gray-900 font-semibold text-xl p-0"
-					>Rescues</ion-title
-				>
-				<Button class="bg-gray-900 text-white hover:bg-gray-800">New</Button>
-			</div>
-		</ion-header>
 		<ion-content :fullscreen="true">
+			<div
+				class="flex flex-row items-center w-full p-4 bg-white justify-between"
+			>
+				<h2 class="text-gray-900 font-semibold text-xl p-0">Rescues</h2>
+				<RouterLink :to="{ name: 'NewRescueForm' }" v-slot="{ navigate }">
+					<Button @click="navigate" appearance="primary">New</Button>
+				</RouterLink>
+			</div>
+
 			<div class="m-4">
 				<ul v-if="rescues.data">
 					<li v-for="rescue in rescues.data" :key="rescue.name">
@@ -55,7 +56,7 @@
 <script lang="ts" setup>
 import { inject } from "vue"
 import { createListResource, FeatherIcon } from "frappe-ui"
-import { IonPage, IonContent, IonHeader, IonTitle } from "@ionic/vue"
+import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 
 // Type imports

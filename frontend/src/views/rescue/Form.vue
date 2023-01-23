@@ -2,16 +2,12 @@
 	<ion-page>
 		<ion-header class="bg-white">
 			<div class="flex flex-row items-center p-4">
-				<!-- <ion-title class="text-gray-900 font-semibold text-xl p-0"></ion-title> -->
+				<ion-title class="text-gray-900 font-semibold text-xl p-0">
+					Rescue: {{ props.id }}
+				</ion-title>
 			</div>
 		</ion-header>
-		<ion-content :fullscreen="true">
-			<div class="m-4">
-                <pre>
-                    {{  props }}
-                </pre>
-            </div>
-		</ion-content>
+		<ion-content :fullscreen="true"> </ion-content>
 	</ion-page>
 </template>
 
