@@ -17,7 +17,7 @@
 					class="p-4 mb-9 space-y-2"
 					:schema="formFields.data"
 				>
-					<template>
+					<template #afterForm>
 						<Button
 							class="mt-5"
 							appearance="primary"
