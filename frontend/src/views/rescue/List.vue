@@ -81,6 +81,7 @@ const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
 		"beneficiary.last_name as last_name",
 	],
 	cache: "RescueList",
+	orderBy: "-rescued_at",
 })
 
 rescues.reload()
