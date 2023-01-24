@@ -4,7 +4,7 @@
 			<div
 				class="flex flex-row items-center w-full p-4 bg-white justify-between"
 			>
-				<h2 class="text-gray-900 font-semibold text-xl p-0">Rescues</h2>
+				<h2 class="text-gray-900 font-semibold text-2xl p-0">Rescues</h2>
 				<RouterLink :to="{ name: 'NewRescueForm' }" v-slot="{ navigate }">
 					<Button @click="navigate" appearance="primary">New</Button>
 				</RouterLink>
@@ -12,14 +12,18 @@
 
 			<div class="m-4">
 				<ul v-if="rescues.data">
-					<li v-for="rescue in rescues.data" :key="rescue.name">
+					<li
+						v-for="rescue in rescues.data"
+						class="first-of-type:first:rounded-t-xl last-of-type:last:rounded-b-xl bg-white border-b-[1px]"
+						:key="rescue.name"
+					>
 						<router-link
 							custom
 							:to="{ name: 'RescueForm', params: { id: rescue.name } }"
 							v-slot="{ href, navigate }"
 						>
 							<a
-								class="bg-white px-3 py-[14px] first-of-type:rounded-t-xl last-of-type:rounded-b-xl flex flex-row justify-between items-center"
+								class="px-3 py-[14px] flex flex-row justify-between items-center"
 								:href="href"
 								@click="navigate"
 							>
