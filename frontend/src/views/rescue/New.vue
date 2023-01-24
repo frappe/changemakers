@@ -1,19 +1,15 @@
 <template>
 	<ion-page>
-		<ion-header class="bg-white">
-			<div class="flex flex-row items-center py-4">
+		<ion-content :fullscreen="true">
+			<div class="flex flex-row items-center py-4 w-full">
 				<Button
 					icon-left="chevron-left"
 					appearance="minimal"
 					@click="router.back()"
 				>
 				</Button>
-				<ion-title class="text-gray-900 font-semibold text-xl p-0">
-					New Rescue
-				</ion-title>
+				<h2 class="text-gray-900 font-semibold text-2xl p-0">Rescues</h2>
 			</div>
-		</ion-header>
-		<ion-content :fullscreen="true">
 			<div
 				v-if="!formFields.loading && formFields.data"
 				class="bg-white relative"

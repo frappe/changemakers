@@ -4,7 +4,15 @@
 			<div
 				class="flex flex-row items-center w-full p-4 bg-white justify-between"
 			>
-				<h2 class="text-gray-900 font-semibold text-2xl p-0">Rescues</h2>
+				<div class="flex flex-row items-center">
+					<Button
+						icon-left="chevron-left"
+						appearance="minimal"
+						@click="router.back()"
+					>
+					</Button>
+					<h2 class="text-gray-900 font-semibold text-2xl p-0">Rescues</h2>
+				</div>
 				<RouterLink :to="{ name: 'NewRescueForm' }" v-slot="{ navigate }">
 					<Button @click="navigate" appearance="primary">New</Button>
 				</RouterLink>
@@ -62,6 +70,7 @@ import { inject } from "vue"
 import { createListResource, FeatherIcon } from "frappe-ui"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
+import { useRouter } from "vue-router"
 
 // Type imports
 import { ListResource } from "@/typing/resource"
@@ -74,6 +83,7 @@ interface RescueWithBeneficiaryDetails extends Rescue {
 }
 
 const dayjs = inject(dayjsInjectionKey)
+const router = useRouter()
 
 const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
 	doctype: "Rescue",
