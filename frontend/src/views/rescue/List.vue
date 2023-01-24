@@ -61,7 +61,7 @@ import { FrappeIcons } from "@/components/icons"
 
 // Type imports
 import { ListResource } from "@/typing/resource"
-import { sessionInjectionKey, dayjsInjectionKey } from "@/typing/InjectionKeys"
+import { dayjsInjectionKey } from "@/typing/InjectionKeys"
 import { Rescue } from "@/../types/FrappeChangemakers/Rescue"
 
 interface RescueWithBeneficiaryDetails extends Rescue {
@@ -69,7 +69,6 @@ interface RescueWithBeneficiaryDetails extends Rescue {
 	last_name: string
 }
 
-const session = inject(sessionInjectionKey)
 const dayjs = inject(dayjsInjectionKey)
 
 const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
