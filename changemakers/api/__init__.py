@@ -29,6 +29,7 @@ def get_form_fields(doctype):
 			"parent": doctype,
 			"fieldtype": ("in", MOBILE_SUPPORTED_FIELD_TYPES),
 			"fieldname": ("!=", "amended_from"),
+			"fetch_from": ("is", "not set"),  # TODO: handle later
 		},
 		fields=["label", "fieldname", "idx", "fieldtype", "reqd", "default", "options"],
 		order_by="idx",

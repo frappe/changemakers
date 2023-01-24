@@ -13,21 +13,17 @@
 				class="bg-white relative"
 			>
 				<SchemaFormWithValidation
-					class="p-4 mb-9"
 					@submit="handleCreateNew"
+					class="p-4 mb-9 space-y-2"
 					:schema="formFields.data"
 				>
-					<template #afterForm="{ validation }">
-						<div
-							class="bg-white p-2 w-full fixed bottom-0 flex flex-row justify-end items-center"
+					<template>
+						<Button
+							class="mt-5"
+							appearance="primary"
+							:loading="RescueList.insert.loading"
+							>Create</Button
 						>
-							<Button
-								class="mr-5"
-								appearance="primary"
-								:loading="validation.isSubmitting"
-								>Create</Button
-							>
-						</div>
 					</template>
 				</SchemaFormWithValidation>
 			</div>
@@ -36,12 +32,13 @@
 </template>
 
 <script lang="ts" setup>
+import * as yup from "yup"
 import { ref, shallowRef } from "vue"
-import { createResource } from "frappe-ui"
+import { useRouter } from "vue-router"
 import { useSchemaForm } from "formvuelate"
 import { SchemaFormWithValidation } from "@/utils/form"
-import * as yup from "yup"
 import FormField from "@/components/core/FormField.vue"
+import { createResource, createListResource } from "frappe-ui"
 import { IonPage, IonContent, IonHeader, IonTitle } from "@ionic/vue"
 
 interface DocField {
@@ -57,6 +54,8 @@ interface DocField {
 const formModel = ref({})
 useSchemaForm(formModel)
 
+const router = useRouter()
+
 const formFields = createResource({
 	url: "changemakers.api.get_form_fields",
 	cache: "RescueFormFields",
@@ -65,7 +64,7 @@ const formFields = createResource({
 	},
 	transform(fields: Array<DocField>) {
 		const FIELDNAME_VALIDATION_MAP = {
-			age: yup.number().lessThan(200).positive(),
+			age: yup.number().lessThan(200).positive().notRequired(),
 		}
 
 		const FIELDTYPE_TYPE_MAP = {
@@ -86,8 +85,17 @@ const formFields = createResource({
 	},
 })
 
+const RescueList = createListResource({
+	doctype: "Rescue",
+	insert: {
+		onSuccess() {
+			router.back()
+		},
+	},
+})
+
 function handleCreateNew() {
-	console.log(formModel)
+	RescueList.insert.submit(formModel.value)
 }
 
 formFields.reload()
