@@ -38,6 +38,10 @@ fixtures = [
 # app_include_css = "/assets/changemakers/css/changemakers.css"
 app_include_js = "/assets/changemakers/js/changemakers.js"
 
+website_route_rules = [
+	{"from_route": "/c/<path:app_path>", "to_route": "c"},
+]
+
 # include js, css files in header of web template
 # web_include_css = "/assets/changemakers/css/changemakers.css"
 # web_include_js = "/assets/changemakers/js/changemakers.js"

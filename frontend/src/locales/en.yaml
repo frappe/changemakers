@@ -1,0 +1,17 @@
+labels:
+  rescue: Rescue
+  Toggle Language: Toggle Language
+navigation:
+  dashboard: Dashboard
+  account: Account
+auth:
+  logout: Log Out
+  login: Log In
+  email: Email
+  password: Password
+  sign_up: Sign Up
+preferences:
+  language: Preferred Language
+dashboard:
+  quick_links: 
+    header: Quick Links
