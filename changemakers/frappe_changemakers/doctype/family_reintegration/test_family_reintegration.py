@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestMeetingwithFamilyRecord(FrappeTestCase):
+class TestFamilyReintegration(FrappeTestCase):
 	pass

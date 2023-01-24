@@ -30,10 +30,10 @@
   "num_vacant_available",
   "details_section",
   "organisation_type",
-  "establishment_year",
-  "column_break_eqit",
-  "full_time_staff",
   "specified_organisation_type",
+  "column_break_eqit",
+  "establishment_year",
+  "full_time_staff",
   "is_80g_available",
   "property_details_tab",
   "ownership_of_property",
@@ -45,7 +45,8 @@
   "services_tab",
   "conducts_medical_camps",
   "does_entitlements",
-  "conducts_regular_vocational_training_workshops"
+  "conducts_regular_vocational_training_workshops",
+  "image"
  ],
  "fields": [
   {
@@ -131,7 +132,7 @@
   },
   {
    "fieldname": "pin_code",
-   "fieldtype": "Int",
+   "fieldtype": "Data",
    "label": "Pin Code",
    "non_negative": 1
   },
@@ -182,8 +183,7 @@
   {
    "fieldname": "website",
    "fieldtype": "Data",
-   "label": "Website",
-   "options": "URL"
+   "label": "Website"
   },
   {
    "fieldname": "capacity_details_section",
@@ -268,11 +268,18 @@
    "fieldname": "conducts_regular_vocational_training_workshops",
    "fieldtype": "Check",
    "label": "Conducts Regular Vocational Training Workshops"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
   }
  ],
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-27 12:40:24.613533",
+ "modified": "2023-01-20 19:01:39.203698",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
@@ -290,6 +297,27 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin (Partner)",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Partner SMT",
+   "share": 1
   }
  ],
  "sort_field": "modified",

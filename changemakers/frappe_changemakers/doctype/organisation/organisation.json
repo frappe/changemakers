@@ -2,38 +2,34 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "prompt",
- "creation": "2022-10-13 12:21:28.141342",
+ "creation": "2022-12-29 07:40:48.441351",
+ "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "state"
+  "status"
  ],
  "fields": [
   {
    "allow_in_quick_entry": 1,
-   "fieldname": "state",
-   "fieldtype": "Link",
-   "in_filter": 1,
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "State",
-   "options": "State",
+   "label": "Status",
+   "options": "Active\nInactive",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [
-  {
-   "link_doctype": "Zone",
-   "link_fieldname": "district"
-  }
- ],
- "modified": "2023-01-16 11:51:50.027360",
+ "links": [],
+ "modified": "2022-12-29 07:41:06.091618",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
- "name": "District",
+ "name": "Organisation",
  "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
@@ -53,5 +49,6 @@
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

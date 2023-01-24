@@ -29,8 +29,13 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2022-12-16 09:48:12.965483",
+ "links": [
+  {
+   "link_doctype": "District",
+   "link_fieldname": "state"
+  }
+ ],
+ "modified": "2023-01-16 11:50:39.969521",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "State",

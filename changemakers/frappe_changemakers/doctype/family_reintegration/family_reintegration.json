@@ -1,6 +1,6 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "autoincrement",
  "creation": "2022-12-26 18:19:13.320208",
  "default_view": "List",
  "doctype": "DocType",
@@ -9,14 +9,19 @@
  "field_order": [
   "beneficiary",
   "age",
+  "is_in_shelter",
+  "shelter_home",
   "column_break_gzfi",
   "contact",
   "gender",
+  "shelter_incharge",
+  "habitation",
   "meeting_details_section",
   "meeting_date",
   "meeting_outcome",
   "column_break_zzzd",
   "meeting_time",
+  "other_notes",
   "police_formalities_section",
   "police_station",
   "column_break_kjnh",
@@ -56,12 +61,16 @@
   {
    "fieldname": "meeting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Meeting Date",
    "reqd": 1
   },
   {
    "fieldname": "meeting_time",
    "fieldtype": "Time",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Meeting Time",
    "reqd": 1
   },
@@ -102,14 +111,48 @@
    "fieldname": "police_memo",
    "fieldtype": "Attach",
    "label": "Police Memo"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_in_shelter",
+   "fieldtype": "Check",
+   "label": "Is in shelter home?"
+  },
+  {
+   "depends_on": "eval:doc.is_in_shelter==true",
+   "fieldname": "shelter_home",
+   "fieldtype": "Link",
+   "label": "Shelter Home",
+   "mandatory_depends_on": "eval:doc.is_in_shelter==true",
+   "options": "Shelter Home"
+  },
+  {
+   "depends_on": "eval:doc.is_in_shelter==true",
+   "fieldname": "shelter_incharge",
+   "fieldtype": "Data",
+   "label": "Shelter Incharge"
+  },
+  {
+   "depends_on": "eval:doc.is_in_shelter==false",
+   "fieldname": "habitation",
+   "fieldtype": "Link",
+   "label": "Habitation",
+   "options": "Habitation"
+  },
+  {
+   "description": "Departure Location, etc.",
+   "fieldname": "other_notes",
+   "fieldtype": "Long Text",
+   "label": "Other Notes"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-26 19:43:02.176375",
+ "modified": "2023-01-20 18:58:54.231666",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
- "name": "Meeting with Family Record",
+ "name": "Family Reintegration",
+ "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
   {
@@ -123,9 +166,32 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin (Partner)",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Partner SMT",
+   "share": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "beneficiary"
 }
