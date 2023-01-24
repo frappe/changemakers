@@ -1,7 +1,13 @@
 <template>
 	<ion-page>
 		<ion-header class="bg-white">
-			<div class="flex flex-row items-center p-4">
+			<div class="flex flex-row items-center py-4">
+				<Button
+					icon-left="chevron-left"
+					appearance="minimal"
+					@click="router.back()"
+				>
+				</Button>
 				<ion-title class="text-gray-900 font-semibold text-xl p-0">
 					New Rescue
 				</ion-title>
