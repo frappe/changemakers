@@ -1,7 +1,22 @@
 <template>
+	<div v-if="props.type === 'link'">
+		<span class="mb-2 block text-sm leading-4 text-gray-700">
+			{{ props.label }}
+		</span>
+		<Autocomplete
+			:value="modelValue"
+			:placeholder="`Select ${props.doctype}`"
+			:options="doctypeOptions"
+			v-bind="$attrs"
+			@change="(v) => emit('update:modelValue', v)"
+		/>
+	</div>
+
 	<Input
+		v-else
 		:type="props.type"
 		:value="modelValue"
+		:label="props.label"
 		@input="(v) => emit('update:modelValue', v)"
 		@change="(v) => emit('change', v)"
 		@blur="onBlur"
@@ -15,7 +30,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ErrorMessage } from "frappe-ui"
+import { Autocomplete, ErrorMessage, createListResource } from "frappe-ui"
+import { ref, computed, onMounted } from "vue"
 
 const props = defineProps({
 	type: String,
@@ -25,11 +41,37 @@ const props = defineProps({
 		type: Object,
 		default: () => ({}),
 	},
+	doctype: String,
+	label: String,
 })
 
 const emit = defineEmits(["input", "change", "update:modelValue"])
 
+let doctypeList = ref([])
+
+const doctypeOptions = computed(() => {
+	if (props.doctype && doctypeList.value.data) {
+		return doctypeList.value.data
+	}
+
+	return []
+})
+
 function onBlur() {
 	props.validation.setTouched(true)
 }
+
+onMounted(() => {
+	if (props.type === "link" && props.doctype) {
+		doctypeList.value = createListResource({
+			doctype: props.doctype,
+			fields: ["name"],
+			transform: (docs) => {
+				return docs.map((doc) => ({ label: doc.name, value: doc.name }))
+			},
+		})
+
+		doctypeList.value.reload()
+	}
+})
 </script>
