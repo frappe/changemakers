@@ -13,3 +13,4 @@ frontend/frappe-ui
 /test-results/
 /playwright-report/
 /playwright/.cache/
+__pycache__/

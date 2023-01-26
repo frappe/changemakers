@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Autocomplete, ErrorMessage, createListResource } from "frappe-ui"
+import { Autocomplete, ErrorMessage, createResource } from "frappe-ui"
 import { ref, computed, onMounted } from "vue"
 
 const props = defineProps({
@@ -63,11 +63,17 @@ function onBlur() {
 
 onMounted(() => {
 	if (props.type === "link" && props.doctype) {
-		doctypeList.value = createListResource({
-			doctype: props.doctype,
-			fields: ["name"],
-			transform: (docs) => {
-				return docs.map((doc) => ({ label: doc.name, value: doc.name }))
+		doctypeList.value = createResource({
+			url: "changemakers.api.get_doctype_options",
+			params: {
+				doctype: props.doctype
+			},
+			transform: (data) => {
+				const titleField = data.title_field
+				return data.docs.map((doc) => ({
+					label: doc[titleField],
+					value: doc.name,
+				}))
 			},
 		})
 
