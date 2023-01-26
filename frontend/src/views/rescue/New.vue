@@ -74,6 +74,7 @@ const formFields = createResource({
 			Int: "number",
 			Check: "checkbox",
 			Link: "link",
+			Select: "select",
 		}
 
 		return fields.map((field) => ({
@@ -85,6 +86,11 @@ const formFields = createResource({
 			type: FIELDTYPE_TYPE_MAP[field.fieldtype],
 			validations: FIELDNAME_VALIDATION_MAP[field.fieldname],
 			doctype: field.options,
+			options:
+				(field.fieldtype != "Link" &&
+					field.options &&
+					field.options.split("\n")) ||
+				[],
 		}))
 	},
 })

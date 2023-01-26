@@ -17,6 +17,7 @@
 		:type="props.type"
 		:value="modelValue"
 		:label="props.label"
+		:options="props.options"
 		@input="(v) => emit('update:modelValue', v)"
 		@change="(v) => emit('change', v)"
 		@blur="onBlur"
@@ -43,6 +44,7 @@ const props = defineProps({
 	},
 	doctype: String,
 	label: String,
+	options: Array,
 })
 
 const emit = defineEmits(["input", "change", "update:modelValue"])
@@ -66,7 +68,7 @@ onMounted(() => {
 		doctypeList.value = createResource({
 			url: "changemakers.api.get_doctype_options",
 			params: {
-				doctype: props.doctype
+				doctype: props.doctype,
 			},
 			transform: (data) => {
 				const titleField = data.title_field
