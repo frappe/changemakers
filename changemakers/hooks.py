@@ -92,7 +92,7 @@ website_route_rules = [
 # ------------
 
 # before_install = "changemakers.install.before_install"
-# after_install = "changemakers.install.after_install"
+after_install = "changemakers.install.after_install"
 
 # Uninstallation
 # ------------
