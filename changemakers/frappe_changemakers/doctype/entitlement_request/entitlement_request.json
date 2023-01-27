@@ -89,7 +89,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-20 18:52:09.345470",
+ "modified": "2023-01-27 18:40:56.256581",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Entitlement Request",
@@ -126,6 +126,17 @@
    "read": 1,
    "report": 1,
    "role": "Admin (Partner)",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Social Worker",
    "share": 1,
    "write": 1
   }

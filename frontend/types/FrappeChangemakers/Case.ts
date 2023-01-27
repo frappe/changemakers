@@ -11,6 +11,10 @@ export interface Case{
 	parentfield?: string
 	parenttype?: string
 	idx?: number
+	/**	Organisation : Link - Organisation	*/
+	organisation: string
+	/**	Assigned To : Link - User	*/
+	assigned_to: string
 	/**	Title : Data	*/
 	title: string
 	/**	Description : Small Text	*/
@@ -37,18 +41,32 @@ export interface Case{
 	ward: string
 	/**	Hotspot Name/Habitation : Link - Habitation	*/
 	habitation: string
-	/**	Family Meeting Outcome : Select	*/
-	family_meeting_outcome?: "Meeting went well and the Beneficiary returned to home" | "Meeting went well but the Beneficiary didn’t go home" | "Family members did not come" | "Beneficiary didn’t go for the meeting" | "Mismatch"
-	/**	Followups : Table - Case Followup	*/
-	followups?: CaseFollowup[]
 	/**	Is Beneficiary Traced? : Check	*/
 	is_beneficiary_traced?: 0 | 1
 	/**	Beneficiary : Link - Beneficiary	*/
-	beneficiary: string
+	beneficiary?: string
 	/**	Gender : Link - Gender	*/
 	gender?: string
 	/**	Age : Int	*/
 	age?: number
 	/**	Contact Number : Data	*/
 	contact_number?: string
+	/**	Medical Update : Select	*/
+	medical_update?: "Hospitalised" | "Treatment Done" | "Referred To Other Organisation"
+	/**	Food Update : Select	*/
+	food_update?: "Resolved and reported" | "Food escalation"
+	/**	Entitlement Update : Select	*/
+	entitlement?: "In Process" | "Resolved"
+	/**	Legal Update : Select	*/
+	legal_update?: "Complaint registered" | "Referred to agency"
+	/**	Shelter Update : Select	*/
+	shelter_update?: "Not Willing To Come" | "Admitted"
+	/**	Admitted To Shelter : Link - Shelter Home	*/
+	admitted_to_shelter?: string
+	/**	Other Update : Small Text	*/
+	other_update?: string
+	/**	Family Meeting Outcome : Select	*/
+	family_meeting_outcome?: "Meeting went well and the Beneficiary returned to home" | "Meeting went well but the Beneficiary didn’t go home" | "Family members did not come" | "Beneficiary didn’t go for the meeting" | "Mismatch"
+	/**	Followups : Table - Case Followup	*/
+	followups?: CaseFollowup[]
 }

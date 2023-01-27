@@ -98,7 +98,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-01-20 18:53:39.645055",
+ "modified": "2023-01-27 18:41:58.157627",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Food Distribution Record",
@@ -130,6 +130,27 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Social Worker",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Partner SMT",
+   "select": 1,
+   "share": 1
   }
  ],
  "quick_entry": 1,

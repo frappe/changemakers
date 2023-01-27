@@ -17,6 +17,8 @@ export interface FoodDistributionRecord{
 	food_type?: "Breakfast" | "Lunch" | "Dinner" | "Festive Special Meals"
 	/**	Packets Taken For Distribution : Int	*/
 	packets_taken_for_distribution?: number
+	/**	Transported By : Data - Vehicle/Reg No. Person Name	*/
+	transported_by?: string
 	/**	Drop Offs : Table - Food Drop Off Detail	*/
 	drop_offs?: FoodDropOffDetail[]
 	/**	Packets Distributed : Int	*/

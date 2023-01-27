@@ -350,7 +350,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-01-20 18:49:49.617476",
+ "modified": "2023-01-27 18:40:23.606937",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
@@ -389,6 +389,18 @@
    "read": 1,
    "report": 1,
    "role": "Admin (Partner)",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Social Worker",
    "select": 1,
    "share": 1,
    "write": 1

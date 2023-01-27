@@ -279,7 +279,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-20 19:01:39.203698",
+ "modified": "2023-01-27 18:45:43.307824",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
@@ -317,6 +317,17 @@
    "read": 1,
    "report": 1,
    "role": "Partner SMT",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Social Worker",
+   "select": 1,
    "share": 1
   }
  ],

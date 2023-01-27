@@ -13,12 +13,12 @@ export interface Beneficiary{
 	idx?: number
 	/**	First Name : Data	*/
 	first_name: string
-	/**	Gender : Link - Gender	*/
-	gender: string
-	/**	Phone Number : Data	*/
-	phone_number?: string
 	/**	Last Name : Data	*/
 	last_name?: string
+	/**	Phone Number : Data	*/
+	phone_number?: string
+	/**	Gender : Link - Gender	*/
+	gender: string
 	/**	Age : Int	*/
 	age: number
 	/**	Religion : Link - Religion	*/
