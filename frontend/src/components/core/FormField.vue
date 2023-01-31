@@ -31,8 +31,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Autocomplete, ErrorMessage, createResource } from "frappe-ui"
 import { ref, computed, onMounted } from "vue"
+import { Autocomplete, ErrorMessage, createResource } from "frappe-ui"
 
 const props = defineProps({
 	type: String,

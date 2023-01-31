@@ -6,9 +6,9 @@
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
-			<div v-if="user.data" class="flex flex-col m-6">
+			<div v-if="user.data" class="m-6 flex flex-col">
 				<Card :title="t('label.preferences', 'Preferences')" class="mb-4">
-					<div class="items-start flex-col justify-start">
+					<div class="flex-col items-start justify-start">
 						<Input
 							:label="t('preferences.language')"
 							type="select"

@@ -3,20 +3,17 @@
 		<ion-content :fullscreen="true">
 			<div class="m-4">
 				<div>
-					<h2 class="font-semibold text-xl text-gray-900">
+					<h2 class="text-xl font-semibold text-gray-900">
 						{{ t("dashboard.quick_links.header") }}
 					</h2>
-					<div class="grid grid-cols-2 gap-5 mt-3">
-						<RouterLink
-							:to="{ name: 'RescueList' }"
-							v-slot="{ href }"
-						>
+					<div class="mt-3 grid grid-cols-2 gap-5">
+						<RouterLink :to="{ name: 'RescueList' }" v-slot="{ href }">
 							<a
 								:href="href"
-								class="flex flex-col shadow-md bg-white p-[14px] items-center rounded-lg gap-3"
+								class="flex flex-col items-center gap-3 rounded-lg bg-white p-[14px] shadow-md"
 							>
 								<FrappeIcons.RescueIcon />
-								<h3 class="font-medium text-base text-gray-900">
+								<h3 class="text-base font-medium text-gray-900">
 									{{ t("labels.rescue", "Rescue") }}
 								</h3>
 							</a>
@@ -24,7 +21,24 @@
 					</div>
 				</div>
 
+				<div>
+					<!-- <ion-datetime-button datetime="datetime"></ion-datetime-button> -->
 
+					<!-- <ion-modal :keep-contents-mounted="true">
+						<ion-datetime
+							v-model="datetime"
+							id="datetime"
+							@ion-change="handleDatetimeChange"
+						></ion-datetime>
+					</ion-modal> -->
+
+					<ion-datetime
+						v-model="datetime"
+						:show-default-buttons="true"
+					></ion-datetime>
+
+					<pre>{{ datetime }}</pre>
+				</div>
 			</div>
 		</ion-content>
 	</ion-page>
@@ -35,10 +49,14 @@ import { useI18n } from "vue-i18n"
 import { RouterLink } from "vue-router"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
+import { IonDatetime, IonDatetimeButton, IonModal } from "@ionic/vue"
 
 import { createDocumentResource } from "frappe-ui"
 import { DocumentResource } from "@/typing/resource"
 import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary"
+import { ref } from "vue"
+
+const datetime = ref(null)
 
 const { t } = useI18n()
 
@@ -46,6 +64,10 @@ const beneficiaryDoc: DocumentResource<Beneficiary> = createDocumentResource({
 	doctype: "Beneficiary",
 	name: "BENE-2022-12-00002",
 })
+
+function handleDatetimeChange(e) {
+	console.log(e)
+}
 
 beneficiaryDoc.reload()
 </script>

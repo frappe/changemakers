@@ -2,7 +2,7 @@
 	<ion-page>
 		<ion-content :fullscreen="true">
 			<div
-				class="flex flex-row items-center w-full p-4 bg-white justify-between"
+				class="flex w-full flex-row items-center justify-between bg-white p-4"
 			>
 				<div class="flex flex-row items-center">
 					<Button
@@ -11,7 +11,7 @@
 						@click="router.back()"
 					>
 					</Button>
-					<h2 class="text-gray-900 font-semibold text-2xl p-0">Rescues</h2>
+					<h2 class="p-0 text-2xl font-semibold text-gray-900">Rescues</h2>
 				</div>
 				<RouterLink :to="{ name: 'NewRescueForm' }" v-slot="{ navigate }">
 					<Button @click="navigate" appearance="primary">New</Button>
@@ -22,7 +22,7 @@
 				<ul v-if="rescues.data">
 					<li
 						v-for="rescue in rescues.data"
-						class="first-of-type:first:rounded-t-xl last-of-type:last:rounded-b-xl bg-white border-b-[1px]"
+						class="border-b-[1px] bg-white first-of-type:first:rounded-t-xl last-of-type:last:rounded-b-xl"
 						:key="rescue.name"
 					>
 						<router-link
@@ -31,7 +31,7 @@
 							v-slot="{ href, navigate }"
 						>
 							<a
-								class="px-3 py-[14px] flex flex-row justify-between items-center"
+								class="flex flex-row items-center justify-between px-3 py-[14px]"
 								:href="href"
 								@click="navigate"
 							>
@@ -40,7 +40,7 @@
 								>
 									<FrappeIcons.RescueIcon class="text-gray-500" />
 									<div class="flex flex-col">
-										<h3 class="text-gray-700 text-lg font-semibold">
+										<h3 class="text-lg font-semibold text-gray-700">
 											{{ rescue.first_name }} {{ rescue.last_name }}
 										</h3>
 										<time

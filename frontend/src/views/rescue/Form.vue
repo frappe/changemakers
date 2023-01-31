@@ -2,7 +2,7 @@
 	<ion-page>
 		<ion-header class="bg-white">
 			<div class="flex flex-row items-center p-4">
-				<ion-title class="text-gray-900 font-semibold text-xl p-0">
+				<ion-title class="p-0 text-xl font-semibold text-gray-900">
 					Rescue: {{ props.id }}
 				</ion-title>
 			</div>

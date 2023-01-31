@@ -9,26 +9,26 @@ app_license = "AGPL"
 
 
 fixtures = [
-    "State",
-    {
-        "dt": "Role",
-        "filters": {
-            "role_name": (
-                "in",
-                [
-                    "Social Worker",
-                    "Shelter Team Member",
-                    "Healthcare Team Member",
-                    "Food Team Member",
-                    "SMT(NGO)-Field Co-ordinator",
-                    "Medical Co-ordinator",
-                    "Program Manager",
-                    "Partner SMT",
-                    "Data MIS/Documentation (Admin)",
-                ],
-            )
-        },
-    },
+	"State",
+	{
+		"dt": "Role",
+		"filters": {
+			"role_name": (
+				"in",
+				[
+					"Social Worker",
+					"Shelter Team Member",
+					"Healthcare Team Member",
+					"Food Team Member",
+					"SMT(NGO)-Field Co-ordinator",
+					"Medical Co-ordinator",
+					"Program Manager",
+					"Partner SMT",
+					"Data MIS/Documentation (Admin)",
+				],
+			)
+		},
+	},
 ]
 
 # Includes in <head>

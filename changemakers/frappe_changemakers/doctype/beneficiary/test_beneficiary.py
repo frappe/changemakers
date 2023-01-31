@@ -5,7 +5,6 @@ import frappe
 from frappe.tests.utils import FrappeTestCase
 
 
-
 class TestBeneficiary(FrappeTestCase):
 	def test_should_be_less_than_120(self):
 		frappe.get_doc(doctype="Gender", gender="Male").insert(ignore_if_duplicate=True)
@@ -19,9 +18,9 @@ class TestBeneficiary(FrappeTestCase):
 			}
 		)
 
-		with self.assertRaises(Exception):
+		with self.assertRaises(frappe.ValidationError):
 			test_beneficiary.insert()
-		
+
 		test_beneficiary.age = 78
 		test_beneficiary.insert()
 		self.assertIsNotNone(test_beneficiary.name)

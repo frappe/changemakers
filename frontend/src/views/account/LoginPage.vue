@@ -1,7 +1,7 @@
 <template>
 	<ion-page>
 		<ion-content :fullscreen="true">
-			<div class="h-full flex flex-col justify-center m-4">
+			<div class="m-4 flex h-full flex-col justify-center">
 				<Card title="Login to Changemakers">
 					<form class="flex flex-col space-y-3" @submit.prevent="submit">
 						<Input

@@ -1,5 +1,6 @@
 import frappe
 
+
 def get_doctype_title_field(doctype):
 	doctype_title_field = frappe.db.get_value("DocType", doctype, "title_field")
 	if doctype_title_field:

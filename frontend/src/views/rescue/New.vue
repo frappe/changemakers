@@ -1,22 +1,22 @@
 <template>
 	<ion-page>
 		<ion-content :fullscreen="true">
-			<div class="flex flex-row items-center py-4 w-full">
+			<div class="flex w-full flex-row items-center py-4">
 				<Button
 					icon-left="chevron-left"
 					appearance="minimal"
 					@click="router.back()"
 				>
 				</Button>
-				<h2 class="text-gray-900 font-semibold text-2xl p-0">Rescues</h2>
+				<h2 class="p-0 text-2xl font-semibold text-gray-900">Rescues</h2>
 			</div>
 			<div
 				v-if="!formFields.loading && formFields.data"
-				class="bg-white relative"
+				class="relative bg-white"
 			>
 				<SchemaFormWithValidation
 					@submit="handleCreateNew"
-					class="p-4 mb-9 space-y-2"
+					class="mb-9 space-y-2 p-4"
 					:schema="formFields.data"
 				>
 					<template #afterForm>
@@ -65,6 +65,9 @@ const formFields = createResource({
 		doctype: "Rescue",
 	},
 	transform(fields: Array<DocField>) {
+		// TODO: this has to be dynamic as well somehow
+		// Maybe each form can pass extra validations
+
 		const FIELDNAME_VALIDATION_MAP = {
 			age: yup.number().lessThan(200).positive().notRequired(),
 		}
@@ -75,6 +78,7 @@ const formFields = createResource({
 			Check: "checkbox",
 			Link: "link",
 			Select: "select",
+			DateTime: "date",
 		}
 
 		return fields.map((field) => ({
