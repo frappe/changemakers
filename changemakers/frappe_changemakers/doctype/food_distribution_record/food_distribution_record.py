@@ -6,6 +6,14 @@ from frappe.model.document import Document
 
 
 class FoodDistributionRecord(Document):
+	def validate(self):
+		self.validate_no_zero_packet_drop_offs()
+
+	def validate_no_zero_packet_drop_offs(self):
+		for row, drop_off in enumerate(self.drop_offs):
+			if drop_off.number_of_packets <= 0:
+				frappe.throw(f"Number Of Packets must be greater than 0 in row #{row+1}")
+
 	def before_save(self):
 		self.set_distributed_packets()
 		self.set_returned_packets()

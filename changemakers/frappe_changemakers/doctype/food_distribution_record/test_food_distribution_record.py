@@ -42,3 +42,19 @@ class TestFoodDistributionRecord(FrappeTestCase):
 
 		test_record.submit()
 		self.assertEqual(test_record.packets_returned, 110 - 60)
+
+	def test_zero_packet_distribution_not_allowed(self):
+		test_record = frappe.get_doc(
+			{"doctype": "Food Distribution Record", "packets_taken_for_distribution": 110}
+		)
+
+		test_record.append(
+			"drop_offs", {"number_of_packets": 100, "drop_off_time": "18:00:00"}
+		)
+
+		test_record.insert()
+
+		test_record.append("drop_offs", {"number_of_packets": 0, "drop_off_time": "18:00:00"})
+
+		with self.assertRaises(frappe.ValidationError):
+			test_record.save()
