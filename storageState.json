@@ -2,10 +2,10 @@
   "cookies": [
     {
       "name": "sid",
-      "value": "e22fda39a80b75c5e2a81c5fbe3bee7db38d251348533382d2e6cc60",
+      "value": "20be16f8639c99af5a7e1e9eddcd3866e68cf36d5327c4af04bb6c5c",
       "domain": "changemakers.localhost",
       "path": "/",
-      "expires": 1675718472,
+      "expires": 1675728105,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Lax"

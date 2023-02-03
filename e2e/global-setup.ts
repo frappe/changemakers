@@ -13,7 +13,7 @@ async function globalSetup(config: FullConfig) {
     }
   );
   // Save signed-in state to 'storageState.json'.
-  await requestContext.storageState({ path: "storageState.json" });
+  // await requestContext.storageState({ path: "storageState.json" });
   await requestContext.dispose();
 }
 
