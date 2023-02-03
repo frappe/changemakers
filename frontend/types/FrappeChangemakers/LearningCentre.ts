@@ -16,6 +16,8 @@ export interface LearningCentre{
 	capacity: number
 	/**	Type : Select	*/
 	type: "Micro Learning Centre" | "Tution Centre"
+	/**	Organisation : Link - Organisation	*/
+	organisation?: string
 	/**	State : Link - State	*/
 	state: string
 	/**	Zone/Block : Link - Zone	*/
