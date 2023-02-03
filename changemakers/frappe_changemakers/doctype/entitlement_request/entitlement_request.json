@@ -90,7 +90,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-03 16:12:19.581176",
+ "modified": "2023-02-03 21:03:38.146708",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Entitlement Request",
@@ -106,6 +106,8 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
+   "set_user_permissions": 1,
    "share": 1,
    "write": 1
   },
@@ -117,6 +119,7 @@
    "read": 1,
    "report": 1,
    "role": "Partner SMT",
+   "select": 1,
    "share": 1
   },
   {
@@ -127,6 +130,7 @@
    "read": 1,
    "report": 1,
    "role": "Admin (Partner)",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -138,6 +142,7 @@
    "read": 1,
    "report": 1,
    "role": "Social Worker",
+   "select": 1,
    "share": 1,
    "write": 1
   }

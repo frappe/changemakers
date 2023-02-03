@@ -18,6 +18,6 @@ def create_user_profile(doc, method=None):
 
 
 def delete_user_profile(doc, method=None):
-	exists = frappe.db.exists("GP User Profile", {"user": doc.name})
+	exists = frappe.db.exists("Changemakers User Profile", {"user": doc.name})
 	if exists:
-		return frappe.get_doc("GP User Profile", {"user": doc.name}).delete()
+		return frappe.get_doc("Changemakers User Profile", {"user": doc.name}).delete()

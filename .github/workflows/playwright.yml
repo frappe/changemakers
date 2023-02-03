@@ -78,6 +78,7 @@ jobs:
         run: |
           bench --site changemakers.localhost execute frappe.utils.install.complete_setup_wizard
           bench --site changemakers.localhost execute frappe.tests.ui_test_helpers.create_test_user
+          bench --site changemakers.localhost execute changemakers.config.e2e.prepare
 
       - name: Install Playwright Browsers
         working-directory: /home/runner/frappe-bench/apps/changemakers
