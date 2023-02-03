@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "autoname": "autoincrement",
  "creation": "2022-12-26 18:19:13.320208",
  "default_view": "List",
@@ -148,7 +149,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-27 18:43:16.382883",
+ "modified": "2023-02-03 16:12:17.257823",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Family Reintegration",

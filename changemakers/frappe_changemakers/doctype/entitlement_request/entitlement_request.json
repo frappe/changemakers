@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:REQ-{MM}-{YYYY}-{###}",
  "creation": "2022-10-20 21:01:16.552702",
@@ -89,7 +90,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-27 18:40:56.256581",
+ "modified": "2023-02-03 16:12:19.581176",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Entitlement Request",

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2022-12-27 13:06:57.633840",
  "default_view": "List",
@@ -70,7 +71,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-27 18:48:08.621598",
+ "modified": "2023-02-03 16:12:30.491160",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Medical Case Sheet",
@@ -81,6 +82,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,

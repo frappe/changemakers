@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "prompt",
  "creation": "2022-10-13 12:19:23.036332",
@@ -18,11 +19,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-13 12:19:23.036332",
+ "modified": "2023-02-03 16:12:18.894833",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Religion",
- "name_case": "Title Case",
  "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [

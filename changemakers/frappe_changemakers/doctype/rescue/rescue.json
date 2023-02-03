@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2022-12-22 16:52:21.341397",
  "default_view": "List",
@@ -264,7 +265,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-01-27 18:42:47.584449",
+ "modified": "2023-02-03 17:52:48.552648",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Rescue",
@@ -275,6 +276,7 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,

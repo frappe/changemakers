@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "prompt",
  "creation": "2022-10-13 12:21:28.141342",
@@ -30,7 +31,7 @@
    "link_fieldname": "district"
   }
  ],
- "modified": "2023-01-16 11:51:50.027360",
+ "modified": "2023-02-03 17:53:12.478454",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "District",
@@ -146,6 +147,17 @@
    "read": 1,
    "report": 1,
    "role": "Learning Centre POC",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
    "share": 1,
    "write": 1
   }

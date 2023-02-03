@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "prompt",
  "creation": "2022-10-13 13:32:05.338501",
@@ -18,11 +19,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-13 13:34:56.364298",
+ "modified": "2023-02-03 16:12:21.223977",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Education Level",
- "name_case": "Title Case",
  "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [

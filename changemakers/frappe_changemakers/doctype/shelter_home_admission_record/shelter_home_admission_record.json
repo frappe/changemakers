@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:SH-ADM-{MM}-{YYYY}-{####}",
  "creation": "2022-10-24 23:03:19.898205",
@@ -36,7 +37,7 @@
    "link_fieldname": "admission_record"
   }
  ],
- "modified": "2023-01-27 18:46:29.457240",
+ "modified": "2023-02-03 16:12:17.517519",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home Admission Record",

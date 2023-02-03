@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2022-10-20 22:21:42.497117",
  "doctype": "DocType",
@@ -98,7 +99,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-01-27 18:41:58.157627",
+ "modified": "2023-02-03 16:12:19.354944",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Food Distribution Record",

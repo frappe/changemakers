@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:SH-EXIT-{MM}-{YYYY}-{####}",
  "creation": "2022-10-24 23:04:59.088215",
@@ -32,7 +33,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-27 18:46:43.296215",
+ "modified": "2023-02-03 16:12:18.374051",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home Exit Record",

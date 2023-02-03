@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "autoname": "autoincrement",
  "creation": "2022-12-23 16:33:03.271918",
  "default_view": "List",
@@ -314,7 +315,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-01-27 18:47:32.950617",
+ "modified": "2023-02-03 16:12:18.107302",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
