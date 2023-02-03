@@ -18,11 +18,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-20 21:55:40.608209",
+ "modified": "2023-02-03 21:01:07.076820",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Healthcare Provider",
- "name_case": "Title Case",
  "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
@@ -35,6 +34,17 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
    "share": 1,
    "write": 1
   }
