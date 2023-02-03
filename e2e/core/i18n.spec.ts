@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { login } from "../utils";
 
 test("language switcher works", async ({ page }) => {
   await login(page);
@@ -22,12 +23,3 @@ test("language switcher works", async ({ page }) => {
   logOutButton = await page.getByRole("button", { name: "लॉग आउट" });
   expect(logOutButton).toBeDefined();
 });
-
-async function login(page) {
-  await page.goto("/c/login");
-  await page.getByPlaceholder("johndoe@mail.com").click();
-  await page.getByPlaceholder("johndoe@mail.com").fill("Administrator");
-  await page.getByPlaceholder("johndoe@mail.com").press("Tab");
-  await page.getByPlaceholder("••••••").fill("admin");
-  await page.getByRole("button", { name: "Log In" }).click();
-}
