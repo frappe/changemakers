@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "User",
+  "enabled": 1,
+  "modified": "2023-02-03 20:18:07.413555",
+  "module": "Frappe Changemakers",
+  "name": "Action: Create User Profile",
+  "script": "frappe.ui.form.on('User', {\n\trefresh(frm) {\n\t\tfrappe.db\n\t\t\t.get_value(\n\t\t\t\t\"Changemakers User Profile\",\n\t\t\t\t{ user: frm.doc.name },\n\t\t\t\t\"name\"\n\t\t\t)\n\t\t\t.then((r) => {\n\t\t\t\tconst exists = r.message && r.message.name;\n\n\t\t\t\tif (exists) {\n\t\t\t\t\t// Show \"View\" button\n\t\t\t\t\tfrm.add_custom_button(\n\t\t\t\t\t\t\"View\",\n\t\t\t\t\t\t() => {\n\t\t\t\t\t\t\tfrappe.set_route(\n\t\t\t\t\t\t\t\t\"Form\",\n\t\t\t\t\t\t\t\t\"Changemakers User Profile\",\n\t\t\t\t\t\t\t\tr.message.name\n\t\t\t\t\t\t\t);\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"User Profile\"\n\t\t\t\t\t);\n\t\t\t\t} else {\n\t\t\t\t\t// DOES NOT EXIST: Show \"Create\" button\n\t\t\t\t\tfrm.add_custom_button(\n\t\t\t\t\t\t\"Create\",\n\t\t\t\t\t\t() => {\n\t\t\t\t\t\t\tfrappe.new_doc(\"Changemakers User Profile\", {\n\t\t\t\t\t\t\t\tuser: frm.doc.name,\n\t\t\t\t\t\t\t});\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"User Profile\"\n\t\t\t\t\t);\n\t\t\t\t}\n\t\t\t});\n\t}\n})",
+  "view": "Form"
+ }
+]

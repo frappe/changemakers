@@ -10,6 +10,7 @@ app_license = "AGPL"
 
 fixtures = [
 	"State",
+	{"dt": "Client Script", "filters": {"name": "Action: Create User Profile"}},
 	{
 		"dt": "Role",
 		"filters": {
