@@ -12,5 +12,7 @@ def after_install():
 	# Import indian district list
 	try:
 		scrap_and_import_india_district_list()
+		frappe.db.set_single_value("Changemakers Settings", "statedistrict_imported", 1)
+		frappe.db.commit()
 	except Exception:
 		frappe.errprint("Indian District Import Failed")
