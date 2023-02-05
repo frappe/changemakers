@@ -13,6 +13,7 @@ def is_valid_indian_phone_number(phone):
 	return False
 
 
+@frappe.whitelist()
 def scrap_and_import_india_district_list():
 	"""
 	Scraps the Integrated Online Government Directory (https://igod.gov.in/)
