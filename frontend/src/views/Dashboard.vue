@@ -21,24 +21,7 @@
 					</div>
 				</div>
 
-				<div>
-					<!-- <ion-datetime-button datetime="datetime"></ion-datetime-button> -->
-
-					<!-- <ion-modal :keep-contents-mounted="true">
-						<ion-datetime
-							v-model="datetime"
-							id="datetime"
-							@ion-change="handleDatetimeChange"
-						></ion-datetime>
-					</ion-modal> -->
-
-					<ion-datetime
-						v-model="datetime"
-						:show-default-buttons="true"
-					></ion-datetime>
-
-					<pre>{{ datetime }}</pre>
-				</div>
+				<div></div>
 			</div>
 		</ion-content>
 	</ion-page>
