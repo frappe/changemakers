@@ -90,7 +90,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-03 21:03:38.146708",
+ "modified": "2023-02-15 20:17:16.424883",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Entitlement Request",
@@ -142,6 +142,28 @@
    "read": 1,
    "report": 1,
    "role": "Social Worker",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Program Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMT(NGO)-Field Co-ordinator",
    "select": 1,
    "share": 1,
    "write": 1

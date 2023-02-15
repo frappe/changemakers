@@ -280,7 +280,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-03 16:12:18.567092",
+ "modified": "2023-02-15 20:09:38.258691",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
@@ -330,6 +330,16 @@
    "role": "Social Worker",
    "select": 1,
    "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMT(NGO)-Field Co-ordinator",
+   "share": 1,
+   "write": 1
   }
  ],
  "sort_field": "modified",

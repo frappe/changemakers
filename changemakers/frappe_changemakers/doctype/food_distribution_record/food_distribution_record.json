@@ -99,7 +99,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-02-03 16:12:19.354944",
+ "modified": "2023-02-15 20:16:35.596171",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Food Distribution Record",
@@ -150,6 +150,38 @@
    "read": 1,
    "report": 1,
    "role": "Partner SMT",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Program Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Food Team Member",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMT(NGO)-Field Co-ordinator",
    "select": 1,
    "share": 1
   }

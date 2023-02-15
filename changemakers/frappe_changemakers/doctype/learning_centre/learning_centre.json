@@ -159,7 +159,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-04 00:04:47.652605",
+ "modified": "2023-02-15 20:02:09.545978",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Learning Centre",
@@ -175,6 +175,7 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -186,6 +187,7 @@
    "read": 1,
    "report": 1,
    "role": "Admin (Partner)",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -197,6 +199,17 @@
    "read": 1,
    "report": 1,
    "role": "Partner SMT",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Program Manager",
+   "select": 1,
    "share": 1
   }
  ],

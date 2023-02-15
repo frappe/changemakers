@@ -95,7 +95,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-03 16:15:21.424636",
+ "modified": "2023-02-15 20:11:00.090697",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Hospitalisation Record",
@@ -145,6 +145,39 @@
    "read": 1,
    "report": 1,
    "role": "Social Worker",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Healthcare Team Member",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMT(NGO)-Field Co-ordinator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Medical Co-ordinator",
    "share": 1,
    "write": 1
   }

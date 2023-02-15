@@ -167,7 +167,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-03 16:12:20.864604",
+ "modified": "2023-02-15 20:13:42.026204",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Awareness Camp Record",
@@ -216,6 +216,28 @@
    "read": 1,
    "report": 1,
    "role": "Social Worker",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Program Manager",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMT(NGO)-Field Co-ordinator",
+   "select": 1,
    "share": 1,
    "write": 1
   }
