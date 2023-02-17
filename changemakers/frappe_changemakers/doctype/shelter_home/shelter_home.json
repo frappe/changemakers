@@ -48,6 +48,8 @@
   "financial_details_tab",
   "sources_of_income",
   "services_tab",
+  "types_of_support_needed",
+  "column_break_qcfn",
   "conducts_medical_camps",
   "does_entitlements",
   "conducts_regular_vocational_training_workshops",
@@ -300,12 +302,22 @@
    "fieldtype": "Table MultiSelect",
    "label": "Admission Criteria",
    "options": "Admission Criterion"
+  },
+  {
+   "fieldname": "types_of_support_needed",
+   "fieldtype": "Table MultiSelect",
+   "label": "Types of Support Needed",
+   "options": "Support Type"
+  },
+  {
+   "fieldname": "column_break_qcfn",
+   "fieldtype": "Column Break"
   }
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-17 20:16:25.552080",
+ "modified": "2023-02-17 20:21:12.602477",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",

@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-02-17 20:20:35.987777",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "support_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "support_type",
+   "fieldtype": "Link",
+   "label": "Support Type",
+   "options": "Shelter Home Support Type"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-02-17 20:20:35.987777",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Support Type",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

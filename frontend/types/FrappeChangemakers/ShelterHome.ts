@@ -1,5 +1,6 @@
 import { AdmissionCriterion } from './AdmissionCriterion'
 import { ShelterIncomeSource } from './ShelterIncomeSource'
+import { SupportType } from './SupportType'
 
 export interface ShelterHome{
 	creation: string
@@ -60,6 +61,8 @@ export interface ShelterHome{
 	specified_ownership?: string
 	/**	Sources Of Income : Table MultiSelect - Shelter Income Source	*/
 	sources_of_income?: ShelterIncomeSource[]
+	/**	Types of Support Needed : Table MultiSelect - Support Type	*/
+	types_of_support_needed?: SupportType[]
 	/**	Conducts Medical Camps? : Check	*/
 	conducts_medical_camps?: 0 | 1
 	/**	Does Entitlements? : Check	*/
