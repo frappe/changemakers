@@ -11,6 +11,7 @@
   "general_section",
   "type",
   "column_break_fssq",
+  "admission_criteria",
   "address_section",
   "state",
   "ward",
@@ -293,12 +294,18 @@
   {
    "fieldname": "column_break_fssq",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "admission_criteria",
+   "fieldtype": "Table MultiSelect",
+   "label": "Admission Criteria",
+   "options": "Admission Criterion"
   }
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-17 19:49:52.934396",
+ "modified": "2023-02-17 20:16:25.552080",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",

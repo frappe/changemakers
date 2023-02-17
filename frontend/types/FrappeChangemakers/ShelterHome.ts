@@ -1,3 +1,4 @@
+import { AdmissionCriterion } from './AdmissionCriterion'
 import { ShelterIncomeSource } from './ShelterIncomeSource'
 
 export interface ShelterHome{
@@ -13,6 +14,8 @@ export interface ShelterHome{
 	idx?: number
 	/**	Type : Link - Shelter Home Type	*/
 	type?: string
+	/**	Admission Criteria : Table MultiSelect - Admission Criterion	*/
+	admission_criteria?: AdmissionCriterion[]
 	/**	State : Link - State	*/
 	state: string
 	/**	Ward : Link - Ward	*/
