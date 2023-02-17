@@ -11,6 +11,8 @@ export interface ShelterHome{
 	parentfield?: string
 	parenttype?: string
 	idx?: number
+	/**	Type : Link - Shelter Home Type	*/
+	type?: string
 	/**	State : Link - State	*/
 	state: string
 	/**	Ward : Link - Ward	*/

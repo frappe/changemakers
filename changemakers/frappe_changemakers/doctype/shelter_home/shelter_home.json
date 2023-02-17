@@ -8,6 +8,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "general_section",
+  "type",
+  "column_break_fssq",
   "address_section",
   "state",
   "ward",
@@ -275,12 +278,27 @@
    "fieldtype": "Attach Image",
    "hidden": 1,
    "label": "Image"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "label": "Type",
+   "options": "Shelter Home Type"
+  },
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "fieldname": "column_break_fssq",
+   "fieldtype": "Column Break"
   }
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-15 20:09:38.258691",
+ "modified": "2023-02-17 19:49:52.934396",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Shelter Home",
