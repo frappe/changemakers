@@ -9,7 +9,6 @@
  "engine": "InnoDB",
  "field_order": [
   "assignment_information_section",
-  "organisation",
   "column_break_vvbt",
   "assigned_to",
   "section_break_zguo",
@@ -241,13 +240,6 @@
    "label": "Assignment Information"
   },
   {
-   "fieldname": "organisation",
-   "fieldtype": "Link",
-   "label": "Organisation",
-   "options": "Organisation",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_vvbt",
    "fieldtype": "Column Break"
   },
@@ -315,7 +307,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-02-15 20:03:51.094445",
+ "modified": "2023-02-20 13:52:41.919406",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
