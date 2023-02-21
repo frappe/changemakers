@@ -1,4 +1,6 @@
 import re
+from csv import DictReader
+from pathlib import Path
 
 import frappe
 import requests
@@ -76,3 +78,30 @@ def get_limited_districts_for_state(state, start, limit):
 		s.strip().split(", ")[0] for s in inner_soup.find_all(string=re.compile(state.name))
 	]
 	return districts
+
+
+def import_geo_data_from_csv(file_url):
+	file_path = frappe.get_doc("File", {"file_url": file_url}).get_full_path()
+	file_path = Path(file_path)
+	f = file_path.open("r")
+
+	csv_reader = DictReader(f)
+	data = list(csv_reader)
+
+	for row in data:
+		if row["FAI"] != "":
+			row["FAI"] = row["FAI"].split(",")
+
+		if row["City"] == "Bangalore":
+			row["City"] = "Bengaluru (Bangalore) Urban"
+
+	for row in data:
+		if not frappe.db.exists("Zone", row["Zone Name"]):
+			frappe.get_doc(doctype="Zone", name=row["Zone Name"], district=row["City"]).insert(
+				ignore_if_duplicate=True
+			)
+		frappe.get_doc(doctype="Ward", name=row["Ward"], zone=row["Zone Name"]).insert(
+			ignore_if_duplicate=True
+		)
+
+	f.close()
