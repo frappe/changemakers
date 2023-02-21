@@ -8,9 +8,6 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "assignment_information_section",
-  "column_break_vvbt",
-  "assigned_to",
   "section_break_zguo",
   "title",
   "description",
@@ -235,22 +232,6 @@
    "options": "Meeting went well and the Beneficiary returned to home\nMeeting went well but the Beneficiary didn\u2019t go home\nFamily members did not come\nBeneficiary didn\u2019t go for the meeting\nMismatch"
   },
   {
-   "fieldname": "assignment_information_section",
-   "fieldtype": "Section Break",
-   "label": "Assignment Information"
-  },
-  {
-   "fieldname": "column_break_vvbt",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "assigned_to",
-   "fieldtype": "Link",
-   "label": "Assigned To",
-   "options": "User",
-   "reqd": 1
-  },
-  {
    "fieldname": "updates_section",
    "fieldtype": "Section Break",
    "label": "Updates"
@@ -307,7 +288,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-02-20 13:52:41.919406",
+ "modified": "2023-02-21 12:41:09.545495",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",

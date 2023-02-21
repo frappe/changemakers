@@ -11,8 +11,6 @@ export interface Case{
 	parentfield?: string
 	parenttype?: string
 	idx?: number
-	/**	Assigned To : Link - User	*/
-	assigned_to: string
 	/**	Title : Data	*/
 	title: string
 	/**	Description : Small Text	*/
