@@ -104,4 +104,9 @@ def import_geo_data_from_csv(file_url):
 			ignore_if_duplicate=True
 		)
 
+	# Populate habitation
+	for row in data:
+		for fai in row["FAI"]:
+			frappe.get_doc(doctype="Habitation", name=fai).insert(ignore_if_duplicate=True)
+
 	f.close()
