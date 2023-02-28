@@ -1,5 +1,5 @@
 <template>
-	<ion-tab-bar slot="bottom">
+	<ion-tab-bar slot="bottom" class="bg-white pt-[10px]">
 		<ion-tab-button
 			class="rounded-l-md bg-white"
 			tab="dashboardTab"
