@@ -1,10 +1,6 @@
 <template>
 	<ion-page>
 		<ion-content :fullscreen="true">
-			<pre>
-				{{ formModel }}
-			</pre
-			>
 			<div class="flex w-full flex-row items-center py-4">
 				<Button
 					icon-left="chevron-left"
