@@ -18,6 +18,21 @@
 				</RouterLink>
 			</div>
 
+			<div class="m-4 flex flex-row items-center space-x-1">
+				<Input
+					type="text"
+					placeholder="Search..."
+					icon-left="search"
+					class="w-full rounded-md bg-white py-1 focus:bg-white"
+				/>
+
+				<Button
+					appearance="white"
+					icon="filter"
+					class="rounded-full p-2.5"
+				></Button>
+			</div>
+
 			<div class="m-4">
 				<ul v-if="rescues.data">
 					<li
