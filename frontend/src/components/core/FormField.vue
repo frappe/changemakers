@@ -8,8 +8,28 @@
 			:placeholder="`Select ${props.doctype}`"
 			:options="doctypeOptions"
 			v-bind="$attrs"
-			@change="(v) => emit('update:modelValue', v)"
+			@change="(v) => emit('update:modelValue', v.value)"
 		/>
+	</div>
+
+	<div v-else-if="props.type === 'datetime'">
+		<span class="mb-2 block text-left text-sm leading-4 text-gray-700">
+			{{ props.label }}
+		</span>
+		<input
+			:value="modelValue"
+			class="form-select block w-full"
+			v-bind="$attrs"
+			@change="(v) => emit('change', v.target.value)"
+			@input="(v) => emit('update:modelValue', v.target.value)"
+			@blur="onBlur"
+			type="datetime-local"
+		/>
+	</div>
+
+	<!-- Just to handle the attrs, maybe move to a separate component? -->
+	<div v-bind="$attrs" v-else-if="props.type === 'geolocation'">
+		<!-- automatically set the geolocation -->
 	</div>
 
 	<Input
@@ -33,7 +53,6 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted } from "vue"
 import { Autocomplete, ErrorMessage, createResource } from "frappe-ui"
-
 const props = defineProps({
 	type: String,
 	modelValue: [String, Number, Boolean, Object, Array],
@@ -63,6 +82,17 @@ function onBlur() {
 	props.validation.setTouched(true)
 }
 
+function handleGeoLocationFetchError() {
+	alert("Please enable location access to proceed")
+}
+
+function getFormattedGeolocation(geoCoordinates: {
+	latitude: number
+	longitude: number
+}): string {
+	return `{"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[${geoCoordinates.latitude},${geoCoordinates.longitude}]}}]}`
+}
+
 onMounted(() => {
 	if (props.type === "link" && props.doctype) {
 		doctypeList.value = createResource({
@@ -80,6 +110,14 @@ onMounted(() => {
 		})
 
 		doctypeList.value.reload()
+	}
+
+	if (props.type === "geolocation") {
+		console.log("setting geolocation for field", props.label)
+		// fetch geolocation
+		navigator.geolocation.getCurrentPosition((position) => {
+			emit("update:modelValue", getFormattedGeolocation(position.coords))
+		}, handleGeoLocationFetchError)
 	}
 })
 </script>

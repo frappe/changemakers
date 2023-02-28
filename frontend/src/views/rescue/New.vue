@@ -1,6 +1,10 @@
 <template>
 	<ion-page>
 		<ion-content :fullscreen="true">
+			<pre>
+				{{ formModel }}
+			</pre
+			>
 			<div class="flex w-full flex-row items-center py-4">
 				<Button
 					icon-left="chevron-left"
@@ -41,7 +45,7 @@ import { useSchemaForm } from "formvuelate"
 import { SchemaFormWithValidation } from "@/utils/form"
 import FormField from "@/components/core/FormField.vue"
 import { createResource, createListResource } from "frappe-ui"
-import { IonPage, IonContent, IonHeader, IonTitle } from "@ionic/vue"
+import { IonPage, IonContent } from "@ionic/vue"
 
 interface DocField {
 	label: string
@@ -78,7 +82,8 @@ const formFields = createResource({
 			Check: "checkbox",
 			Link: "link",
 			Select: "select",
-			DateTime: "date",
+			Datetime: "datetime",
+			Geolocation: "geolocation",
 		}
 
 		return fields.map((field) => ({
