@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-02-28 13:57:48.428532",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "shelter_home",
+  "date_of_service",
+  "column_break_snlm",
+  "beneficiary",
+  "service_type",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "shelter_home",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Shelter Home",
+   "options": "Shelter Home",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Shelter Home Service Record",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "date_of_service",
+   "fieldtype": "Date",
+   "label": "Date Of Service",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_snlm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "beneficiary",
+   "fieldtype": "Link",
+   "label": "Beneficiary",
+   "options": "Beneficiary",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "label": "Service Type",
+   "options": "Food (Breakfast)\nFood (Lunch)\nFood (Dinner)\nMedical Checkup\nTransport To Hospital\nFamily Reintegration",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-02-28 14:02:37.980644",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Shelter Home Service Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin (Partner)",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Partner SMT",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Social Worker",
+   "select": 1,
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMT(NGO)-Field Co-ordinator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
