@@ -5,10 +5,7 @@ test("language switcher works", async ({ page }) => {
   await login(page);
 
   // Navigate to "Account"
-  await page
-    .getByRole("tab", { name: "Person Account" })
-    .locator("svg")
-    .click();
+  await page.locator('#tab-button-AccountTab svg').click();
 
   let logOutButton = await page.getByRole("button", { name: "Log Out" });
   let logoutButtonText = await logOutButton.textContent();
