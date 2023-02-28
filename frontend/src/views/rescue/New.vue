@@ -8,7 +8,7 @@
 					@click="router.back()"
 				>
 				</Button>
-				<h2 class="p-0 text-2xl font-semibold text-gray-900">Rescues</h2>
+				<h2 class="p-0 text-2xl font-semibold text-gray-900">New Rescue</h2>
 			</div>
 			<div
 				v-if="!formFields.loading && formFields.data"
