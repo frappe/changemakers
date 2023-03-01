@@ -21,11 +21,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-10-13 12:18:33.051264",
+ "modified": "2023-03-01 12:25:32.010136",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Disability Condition",
- "name_case": "Title Case",
  "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
@@ -38,6 +37,19 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
    "share": 1,
    "write": 1
   }
