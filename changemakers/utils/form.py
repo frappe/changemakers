@@ -14,3 +14,7 @@ def get_doctype_title_field(doctype):
 		return "title"
 
 	return "name"
+
+
+def get_coordinates_from_geolocation_string(geolocation_string):
+	return frappe.parse_json(geolocation_string)["features"][0]["geometry"]["coordinates"]

@@ -23,6 +23,7 @@
   "specified_condition",
   "section_break_prmb",
   "rescue_location",
+  "coordinates",
   "section_break_sslw",
   "state",
   "zone",
@@ -260,12 +261,18 @@
    "fieldtype": "Link",
    "label": "Ward/GP",
    "options": "Ward"
+  },
+  {
+   "fieldname": "coordinates",
+   "fieldtype": "Data",
+   "label": "Coordinates",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-02-15 20:15:24.152746",
+ "modified": "2023-03-03 22:32:38.026236",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Rescue",

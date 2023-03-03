@@ -38,6 +38,8 @@ export interface AwarenessCampRecord{
 	district: string
 	/**	Ward : Link - Ward	*/
 	ward: string
+	/**	Coordinates : Data	*/
+	coordinates?: string
 	/**	Geolocation : Geolocation	*/
 	geolocation?: any
 }

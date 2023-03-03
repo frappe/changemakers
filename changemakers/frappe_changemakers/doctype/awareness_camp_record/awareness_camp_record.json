@@ -30,6 +30,7 @@
   "district",
   "ward",
   "section_break_muyq",
+  "coordinates",
   "geolocation"
  ],
  "fields": [
@@ -163,11 +164,17 @@
    "fieldname": "geolocation",
    "fieldtype": "Geolocation",
    "label": "Geolocation"
+  },
+  {
+   "fieldname": "coordinates",
+   "fieldtype": "Data",
+   "label": "Coordinates",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-15 20:13:42.026204",
+ "modified": "2023-03-03 22:52:03.311485",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Awareness Camp Record",

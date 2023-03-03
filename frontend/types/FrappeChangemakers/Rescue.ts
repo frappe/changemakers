@@ -28,6 +28,8 @@ export interface Rescue{
 	specified_condition?: string
 	/**	Rescue Location : Geolocation	*/
 	rescue_location: any
+	/**	Coordinates : Data	*/
+	coordinates?: string
 	/**	State : Link - State	*/
 	state?: string
 	/**	Zone/Block : Link - Zone	*/
