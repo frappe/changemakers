@@ -81,6 +81,7 @@
   {
    "fieldname": "ward",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Ward/GP",
    "options": "Ward"
   },
@@ -189,11 +190,17 @@
    "options": "Phone"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "age",
    "fieldtype": "Int",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Age",
    "non_negative": 1,
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "gender",
@@ -351,7 +358,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-02-15 20:18:47.711251",
+ "modified": "2023-03-04 00:21:12.896871",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
@@ -470,6 +477,7 @@
   }
  ],
  "quick_entry": 1,
+ "search_fields": "age,zone,ward",
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
