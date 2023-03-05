@@ -20,7 +20,10 @@
   "under_doctor",
   "discharge_summary",
   "section_break_6",
-  "bill_amount"
+  "bill_amount",
+  "section_break_nvkj",
+  "bottom_save_button",
+  "column_break_qori"
  ],
  "fields": [
   {
@@ -91,11 +94,24 @@
    "fieldname": "discharge_summary",
    "fieldtype": "Small Text",
    "label": "Discharge / Medical Summary"
+  },
+  {
+   "fieldname": "section_break_nvkj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bottom_save_button",
+   "fieldtype": "Button",
+   "label": "Save"
+  },
+  {
+   "fieldname": "column_break_qori",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-15 20:11:00.090697",
+ "modified": "2023-03-05 11:32:26.394324",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Hospitalisation Record",

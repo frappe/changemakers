@@ -11,4 +11,7 @@ frappe.ui.form.on("Beneficiary", {
 	district: changemakers.utils.handle_district_field,
 	zone: changemakers.utils.handle_zone_field,
 	ward: changemakers.utils.handle_ward_field,
+	bottom_save_button: (frm) => {
+		frm.save();
+	},
 });

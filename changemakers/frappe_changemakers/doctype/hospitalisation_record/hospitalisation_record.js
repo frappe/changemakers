@@ -4,4 +4,7 @@
 frappe.ui.form.on("Hospitalisation Record", {
 	// refresh: function(frm) {
 	// }
+	bottom_save_button: (frm) => {
+		frm.save();
+	},
 });

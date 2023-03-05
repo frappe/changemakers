@@ -44,6 +44,7 @@
   "section_break_zcfc",
   "other_remarks",
   "section_break_vjqi",
+  "bottom_save_button",
   "amended_from",
   "column_break_sfhj"
  ],
@@ -267,12 +268,17 @@
    "fieldtype": "Data",
    "label": "Coordinates",
    "read_only": 1
+  },
+  {
+   "fieldname": "bottom_save_button",
+   "fieldtype": "Button",
+   "label": "Save"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-03 22:32:38.026236",
+ "modified": "2023-03-05 11:31:01.409990",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Rescue",

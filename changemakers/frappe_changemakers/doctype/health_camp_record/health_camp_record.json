@@ -35,7 +35,10 @@
   "total_medicines_dispensed",
   "total_referrals_done",
   "column_break_wwkx",
-  "total_diagnostics_done"
+  "total_diagnostics_done",
+  "section_break_syqt",
+  "bottom_save_button",
+  "column_break_aqvh"
  ],
  "fields": [
   {
@@ -188,11 +191,24 @@
    "fieldname": "date_time_section",
    "fieldtype": "Section Break",
    "label": "Date & Time"
+  },
+  {
+   "fieldname": "section_break_syqt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bottom_save_button",
+   "fieldtype": "Button",
+   "label": "Save"
+  },
+  {
+   "fieldname": "column_break_aqvh",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-15 20:12:46.557521",
+ "modified": "2023-03-05 11:37:59.037699",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Record",
