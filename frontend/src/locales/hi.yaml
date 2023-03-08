@@ -1,6 +1,7 @@
 labels:
   rescue: बचाव
   Toggle Language: भाषा बदलें
+  preferences: पसंद
 navigation:
   account: खाता
   dashboard: डैशबोर्ड
@@ -11,3 +12,5 @@ auth:
   password: पासवर्ड
 preferences:
   language: पसंदीदा भाषा
+headers:
+  my_account: मेरा खाता

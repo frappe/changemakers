@@ -2,12 +2,12 @@
 	<ion-page>
 		<ion-header>
 			<ion-toolbar>
-				<ion-title>My Account</ion-title>
+				<ion-title>{{ t("headers.my_account", "My Account") }}</ion-title>
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
 			<div v-if="user.data" class="m-6 flex flex-col">
-				<Card :title="t('label.preferences', 'Preferences')" class="mb-4">
+				<Card :title="t('labels.preferences', 'Preferences')" class="mb-4">
 					<div class="flex-col items-start justify-start">
 						<Input
 							:label="t('preferences.language')"
