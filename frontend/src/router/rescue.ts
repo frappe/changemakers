@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from "vue-router"
 import RescueListPage from "@/views/rescue/List.vue"
-import RescueFormPage from "@/views/rescue/Form.vue"
+import RescueDetailsView from "@/views/rescue/Details.vue"
 import RescueFormView from "@/views/rescue/Form.vue"
 
 const routes: Array<RouteRecordRaw> = [
@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
 		name: "RescueForm",
 		path: "/rescues/:id",
 		props: true,
-		component: RescueFormPage,
+		component: RescueDetailsView,
 	},
 ]
 

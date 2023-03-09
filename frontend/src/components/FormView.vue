@@ -1,17 +1,23 @@
 <template>
-	<div v-if="!formFields.loading && formFields.data" class="relative bg-white">
+	<div v-if="formIsReady" class="relative bg-white">
 		<SchemaFormWithValidation
-			@submit="handleCreateNew"
+			@submit="handleFormSubmit"
 			class="mb-9 space-y-2 p-4"
 			:schema="formFields.data"
 		>
 			<template #afterForm>
-				<ErrorMessage :message="DocTypeList.insert.error" />
+				<ErrorMessage
+					:message="
+						document?.get?.error ||
+						document?.setValue?.error ||
+						DocTypeList.insert.error
+					"
+				/>
 				<Button
 					class="mt-5"
 					appearance="primary"
-					:loading="DocTypeList.insert.loading"
-					>Create</Button
+					:loading="DocTypeList.insert.loading || document?.setValue.loading"
+					>{{ props.submitButtonLabel }}</Button
 				>
 			</template>
 		</SchemaFormWithValidation>
@@ -20,17 +26,31 @@
 
 <script lang="ts" setup>
 import * as yup from "yup"
-import { ref, shallowRef } from "vue"
+import { computed, onMounted, ref, shallowRef, watch } from "vue"
 import { useRouter } from "vue-router"
 import { useSchemaForm } from "formvuelate"
 import { SchemaFormWithValidation } from "@/utils/form"
 import FormField from "@/components/core/FormField.vue"
-import { createResource, createListResource, ErrorMessage } from "frappe-ui"
+import {
+	createResource,
+	createListResource,
+	createDocumentResource,
+	ErrorMessage,
+} from "frappe-ui"
 
 const props = defineProps({
 	doctype: {
 		type: String,
 		required: true,
+	},
+	id: {
+		type: String,
+		required: false,
+	},
+	submitButtonLabel: {
+		type: String,
+		required: false,
+		default: "Create",
 	},
 })
 
@@ -44,7 +64,13 @@ interface DocField {
 	options: string
 }
 
-const formModel = ref({})
+const document = createDocumentResource({
+	doctype: props.doctype,
+	name: props.id,
+	fields: "*",
+})
+let formModel = ref({})
+
 useSchemaForm(formModel)
 
 const router = useRouter()
@@ -102,6 +128,39 @@ const DocTypeList = createListResource({
 function handleCreateNew() {
 	DocTypeList.insert.submit(formModel.value)
 }
+
+function handleUpdate() {
+	if (document) {
+		document.setValue.submit(formModel.value)
+
+		// Maybe show an alert
+		router.back()
+	}
+}
+
+function handleFormSubmit() {
+	if (!props.id) {
+		handleCreateNew()
+	} else {
+		handleUpdate()
+	}
+}
+
+onMounted(async () => {
+	if (props.id) {
+		await document.get.promise
+		await formFields.promise
+		formModel.value = document.doc
+	}
+})
+
+const formIsReady = computed(() => {
+	if (!props.id) {
+		return !formFields.loading && formFields.data
+	}
+
+	return document && !document.get.loading && document.doc
+})
 
 formFields.reload()
 </script>
