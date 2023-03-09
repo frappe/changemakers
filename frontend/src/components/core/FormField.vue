@@ -113,7 +113,6 @@ onMounted(() => {
 	}
 
 	if (props.type === "geolocation") {
-		console.log("setting geolocation for field", props.label)
 		// fetch geolocation
 		navigator.geolocation.getCurrentPosition((position) => {
 			emit("update:modelValue", getFormattedGeolocation(position.coords))
