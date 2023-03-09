@@ -45,7 +45,7 @@ export interface Rescue{
 	/**	Hospital : Small Text	*/
 	hospital?: string
 	/**	Was Referred to Shelter Home? : Select	*/
-	was_referred_to_shelter_home?: "Yes" | "No" | "Not Willing To God"
+	was_referred_to_shelter_home?: "Yes" | "No" | "Not Willing To Go"
 	/**	Shelter Home : Link - Shelter Home	*/
 	shelter_home?: string
 	/**	Police Station : Small Text	*/

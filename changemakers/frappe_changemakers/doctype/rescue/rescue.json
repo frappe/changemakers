@@ -198,7 +198,7 @@
    "fieldname": "was_referred_to_shelter_home",
    "fieldtype": "Select",
    "label": "Was Referred to Shelter Home?",
-   "options": "Yes\nNo\nNot Willing To God"
+   "options": "Yes\nNo\nNot Willing To Go"
   },
   {
    "depends_on": "eval:doc.was_referred_to_shelter_home==\"Yes\"",
