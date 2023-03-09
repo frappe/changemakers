@@ -25,7 +25,7 @@ import { useRouter } from "vue-router"
 import { useSchemaForm } from "formvuelate"
 import { SchemaFormWithValidation } from "@/utils/form"
 import FormField from "@/components/core/FormField.vue"
-import { createResource, createListResource } from "frappe-ui"
+import { createResource, createListResource, ErrorMessage } from "frappe-ui"
 
 const props = defineProps({
 	doctype: {
