@@ -1,20 +1,25 @@
 <template>
 	<ion-page>
-		<ion-header class="bg-white">
-			<div class="flex flex-row items-center p-4">
-				<ion-title class="p-0 text-xl font-semibold text-gray-900">
-					Rescue: {{ props.id }}
-				</ion-title>
+		<ion-content :fullscreen="true">
+			<div class="flex w-full flex-row items-center py-4">
+				<Button
+					icon-left="chevron-left"
+					appearance="minimal"
+					@click="router.back()"
+				>
+				</Button>
+				<h2 class="p-0 text-2xl font-semibold text-gray-900">New Rescue</h2>
 			</div>
-		</ion-header>
-		<ion-content :fullscreen="true"> </ion-content>
+
+			<FormView doctype="Rescue" />
+		</ion-content>
 	</ion-page>
 </template>
 
 <script lang="ts" setup>
-import { IonPage, IonContent, IonHeader, IonTitle } from "@ionic/vue"
+import { useRouter } from "vue-router"
+import { IonPage, IonContent } from "@ionic/vue"
+import FormView from "@/components/FormView.vue"
 
-const props = defineProps({
-	id: String,
-})
+const router = useRouter()
 </script>
