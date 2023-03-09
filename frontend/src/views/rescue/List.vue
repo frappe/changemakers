@@ -56,7 +56,8 @@
 									<FrappeIcons.RescueIcon class="text-gray-500" />
 									<div class="flex flex-col">
 										<h3 class="text-lg font-semibold text-gray-700">
-											{{ rescue.first_name }} {{ rescue.last_name }}
+											{{ rescue.first_name }}{{ rescue.last_name }},
+											{{ rescue.age }}, {{ rescue.gender }}
 										</h3>
 										<time
 											class="text-base text-gray-600"
@@ -107,6 +108,8 @@ const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
 		"rescued_at",
 		"beneficiary.first_name as first_name",
 		"beneficiary.last_name as last_name",
+		"age",
+		"gender",
 	],
 	cache: "RescueList",
 	orderBy: "-rescued_at",
