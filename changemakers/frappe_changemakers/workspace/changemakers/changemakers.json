@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"CecwNbV5Aq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"id\":\"I9e4OurK7Y\",\"type\":\"paragraph\",\"data\":{\"text\":\"&nbsp;Manage Beneficiaries\",\"col\":12}},{\"id\":\"JhoJIvxYwo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":3}},{\"id\":\"PMA7sL0zHl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":3}},{\"id\":\"GlS-4ygjkT\",\"type\":\"paragraph\",\"data\":{\"text\":\"Rescues\",\"col\":12}},{\"id\":\"W7ZBgFg0CJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Rescue\",\"col\":3}},{\"id\":\"TEcaVdnIhr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Rescues\",\"col\":3}},{\"id\":\"g2frCR54Gw\",\"type\":\"paragraph\",\"data\":{\"text\":\"Cases\",\"col\":12}},{\"id\":\"o-NQxJOqB9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Case\",\"col\":3}},{\"id\":\"1X_H_JUulh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open Cases\",\"col\":3}},{\"id\":\"2faOuV0vIj\",\"type\":\"paragraph\",\"data\":{\"text\":\"Entitlements\",\"col\":12}},{\"id\":\"xllISW0jRt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Entitlements\",\"col\":3}},{\"id\":\"wjYeZ-C3Yj\",\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"id\":\"mB90BbrugG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":3}},{\"id\":\"2Dxn3AA-OY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":3}},{\"id\":\"2qZW9NgrCQ\",\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"id\":\"JYx1hK5EYf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":3}},{\"id\":\"aGZflLrU8F\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":3}},{\"id\":\"SMiDbH7oHO\",\"type\":\"paragraph\",\"data\":{\"text\":\"Shelter Services\",\"col\":12}},{\"id\":\"_zTFcA698A\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Shelter Homes\",\"col\":4}},{\"id\":\"ZMLz_em53Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Entry Record\",\"col\":3}},{\"id\":\"j51o5hQMDV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Exit Record\",\"col\":3}},{\"id\":\"hIEZu5hDaF\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"2QJ1oA29Tv\",\"type\":\"paragraph\",\"data\":{\"text\":\"Others\",\"col\":12}},{\"id\":\"a3oRewN8WJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Family Reintegrations\",\"col\":3}},{\"id\":\"AtcrGpwYkn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Awareness Camps\",\"col\":3}},{\"id\":\"vOv18I4R0A\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Health Camps\",\"col\":3}}]",
+ "content": "[{\"id\":\"CecwNbV5Aq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe Changemakers</span>\",\"col\":12}},{\"id\":\"I9e4OurK7Y\",\"type\":\"paragraph\",\"data\":{\"text\":\"&nbsp;Manage Beneficiaries\",\"col\":12}},{\"id\":\"JhoJIvxYwo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Beneficiary\",\"col\":3}},{\"id\":\"PMA7sL0zHl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Beneficiaries\",\"col\":3}},{\"id\":\"GlS-4ygjkT\",\"type\":\"paragraph\",\"data\":{\"text\":\"Rescues\",\"col\":12}},{\"id\":\"W7ZBgFg0CJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Rescue\",\"col\":3}},{\"id\":\"TEcaVdnIhr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Rescues\",\"col\":3}},{\"id\":\"g2frCR54Gw\",\"type\":\"paragraph\",\"data\":{\"text\":\"Cases\",\"col\":12}},{\"id\":\"YY4UpDO22w\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Cases\",\"col\":3}},{\"id\":\"o-NQxJOqB9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Case\",\"col\":3}},{\"id\":\"1X_H_JUulh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open Cases\",\"col\":3}},{\"id\":\"2faOuV0vIj\",\"type\":\"paragraph\",\"data\":{\"text\":\"Entitlements\",\"col\":12}},{\"id\":\"xllISW0jRt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Entitlements\",\"col\":3}},{\"id\":\"wjYeZ-C3Yj\",\"type\":\"paragraph\",\"data\":{\"text\":\"Food\",\"col\":12}},{\"id\":\"mB90BbrugG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Distribution\",\"col\":3}},{\"id\":\"2Dxn3AA-OY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Distributions\",\"col\":3}},{\"id\":\"2qZW9NgrCQ\",\"type\":\"paragraph\",\"data\":{\"text\":\"Healthcare\",\"col\":12}},{\"id\":\"JYx1hK5EYf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hospitalisation Record\",\"col\":3}},{\"id\":\"aGZflLrU8F\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Healthcare Providers\",\"col\":3}},{\"id\":\"SMiDbH7oHO\",\"type\":\"paragraph\",\"data\":{\"text\":\"Shelter Services\",\"col\":12}},{\"id\":\"_zTFcA698A\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Shelter Homes\",\"col\":4}},{\"id\":\"ZMLz_em53Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Entry Record\",\"col\":3}},{\"id\":\"j51o5hQMDV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Create Exit Record\",\"col\":3}},{\"id\":\"hIEZu5hDaF\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"2QJ1oA29Tv\",\"type\":\"paragraph\",\"data\":{\"text\":\"Others\",\"col\":12}},{\"id\":\"a3oRewN8WJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Family Reintegrations\",\"col\":3}},{\"id\":\"AtcrGpwYkn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Awareness Camps\",\"col\":3}},{\"id\":\"vOv18I4R0A\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Health Camps\",\"col\":3}}]",
  "creation": "2022-10-13 13:51:43.725589",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -8,12 +8,14 @@
  "hide_custom": 0,
  "icon": "users",
  "idx": 0,
+ "is_hidden": 0,
  "label": "Changemakers",
  "links": [],
- "modified": "2022-12-29 07:39:24.770220",
+ "modified": "2023-03-11 19:45:22.159458",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Changemakers",
+ "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
@@ -39,6 +41,13 @@
    "label": "New Beneficiary",
    "link_to": "Beneficiary",
    "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "My Cases",
+   "link_to": "My Cases",
+   "type": "Report"
   },
   {
    "color": "Green",

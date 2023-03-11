@@ -1,0 +1,60 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "width": 500
+  },
+  {
+   "fieldname": "case",
+   "fieldtype": "Link",
+   "label": "Case",
+   "options": "Case",
+   "width": 200
+  }
+ ],
+ "creation": "2023-03-11 19:30:24.519177",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2023-03-11 19:34:21.628128",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "My Cases",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Case",
+ "report_name": "My Cases",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Admin (Partner)"
+  },
+  {
+   "role": "Partner SMT"
+  },
+  {
+   "role": "Social Worker"
+  },
+  {
+   "role": "Program Manager"
+  },
+  {
+   "role": "Healthcare Team Member"
+  },
+  {
+   "role": "SMT(NGO)-Field Co-ordinator"
+  },
+  {
+   "role": "Medical Co-ordinator"
+  }
+ ]
+}
