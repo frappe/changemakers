@@ -302,9 +302,8 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2023-03-05 11:28:09.421367",
+ "modified": "2023-03-13 14:21:17.965862",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
