@@ -1,4 +1,4 @@
-<h1 style="font-size: 16px" align="center">Frappe Changemakers, for the Real Changemakers.</h1>
+<h3 style="font-size: 16px" align="center">Frappe Changemakers, for the Real Changemakers.</h3>
 
 ![Frappe Changemakers Workspace Teaser View](https://user-images.githubusercontent.com/34810212/225823098-eb942986-2ec6-49f1-adc8-e0d21da46c30.png)
 
