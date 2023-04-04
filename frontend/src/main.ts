@@ -56,7 +56,7 @@ app.component("Input", Input)
 app.component("Card", Card)
 
 app.use(router)
-app.use(IonicVue)
+app.use(IonicVue, { mode: "md" })
 
 // Globals
 app.provide(sessionInjectionKey, session)
