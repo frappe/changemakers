@@ -1,57 +1,102 @@
 import { computed, reactive } from "vue"
-import { createResource } from "frappe-ui"
-import { userResource } from "./user"
-import router from "@/router"
+import { Preferences } from "@capacitor/preferences"
+import { OAuth2Client } from "@byteowls/capacitor-oauth2"
 
-export function sessionUser() {
-	const cookies = new URLSearchParams(document.cookie.split("; ").join("&"))
-	let _sessionUser = cookies.get("user_id")
-	if (_sessionUser === "Guest") {
-		_sessionUser = null
-	}
-	return _sessionUser
+const SESSION_OBJECT_KEY = "userSession"
+
+export interface User {
+	userID: string
 }
 
-interface LoginCredentials {
-	email: string
-	password: string
-}
+// export interface Session {
+// 	user: User | null
+// 	isLoggedIn: boolean
+// 	authenticateWithFrappeOAuth: (baseURL: string, clientID: string) => void
+// 	initializeSessionFromPreferences: () => void
+// 	saveSessionToPreferences: (any, User) => void
+// }
 
-export interface Session {
-	login: {
-		loading: boolean
-		submit: (credentials: LoginCredentials) => void
-		reset: () => void
-	}
-	logout: { loading: boolean; submit: () => void; reset: () => void }
-	user: null | string
-	isLoggedIn: boolean
-}
+export const session = reactive({
+	user: null,
+	isLoggedIn: false,
+	auth: null,
+	authResponse: null,
+	async authenticateWithFrappeOAuth(baseURL, clientID) {
+		const oauth2Options = {
+			appId: clientID,
+			scope: "all",
+			authorizationBaseUrl: `${baseURL}/api/method/frappe.integrations.oauth2.authorize`,
+			responseType: "code",
+			redirectUrl: "io.frappe.changemakers://oauth/auth",
+			accessTokenEndpoint: `${baseURL}/api/method/frappe.integrations.oauth2.get_token`,
+		}
+		OAuth2Client.authenticate(oauth2Options)
+			.then(async (response) => {
+				console.log("Successfully authenticated with response: ", response)
 
-export const session: Session = reactive({
-	login: createResource({
-		url: "login",
-		makeParams({ email, password }) {
-			return {
-				usr: email,
-				pwd: password,
+				this.authResponse = response
+				this.auth = {
+					accessToken: response["access_token"],
+					refreshToken: response["refresh_token"],
+				}
+				await this.fetchAndSetUserInfo(baseURL)
+				await this.saveSessionToPreferences()
+
+				this.isLoggedIn = true
+			})
+			.catch((e) => {
+				this.isLoggedIn = false
+				console.error(e)
+			})
+	},
+	async initializeSessionFromPreferences() {
+		const result = await Preferences.get({ key: SESSION_OBJECT_KEY })
+
+		if (!result) {
+			return false
+		}
+
+		const sessionObject = JSON.parse(result.value)
+		this.user = sessionObject.user
+		this.auth = sessionObject.auth
+	},
+	async saveSessionToPreferences() {
+		const sessionObject = JSON.stringify({
+			auth: this.auth,
+			user: this.user,
+		})
+		await Preferences.set({ key: SESSION_OBJECT_KEY, value: sessionObject })
+	},
+	async logout(baseURL) {
+		// Clear session storage
+		await Preferences.remove({ key: SESSION_OBJECT_KEY })
+		// Revoke Auth Token
+		OAuth2Client.logout({
+			logoutUrl: `${baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
+		})
+
+		// Clean session state
+		this.user = null
+		this.auth = null
+		this.isLoggedIn = false
+	},
+	async fetchAndSetUserInfo(baseURL) {
+		if (!this.auth) {
+			return
+		}
+
+		const response = await fetch(
+			`${baseURL}/api/method/frappe.integrations.oauth2.openid_profile`,
+			{
+				headers: {
+					Authorization: `Bearer ${this.auth.accessToken}`,
+				},
 			}
-		},
-		onSuccess(data) {
-			userResource.reload()
-			session.user = sessionUser()
-			session.login.reset()
-			router.replace(data.default_route || "/tabs/dashboard")
-		},
-	}),
-	logout: createResource({
-		url: "logout",
-		onSuccess() {
-			userResource.reset()
-			session.user = sessionUser()
-			router.replace({ name: "Login" })
-		},
-	}),
-	user: sessionUser(),
-	isLoggedIn: computed(() => !!session.user),
+		)
+		this.user = await response.json()
+	},
+})
+
+export const isLoggedIn = computed(() => {
+	return session.auth && session.user
 })

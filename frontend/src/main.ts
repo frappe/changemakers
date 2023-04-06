@@ -72,3 +72,19 @@ router.isReady().then(() => {
 
 // Internationalization
 app.use(i18n)
+
+router.beforeEach(async (to, from, next) => {
+	const isLoggedIn = session.isLoggedIn
+	if (!isLoggedIn) {
+		// Try restoring session from storage
+		await session.initializeSessionFromPreferences()
+	}
+
+	if (to.name === "Login" && isLoggedIn) {
+		next({ name: "Home" })
+	} else if (to.name !== "Login" && !isLoggedIn) {
+		next({ name: "Login" })
+	} else {
+		next()
+	}
+})

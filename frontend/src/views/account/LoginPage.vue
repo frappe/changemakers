@@ -13,44 +13,23 @@
 </template>
 
 <script lang="ts" setup>
+import { inject } from "vue"
 import { useI18n } from "vue-i18n"
-
-// Auth: will be refactored out to a separate lib (TODO)
-import { Preferences } from "@capacitor/preferences"
-import { OAuth2Client } from "@byteowls/capacitor-oauth2"
-
+import { sessionInjectionKey } from "@/typing/InjectionKeys"
 import { IonPage, IonContent } from "@ionic/vue"
 
 const { t } = useI18n()
+const session = inject(sessionInjectionKey)
 
 async function loginClick(e) {
 	const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
-	const oauth2Options = {
-		appId: "f592ecba60",
-		scope: "all",
-		authorizationBaseUrl: `${BASE_URL}/api/method/frappe.integrations.oauth2.authorize`,
-		responseType: "code",
-		redirectUrl: "io.frappe.changemakers://oauth/auth",
-		accessTokenEndpoint: `${BASE_URL}/api/method/frappe.integrations.oauth2.get_token`,
+	const CLIENT_ID = "f592ecba60"
+	try {
+		await session.authenticateWithFrappeOAuth(BASE_URL, CLIENT_ID)
+	} catch {
+		console.log(
+			"Something went wrong while authenticating through Frappe OAuth..."
+		)
 	}
-	OAuth2Client.authenticate(oauth2Options)
-		.then(async (response) => {
-			console.log("Successfully authenticated with response: ", response)
-
-			// 1: Store in phone storage, access as well as refresh token
-			// 2: Fetch and set user information
-			await Preferences.set({
-				key: "oauth_access_token",
-				value: response["access_token"],
-			})
-
-			await Preferences.set({
-				key: "oauth_refresh_token",
-				value: response["refresh_token"],
-			})
-		})
-		.catch((e) => {
-			console.error(e)
-		})
 }
 </script>
