@@ -18,6 +18,7 @@
     "@capacitor/haptics": "next",
     "@capacitor/ios": "next",
     "@capacitor/keyboard": "next",
+    "@capacitor/preferences": "^4.0.2",
     "@capacitor/status-bar": "next",
     "@formvuelate/plugin-vee-validate": "^3.9.1",
     "@intlify/unplugin-vue-i18n": "^0.8.1",

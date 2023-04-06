@@ -367,6 +367,11 @@
   resolved "https://registry.npmjs.org/@capacitor/keyboard/-/keyboard-4.0.1.tgz"
   integrity sha512-JZVci2v9jAKH0sIoNNZzmw/cWGXWf+KneLt0yDr/6YSs/2/tfuH10yOrUOhgrKFkR+fFj/rddTClQXUQ8Rqcrg==
 
+"@capacitor/preferences@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/@capacitor/preferences/-/preferences-4.0.2.tgz"
+  integrity sha512-HgcRkMdVHSIV3TeQLZFmCaCeMWQ25wLyZZ7dA2f8Rw81Q1Nroxsi7HxTEGNqrWKSN9PNKBJD8vChr6eB2GNtZg==
+
 "@capacitor/status-bar@next":
   version "4.0.1"
   resolved "https://registry.npmjs.org/@capacitor/status-bar/-/status-bar-4.0.1.tgz"
