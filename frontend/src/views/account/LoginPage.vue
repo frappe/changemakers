@@ -3,25 +3,9 @@
 		<ion-content :fullscreen="true">
 			<div class="m-4 flex h-full flex-col justify-center">
 				<Card title="Login to Changemakers">
-					<form class="flex flex-col space-y-3" @submit.prevent="submit">
-						<Input
-							required
-							name="email"
-							type="text"
-							placeholder="johndoe@mail.com"
-							:label="t('auth.email')"
-						/>
-						<Input
-							required
-							name="password"
-							type="password"
-							placeholder="••••••"
-							:label="t('auth.password')"
-						/>
-						<Button :loading="session.login.loading" appearance="primary">{{
-							t("auth.login")
-						}}</Button>
-					</form>
+					<Button @click="loginClick" appearance="primary">{{
+						t("auth.login") + " with OAuth"
+					}}</Button>
 				</Card>
 			</div>
 		</ion-content>
@@ -29,22 +13,33 @@
 </template>
 
 <script lang="ts" setup>
-import { inject } from "vue"
 import { useI18n } from "vue-i18n"
+import { OAuth2Client } from "@byteowls/capacitor-oauth2"
 
 import { IonPage, IonContent } from "@ionic/vue"
 
-import { sessionInjectionKey } from "@/typing/InjectionKeys"
-
 const { t } = useI18n()
-const session = inject(sessionInjectionKey)
 
-function submit(e) {
-	let formData = new FormData(e.target)
-	console.log(formData)
-	session.login.submit({
-		email: formData.get("email").toString(),
-		password: formData.get("password").toString(),
-	})
+function loginClick(e) {
+	const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
+	const oauth2Options = {
+		appId: "f592ecba60",
+		scope: "all",
+		authorizationBaseUrl: `${BASE_URL}/api/method/frappe.integrations.oauth2.authorize`,
+		responseType: "code",
+		redirectUrl: "io.frappe.changemakers://oauth/auth",
+		accessTokenEndpoint: `${BASE_URL}/api/method/frappe.integrations.oauth2.get_token`,
+	}
+	OAuth2Client.authenticate(oauth2Options)
+		.then((response) => {
+			// TODO: Store in phone storage, access as well as refresh token
+			console.log(
+				"Successfully authenticated with token: ",
+				response["access_token"]
+			)
+		})
+		.catch((e) => {
+			console.error(e)
+		})
 }
 </script>
