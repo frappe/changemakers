@@ -1,7 +1,7 @@
 import { CapacitorConfig } from "@capacitor/cli"
 
 const config: CapacitorConfig = {
-	appId: "io.ionic.starter",
+	appId: "io.frappe.changemakers",
 	appName: "Changemakers",
 	webDir: "../changemakers/public/frontend",
 	bundledWebRuntime: false,

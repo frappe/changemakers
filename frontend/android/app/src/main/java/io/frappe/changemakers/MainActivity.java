@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package io.frappe.changemakers;
 
 import com.getcapacitor.BridgeActivity;
 

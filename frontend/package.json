@@ -11,7 +11,8 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
   },
   "dependencies": {
-    "@capacitor/android": "next",
+    "@byteowls/capacitor-oauth2": "^4.0.0",
+    "@capacitor/android": "4.3.0",
     "@capacitor/app": "next",
     "@capacitor/core": "next",
     "@capacitor/haptics": "next",
