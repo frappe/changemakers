@@ -22,13 +22,9 @@
 						/>
 					</div>
 				</Card>
-				<Button
-					appearance="white"
-					@click="
-						session.logout('https://apf-changemakers-staging.frappe.cloud')
-					"
-					>{{ t("auth.logout") }}</Button
-				>
+				<Button appearance="white" @click="logout">{{
+					t("auth.logout")
+				}}</Button>
 			</div>
 		</ion-content>
 	</ion-page>
@@ -47,13 +43,19 @@ import {
 	IonTitle,
 	IonContent,
 } from "@ionic/vue"
+import { useRouter } from "vue-router"
 
 const session = inject(sessionInjectionKey)
-
+const router = useRouter()
 const { t, locale } = useI18n()
 
 const availableLanguages = [
 	{ value: "en", label: "English" },
 	{ value: "hi", label: "हिंदी" },
 ]
+
+const logout = async () => {
+	await session.logout("https://apf-changemakers-staging.frappe.cloud")
+	router.push({ name: "Login" })
+}
 </script>
