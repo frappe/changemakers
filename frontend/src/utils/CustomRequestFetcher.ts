@@ -1,4 +1,5 @@
 const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
+
 export function request(_options) {
 	let options = Object.assign({}, _options)
 	if (!options.url) {
@@ -31,8 +32,6 @@ export function request(_options) {
 	return fetch(url, {
 		method: options.method || "GET",
 		headers: options.headers,
-        mode: 'cors',
-        credentials: 'include',
 		body,
 	}).then((response) => {
 		if (options.transformResponse) {
@@ -58,20 +57,19 @@ export function customRequestFetcher(options) {
 			if (!options.url) {
 				throw new Error("[frappeRequest] options.url is required")
 			}
-			let headers = Object.assign(
+
+			// TODO: somehow get the oauth token here
+			// maybe use a global store object (reactive)
+			const oauth_access_token = null;
+			const headers = Object.assign(
 				{
 					Accept: "application/json",
 					"Content-Type": "application/json; charset=utf-8",
+					Authorization: `Bearer ${oauth_access_token}` 
 				},
 				options.headers || {}
 			)
-			if (
-				window &&
-				window.csrf_token &&
-				window.csrf_token !== "{{ csrf_token }}"
-			) {
-				headers["X-Frappe-CSRF-Token"] = window.csrf_token
-			}
+
 			if (!options.url.startsWith("/") && !options.url.startsWith("http")) {
 				options.url = BASE_URL + "/api/method/" + options.url
 			}

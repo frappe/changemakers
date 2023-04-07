@@ -1,7 +1,7 @@
 import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
-import { session } from "./data/session"
+import { session, isLoggedIn } from "./data/session"
 import dayjs from "@/utils/dayjs"
 
 import {
@@ -74,15 +74,14 @@ router.isReady().then(() => {
 app.use(i18n)
 
 router.beforeEach(async (to, from, next) => {
-	const isLoggedIn = session.isLoggedIn
-	if (!isLoggedIn) {
+	if (!isLoggedIn.value) {
 		// Try restoring session from storage
 		await session.initializeSessionFromPreferences()
 	}
 
-	if (to.name === "Login" && isLoggedIn) {
-		next({ name: "Home" })
-	} else if (to.name !== "Login" && !isLoggedIn) {
+	if (to.name === "Login" && isLoggedIn.value) {
+		next({ name: "MyAccountPage" })
+	} else if (to.name !== "Login" && !isLoggedIn.value) {
 		next({ name: "Login" })
 	} else {
 		next()

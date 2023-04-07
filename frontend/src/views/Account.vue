@@ -6,8 +6,13 @@
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
-			<div v-if="user.data" class="m-6 flex flex-col">
+			<div v-if="session.user" class="m-6 flex flex-col">
 				<Card :title="t('labels.preferences', 'Preferences')" class="mb-4">
+					<div class="p-3">
+						<pre>{{ session }}</pre>
+						<p>{{ session.user.name }}</p>
+					</div>
+
 					<div class="flex-col items-start justify-start">
 						<Input
 							:label="t('preferences.language')"
@@ -17,9 +22,13 @@
 						/>
 					</div>
 				</Card>
-				<Button appearance="white" @click="session.logout.submit()">{{
-					t("auth.logout")
-				}}</Button>
+				<Button
+					appearance="white"
+					@click="
+						session.logout('https://apf-changemakers-staging.frappe.cloud')
+					"
+					>{{ t("auth.logout") }}</Button
+				>
 			</div>
 		</ion-content>
 	</ion-page>
@@ -29,10 +38,7 @@
 import { inject } from "vue"
 import { useI18n } from "vue-i18n"
 
-import {
-	sessionInjectionKey,
-	userResourceInjectionKey,
-} from "@/typing/InjectionKeys"
+import { sessionInjectionKey } from "@/typing/InjectionKeys"
 
 import {
 	IonPage,
@@ -43,7 +49,6 @@ import {
 } from "@ionic/vue"
 
 const session = inject(sessionInjectionKey)
-const user = inject(userResourceInjectionKey)
 
 const { t, locale } = useI18n()
 

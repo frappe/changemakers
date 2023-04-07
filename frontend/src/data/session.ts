@@ -5,16 +5,21 @@ import { OAuth2Client } from "@byteowls/capacitor-oauth2"
 const SESSION_OBJECT_KEY = "userSession"
 
 export interface User {
-	userID: string
+	name: string
+	email: string
+	picture?: string
+	roles: string[]
+	given_name: string
+	family_name?: string
 }
 
-// export interface Session {
-// 	user: User | null
-// 	isLoggedIn: boolean
-// 	authenticateWithFrappeOAuth: (baseURL: string, clientID: string) => void
-// 	initializeSessionFromPreferences: () => void
-// 	saveSessionToPreferences: (any, User) => void
-// }
+export interface Session {
+	user: User | null
+	isLoggedIn: boolean
+	authenticateWithFrappeOAuth: (baseURL: string, clientID: string) => void
+	initializeSessionFromPreferences: () => void
+	logout: (baseURL: string) => void
+}
 
 export const session = reactive({
 	user: null,
@@ -39,6 +44,7 @@ export const session = reactive({
 					accessToken: response["access_token"],
 					refreshToken: response["refresh_token"],
 				}
+
 				await this.fetchAndSetUserInfo(baseURL)
 				await this.saveSessionToPreferences()
 
@@ -52,9 +58,11 @@ export const session = reactive({
 	async initializeSessionFromPreferences() {
 		const result = await Preferences.get({ key: SESSION_OBJECT_KEY })
 
-		if (!result) {
+		if (!result.value) {
 			return false
 		}
+
+		console.log("session found")
 
 		const sessionObject = JSON.parse(result.value)
 		this.user = sessionObject.user
@@ -85,15 +93,20 @@ export const session = reactive({
 			return
 		}
 
-		const response = await fetch(
-			`${baseURL}/api/method/frappe.integrations.oauth2.openid_profile`,
-			{
-				headers: {
-					Authorization: `Bearer ${this.auth.accessToken}`,
-				},
-			}
-		)
-		this.user = await response.json()
+		try {
+			const response = await fetch(
+				`${baseURL}/api/method/frappe.integrations.oauth2.openid_profile`,
+				{
+					method: "GET",
+					headers: {
+						Authorization: `Bearer ${this.auth.accessToken}`,
+					},
+				}
+			)
+			this.user = await response.json()
+		} catch (e) {
+			console.error("Error fetching user information", e)
+		}
 	},
 })
 

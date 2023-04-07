@@ -25,6 +25,7 @@ const routes: Array<RouteRecordRaw> = [
 				component: () => import("@/views/Dashboard.vue"),
 			},
 			{
+				name: "MyAccountPage",
 				path: "Account",
 				component: () => import("@/views/Account.vue"),
 			},

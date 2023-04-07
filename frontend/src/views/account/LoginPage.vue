@@ -17,15 +17,18 @@ import { inject } from "vue"
 import { useI18n } from "vue-i18n"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
 import { IonPage, IonContent } from "@ionic/vue"
+import { useRouter } from "vue-router"
 
 const { t } = useI18n()
 const session = inject(sessionInjectionKey)
+const router = useRouter()
 
 async function loginClick(e) {
 	const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
 	const CLIENT_ID = "f592ecba60"
 	try {
 		await session.authenticateWithFrappeOAuth(BASE_URL, CLIENT_ID)
+		router.push({ name: "MyAccountPage" })
 	} catch {
 		console.log(
 			"Something went wrong while authenticating through Frappe OAuth..."
