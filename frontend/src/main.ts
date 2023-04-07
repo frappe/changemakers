@@ -35,6 +35,7 @@ import { createI18n } from "vue-i18n"
 
 // Import messages from yaml files
 import messages from "@intlify/unplugin-vue-i18n/messages"
+import { customRequestFetcher } from "./utils/CustomRequestFetcher"
 
 const i18n = createI18n({
 	legacy: false,
@@ -46,7 +47,7 @@ const i18n = createI18n({
 const app = createApp(App)
 
 // FrappeUI Config
-setConfig("resourceFetcher", frappeRequest)
+setConfig("resourceFetcher", customRequestFetcher)
 app.use(resourcesPlugin)
 app.use(pageMetaPlugin)
 

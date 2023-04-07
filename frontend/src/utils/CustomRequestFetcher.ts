@@ -1,4 +1,5 @@
 const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
+import { session } from "@/data/session"
 
 export function request(_options) {
 	let options = Object.assign({}, _options)
@@ -60,12 +61,12 @@ export function customRequestFetcher(options) {
 
 			// TODO: somehow get the oauth token here
 			// maybe use a global store object (reactive)
-			const oauth_access_token = null;
+			const oauth_access_token = session.auth.accessToken
 			const headers = Object.assign(
 				{
 					Accept: "application/json",
 					"Content-Type": "application/json; charset=utf-8",
-					Authorization: `Bearer ${oauth_access_token}` 
+					Authorization: `Bearer ${oauth_access_token}`,
 				},
 				options.headers || {}
 			)
