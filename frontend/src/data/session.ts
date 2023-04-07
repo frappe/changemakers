@@ -15,7 +15,6 @@ export interface User {
 
 export interface Session {
 	user: User | null
-	isLoggedIn: boolean
 	authenticateWithFrappeOAuth: (baseURL: string, clientID: string) => void
 	initializeSessionFromPreferences: () => void
 	logout: (baseURL: string) => void
@@ -23,7 +22,6 @@ export interface Session {
 
 export const session = reactive({
 	user: null,
-	isLoggedIn: false,
 	auth: null,
 	authResponse: null,
 	async authenticateWithFrappeOAuth(baseURL, clientID) {
@@ -48,10 +46,7 @@ export const session = reactive({
 
 			await this.fetchAndSetUserInfo(baseURL)
 			await this.saveSessionToPreferences()
-
-			this.isLoggedIn = true
 		} catch (e) {
-			this.isLoggedIn = false
 			console.error(e)
 		}
 	},
@@ -61,8 +56,6 @@ export const session = reactive({
 		if (!result.value) {
 			return false
 		}
-
-		console.log("session found")
 
 		const sessionObject = JSON.parse(result.value)
 		this.user = sessionObject.user
@@ -78,7 +71,8 @@ export const session = reactive({
 	async logout(baseURL) {
 		// Clear session storage
 		await Preferences.remove({ key: SESSION_OBJECT_KEY })
-		// Revoke Auth Token
+
+		// TODO: Revoke Auth Token
 		OAuth2Client.logout({
 			logoutUrl: `${baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
 		})
@@ -86,7 +80,6 @@ export const session = reactive({
 		// Clean session state
 		this.user = null
 		this.auth = null
-		this.isLoggedIn = false
 	},
 	async fetchAndSetUserInfo(baseURL) {
 		if (!this.auth) {
