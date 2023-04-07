@@ -35,25 +35,25 @@ export const session = reactive({
 			redirectUrl: "io.frappe.changemakers://oauth/auth",
 			accessTokenEndpoint: `${baseURL}/api/method/frappe.integrations.oauth2.get_token`,
 		}
-		OAuth2Client.authenticate(oauth2Options)
-			.then(async (response) => {
-				console.log("Successfully authenticated with response: ", response)
 
-				this.authResponse = response
-				this.auth = {
-					accessToken: response["access_token"],
-					refreshToken: response["refresh_token"],
-				}
+		try {
+			const response = await OAuth2Client.authenticate(oauth2Options)
+			console.log("Successfully authenticated with response: ", response)
 
-				await this.fetchAndSetUserInfo(baseURL)
-				await this.saveSessionToPreferences()
+			this.authResponse = response
+			this.auth = {
+				accessToken: response["access_token"],
+				refreshToken: response["refresh_token"],
+			}
 
-				this.isLoggedIn = true
-			})
-			.catch((e) => {
-				this.isLoggedIn = false
-				console.error(e)
-			})
+			await this.fetchAndSetUserInfo(baseURL)
+			await this.saveSessionToPreferences()
+
+			this.isLoggedIn = true
+		} catch (e) {
+			this.isLoggedIn = false
+			console.error(e)
+		}
 	},
 	async initializeSessionFromPreferences() {
 		const result = await Preferences.get({ key: SESSION_OBJECT_KEY })
