@@ -23,11 +23,9 @@ import "@ionic/vue/css/core.css"
 import "./theme/variables.css"
 
 import "./main.css"
-import { userResource } from "./data/user"
 import {
 	dayjsInjectionKey,
 	sessionInjectionKey,
-	userResourceInjectionKey,
 } from "./typing/InjectionKeys"
 
 import { createI18n } from "vue-i18n"
@@ -60,7 +58,6 @@ app.use(IonicVue, { mode: "md" })
 
 // Globals
 app.provide(sessionInjectionKey, session)
-app.provide(userResourceInjectionKey, userResource)
 app.provide(dayjsInjectionKey, dayjs)
 
 app.config.globalProperties.$dayjs = dayjs
