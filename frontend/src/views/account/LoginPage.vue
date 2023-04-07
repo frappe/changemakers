@@ -7,7 +7,7 @@
 						:loading="isAuthenticating"
 						@click="loginClick"
 						appearance="primary"
-						>{{ t("auth.login") + " with OAuth" }}</Button
+						>{{ t("auth.login") + " with Frappe OAuth" }}</Button
 					>
 				</Card>
 			</div>
@@ -21,11 +21,10 @@ import { useI18n } from "vue-i18n"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
 import { IonPage, IonContent } from "@ionic/vue"
 import { useRouter } from "vue-router"
-import { useIonRouter } from "@ionic/vue"
 
 const { t } = useI18n()
 const session = inject(sessionInjectionKey)
-const router = useIonRouter()
+const router = useRouter()
 
 const isAuthenticating = ref(false)
 
@@ -34,19 +33,14 @@ async function loginClick(e) {
 	const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
 	const CLIENT_ID = "f592ecba60"
 	try {
-		console.log("awaiting oauth call")
 		await session.authenticateWithFrappeOAuth(BASE_URL, CLIENT_ID)
-		console.log("oauth call complete")
-
-		isAuthenticating.value = false
-
-		// Change to homepage later
-		console.log("pushing accounts route...")
-		router.push("/tabs/Account")
+		router.push({ name: "MyAccountPage" })
 	} catch {
 		console.log(
 			"Something went wrong while authenticating through Frappe OAuth..."
 		)
+	} finally {
+		isAuthenticating.value = false
 	}
 }
 </script>

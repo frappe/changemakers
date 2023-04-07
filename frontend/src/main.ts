@@ -9,7 +9,6 @@ import {
 	Badge,
 	Input,
 	setConfig,
-	frappeRequest,
 	pageMetaPlugin,
 	resourcesPlugin,
 	Card,

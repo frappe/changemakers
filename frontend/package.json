@@ -15,6 +15,7 @@
     "@capacitor/android": "4.3.0",
     "@capacitor/app": "next",
     "@capacitor/core": "next",
+    "@capacitor/geolocation": "^4.1.0",
     "@capacitor/haptics": "next",
     "@capacitor/ios": "next",
     "@capacitor/keyboard": "next",
