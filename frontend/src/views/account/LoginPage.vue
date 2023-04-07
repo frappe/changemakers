@@ -3,6 +3,7 @@
 		<ion-content :fullscreen="true">
 			<div class="m-4 flex h-full flex-col justify-center">
 				<Card title="Login to Changemakers">
+					<Input v-model="baseURL" type="text" />
 					<Button
 						:loading="isAuthenticating"
 						@click="loginClick"
@@ -26,14 +27,18 @@ const { t } = useI18n()
 const session = inject(sessionInjectionKey)
 const router = useRouter()
 
+const baseURL = ref("")
 const isAuthenticating = ref(false)
 
 async function loginClick(e) {
 	isAuthenticating.value = true
-	const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
 	const CLIENT_ID = "f592ecba60"
 	try {
-		await session.authenticateWithFrappeOAuth(BASE_URL, CLIENT_ID)
+		session.setInstanceDetails(
+			"https://apf-changemakers-staging.frappe.cloud",
+			CLIENT_ID
+		)
+		await session.authenticateWithFrappeOAuth()
 		router.push({ name: "MyAccountPage" })
 	} catch {
 		console.log(

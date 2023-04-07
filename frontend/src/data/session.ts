@@ -15,23 +15,33 @@ export interface User {
 
 export interface Session {
 	user: User | null
-	authenticateWithFrappeOAuth: (baseURL: string, clientID: string) => void
+	setInstanceDetails: (baseURL: string, clientID: string) => void
 	initializeSessionFromPreferences: () => void
-	logout: (baseURL: string) => void
+	authenticateWithFrappeOAuth: () => void
+	logout: () => void
 }
 
 export const session = reactive({
 	user: null,
 	auth: null,
 	authResponse: null,
-	async authenticateWithFrappeOAuth(baseURL, clientID) {
+	baseURL: "",
+	clientID: "",
+	async authenticateWithFrappeOAuth() {
+		// clear authentication state
+		this.clearSessionState()
+
+		if (!(this.baseURL && this.clientID)) {
+			console.error("Please specify baseURL and clientID before authentication")
+		}
+
 		const oauth2Options = {
-			appId: clientID,
+			appId: this.clientID,
 			scope: "all",
-			authorizationBaseUrl: `${baseURL}/api/method/frappe.integrations.oauth2.authorize`,
+			authorizationBaseUrl: `${this.baseURL}/api/method/frappe.integrations.oauth2.authorize`,
 			responseType: "code",
 			redirectUrl: "io.frappe.changemakers://oauth/auth",
-			accessTokenEndpoint: `${baseURL}/api/method/frappe.integrations.oauth2.get_token`,
+			accessTokenEndpoint: `${this.baseURL}/api/method/frappe.integrations.oauth2.get_token`,
 		}
 
 		try {
@@ -44,7 +54,7 @@ export const session = reactive({
 				refreshToken: response["refresh_token"],
 			}
 
-			await this.fetchAndSetUserInfo(baseURL)
+			await this.fetchAndSetUserInfo()
 			await this.saveSessionToPreferences()
 		} catch (e) {
 			console.error(e)
@@ -60,35 +70,37 @@ export const session = reactive({
 		const sessionObject = JSON.parse(result.value)
 		this.user = sessionObject.user
 		this.auth = sessionObject.auth
+		this.baseURL = sessionObject.baseURL
+		this.clientID = sessionObject.clientID
 	},
 	async saveSessionToPreferences() {
 		const sessionObject = JSON.stringify({
 			auth: this.auth,
 			user: this.user,
+			baseURL: this.baseURL,
+			clientID: this.clientID,
 		})
 		await Preferences.set({ key: SESSION_OBJECT_KEY, value: sessionObject })
 	},
-	async logout(baseURL) {
+	async logout() {
 		// Clear session storage
 		await Preferences.remove({ key: SESSION_OBJECT_KEY })
 
-		// TODO: Revoke Auth Token
-		OAuth2Client.logout({
-			logoutUrl: `${baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
+		// TODO: Revoke Auth Token in backend
+		await OAuth2Client.logout({
+			logoutUrl: `${this.baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
 		})
 
-		// Clean session state
-		this.user = null
-		this.auth = null
+		this.clearSessionState()
 	},
-	async fetchAndSetUserInfo(baseURL) {
+	async fetchAndSetUserInfo() {
 		if (!this.auth) {
 			return
 		}
 
 		try {
 			const response = await fetch(
-				`${baseURL}/api/method/frappe.integrations.oauth2.openid_profile`,
+				`${this.baseURL}/api/method/frappe.integrations.oauth2.openid_profile`,
 				{
 					method: "GET",
 					headers: {
@@ -100,6 +112,15 @@ export const session = reactive({
 		} catch (e) {
 			console.error("Error fetching user information", e)
 		}
+	},
+	setInstanceDetails(baseURL, clientID) {
+		this.clientID = clientID
+		this.baseURL = baseURL
+	},
+	clearSessionState() {
+		this.user = null
+		this.auth = null
+		this.authResponse = null
 	},
 })
 

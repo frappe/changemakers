@@ -1,4 +1,3 @@
-const BASE_URL = "https://apf-changemakers-staging.frappe.cloud"
 import { session } from "@/data/session"
 
 export function request(_options) {
@@ -72,7 +71,7 @@ export function customRequestFetcher(options) {
 			)
 
 			if (!options.url.startsWith("/") && !options.url.startsWith("http")) {
-				options.url = BASE_URL + "/api/method/" + options.url
+				options.url = session.baseURL + "/api/method/" + options.url
 			}
 			console.log("options: " + options.url)
 			return {
