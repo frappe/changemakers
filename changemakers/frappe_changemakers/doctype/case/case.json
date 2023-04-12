@@ -303,7 +303,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-13 14:21:17.965862",
+ "modified": "2023-04-11 06:25:50.824377",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
@@ -409,6 +409,7 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [
@@ -433,6 +434,7 @@
    "title": "Untraced"
   }
  ],
+ "title_field": "title",
  "track_changes": 1,
  "track_seen": 1,
  "track_views": 1
