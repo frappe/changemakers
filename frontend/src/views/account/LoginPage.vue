@@ -27,7 +27,6 @@
 							>{{ t("auth.login") + " with Frappe OAuth" }}</Button
 						>
 					</div>
-					>
 				</Card>
 			</div>
 		</ion-content>
