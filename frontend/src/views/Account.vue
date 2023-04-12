@@ -8,9 +8,10 @@
 		<ion-content :fullscreen="true">
 			<div v-if="session.user" class="m-6 flex flex-col">
 				<Card :title="t('labels.preferences', 'Preferences')" class="mb-4">
-					<div class="p-3">
-						<pre>{{ session }}</pre>
-						<p>{{ session.user.name }}</p>
+					<div class="flex flex-col items-center justify-center space-y-1 p-3">
+						<!-- TODO: Switch to an avatar component that renders the initials if no picture if found -->
+						<img :src="session.user.picture" class="h-20 w-20 object-cover" />
+						<h3 class="text-2xl font-semibold">{{ session.user.name }}</h3>
 					</div>
 
 					<div class="flex-col items-start justify-start">
@@ -55,7 +56,7 @@ const availableLanguages = [
 ]
 
 const logout = async () => {
-	await session.logout("https://apf-changemakers-staging.frappe.cloud")
+	await session.logout()
 	router.push({ name: "Login" })
 }
 </script>

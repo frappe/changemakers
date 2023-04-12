@@ -20,6 +20,7 @@
 						/>
 
 						<Button
+							class="mt-2"
 							v-if="baseURL"
 							:loading="isAuthenticating"
 							@click="loginClick"
@@ -88,6 +89,14 @@ const baseURL = computed(() => {
 	return orgInstanceMap[selectedOrg.value][selectedInstance.value].url
 })
 
+const clientID = computed(() => {
+	if (!selectedInstance.value) {
+		return null
+	}
+
+	return orgInstanceMap[selectedOrg.value][selectedInstance.value].clientID
+})
+
 watch(selectedOrg, (newValue) => {
 	if (newValue) {
 		// Select the first instance by default
@@ -97,11 +106,10 @@ watch(selectedOrg, (newValue) => {
 
 async function loginClick(e) {
 	isAuthenticating.value = true
-	const CLIENT_ID = "f592ecba60"
 	try {
-		session.setInstanceDetails(baseURL.value, CLIENT_ID)
+		session.setInstanceDetails(baseURL.value, clientID.value)
 		await session.authenticateWithFrappeOAuth()
-		router.push({ name: "MyAccountPage" })
+		router.push({ name: "Home" })
 	} catch {
 		console.log(
 			"Something went wrong while authenticating through Frappe OAuth..."
