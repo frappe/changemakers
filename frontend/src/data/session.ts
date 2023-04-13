@@ -19,6 +19,7 @@ export interface Session {
 	initializeSessionFromPreferences: () => void
 	authenticateWithFrappeOAuth: () => void
 	logout: () => void
+	refreshAccessToken: () => void
 }
 
 export const session = reactive({
@@ -51,7 +52,7 @@ export const session = reactive({
 			this.authResponse = response
 			this.auth = {
 				accessToken: response["access_token"],
-				refreshToken: response["refresh_token"],
+				refreshToken: response["access_token_response"]["refresh_token"],
 			}
 
 			await this.fetchAndSetUserInfo()
@@ -121,6 +122,27 @@ export const session = reactive({
 		this.user = null
 		this.auth = null
 		this.authResponse = null
+	},
+	async refreshAccessToken() {
+		if (!this.auth?.refreshToken) {
+			return
+		}
+
+		const response = await OAuth2Client.refreshToken({
+			accessTokenEndpoint: `${this.baseURL}/api/method/frappe.integrations.oauth2.get_token`,
+			appId: this.clientID,
+			refreshToken: this.auth.refreshToken,
+		})
+
+		this.authResponse = response
+		this.auth = {
+			accessToken: response["access_token"],
+			refreshToken: response["refresh_token"],
+		}
+
+		await this.saveSessionToPreferences()
+
+		return response
 	},
 })
 
