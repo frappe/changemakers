@@ -23,8 +23,10 @@
 						/>
 					</div>
 				</Card>
-				<Button @click="refreshToken">Refresh Token</Button>
-				<Button appearance="white" @click="logout">{{
+				<Button appearance="white" @click="refreshToken"
+					>Refresh Access Token</Button
+				>
+				<Button class="text-red-500" appearance="white" @click="logout">{{
 					t("auth.logout")
 				}}</Button>
 			</div>
@@ -57,8 +59,13 @@ const availableLanguages = [
 ]
 
 const logout = async () => {
-	await session.logout()
-	router.push({ name: "Login" })
+	try {
+		await session.logout()
+		router.push({ name: "Login" })
+	} catch (e) {
+		console.error("Error logging you out")
+		alert("Error logging your out!")
+	}
 }
 
 const refreshToken = async () => {

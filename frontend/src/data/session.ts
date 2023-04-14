@@ -84,16 +84,25 @@ export const session = reactive({
 		await Preferences.set({ key: SESSION_OBJECT_KEY, value: sessionObject })
 	},
 	async logout() {
+		if (!this.auth) {
+			throw Error("Login before you logout")
+		}
+
+		await OAuth2Client.logout(
+			{
+				logoutUrl:
+					`${this.baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
+				additionalParameters: {
+					token: this.auth.accessToken,
+				},
+			},
+		)
+
 		// Clear session storage
 		await Preferences.remove({ key: SESSION_OBJECT_KEY })
-
-		// TODO: Revoke Auth Token in backend
-		await OAuth2Client.logout({
-			logoutUrl: `${this.baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
-		})
-
 		this.clearSessionState()
 	},
+
 	async fetchAndSetUserInfo() {
 		if (!this.auth) {
 			return
