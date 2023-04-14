@@ -95,11 +95,15 @@ The **Customisation Form** and the **Role Permission Manager** are very powerful
 
 This project has been developed in collaboration with [Azim Premji Foundation](https://azimpremjifoundation.org/philanthropy). Frappe Changemakers is being currently *used in production* by two of the partner organisations of APF to run the Homeless Care programme in Bangalore (Smile Care) and Chennai (Madras School of Social Work). They plan to roll-out the programme pan-India in the near future.
 
-## Progressive Web App / Mobile App [ALPHA]
+## Mobile App [ALPHA]
 
-![PWA Teaser](https://user-images.githubusercontent.com/34810212/225822781-c40b0581-a925-49a4-9893-08aab90eaf6f.png)
+![Mobile Teaser](https://user-images.githubusercontent.com/34810212/225822781-c40b0581-a925-49a4-9893-08aab90eaf6f.png)
 
-The mobile frontend is still a work in progress, but you can try out the alpha version by visiting `/c` in your site with *Changemakers* installed.
+The mobile frontend is still a work in progress, you can get the android app running by installing the dependencies, ionic CLI and doing:
+
+```bash
+ionic cap run android
+```
 
 ## User Manual
 
