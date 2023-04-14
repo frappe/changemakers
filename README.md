@@ -5,7 +5,6 @@
 <p align="center">
 
 ![Server Tests](https://github.com/frappe/changemakers/actions/workflows/ci.yml/badge.svg)
-![e2e Tests](https://github.com/frappe/changemakers/actions/workflows/playwright.yml/badge.svg)
 
 </p>
 
