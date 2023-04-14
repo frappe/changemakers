@@ -52,6 +52,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, onMounted } from "vue"
+import { Geolocation } from "@capacitor/geolocation"
 import { Autocomplete, ErrorMessage, createResource } from "frappe-ui"
 const props = defineProps({
 	type: String,
@@ -82,8 +83,9 @@ function onBlur() {
 	props.validation.setTouched(true)
 }
 
-function handleGeoLocationFetchError() {
-	alert("Please enable location access to proceed")
+function handleGeoLocationFetchError(e) {
+	console.error(e)
+	alert("Error getting device location!")
 }
 
 function getFormattedGeolocation(geoCoordinates: {
@@ -113,10 +115,11 @@ onMounted(() => {
 	}
 
 	if (props.type === "geolocation") {
-		// fetch geolocation
-		navigator.geolocation.getCurrentPosition((position) => {
-			emit("update:modelValue", getFormattedGeolocation(position.coords))
-		}, handleGeoLocationFetchError)
+		Geolocation.getCurrentPosition()
+			.then((position) => {
+				emit("update:modelValue", getFormattedGeolocation(position.coords))
+			})
+			.catch(handleGeoLocationFetchError)
 	}
 })
 </script>

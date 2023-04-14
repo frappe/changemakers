@@ -3,25 +3,31 @@
 		<ion-content :fullscreen="true">
 			<div class="m-4 flex h-full flex-col justify-center">
 				<Card title="Login to Changemakers">
-					<form class="flex flex-col space-y-3" @submit.prevent="submit">
+					<div class="space-y-2">
 						<Input
-							required
-							name="email"
-							type="text"
-							placeholder="johndoe@mail.com"
-							:label="t('auth.email')"
+							v-model="selectedOrg"
+							label="Organisation"
+							type="select"
+							:options="Object.keys(instanceMappings)"
 						/>
+
 						<Input
-							required
-							name="password"
-							type="password"
-							placeholder="••••••"
-							:label="t('auth.password')"
+							v-if="selectedOrg"
+							v-model="selectedInstance"
+							label="Instance/Project"
+							type="select"
+							:options="instanceOptions"
 						/>
-						<Button :loading="session.login.loading" appearance="primary">{{
-							t("auth.login")
-						}}</Button>
-					</form>
+
+						<Button
+							class="mt-2"
+							v-if="baseURL"
+							:loading="isAuthenticating"
+							@click="loginClick"
+							appearance="primary"
+							>{{ t("auth.login") + " with Frappe OAuth" }}</Button
+						>
+					</div>
 				</Card>
 			</div>
 		</ion-content>
@@ -29,22 +35,67 @@
 </template>
 
 <script lang="ts" setup>
-import { inject } from "vue"
 import { useI18n } from "vue-i18n"
-
+import { useRouter } from "vue-router"
 import { IonPage, IonContent } from "@ionic/vue"
+import { inject, ref, watch, computed } from "vue"
 
+import instanceMappings from "@/data/instanceMappings"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
 
 const { t } = useI18n()
 const session = inject(sessionInjectionKey)
+const router = useRouter()
 
-function submit(e) {
-	let formData = new FormData(e.target)
-	console.log(formData)
-	session.login.submit({
-		email: formData.get("email").toString(),
-		password: formData.get("password").toString(),
-	})
+const isAuthenticating = ref(false)
+
+// Hardcoded for now, can be set onMount to respective 1sts
+const selectedOrg = ref("Azim Premji Foundation")
+const selectedInstance = ref("Bangalore")
+
+const instanceOptions = computed(() => {
+	if (!selectedOrg.value) {
+		return []
+	}
+	return Object.keys(instanceMappings[selectedOrg.value]).sort()
+})
+
+const baseURL = computed(() => {
+	if (!selectedInstance.value) {
+		return null
+	}
+
+	return instanceMappings[selectedOrg.value][selectedInstance.value].url
+})
+
+const clientID = computed(() => {
+	if (!selectedInstance.value) {
+		return null
+	}
+
+	return instanceMappings[selectedOrg.value][selectedInstance.value].clientID
+})
+
+watch(selectedOrg, (newValue) => {
+	if (newValue) {
+		// Select the first instance by default
+		selectedInstance.value = Object.keys(instanceMappings[newValue]).sort()[0]
+	}
+})
+
+async function loginClick(e) {
+	isAuthenticating.value = true
+	try {
+		session.setInstanceDetails(baseURL.value, clientID.value)
+		await session.authenticateWithFrappeOAuth()
+		router.push({ name: "Home" })
+	} catch {
+		alert("Something went wrong!")
+		console.error(
+			"Something went wrong while authenticating through Frappe OAuth..."
+		)
+	} finally {
+		isAuthenticating.value = false
+	}
 }
 </script>
