@@ -35,12 +35,13 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, ref, watch, computed } from "vue"
 import { useI18n } from "vue-i18n"
-import { sessionInjectionKey } from "@/typing/InjectionKeys"
-import { IonPage, IonContent } from "@ionic/vue"
 import { useRouter } from "vue-router"
+import { IonPage, IonContent } from "@ionic/vue"
+import { inject, ref, watch, computed } from "vue"
+
 import instanceMappings from "@/data/instanceMappings"
+import { sessionInjectionKey } from "@/typing/InjectionKeys"
 
 const { t } = useI18n()
 const session = inject(sessionInjectionKey)
