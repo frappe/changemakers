@@ -1,3 +1,4 @@
+// TODO: Can be loaded from an API later
 const instanceMappings = {
 	"Azim Premji Foundation": {
 		Chennai: {

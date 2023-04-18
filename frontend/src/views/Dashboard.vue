@@ -32,14 +32,10 @@ import { useI18n } from "vue-i18n"
 import { RouterLink } from "vue-router"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
-import { IonDatetime, IonDatetimeButton, IonModal } from "@ionic/vue"
 
 import { createDocumentResource } from "frappe-ui"
 import { DocumentResource } from "@/typing/resource"
 import { Beneficiary } from "@/../types/FrappeChangemakers/Beneficiary"
-import { ref } from "vue"
-
-const datetime = ref(null)
 
 const { t } = useI18n()
 
@@ -47,10 +43,6 @@ const beneficiaryDoc: DocumentResource<Beneficiary> = createDocumentResource({
 	doctype: "Beneficiary",
 	name: "BENE-2022-12-00002",
 })
-
-function handleDatetimeChange(e) {
-	console.log(e)
-}
 
 beneficiaryDoc.reload()
 </script>
