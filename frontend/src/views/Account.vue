@@ -23,9 +23,6 @@
 						/>
 					</div>
 				</Card>
-				<Button appearance="white" @click="refreshToken"
-					>Refresh Access Token</Button
-				>
 				<Button class="text-red-500" appearance="white" @click="logout">{{
 					t("auth.logout")
 				}}</Button>
@@ -66,10 +63,5 @@ const logout = async () => {
 		console.error("Error logging you out")
 		alert("Error logging your out!")
 	}
-}
-
-const refreshToken = async () => {
-	const response = await session.refreshAccessToken()
-	console.log(response)
 }
 </script>

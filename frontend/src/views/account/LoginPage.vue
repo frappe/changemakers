@@ -25,7 +25,7 @@
 							:loading="isAuthenticating"
 							@click="loginClick"
 							appearance="primary"
-							>{{ t("auth.login") + " with Frappe OAuth" }}</Button
+							>{{ t("auth.login") + " with Frappe" }}</Button
 						>
 					</div>
 				</Card>
