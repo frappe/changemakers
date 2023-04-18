@@ -1,6 +1,8 @@
 <template>
 	<div v-if="formIsReady" class="relative bg-white">
+		<PhotoAttach />
 		<SchemaFormWithValidation
+			v-if="false"
 			@submit="handleFormSubmit"
 			class="mb-9 space-y-2 p-4"
 			:schema="formFields.data"
@@ -37,6 +39,8 @@ import {
 	createDocumentResource,
 	ErrorMessage,
 } from "frappe-ui"
+
+import PhotoAttach from "@/components/PhotoAttach.vue"
 
 const props = defineProps({
 	doctype: {
