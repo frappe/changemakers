@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
 	webDir: "../changemakers/public/frontend",
 	bundledWebRuntime: false,
 	server: {
-		url: "http://192.168.29.136:8080/",
+		url: "http://192.168.0.103:8080/",
 		cleartext: true,
 	},
 	plugins: {

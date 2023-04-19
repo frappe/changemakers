@@ -922,6 +922,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@phosphor-icons/vue@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@phosphor-icons/vue/-/vue-2.0.1.tgz#d596424ac58d51b1c35d40af83f426171bb65e23"
+  integrity sha512-2p2yuNnZpLknFgl/JGoJIWqoQwSBclxBikcRb7FPBhVEmPzxSoXPwhPK6SGgn9DyQnouMYK7M8LB2+csEiRS9A==
+
 "@popperjs/core@^2.11.2", "@popperjs/core@^2.9.0":
   version "2.11.6"
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"

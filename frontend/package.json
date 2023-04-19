@@ -28,6 +28,7 @@
     "@ionic/core": "^7.0.0",
     "@ionic/vue": "^7.0.0",
     "@ionic/vue-router": "^7.0.0",
+    "@phosphor-icons/vue": "^2.0.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.11.7",
     "formvuelate": "^3.9.1",

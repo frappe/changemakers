@@ -1,8 +1,11 @@
 <template>
-	<div v-if="formIsReady" class="relative bg-white">
-		<PhotoAttach />
+	<div class="relative bg-white">
+		<PhotoAttach
+			:previewMode="isImageAttachStepComplete"
+			@complete="handleImageAttachComplete"
+		/>
 		<SchemaFormWithValidation
-			v-if="false"
+			v-if="isImageAttachStepComplete && formIsReady"
 			@submit="handleFormSubmit"
 			class="mb-9 space-y-2 p-4"
 			:schema="formFields.data"
@@ -27,8 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import * as yup from "yup"
-import { computed, onMounted, ref, shallowRef, watch } from "vue"
+import { computed, onMounted, ref, shallowRef } from "vue"
 import { useRouter } from "vue-router"
 import { useSchemaForm } from "formvuelate"
 import { SchemaFormWithValidation } from "@/utils/form"
@@ -73,7 +75,10 @@ const document = createDocumentResource({
 	name: props.id,
 	fields: "*",
 })
+
 let formModel = ref({})
+let attachedImages = []
+const isImageAttachStepComplete = ref(false)
 
 useSchemaForm(formModel)
 
@@ -167,4 +172,10 @@ const formIsReady = computed(() => {
 })
 
 formFields.reload()
+
+const handleImageAttachComplete = ({ images }) => {
+	attachedImages = images
+	isImageAttachStepComplete.value = true
+	console.log(`${images.length} images attached.`)
+}
 </script>

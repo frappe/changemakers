@@ -1,21 +1,55 @@
 <template>
-	<Card title="Attach Photos">
-		<div>
-			<img v-if="imageSource" :src="imageSource" />
+	<div class="mb-5 space-y-4 px-4 py-3">
+		<h2 class="text-base text-gray-600">
+			{{ props.previewMode ? "Image Attachments" : "Attach Images" }}
+		</h2>
+
+		<!-- Capture Button + Preview of captured images -->
+		<div
+			class="grid w-full grid-cols-5 items-center justify-between object-center"
+		>
+			<img
+				v-for="image in images"
+				:key="image.filename"
+				class="h-16 w-16 rounded-md object-cover shadow-md"
+				:src="image.data"
+			/>
+
+			<button
+				@click="takePicture"
+				v-if="images.length < 5 && !props.previewMode"
+				class="flex h-16 w-16 items-center justify-center rounded-md shadow-md"
+			>
+				<PhCamera size="24" color="#74808B" />
+			</button>
 		</div>
 
-		<Button @click="showPicture" appearance="white">Show Picture</Button>
-	</Card>
+		<Button
+			v-if="!props.previewMode"
+			@click="handleComplete"
+			appearance="primary"
+			>Next</Button
+		>
+	</div>
 </template>
 
 <script lang="ts" setup>
-import { Filesystem, Directory, Encoding } from "@capacitor/filesystem"
+import { Filesystem, Directory } from "@capacitor/filesystem"
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera"
-import { ref } from "vue"
+import { reactive, ref, unref } from "vue"
 import { nanoid } from "nanoid"
-import { Capacitor } from "@capacitor/core"
+import { PhCamera } from "@phosphor-icons/vue"
 
 const imageSource = ref()
+const images = reactive([])
+
+const props = defineProps({
+	previewMode: {
+		type: Boolean,
+		default: false,
+	},
+})
+const emit = defineEmits(["complete"])
 
 const takePicture = async () => {
 	const image = await Camera.getPhoto({
@@ -37,21 +71,25 @@ const takePicture = async () => {
 			directory: Directory.Data,
 		})
 
-		console.log("file name: ", filename)
-		console.log("photoUri", savedPhotoFile.uri)
+		const imageData = await getBase64ImageFromFileSystem(savedPhotoFile.uri)
+		images.push({
+			filename: filename,
+			data: imageData,
+			uploaded: false,
+		})
 	} catch (e) {
-		console.log("Error saving image file")
-		console.log(e)
+		alert("Error saving or loading image file")
+		console.error(e)
 	}
 }
 
-const showPicture = async () => {
-	const fileURI =
-		"file:///data/user/0/io.frappe.changemakers/files/rescue-photo-t2vHhBZndhDDVdQZjC-Yo.jpeg"
+const getBase64ImageFromFileSystem = async (uri) => {
+	const file = await Filesystem.readFile({ path: uri })
+	return "data:image/png;base64, " + file.data
+}
 
-	const file = await Filesystem.readFile({ path: fileURI })
-
-	imageSource.value = "data:image/png;base64, " + file.data
+const handleComplete = () => {
+	emit("complete", { images: unref(images) })
 }
 
 // TODO
