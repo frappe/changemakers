@@ -20,7 +20,7 @@
 				v-if="images.length < 5 && !props.previewMode"
 				class="flex h-16 w-16 items-center justify-center rounded-md shadow-md"
 			>
-				<PhCamera size="24" color="#74808B" />
+				<PhCameraPlus size="24" color="#74808B" />
 			</button>
 		</div>
 
@@ -38,7 +38,7 @@ import { Filesystem, Directory } from "@capacitor/filesystem"
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera"
 import { reactive, ref, unref } from "vue"
 import { nanoid } from "nanoid"
-import { PhCamera } from "@phosphor-icons/vue"
+import { PhCameraPlus } from "@phosphor-icons/vue"
 
 const imageSource = ref()
 const images = reactive([])
