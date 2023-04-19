@@ -85,7 +85,7 @@ const takePicture = async () => {
 
 const getBase64ImageFromFileSystem = async (uri) => {
 	const file = await Filesystem.readFile({ path: uri })
-	return "data:image/png;base64, " + file.data
+	return `data:image/jpeg;base64,${file.data}`
 }
 
 const handleComplete = () => {
