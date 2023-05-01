@@ -44,8 +44,8 @@ import { Filesystem, Directory } from "@capacitor/filesystem"
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera"
 import { reactive, ref, unref } from "vue"
 import { nanoid } from "nanoid"
-import { createResource } from "frappe-ui"
 import { PhCameraPlus } from "@phosphor-icons/vue"
+import { useFileUploaderResource } from "@/composables/index"
 
 const imageSource = ref()
 const images = reactive([])
@@ -100,18 +100,14 @@ const handleComplete = () => {
 	emit("complete", { images: unref(images) })
 }
 
-const uploadImage = async (filename, base64ImageString) => {
-	let uploadFile = createResource({
-		url: "changemakers.api.upload_base64_file",
-		params: {
-			content: base64ImageString,
-			dt: "Rescue",
-			dn: "3fe7326aa7",
-			filename,
-			fieldname: "police_memo",
-		},
+const uploadImage = async (fileName, base64ImageString) => {
+	const imageUploader = useFileUploaderResource({
+		content: base64ImageString,
+		documentType: "Rescue",
+		documentName: "3fe7326aa7",
+		fileName,
 	})
-	uploadFile.submit()
+	imageUploader.submit()
 }
 
 // TODO
