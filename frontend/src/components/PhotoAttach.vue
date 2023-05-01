@@ -47,7 +47,10 @@ import { Camera, CameraResultType, CameraSource } from "@capacitor/camera"
 import { reactive, ref, unref } from "vue"
 import { nanoid } from "nanoid"
 import { PhCameraPlus } from "@phosphor-icons/vue"
-import { useFileUploaderResource } from "@/composables/index"
+import {
+	useFileUploaderResource,
+	FileAttachmentUploader,
+} from "@/composables/index"
 
 const imageSource = ref()
 const images = reactive([])
@@ -113,32 +116,11 @@ const uploadImage = async (fileName, base64ImageString) => {
 	imageUploader.submit()
 }
 
-function getFileReader(): FileReader {
-	const fileReader = new FileReader()
-	const zoneOriginalInstance = (fileReader as any)[
-		"__zone_symbol__originalInstance"
-	]
-	return zoneOriginalInstance || fileReader
-}
-
-const fileContents = ref("")
-
 const handleFileSelect = async (e) => {
 	try {
-		const reader = getFileReader()
-		reader.onload = () => {
-			console.log("Loaded successfully ✅")
-			fileContents.value = reader.result.toString().split(",")[1]
-
-			const uploader = useFileUploaderResource({
-				content: fileContents.value,
-				documentType: "Rescue",
-				documentName: "3fe7326aa7",
-				fileName: e.target.files[0].name,
-			})
-			uploader.submit()
-		}
-		reader.readAsDataURL(e.target.files[0])
+		const fileAttachmentUploader = new FileAttachmentUploader(e.target.files[0])
+		fileAttachmentUploader.upload("Rescue", "3fe7326aa7")
+		console.log(fileAttachmentUploader.loading)
 	} catch (e) {
 		console.error("unable to read file from system")
 	}
