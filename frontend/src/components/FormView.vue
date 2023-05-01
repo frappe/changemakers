@@ -136,6 +136,8 @@ const DocTypeList = createListResource({
 
 function handleCreateNew() {
 	DocTypeList.insert.submit(formModel.value)
+
+	// TODO: On Success, upload the images
 }
 
 function handleUpdate() {
@@ -174,7 +176,7 @@ const formIsReady = computed(() => {
 formFields.reload()
 
 const handleImageAttachComplete = ({ images }) => {
-	attachedImages = images
+	attachedImages = images // TODO: Maybe save to preferences for retry
 	isImageAttachStepComplete.value = true
 	console.log(`${images.length} images attached.`)
 }

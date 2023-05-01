@@ -30,6 +30,12 @@
 			appearance="primary"
 			>Next</Button
 		>
+
+		<Button
+			v-if="images.length > 0"
+			@click="uploadImage(images[0].filename, images[0].base64String)"
+			>Test Upload</Button
+		>
 	</div>
 </template>
 
@@ -38,6 +44,7 @@ import { Filesystem, Directory } from "@capacitor/filesystem"
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera"
 import { reactive, ref, unref } from "vue"
 import { nanoid } from "nanoid"
+import { createResource } from "frappe-ui"
 import { PhCameraPlus } from "@phosphor-icons/vue"
 
 const imageSource = ref()
@@ -74,8 +81,9 @@ const takePicture = async () => {
 		const imageData = await getBase64ImageFromFileSystem(savedPhotoFile.uri)
 		images.push({
 			filename: filename,
-			data: imageData,
+			data: `data:image/jpeg;base64,${imageData}`,
 			uploaded: false,
+			base64String: imageData,
 		})
 	} catch (e) {
 		alert("Error saving or loading image file")
@@ -85,11 +93,25 @@ const takePicture = async () => {
 
 const getBase64ImageFromFileSystem = async (uri) => {
 	const file = await Filesystem.readFile({ path: uri })
-	return `data:image/jpeg;base64,${file.data}`
+	return `${file.data}`
 }
 
 const handleComplete = () => {
 	emit("complete", { images: unref(images) })
+}
+
+const uploadImage = async (filename, base64ImageString) => {
+	let uploadFile = createResource({
+		url: "changemakers.api.upload_base64_file",
+		params: {
+			content: base64ImageString,
+			dt: "Rescue",
+			dn: "3fe7326aa7",
+			filename,
+			fieldname: "police_memo",
+		},
+	})
+	uploadFile.submit()
 }
 
 // TODO

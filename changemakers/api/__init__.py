@@ -1,3 +1,5 @@
+from mimetypes import guess_type
+
 import frappe
 
 from changemakers.utils.form import get_doctype_title_field
@@ -48,3 +50,28 @@ def get_doctype_options(doctype):
 
 	# maybe paginate later
 	return {"docs": frappe.get_all(doctype, fields=fields), "title_field": title_field}
+
+
+@frappe.whitelist()
+def upload_base64_file(content, filename, dt=None, dn=None, fieldname=None):
+	import base64
+
+	from frappe.handler import ALLOWED_MIMETYPES
+
+	decoded_content = base64.b64decode(content)
+	content_type = guess_type(filename)[0]
+	if content_type not in ALLOWED_MIMETYPES:
+		frappe.throw("You can only upload JPG, PNG, PDF, TXT or Microsoft documents.")
+
+	return frappe.get_doc(
+		{
+			"doctype": "File",
+			"attached_to_doctype": dt,
+			"attached_to_name": dn,
+			"attached_to_field": fieldname,
+			"folder": "Home",
+			"file_name": filename,
+			"content": decoded_content,
+			"is_private": 1,
+		}
+	).save(ignore_permissions=True)

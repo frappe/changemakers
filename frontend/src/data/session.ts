@@ -15,6 +15,7 @@ export interface User {
 
 export interface Session {
 	user: User | null
+	baseURL: string
 	setInstanceDetails: (baseURL: string, clientID: string) => void
 	initializeSessionFromPreferences: () => void
 	authenticateWithFrappeOAuth: () => void
