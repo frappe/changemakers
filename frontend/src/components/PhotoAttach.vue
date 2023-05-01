@@ -36,6 +36,8 @@
 			@click="uploadImage(images[0].filename, images[0].base64String)"
 			>Test Upload</Button
 		>
+
+		<input type="file" accept="application/pdf" @change="handleFileSelect" />
 	</div>
 </template>
 
@@ -91,9 +93,10 @@ const takePicture = async () => {
 	}
 }
 
+// TODO: Rename to a generic utility
 const getBase64ImageFromFileSystem = async (uri) => {
 	const file = await Filesystem.readFile({ path: uri })
-	return `${file.data}`
+	return file.data
 }
 
 const handleComplete = () => {
@@ -108,6 +111,37 @@ const uploadImage = async (fileName, base64ImageString) => {
 		fileName,
 	})
 	imageUploader.submit()
+}
+
+function getFileReader(): FileReader {
+	const fileReader = new FileReader()
+	const zoneOriginalInstance = (fileReader as any)[
+		"__zone_symbol__originalInstance"
+	]
+	return zoneOriginalInstance || fileReader
+}
+
+const fileContents = ref("")
+
+const handleFileSelect = async (e) => {
+	try {
+		const reader = getFileReader()
+		reader.onload = () => {
+			console.log("Loaded successfully ✅")
+			fileContents.value = reader.result.toString().split(",")[1]
+
+			const uploader = useFileUploaderResource({
+				content: fileContents.value,
+				documentType: "Rescue",
+				documentName: "3fe7326aa7",
+				fileName: e.target.files[0].name,
+			})
+			uploader.submit()
+		}
+		reader.readAsDataURL(e.target.files[0])
+	} catch (e) {
+		console.error("unable to read file from system")
+	}
 }
 
 // TODO
