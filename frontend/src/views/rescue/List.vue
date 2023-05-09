@@ -13,29 +13,36 @@
 					</Button>
 					<h2 class="p-0 text-2xl font-semibold text-gray-900">Rescues</h2>
 				</div>
-				<RouterLink v-if="rescues.data" :to="{ name: 'NewRescueForm' }" v-slot="{ navigate }">
-					<Button @click="navigate" appearance="primary" icon-left="plus">New</Button>
+				<RouterLink
+					v-if="showRescues"
+					:to="{ name: 'NewRescueForm' }"
+					v-slot="{ navigate }"
+				>
+					<Button @click="navigate" appearance="primary" icon-left="plus"
+						>New</Button
+					>
 				</RouterLink>
 			</div>
 
-			<div class="m-4 flex flex-row items-center space-x-1" v-if="rescues.data">
-				<Input
-					type="text"
-					placeholder="Search by beneficiary name"
-					icon-left="search"
-					class="w-full rounded-full bg-white py-1 focus:bg-white"
-					v-model="searchQuery"
-				/>
+			<div class="m-4 space-y-3" v-if="showRescues">
+				<div class="flex flex-row items-center space-x-1">
+					<Input
+						type="text"
+						placeholder="Search by beneficiary name"
+						icon-left="search"
+						class="w-full rounded-full bg-white py-1 focus:bg-white"
+						@input="(v) => (searchQuery = v)"
+						:modelValue="searchQuery"
+					/>
 
-				<Button
-					appearance="white"
-					icon="filter"
-					class="rounded-full p-3 h-full"
-				></Button>
-			</div>
-			
-			<div class="m-4">
-				<div v-if="rescues.data"> 
+					<Button
+						appearance="white"
+						icon="filter"
+						class="h-full rounded-full p-3"
+					></Button>
+				</div>
+
+				<div>
 					<ul>
 						<li
 							v-for="rescue in filteredRescue"
@@ -70,28 +77,44 @@
 											>
 										</div>
 									</div>
-	
+
 									<div>
-										<FeatherIcon class="h-[18px] w-[18px]" name="chevron-right" />
+										<FeatherIcon
+											class="h-[18px] w-[18px]"
+											name="chevron-right"
+										/>
 									</div>
 								</a>
 							</router-link>
 						</li>
 					</ul>
 				</div>
-				<div v-else class="flex h-full flex-col items-center justify-center gap-y-1.5">
-					<h3 class="font-medium">No rescue data yet</h3>
-					<RouterLink :to="{ name: 'NewRescueForm' }" v-slot="{ navigate }" class="w-full flex justify-center">
-						<Button @click="navigate" appearance="primary" icon-left="plus" class="w-1/2 h-10">Add Rescue Data</Button>
-					</RouterLink>
-				</div>
+			</div>
+			<div
+				v-else
+				class="flex h-full flex-col items-center justify-center gap-y-1.5"
+			>
+				<h3 class="font-medium">No rescue data yet</h3>
+				<RouterLink
+					:to="{ name: 'NewRescueForm' }"
+					v-slot="{ navigate }"
+					class="flex w-full justify-center"
+				>
+					<Button
+						@click="navigate"
+						appearance="primary"
+						icon-left="plus"
+						class="h-10 w-1/2"
+						>Add Rescue Data</Button
+					>
+				</RouterLink>
 			</div>
 		</ion-content>
 	</ion-page>
 </template>
 
 <script lang="ts" setup>
-import { inject, ref, computed} from "vue"
+import { inject, ref, computed } from "vue"
 import { createListResource, FeatherIcon } from "frappe-ui"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
@@ -112,11 +135,19 @@ const dayjs = inject(dayjsInjectionKey)
 const router = useRouter()
 
 // searchQuery.value contains the input value of the search bar
-const searchQuery = ref('');
+const searchQuery = ref("")
 
 // filterRescue function will filter the rescues list, and return the rescue list where the Beneficiary name contains the 'searchQuery' element.
-const filteredRescue = computed(()=> {
-	return rescues.data.filter(rescue => `${rescue.first_name} ${rescue.last_name}`.toLowerCase().includes(searchQuery.value.toLowerCase()))
+const filteredRescue = computed(() => {
+	return rescues.data.filter((rescue) =>
+		`${rescue.first_name} ${rescue.last_name}`
+			.toLowerCase()
+			.includes(searchQuery.value.toLowerCase())
+	)
+})
+
+const showRescues = computed(() => {
+	return rescues.data && !rescues.loading
 })
 
 const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
