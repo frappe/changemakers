@@ -30,7 +30,7 @@
 						type="text"
 						placeholder="Search by beneficiary name"
 						icon-left="search"
-						class="w-full rounded-full bg-white py-1 focus:bg-white"
+						class="w-full rounded-full bg-white p-1 focus:bg-white"
 						@input="(v) => (searchQuery = v)"
 						:modelValue="searchQuery"
 					/>
@@ -38,8 +38,78 @@
 					<Button
 						appearance="white"
 						icon="filter"
-						class="h-full rounded-full p-3"
+						class="h-full rounded-full p-4"
+						@click="showFilterDialog = !showFilterDialog"
 					></Button>
+				</div>
+
+				<div
+					v-if="showFilterDialog"
+					class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+				>
+					<div
+						class="max-w-[90%] rounded-lg bg-white px-5 py-4 text-lg font-semibold text-gray-700"
+					>
+						<div class="flex justify-between">
+							<h3 class="text-xl font-semibold">Filter Rescues</h3>
+							<Button
+								@click="closeFilters"
+								icon-left="x"
+								appearance="minimal"
+								class="w-0"
+							></Button>
+						</div>
+
+						<div class="mt-4 flex flex-col space-y-2">
+							<div class="flex items-center gap-3">
+								<label for="filterGender">Gender</label>
+								<select
+									id="filterGender"
+									v-model="filterGender"
+									class="rounded-md border border-gray-300 text-lg font-semibold text-gray-700"
+								>
+									<option
+										:key="gender"
+										v-for="gender in genderOptions"
+										:value="gender"
+									>
+										{{ gender }}
+									</option>
+								</select>
+							</div>
+							<div class="flex flex-col">
+								<h3>Age</h3>
+								<div class="flex justify-center gap-0">
+									<div class="flex items-center justify-start gap-2 px-3">
+										<label for="filterMinAge" class="font-medium">Min</label>
+										<input
+											type="number"
+											placeholder="0"
+											id="filterMinAge"
+											v-model="filterMinAge"
+											class="w-1/2 rounded-md border border-gray-300 text-center text-lg font-semibold text-gray-700"
+										/>
+									</div>
+									<div class="flex items-center justify-start gap-3">
+										<label for="filterMaxAge" class="font-medium">Max</label>
+										<input
+											type="number"
+											placeholder="100"
+											id="filterMaxAge"
+											v-model="filterMaxAge"
+											class="w-1/2 rounded-md border border-gray-300 text-center text-lg font-semibold text-gray-700"
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mt-6 flex justify-start gap-3">
+							<Button @click="resetFilters" appearance="danger">Reset</Button>
+							<Button appearance="primary" @click="applyFilters"
+								>Apply Filters</Button
+							>
+						</div>
+					</div>
 				</div>
 
 				<div>
@@ -134,15 +204,56 @@ interface RescueWithBeneficiaryDetails extends Rescue {
 const dayjs = inject(dayjsInjectionKey)
 const router = useRouter()
 
+const showFilterDialog = ref(false)
+const filterGender = ref("")
+const filterMinAge = ref("")
+const filterMaxAge = ref("")
+const filterApplied = ref(false)
+
+const genderOptions = [
+	"",
+	"Male",
+	"Female",
+	"Transgender",
+	"Genderqueer",
+	"Non-Conforming",
+	"Other",
+	"Prefer not to say",
+]
+
+const applyFilters = () => {
+	filterApplied.value = true
+	showFilterDialog.value = false
+}
+
+const resetFilters = () => {
+	filterGender.value = ""
+	filterMinAge.value = ""
+	filterMaxAge.value = ""
+	filterApplied.value = false
+}
+
+const closeFilters = (event) => {
+	showFilterDialog.value = false
+}
+
 // searchQuery.value contains the input value of the search bar
 const searchQuery = ref("")
 
 // filterRescue function will filter the rescues list, and return the rescue list where the Beneficiary name contains the 'searchQuery' element.
 const filteredRescue = computed(() => {
-	return rescues.data.filter((rescue) =>
-		`${rescue.first_name} ${rescue.last_name}`
-			.toLowerCase()
-			.includes(searchQuery.value.toLowerCase())
+	if (!rescues.data) {
+		return []
+	}
+	return rescues.data.filter(
+		(rescue) =>
+			`${rescue.first_name} ${rescue.last_name}`
+				.toLowerCase()
+				.includes(searchQuery.value.toLowerCase()) &&
+			(rescue.gender == filterGender.value || filterGender.value == "") &&
+			(rescue.age >= parseInt(filterMinAge.value) ||
+				filterMinAge.value == "") &&
+			(rescue.age <= parseInt(filterMaxAge.value) || filterMaxAge.value == "")
 	)
 })
 
@@ -158,7 +269,7 @@ const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
 		"beneficiary.first_name as first_name",
 		"beneficiary.last_name as last_name",
 		"age",
-		"gender",
+		"gender.gender as gender",
 	],
 	cache: "RescueList",
 	orderBy: "-rescued_at",
