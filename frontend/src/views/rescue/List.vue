@@ -269,7 +269,7 @@ const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
 		"beneficiary.first_name as first_name",
 		"beneficiary.last_name as last_name",
 		"age",
-		"gender.gender as gender",
+		"gender",
 	],
 	cache: "RescueList",
 	orderBy: "-rescued_at",
