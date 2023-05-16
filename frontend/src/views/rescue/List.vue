@@ -39,12 +39,12 @@
 						appearance="white"
 						icon="filter"
 						class="h-full rounded-full p-4"
-						@click="showFilterDialog = !showFilterDialog"
+						@click="filters.showFilterDialog = !filters.showFilterDialog"
 					></Button>
 				</div>
 
 				<div
-					v-if="showFilterDialog"
+					v-if="filters.showFilterDialog"
 					class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
 				>
 					<div
@@ -53,7 +53,7 @@
 						<div class="flex justify-between">
 							<h3 class="text-xl font-semibold">Filter Rescues</h3>
 							<Button
-								@click="closeFilters"
+								@click="filters.showFilterDialog = !filters.showFilterDialog"
 								icon-left="x"
 								appearance="minimal"
 								class="w-0"
@@ -65,7 +65,7 @@
 								<label for="filterGender">Gender</label>
 								<select
 									id="filterGender"
-									v-model="filterGender"
+									v-model="filters.gender"
 									class="rounded-md border border-gray-300 text-lg font-semibold text-gray-700"
 								>
 									<option
@@ -79,14 +79,14 @@
 							</div>
 							<div class="flex flex-col">
 								<h3>Age</h3>
-								<div class="flex justify-center gap-0">
+								<div class="flex justify-center">
 									<div class="flex items-center justify-start gap-2 px-3">
 										<label for="filterMinAge" class="font-medium">Min</label>
 										<input
 											type="number"
 											placeholder="0"
 											id="filterMinAge"
-											v-model="filterMinAge"
+											v-model="filters.minAge"
 											class="w-1/2 rounded-md border border-gray-300 text-center text-lg font-semibold text-gray-700"
 										/>
 									</div>
@@ -96,7 +96,7 @@
 											type="number"
 											placeholder="100"
 											id="filterMaxAge"
-											v-model="filterMaxAge"
+											v-model="filters.maxAge"
 											class="w-1/2 rounded-md border border-gray-300 text-center text-lg font-semibold text-gray-700"
 										/>
 									</div>
@@ -184,7 +184,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, ref, computed } from "vue"
+import { inject, ref, computed, reactive } from "vue"
 import { createListResource, FeatherIcon } from "frappe-ui"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
@@ -204,11 +204,15 @@ interface RescueWithBeneficiaryDetails extends Rescue {
 const dayjs = inject(dayjsInjectionKey)
 const router = useRouter()
 
-const showFilterDialog = ref(false)
-const filterGender = ref("")
-const filterMinAge = ref("")
-const filterMaxAge = ref("")
-const filterApplied = ref(false)
+const searchQuery = ref("")
+
+const filters = reactive({
+	gender: "",
+	minAge: "",
+	maxAge: "",
+	showFilterDialog: false,
+	filterApplied: false,
+})
 
 const genderOptions = [
 	"",
@@ -222,23 +226,16 @@ const genderOptions = [
 ]
 
 const applyFilters = () => {
-	filterApplied.value = true
-	showFilterDialog.value = false
+	filters.filterApplied = true
+	filters.showFilterDialog = false
 }
 
 const resetFilters = () => {
-	filterGender.value = ""
-	filterMinAge.value = ""
-	filterMaxAge.value = ""
-	filterApplied.value = false
+	filters.gender = ""
+	filters.maxAge = ""
+	filters.minAge = ""
+	filters.filterApplied = false
 }
-
-const closeFilters = (event) => {
-	showFilterDialog.value = false
-}
-
-// searchQuery.value contains the input value of the search bar
-const searchQuery = ref("")
 
 // filterRescue function will filter the rescues list, and return the rescue list where the Beneficiary name contains the 'searchQuery' element.
 const filteredRescue = computed(() => {
@@ -250,10 +247,9 @@ const filteredRescue = computed(() => {
 			`${rescue.first_name} ${rescue.last_name}`
 				.toLowerCase()
 				.includes(searchQuery.value.toLowerCase()) &&
-			(rescue.gender == filterGender.value || filterGender.value == "") &&
-			(rescue.age >= parseInt(filterMinAge.value) ||
-				filterMinAge.value == "") &&
-			(rescue.age <= parseInt(filterMaxAge.value) || filterMaxAge.value == "")
+			(rescue.gender == filters.gender || filters.gender == "") &&
+			(rescue.age >= parseInt(filters.minAge) || filters.minAge == "") &&
+			(rescue.age <= parseInt(filters.maxAge) || filters.maxAge == "")
 	)
 })
 
