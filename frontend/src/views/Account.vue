@@ -2,20 +2,25 @@
 	<ion-page>
 		<ion-header>
 			<ion-toolbar>
-				<ion-title>{{ t("headers.my_account", "My Account") }}</ion-title>
+				<ion-title class="text-3xl font-semibold">{{
+					t("headers.my_account", "My Account")
+				}}</ion-title>
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
 			<div v-if="session.user" class="m-6 flex flex-col">
-				<Card :title="t('labels.preferences', 'Preferences')" class="mb-4">
-					<div class="flex flex-col items-center justify-center space-y-1 p-3">
-						<!-- TODO: Switch to an avatar component that renders the initials if no picture if found -->
-						<img :src="session.user.picture" class="h-20 w-20 object-cover" />
-						<h3 class="text-2xl font-semibold">{{ session.user.name }}</h3>
+				<Card
+					:title="t('labels.preferences', 'Preferences')"
+					class="mb-4 rounded-2xl"
+				>
+					<div class="flex flex-col items-center justify-center space-y-3 p-3">
+						<img :src="imageURL" class="h-20 w-20 rounded-full object-cover" />
+						<h3 class="text-2xl font-medium">{{ session.user.name }}</h3>
 					</div>
 
 					<div class="flex-col items-start justify-start">
 						<Input
+							class="rounded-xl py-2"
 							:label="t('preferences.language')"
 							type="select"
 							:options="availableLanguages"
@@ -23,16 +28,19 @@
 						/>
 					</div>
 				</Card>
-				<Button class="text-red-500" appearance="white" @click="logout">{{
-					t("auth.logout")
-				}}</Button>
+				<Button
+					class="rounded-xl py-4 font-medium"
+					appearance="danger"
+					@click="logout"
+					>{{ t("auth.logout") }}</Button
+				>
 			</div>
 		</ion-content>
 	</ion-page>
 </template>
 
 <script lang="ts" setup>
-import { inject } from "vue"
+import { inject, computed } from "vue"
 import { useI18n } from "vue-i18n"
 
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
@@ -49,6 +57,17 @@ import { useRouter } from "vue-router"
 const session = inject(sessionInjectionKey)
 const router = useRouter()
 const { t, locale } = useI18n()
+
+// getting the Initials Avatar from the following website api. It takes both given and fai
+const imageURL = computed(() => {
+	if (session.user.picture !== null) {
+		return session.user.picture
+	} else {
+		return `https://avatar.oxro.io/avatar.svg?name=${session.user.given_name}+${
+			session.user.family_name == null ? "" : session.user.family_name
+		}&background=67B9FF&color=000`
+	}
+})
 
 const availableLanguages = [
 	{ value: "en", label: "English" },
