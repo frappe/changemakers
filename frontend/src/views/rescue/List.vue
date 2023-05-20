@@ -42,7 +42,6 @@
 						@click="filters.showFilterDialog = !filters.showFilterDialog"
 					></Button>
 				</div>
-
 				<div
 					v-if="filters.showFilterDialog"
 					class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
@@ -111,7 +110,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div>
 					<ul>
 						<li
@@ -254,7 +252,7 @@ const filteredRescue = computed(() => {
 })
 
 const showRescues = computed(() => {
-	return rescues.data && !rescues.loading
+	return rescues.data.length && !rescues.loading
 })
 
 const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
