@@ -18,12 +18,13 @@
 			<button
 				@click="takePicture"
 				v-if="images.length < 5 && !props.previewMode"
-				class="flex h-16 w-16 items-center justify-center rounded-md shadow-md"
+				class="flex h-16 w-16 items-center justify-center rounded-full shadow-md"
 			>
 				<PhCameraPlus size="24" color="#74808B" />
 			</button>
 		</div>
 
+		<!-- <input type="file" accept="application/pdf" @change="handleFileSelect" /> -->
 		<Button
 			v-if="!props.previewMode"
 			@click="handleComplete"
@@ -36,8 +37,6 @@
 			@click="uploadImage(images[0].filename, images[0].base64String)"
 			>Test Upload</Button
 		>
-
-		<input type="file" accept="application/pdf" @change="handleFileSelect" />
 	</div>
 </template>
 
@@ -67,7 +66,7 @@ const takePicture = async () => {
 	const image = await Camera.getPhoto({
 		allowEditing: false,
 		resultType: CameraResultType.Base64,
-		source: CameraSource.Camera,
+		source: CameraSource.Prompt,
 	})
 
 	// Can be set to the src of an image now
@@ -110,7 +109,7 @@ const uploadImage = async (fileName, base64ImageString) => {
 	const imageUploader = useFileUploaderResource({
 		content: base64ImageString,
 		documentType: "Rescue",
-		documentName: "3fe7326aa7",
+		documentName: "3cb9979bc9",
 		fileName,
 	})
 	imageUploader.submit()
