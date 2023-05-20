@@ -252,7 +252,7 @@ const filteredRescue = computed(() => {
 })
 
 const showRescues = computed(() => {
-	return rescues.data.length && !rescues.loading
+	return rescues.data?.length && !rescues.loading
 })
 
 const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
