@@ -3,7 +3,6 @@
 		<h2 class="text-base text-gray-600">
 			{{ props.previewMode ? "Image Attachments" : "Attach Images" }}
 		</h2>
-
 		<!-- Capture Button + Preview of captured images -->
 		<div
 			class="grid w-full grid-cols-5 items-center justify-between object-center"
@@ -11,31 +10,29 @@
 			<img
 				v-for="image in images"
 				:key="image.filename"
-				class="h-16 w-16 rounded-md object-cover shadow-md"
+				class="h-16 w-16 rounded-lg object-cover shadow-md"
 				:src="image.data"
 			/>
 
 			<button
 				@click="takePicture"
 				v-if="images.length < 5 && !props.previewMode"
-				class="flex h-16 w-16 items-center justify-center rounded-full shadow-md"
+				class="flex h-16 w-16 items-center justify-center rounded-lg shadow-md"
 			>
 				<PhCameraPlus size="24" color="#74808B" />
 			</button>
 		</div>
-
-		<!-- <input type="file" accept="application/pdf" @change="handleFileSelect" /> -->
+		<div
+			v-if="images?.length == 0 && props.previewMode"
+			class="flex justify-center align-middle text-sm text-gray-600"
+		>
+			No Attachments
+		</div>
 		<Button
 			v-if="!props.previewMode"
 			@click="handleComplete"
 			appearance="primary"
-			>Next</Button
-		>
-
-		<Button
-			v-if="images.length > 0"
-			@click="uploadImage(images[0].filename, images[0].base64String)"
-			>Test Upload</Button
+			>{{ images.length > 0 ? "Next" : "Skip" }}</Button
 		>
 	</div>
 </template>
@@ -43,13 +40,17 @@
 <script lang="ts" setup>
 import { Filesystem, Directory } from "@capacitor/filesystem"
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera"
-import { reactive, ref, unref } from "vue"
+import { computed, reactive, ref, unref, onMounted, inject } from "vue"
 import { nanoid } from "nanoid"
 import { PhCameraPlus } from "@phosphor-icons/vue"
 import {
 	useFileUploaderResource,
 	FileAttachmentUploader,
 } from "@/composables/index"
+import { createResource } from "frappe-ui"
+import { sessionInjectionKey } from "@/typing/InjectionKeys"
+
+const session = inject(sessionInjectionKey)
 
 const imageSource = ref()
 const images = reactive([])
@@ -59,7 +60,40 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	doctype: {
+		type: String,
+		required: true,
+	},
+	id: {
+		type: String,
+		required: false,
+	},
 })
+
+let attachedImages = createResource({
+	url: "changemakers.api.get_attached_images",
+	params: {
+		doctype: props.doctype,
+		names: [props.id],
+	},
+	onSuccess(d) {
+		d = d[props.id].map((image) => {
+			return {
+				filename: image,
+				data: image,
+			}
+		})
+		console.log(d)
+		images.push(...d)
+	},
+})
+
+onMounted(() => {
+	if (props.id) {
+		attachedImages.fetch()
+	}
+})
+
 const emit = defineEmits(["complete"])
 
 const takePicture = async () => {
@@ -73,7 +107,7 @@ const takePicture = async () => {
 	imageSource.value = "data:image/png;base64, " + image.base64String
 
 	// save the file
-	const filename = `rescue-photo-${nanoid()}.jpeg`
+	const filename = `${props.doctype}-photo-${nanoid()}.jpeg`
 
 	try {
 		const savedPhotoFile = await Filesystem.writeFile({
@@ -103,16 +137,6 @@ const getBase64ImageFromFileSystem = async (uri) => {
 
 const handleComplete = () => {
 	emit("complete", { images: unref(images) })
-}
-
-const uploadImage = async (fileName, base64ImageString) => {
-	const imageUploader = useFileUploaderResource({
-		content: base64ImageString,
-		documentType: "Rescue",
-		documentName: "3cb9979bc9",
-		fileName,
-	})
-	imageUploader.submit()
 }
 
 const handleFileSelect = async (e) => {

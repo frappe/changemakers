@@ -16,7 +16,7 @@ const instanceMappings = {
 			clientID: "f592ecba60",
 		},
 		Dev: {
-			url: "https://apf-changemakers-staging.frappe.cloud",
+			url: "https://harsh-changemakers.frappe.cloud",
 			clientID: "f592ecba60",
 		},
 	},

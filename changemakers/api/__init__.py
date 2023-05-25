@@ -1,3 +1,4 @@
+import json
 from mimetypes import guess_type
 
 import frappe
@@ -75,3 +76,30 @@ def upload_base64_file(content, filename, dt=None, dn=None, fieldname=None):
 			"is_private": 1,
 		}
 	).save(ignore_permissions=True)
+
+
+@frappe.whitelist()
+def get_attached_images(doctype: str, names: list[str] | str) -> frappe._dict:
+	"""get list of image urls attached in form
+	returns {name: ['image.jpg', 'image.png']}"""
+
+	if isinstance(names, str):
+		names = json.loads(names)
+
+	img_urls = frappe.db.get_list(
+		"File",
+		filters={
+			"attached_to_doctype": doctype,
+			"attached_to_name": ("in", names),
+			"is_folder": 0,
+		},
+		fields=["file_url", "attached_to_name as docname", "name"],
+	)
+
+	out = frappe._dict()
+	for i in img_urls:
+		filedoc = frappe.get_doc("File", i.name)
+		out[i.docname] = out.get(i.docname, [])
+		out[i.docname].append(filedoc.get_content())
+
+	return out
