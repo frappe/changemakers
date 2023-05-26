@@ -99,10 +99,7 @@ const document = createDocumentResource({
 let formModel = ref({})
 let attachedImages = []
 const isExistingDoc = computed(() => {
-	if (props.id) {
-		return true
-	}
-	return false
+	return Boolean(props.id)
 })
 
 const isImageAttachStepComplete = ref(false)

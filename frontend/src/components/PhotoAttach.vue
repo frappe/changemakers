@@ -74,16 +74,9 @@ let attachedImages = createResource({
 	url: "changemakers.api.get_attached_images",
 	params: {
 		doctype: props.doctype,
-		names: [props.id],
+		name: props.id,
 	},
 	onSuccess(d) {
-		d = d[props.id].map((image) => {
-			return {
-				filename: image,
-				data: image,
-			}
-		})
-		console.log(d)
 		images.push(...d)
 	},
 })
