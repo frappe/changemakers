@@ -77,13 +77,6 @@ let attachedImages = createResource({
 		names: [props.id],
 	},
 	onSuccess(d) {
-		d = d[props.id].map((image) => {
-			return {
-				filename: image,
-				data: image,
-			}
-		})
-		console.log(d)
 		images.push(...d)
 	},
 })
