@@ -1,31 +1,49 @@
 <template>
 	<div class="relative bg-white">
 		<PhotoAttach
-			:previewMode="isImageAttachStepComplete"
+			:previewMode="isExistingDoc || isImageAttachStepComplete"
+			:doctype="props.doctype"
+			:id="props.id"
 			@complete="handleImageAttachComplete"
 		/>
-		<SchemaFormWithValidation
-			v-if="isImageAttachStepComplete && formIsReady"
-			@submit="handleFormSubmit"
-			class="mb-9 space-y-2 p-4"
-			:schema="formFields.data"
+
+		<template
+			v-if="(isExistingDoc || isImageAttachStepComplete) && formIsReady"
 		>
-			<template #afterForm>
-				<ErrorMessage
-					:message="
-						document?.get?.error ||
-						document?.setValue?.error ||
-						DocTypeList.insert.error
-					"
-				/>
-				<Button
-					class="mt-5"
-					appearance="primary"
-					:loading="DocTypeList.insert.loading || document?.setValue.loading"
-					>{{ props.submitButtonLabel }}</Button
-				>
-			</template>
-		</SchemaFormWithValidation>
+			<SchemaFormWithValidation
+				@submit="handleFormSubmit"
+				class="mb-9 space-y-2 p-4"
+				:schema="formFields.data"
+			>
+				<template #afterForm>
+					<ErrorMessage
+						:message="
+							document?.get?.error ||
+							document?.setValue?.error ||
+							DocTypeList.insert.error
+						"
+					/>
+					<Button
+						class="mt-5"
+						appearance="primary"
+						:loading="DocTypeList.insert.loading || document?.setValue.loading"
+					>
+						{{ props.submitButtonLabel }}
+					</Button>
+				</template>
+			</SchemaFormWithValidation>
+		</template>
+
+		<!-- Loading Indicator -->
+		<div
+			v-else-if="
+				!((isExistingDoc || isImageAttachStepComplete) && formIsReady) &&
+				isExistingDoc
+			"
+			class="flex h-64 items-center justify-center"
+		>
+			<LoadingIndicator class="w-8 text-blue-500" />
+		</div>
 	</div>
 </template>
 
@@ -40,8 +58,10 @@ import {
 	createListResource,
 	createDocumentResource,
 	ErrorMessage,
+	LoadingIndicator,
+	toast,
 } from "frappe-ui"
-
+import { useFileUploaderResource } from "@/composables/index"
 import PhotoAttach from "@/components/PhotoAttach.vue"
 
 const props = defineProps({
@@ -78,6 +98,10 @@ const document = createDocumentResource({
 
 let formModel = ref({})
 let attachedImages = []
+const isExistingDoc = computed(() => {
+	return Boolean(props.id)
+})
+
 const isImageAttachStepComplete = ref(false)
 
 useSchemaForm(formModel)
@@ -128,16 +152,44 @@ const formFields = createResource({
 const DocTypeList = createListResource({
 	doctype: props.doctype,
 	insert: {
-		onSuccess() {
+		onSuccess(d) {
+			console.log(d)
+			uploadAllImages(d.doctype, d.name)
 			router.back()
+		},
+		onError() {
+			console.log("Error creating a new rescue")
 		},
 	},
 })
 
+const uploadImage = async (doctype, name, fileName, base64ImageString) => {
+	const imageUploader = useFileUploaderResource({
+		content: base64ImageString,
+		documentType: doctype,
+		documentName: name,
+		fileName,
+	})
+	imageUploader.submit()
+}
+
+async function uploadAllImages(documentType, documentName) {
+	for (const image of attachedImages) {
+		if (!image.uploaded) {
+			await uploadImage(
+				documentType,
+				documentName,
+				image.filename,
+				image.base64String
+			)
+			image.uploaded = true
+		}
+		console.log(image.uploaded)
+	}
+}
+
 function handleCreateNew() {
 	DocTypeList.insert.submit(formModel.value)
-
-	// TODO: On Success, upload the images
 }
 
 function handleUpdate() {
