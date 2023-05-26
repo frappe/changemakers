@@ -20,7 +20,7 @@ export interface Session {
 	initializeSessionFromPreferences: () => void
 	authenticateWithFrappeOAuth: () => void
 	logout: () => void
-	refreshAccessToken: () => void
+	refreshAccessToken: () => void,
 }
 
 export const session = reactive({

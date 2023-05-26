@@ -33,7 +33,7 @@ export function request(_options) {
 		method: options.method || "GET",
 		headers: options.headers,
 		body,
-	}).then((response) => {
+	}).then(async (response) => {
 		if (options.transformResponse) {
 			return options.transformResponse(response, options)
 		}
@@ -44,8 +44,29 @@ export function request(_options) {
 			return response
 		} else {
 			let error = new Error(response.statusText)
+			
+			console.log("response status code", response.status)
+
+			// if status is 401, then refresh oauth access token and retry
+			if ([401, 403].includes(response.status)) {
+				console.log("401 error")
+				console.log("refreshing token....")
+				await session.refreshAccessToken()
+				return request(_options)
+			}
+			
+
 			error.response = response
 			throw error
+		}
+	}).catch(async (error) => {
+		if (error.message.indexOf("PermissionError") > -1) {
+			try {
+				await session.refreshAccessToken()
+				return request(_options)
+			} catch (e) {
+				throw e;
+			}
 		}
 	})
 }

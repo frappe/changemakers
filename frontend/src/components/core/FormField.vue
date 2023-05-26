@@ -32,6 +32,10 @@
 		<!-- automatically set the geolocation -->
 	</div>
 
+	<div v-else-if="props.type === 'attach'">
+		<!-- render file attach -->
+	</div>
+
 	<Input
 		v-else
 		:type="props.type"
