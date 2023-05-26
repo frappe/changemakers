@@ -1,4 +1,4 @@
-import json
+import base64
 from mimetypes import guess_type
 
 import frappe
@@ -55,7 +55,6 @@ def get_doctype_options(doctype):
 
 @frappe.whitelist()
 def upload_base64_file(content, filename, dt=None, dn=None, fieldname=None):
-	import base64
 
 	from frappe.handler import ALLOWED_MIMETYPES
 
@@ -79,27 +78,26 @@ def upload_base64_file(content, filename, dt=None, dn=None, fieldname=None):
 
 
 @frappe.whitelist()
-def get_attached_images(doctype: str, names: list[str] | str) -> frappe._dict:
+def get_attached_images(doctype: str, name: str) -> list:
 	"""get list of image urls attached in form
-	returns {name: ['image.jpg', 'image.png']}"""
-
-	if isinstance(names, str):
-		names = json.loads(names)
+	returns [{'data': <base64 content>}, {'filename': <filename>}]"""
 
 	img_urls = frappe.db.get_list(
 		"File",
 		filters={
 			"attached_to_doctype": doctype,
-			"attached_to_name": ("in", names),
+			"attached_to_name": name,
 			"is_folder": 0,
 		},
 		fields=["file_url", "attached_to_name as docname", "name"],
 	)
 
-	out = frappe._dict()
+	out = []
 	for i in img_urls:
 		filedoc = frappe.get_doc("File", i.name)
-		out[i.docname] = out.get(i.docname, [])
-		out[i.docname].append(filedoc.get_content())
+		base64content = base64.b64encode(filedoc.get_content())
+		name = filedoc.name  # dfuhd7f
+
+		out.append({"data": base64content, "filename": name})
 
 	return out
