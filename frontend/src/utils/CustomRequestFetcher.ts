@@ -94,7 +94,7 @@ export function customRequestFetcher(options) {
 			if (!options.url.startsWith("/") && !options.url.startsWith("http")) {
 				options.url = session.baseURL + "/api/method/" + options.url
 			}
-			console.log("options: " + options.url)
+			// console.log("options: " + options.url)
 			return {
 				...options,
 				method: options.method || "POST",

@@ -88,6 +88,7 @@ interface DocField {
 	reqd?: boolean
 	default: string
 	options: string
+	read_only?: boolean
 }
 
 const document = createDocumentResource({
@@ -121,7 +122,7 @@ const formFields = createResource({
 		// const FIELDNAME_VALIDATION_MAP = {
 		// 	age: yup.number().lessThan(200).positive().notRequired(),
 		// }
-
+		console.log(fields)
 		const FIELDTYPE_TYPE_MAP = {
 			Data: "text",
 			Int: "number",
@@ -130,6 +131,7 @@ const formFields = createResource({
 			Select: "select",
 			Datetime: "datetime",
 			Geolocation: "geolocation",
+			Attach: "attach",
 		}
 
 		return fields.map((field) => ({
@@ -140,6 +142,7 @@ const formFields = createResource({
 			default: field.default,
 			type: FIELDTYPE_TYPE_MAP[field.fieldtype],
 			doctype: field.options,
+			readOnly: Boolean(field.read_only),
 			options:
 				(field.fieldtype != "Link" &&
 					field.options &&

@@ -13,6 +13,7 @@ MOBILE_SUPPORTED_FIELD_TYPES = [
 	"Datetime",
 	"Check",
 	"Geolocation",
+	"Attach",
 ]
 
 
@@ -35,7 +36,16 @@ def get_form_fields(doctype):
 			"fieldname": ("!=", "amended_from"),
 			"fetch_from": ("is", "not set"),  # TODO: handle later
 		},
-		fields=["label", "fieldname", "idx", "fieldtype", "reqd", "default", "options"],
+		fields=[
+			"label",
+			"fieldname",
+			"idx",
+			"fieldtype",
+			"reqd",
+			"default",
+			"options",
+			"read_only",
+		],
 		order_by="idx",
 		ignore_permissions=True,
 	)

@@ -34,6 +34,9 @@
 
 	<div v-else-if="props.type === 'attach'">
 		<!-- render file attach -->
+		<span class="mb-2 block text-left text-sm leading-4 text-gray-700">
+			{{ props.label }}
+		</span>
 	</div>
 
 	<Input
@@ -48,6 +51,9 @@
 		v-bind="$attrs"
 	/>
 
+	<!-- Note: handling read only -->
+	<!-- if props.readOnly, don't show ya make it disabled/non-editable if there is a value -->
+
 	<ErrorMessage
 		v-if="validation.meta.touched"
 		:message="validation.errorMessage"
@@ -57,7 +63,14 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted } from "vue"
 import { Geolocation } from "@capacitor/geolocation"
-import { Autocomplete, ErrorMessage, createResource } from "frappe-ui"
+import {
+	Autocomplete,
+	ErrorMessage,
+	createResource,
+	FileUploader,
+	Button,
+	toast,
+} from "frappe-ui"
 const props = defineProps({
 	type: String,
 	modelValue: [String, Number, Boolean, Object, Array],
@@ -69,6 +82,7 @@ const props = defineProps({
 	doctype: String,
 	label: String,
 	options: Array,
+	readOnly: Boolean,
 })
 
 const emit = defineEmits(["input", "change", "update:modelValue"])
@@ -89,7 +103,7 @@ function onBlur() {
 
 function handleGeoLocationFetchError(e) {
 	console.error(e)
-	alert("Error getting device location!")
+	// alert("Error getting device location!")
 }
 
 function getFormattedGeolocation(geoCoordinates: {
@@ -97,6 +111,10 @@ function getFormattedGeolocation(geoCoordinates: {
 	longitude: number
 }): string {
 	return `{"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[${geoCoordinates.latitude},${geoCoordinates.longitude}]}}]}`
+}
+
+const handleFile = (file) => {
+	console.log(file)
 }
 
 onMounted(() => {
