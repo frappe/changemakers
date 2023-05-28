@@ -1,4 +1,5 @@
 <template>
+	<!-- <pre>{{ props.readOnly + " " + props.label }}</pre> -->
 	<div v-if="props.type === 'link'">
 		<span class="mb-2 block text-sm leading-4 text-gray-700">
 			{{ props.label }}
@@ -41,6 +42,7 @@
 
 	<Input
 		v-else
+		v-show="!props.readOnly"
 		:type="props.type"
 		:value="modelValue"
 		:label="props.label"
@@ -124,6 +126,7 @@ onMounted(() => {
 			params: {
 				doctype: props.doctype,
 			},
+			pageLength: 100,
 			transform: (data) => {
 				const titleField = data.title_field
 				return data.docs.map((doc) => ({
@@ -132,8 +135,10 @@ onMounted(() => {
 				}))
 			},
 		})
-
 		doctypeList.value.reload()
+	}
+
+	if (props.readOnly) {
 	}
 
 	if (props.type === "geolocation") {
