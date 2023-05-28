@@ -1,5 +1,4 @@
 <template>
-	<!-- <pre>{{ props.readOnly + " " + props.label }}</pre> -->
 	<div v-if="props.type === 'link'">
 		<span class="mb-2 block text-sm leading-4 text-gray-700">
 			{{ props.label }}
@@ -42,7 +41,7 @@
 
 	<Input
 		v-else
-		v-show="!props.readOnly"
+		:readonly="props.readOnly"
 		:type="props.type"
 		:value="modelValue"
 		:label="props.label"
@@ -52,9 +51,6 @@
 		@blur="onBlur"
 		v-bind="$attrs"
 	/>
-
-	<!-- Note: handling read only -->
-	<!-- if props.readOnly, don't show ya make it disabled/non-editable if there is a value -->
 
 	<ErrorMessage
 		v-if="validation.meta.touched"
