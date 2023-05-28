@@ -42,14 +42,15 @@
 						@click="filters.showFilterDialog = !filters.showFilterDialog"
 					></Button>
 				</div>
+				<pre>{{ filters.state.value }}</pre>
 				<div
 					v-if="filters.showFilterDialog"
 					class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
 				>
 					<div
-						class="max-w-[90%] rounded-lg bg-white px-5 py-4 text-lg font-semibold text-gray-700"
+						class="flex w-full max-w-[90%] flex-col gap-3 rounded-lg bg-white px-5 py-4 text-sm font-semibold text-gray-700"
 					>
-						<div class="flex justify-between">
+						<div class="mb-2 flex justify-between">
 							<h3 class="text-xl font-semibold">Filter Rescues</h3>
 							<Button
 								@click="filters.showFilterDialog = !filters.showFilterDialog"
@@ -58,50 +59,24 @@
 								class="w-0"
 							></Button>
 						</div>
-
-						<div class="mt-4 flex flex-col space-y-2">
-							<div class="flex items-center gap-3">
-								<label for="filterGender">Gender</label>
-								<select
-									id="filterGender"
-									v-model="filters.gender"
-									class="rounded-md border border-gray-300 text-lg font-semibold text-gray-700"
-								>
-									<option
-										:key="gender"
-										v-for="gender in genderOptions"
-										:value="gender"
-									>
-										{{ gender }}
-									</option>
-								</select>
-							</div>
-							<div class="flex flex-col">
-								<h3>Age</h3>
-								<div class="flex justify-center">
-									<div class="flex items-center justify-start gap-2 px-3">
-										<label for="filterMinAge" class="font-medium">Min</label>
-										<input
-											type="number"
-											placeholder="0"
-											id="filterMinAge"
-											v-model="filters.minAge"
-											class="w-1/2 rounded-md border border-gray-300 text-center text-lg font-semibold text-gray-700"
-										/>
-									</div>
-									<div class="flex items-center justify-start gap-3">
-										<label for="filterMaxAge" class="font-medium">Max</label>
-										<input
-											type="number"
-											placeholder="100"
-											id="filterMaxAge"
-											v-model="filters.maxAge"
-											class="w-1/2 rounded-md border border-gray-300 text-center text-lg font-semibold text-gray-700"
-										/>
-									</div>
-								</div>
-							</div>
+						<div class="flex flex-col gap-1">
+							<span>State</span>
+							<Autocomplete
+								:options="doctypeOptions"
+								v-model="filters.state"
+								placeholder="Search by State"
+							/>
 						</div>
+
+						<div class="flex flex-col gap-1">
+							<Input
+								label="Gender"
+								v-model="filters.gender"
+								type="select"
+								:options="genderOptions"
+							/>
+						</div>
+
 						<div class="mt-6 flex justify-start gap-3">
 							<Button @click="resetFilters" appearance="danger">Reset</Button>
 							<Button appearance="primary" @click="applyFilters"
@@ -182,8 +157,14 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, ref, computed, reactive } from "vue"
-import { createListResource, FeatherIcon } from "frappe-ui"
+import { inject, ref, computed, reactive, onMounted } from "vue"
+import {
+	createResource,
+	createListResource,
+	FeatherIcon,
+	Input,
+	Autocomplete,
+} from "frappe-ui"
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 import { useRouter } from "vue-router"
@@ -203,13 +184,21 @@ const dayjs = inject(dayjsInjectionKey)
 const router = useRouter()
 
 const searchQuery = ref("")
-
+const doctypeList = ref([])
+const genderList = ref([])
 const filters = reactive({
 	gender: "",
-	minAge: "",
-	maxAge: "",
+	state: "",
 	showFilterDialog: false,
 	filterApplied: false,
+})
+
+const doctypeOptions = computed(() => {
+	console.log(doctypeList.value.data)
+	if (doctypeList.value.data) {
+		return doctypeList.value.data
+	}
+	return []
 })
 
 const genderOptions = [
@@ -230,8 +219,7 @@ const applyFilters = () => {
 
 const resetFilters = () => {
 	filters.gender = ""
-	filters.maxAge = ""
-	filters.minAge = ""
+	filters.state = ""
 	filters.filterApplied = false
 }
 
@@ -246,8 +234,7 @@ const filteredRescue = computed(() => {
 				.toLowerCase()
 				.includes(searchQuery.value.toLowerCase()) &&
 			(rescue.gender == filters.gender || filters.gender == "") &&
-			(rescue.age >= parseInt(filters.minAge) || filters.minAge == "") &&
-			(rescue.age <= parseInt(filters.maxAge) || filters.maxAge == "")
+			(rescue.state == filters.state.value || filters.state.value == "")
 	)
 })
 
@@ -264,9 +251,32 @@ const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
 		"beneficiary.last_name as last_name",
 		"age",
 		"gender",
+		"state",
+		"district",
+		"ward",
+		"zone",
+		"habitation",
 	],
 	cache: "RescueList",
 	orderBy: "-rescued_at",
+})
+
+onMounted(() => {
+	doctypeList.value = createResource({
+		url: "changemakers.api.get_doctype_options",
+		params: {
+			doctype: "State",
+		},
+		transform: (data) => {
+			const titleField = data.title_field
+			return data.docs.map((doc) => ({
+				label: doc[titleField],
+				value: doc.name,
+			}))
+		},
+	})
+
+	doctypeList.value.reload()
 })
 
 rescues.reload()
