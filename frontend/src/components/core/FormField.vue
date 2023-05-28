@@ -41,6 +41,7 @@
 
 	<Input
 		v-else
+		:readonly="props.readOnly"
 		:type="props.type"
 		:value="modelValue"
 		:label="props.label"
@@ -50,9 +51,6 @@
 		@blur="onBlur"
 		v-bind="$attrs"
 	/>
-
-	<!-- Note: handling read only -->
-	<!-- if props.readOnly, don't show ya make it disabled/non-editable if there is a value -->
 
 	<ErrorMessage
 		v-if="validation.meta.touched"
@@ -124,6 +122,7 @@ onMounted(() => {
 			params: {
 				doctype: props.doctype,
 			},
+			pageLength: 100,
 			transform: (data) => {
 				const titleField = data.title_field
 				return data.docs.map((doc) => ({
@@ -132,8 +131,10 @@ onMounted(() => {
 				}))
 			},
 		})
-
 		doctypeList.value.reload()
+	}
+
+	if (props.readOnly) {
 	}
 
 	if (props.type === "geolocation") {
