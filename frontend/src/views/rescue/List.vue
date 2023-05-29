@@ -42,7 +42,6 @@
 						@click="filters.showFilterDialog = !filters.showFilterDialog"
 					></Button>
 				</div>
-				<pre>{{ filters.state.value }}</pre>
 				<div
 					v-if="filters.showFilterDialog"
 					class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
@@ -60,15 +59,6 @@
 							></Button>
 						</div>
 						<div class="flex flex-col gap-1">
-							<span>State</span>
-							<Autocomplete
-								:options="doctypeOptions"
-								v-model="filters.state"
-								placeholder="Search by State"
-							/>
-						</div>
-
-						<div class="flex flex-col gap-1">
 							<Input
 								label="Gender"
 								v-model="filters.gender"
@@ -76,6 +66,15 @@
 								:options="genderOptions"
 							/>
 						</div>
+						<div class="flex flex-col gap-1">
+							<span>State</span>
+							<Autocomplete
+								:options="stateOptions"
+								v-model="filters.state"
+								placeholder="Select State"
+							/>
+						</div>
+						<HotspotFilter @setFilter="handleSetFilter" />
 
 						<div class="mt-6 flex justify-start gap-3">
 							<Button @click="resetFilters" appearance="danger">Reset</Button>
@@ -168,12 +167,11 @@ import {
 import { IonPage, IonContent } from "@ionic/vue"
 import { FrappeIcons } from "@/components/icons"
 import { useRouter } from "vue-router"
-
+import HotspotFilter from "@/components/filters/HotspotFilter.vue"
 // Type imports
 import { ListResource } from "@/typing/resource"
 import { dayjsInjectionKey } from "@/typing/InjectionKeys"
 import { Rescue } from "@/../types/FrappeChangemakers/Rescue"
-import { string } from "yup"
 
 interface RescueWithBeneficiaryDetails extends Rescue {
 	first_name: string
@@ -184,22 +182,27 @@ const dayjs = inject(dayjsInjectionKey)
 const router = useRouter()
 
 const searchQuery = ref("")
-const doctypeList = ref([])
-const genderList = ref([])
+const stateDoctypeList = ref([])
 const filters = reactive({
 	gender: "",
 	state: "",
+	hotspot: "",
 	showFilterDialog: false,
 	filterApplied: false,
 })
 
-const doctypeOptions = computed(() => {
-	console.log(doctypeList.value.data)
-	if (doctypeList.value.data) {
-		return doctypeList.value.data
+const stateOptions = computed(() => {
+	console.log(stateDoctypeList.value.data)
+	if (stateDoctypeList.value.data) {
+		return stateDoctypeList.value.data
 	}
 	return []
 })
+
+const handleSetFilter = ({ hotspot }) => {
+	filters.hotspot = hotspot
+	console.log(filters.hotspot)
+}
 
 const genderOptions = [
 	"",
@@ -262,7 +265,7 @@ const rescues: ListResource<RescueWithBeneficiaryDetails> = createListResource({
 })
 
 onMounted(() => {
-	doctypeList.value = createResource({
+	stateDoctypeList.value = createResource({
 		url: "changemakers.api.get_doctype_options",
 		params: {
 			doctype: "State",
@@ -276,7 +279,7 @@ onMounted(() => {
 		},
 	})
 
-	doctypeList.value.reload()
+	stateDoctypeList.value.reload()
 })
 
 rescues.reload()
