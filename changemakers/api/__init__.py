@@ -116,3 +116,15 @@ def get_attached_images(doctype: str, name: str) -> list:
 		out.append({"data": data, "filename": name})
 
 	return out
+
+
+@frappe.whitelist()
+def download_base64_file(file_url):
+	filedoc = frappe.get_doc("File", {"file_url": file_url})
+
+	base64content = base64.b64encode(filedoc.get_content())
+	content_type = guess_type(filedoc.file_name)[0]
+	name = filedoc.name
+
+	data = f"data:{content_type};base64, " + base64content.decode("utf-8")
+	return {"data": data, "name": name}
