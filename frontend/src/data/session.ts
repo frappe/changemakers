@@ -20,7 +20,8 @@ export interface Session {
 	initializeSessionFromPreferences: () => void
 	authenticateWithFrappeOAuth: () => void
 	logout: () => void
-	refreshAccessToken: () => void,
+	refreshAccessToken: () => void
+	auth: Object
 }
 
 export const session = reactive({
@@ -89,15 +90,12 @@ export const session = reactive({
 			throw Error("Login before you logout")
 		}
 
-		await OAuth2Client.logout(
-			{
-				logoutUrl:
-					`${this.baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
-				additionalParameters: {
-					token: this.auth.accessToken,
-				},
+		await OAuth2Client.logout({
+			logoutUrl: `${this.baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
+			additionalParameters: {
+				token: this.auth.accessToken,
 			},
-		)
+		})
 
 		// Clear session storage
 		await Preferences.remove({ key: SESSION_OBJECT_KEY })

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@byteowls/capacitor-oauth2": "^4.0.0",
+    "@capacitor-community/file-opener": "1.0.4",
     "@capacitor/android": "4.3.0",
     "@capacitor/app": "next",
     "@capacitor/camera": "^4.1.4",
@@ -29,6 +30,7 @@
     "@ionic/vue": "^7.0.0",
     "@ionic/vue-router": "^7.0.0",
     "@phosphor-icons/vue": "^2.0.1",
+    "capacitor-blob-writer": "^1.1.10",
     "core-js": "^3.6.5",
     "dayjs": "^1.11.7",
     "formvuelate": "^3.9.1",

@@ -132,16 +132,6 @@ const handleComplete = () => {
 	emit("complete", { images: unref(images) })
 }
 
-const handleFileSelect = async (e) => {
-	try {
-		const fileAttachmentUploader = new FileAttachmentUploader(e.target.files[0])
-		fileAttachmentUploader.upload("Rescue", "3fe7326aa7")
-		console.log(fileAttachmentUploader.loading)
-	} catch (e) {
-		console.error("unable to read file from system")
-	}
-}
-
 // TODO
 // How the UX should look like? (robust, fault-tolerate)
 
