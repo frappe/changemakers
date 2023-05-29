@@ -312,6 +312,11 @@
   resolved "https://registry.npmjs.org/@byteowls/capacitor-oauth2/-/capacitor-oauth2-4.0.0.tgz"
   integrity sha512-uGbl0bx7729UR4CD81UOvDfDc7FzCUlV7IU1D0rMJAd58hANPMWfj7BpmWQ++uUvA251NvjUL3yB6Jwj4C1z/A==
 
+"@capacitor-community/file-opener@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@capacitor-community/file-opener/-/file-opener-1.0.4.tgz#24b19ca43e3bd90ba3ab84a4be969694863c5c34"
+  integrity sha512-tNxt6HeyPYW5Q0ZarEIG2uBbWEtLYpUnEyyxWXobWccXqJegT19KXwX53/vbzPBy56Z8pEQR8RavRnJOSha1Eg==
+
 "@capacitor/android@4.3.0":
   version "4.3.0"
   resolved "https://registry.npmjs.org/@capacitor/android/-/android-4.3.0.tgz"
@@ -323,9 +328,9 @@
   integrity sha512-frPft9TMJL70jWq5jmxwGSBddZVvsWxX5Agj2i19WJerk37aTgljB05HRr/YLg6mF1G/NIXmmFJZDY8MEgirDg==
 
 "@capacitor/camera@^4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@capacitor/camera/-/camera-4.1.4.tgz#5d019f88d1f3547b537270e35bcb96084eb48df6"
-  integrity sha512-7f4n7PlnstYsdGyxc0Kc4hIyS6csFLOjXvffm7pJsuy9pSo+kfdOPdYgGg360QwbUAmA+Yv+J1ZW1eFIwgvWrQ==
+  version "4.1.5"
+  resolved "https://registry.npmjs.org/@capacitor/camera/-/camera-4.1.5.tgz"
+  integrity sha512-E00IRsJiIr1kP3EkJa0OWp//TDFXOx3ifDfmLOmIkPxKt1FfuNheE0ipWBo5b44pKsx9pO64Rm9MkfUhgH5Rfg==
 
 "@capacitor/cli@next":
   version "4.3.0"
@@ -358,13 +363,13 @@
     tslib "^2.1.0"
 
 "@capacitor/filesystem@^4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@capacitor/filesystem/-/filesystem-4.1.4.tgz#021ef707ca199d554042ebc85151416dec07020a"
-  integrity sha512-ivko1RNK4hq63xhMacq8D6D97N5/SAafTsrmY/pghYrG6Cl2SEY0+IgRu7V9/VWeN3FSplyUPucjUTAFQxXN5g==
+  version "4.1.5"
+  resolved "https://registry.npmjs.org/@capacitor/filesystem/-/filesystem-4.1.5.tgz"
+  integrity sha512-fP8h1rNdhAn29/MCl/+pSHZ0afOTSO+fxwrXAe5LWgtO69Qc3c1s4KS5h4craTOkW6WFpYjPCkZFJEdVoRmTcA==
 
 "@capacitor/geolocation@^4.1.0":
   version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/geolocation/-/geolocation-4.1.0.tgz#1941b5ca4288d7cb5c80940649d4416322b37ee2"
+  resolved "https://registry.npmjs.org/@capacitor/geolocation/-/geolocation-4.1.0.tgz"
   integrity sha512-hfI4MUcu1zcJPTvm0g6V3telTGwq9sCU8EnY4hFJpLedbIQeWPthCOSbFtNHAU5mVaAP1Zls3x6TsXL8TX08EA==
 
 "@capacitor/haptics@next":
@@ -923,9 +928,9 @@
     fastq "^1.6.0"
 
 "@phosphor-icons/vue@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@phosphor-icons/vue/-/vue-2.0.1.tgz#d596424ac58d51b1c35d40af83f426171bb65e23"
-  integrity sha512-2p2yuNnZpLknFgl/JGoJIWqoQwSBclxBikcRb7FPBhVEmPzxSoXPwhPK6SGgn9DyQnouMYK7M8LB2+csEiRS9A==
+  version "2.1.4"
+  resolved "https://registry.npmjs.org/@phosphor-icons/vue/-/vue-2.1.4.tgz"
+  integrity sha512-evV8o1+y9qStbrI2vK3zXAYMqSuFUv/VSth3XMS9Q9qje0bLNZ2V8t6i2JDke+UMbt+OCB2OEn7jxe+xQFIMJw==
 
 "@popperjs/core@^2.11.2", "@popperjs/core@^2.9.0":
   version "2.11.6"
@@ -2107,6 +2112,11 @@ caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001407:
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001420.tgz"
   integrity sha512-OnyeJ9ascFA9roEj72ok2Ikp7PHJTKubtEJIQ/VK3fdsS50q4KWy+Z5X0A1/GswEItKX0ctAp8n4SYDE7wTu6A==
 
+capacitor-blob-writer@^1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/capacitor-blob-writer/-/capacitor-blob-writer-1.1.10.tgz#259047b4e9c1fd21ba01e26c8d2f9ddce4d31860"
+  integrity sha512-osvFw/PEOXHphehlrk86DnTnaL04SOUEXhIz6uJScVngQYDv3zentDXIL3Xrd8vD91CenCa5WeeTU34MExNEQw==
+
 case-anything@^2.1.10:
   version "2.1.10"
   resolved "https://registry.npmjs.org/case-anything/-/case-anything-2.1.10.tgz"
@@ -2622,7 +2632,7 @@ esbuild-darwin-64@0.15.11:
 
 esbuild-darwin-arm64@0.15.11:
   version "0.15.11"
-  resolved "https://registry.npmjs.org/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.15.11.tgz"
+  resolved "https://registry.yarnpkg.com/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.15.11.tgz#556f4385c6de806cc81132dd7b8af00fe9d292df"
   integrity sha512-OMzhxSbS0lwwrW40HHjRCeVIJTURdXFA8c3GU30MlHKuPCcvWNUIKVucVBtNpJySXmbkQMDJdJNrXzNDyvoqvQ==
 
 esbuild-freebsd-64@0.15.11:
@@ -3204,7 +3214,7 @@ fs.realpath@^1.0.0:
 
 fsevents@^2.3.2, fsevents@~2.3.2:
   version "2.3.2"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
@@ -4476,13 +4486,13 @@ nanoclone@^0.2.1:
   integrity sha512-wynEP02LmIbLpcYw8uBKpcfF6dmg2vcpKqxeH5UcoKEYdExslsdUA4ugFauuaeYdTB76ez6gJW8XAZ6CgkXYxA==
 
 nanoid@^3.3.4:
-  version "3.3.4"
-  resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.4.tgz"
-  integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
+  version "3.3.6"
+  resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.6.tgz"
+  integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
 
 nanoid@^4.0.2:
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.2.tgz#140b3c5003959adbebf521c170f282c5e7f9fb9e"
+  resolved "https://registry.npmjs.org/nanoid/-/nanoid-4.0.2.tgz"
   integrity sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==
 
 native-run@^1.6.0:

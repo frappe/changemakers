@@ -37,6 +37,29 @@
 		<span class="mb-2 block text-left text-sm leading-4 text-gray-700">
 			{{ props.label }}
 		</span>
+
+		<div
+			class="space-x-2"
+			v-if="props.modelValue && typeof props.modelValue === 'string'"
+		>
+			<Button
+				appearance="minimal"
+				class="text-blue-600"
+				@click="downloadFileAttachment"
+				>Download {{ props.modelValue }}</Button
+			>
+			<Button @click="handleAttachmentRemove" appearance="danger"
+				>Remove</Button
+			>
+		</div>
+
+		<input
+			v-else
+			type="file"
+			accept="application/pdf"
+			:value="modelValue"
+			@change="handleFileSelect"
+		/>
 	</div>
 
 	<Input
@@ -61,8 +84,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from "vue"
+import { ref, computed, onMounted, inject } from "vue"
+import { sessionInjectionKey } from "@/typing/InjectionKeys"
+import write_blob from "capacitor-blob-writer"
 import { Geolocation } from "@capacitor/geolocation"
+import { Filesystem, Directory } from "@capacitor/filesystem"
+import { FileOpener, FileOpenerPlugin } from "@capacitor-community/file-opener"
+
 import {
 	Autocomplete,
 	ErrorMessage,
@@ -83,9 +111,13 @@ const props = defineProps({
 	label: String,
 	options: Array,
 	readOnly: Boolean,
+	formDocType: String,
 })
 
+import { CapacitorHttp } from "@capacitor/core"
+
 const emit = defineEmits(["input", "change", "update:modelValue"])
+const session = inject(sessionInjectionKey)
 
 let doctypeList = ref([])
 
@@ -144,4 +176,38 @@ onMounted(() => {
 			.catch(handleGeoLocationFetchError)
 	}
 })
+
+const handleFileSelect = async (e) => {
+	emit("update:modelValue", e.target.files[0])
+}
+
+const downloadFileAttachment = async (e) => {
+	e.preventDefault()
+
+	if (props.type !== "attach") return
+
+	const fileURL = props.modelValue
+
+	let downloadFileResource = createResource({
+		url: "changemakers.api.download_base64_file",
+		params: {
+			file_url: fileURL,
+		},
+		async onSuccess(d) {
+			const savedFile = await Filesystem.writeFile({
+				path: d.name,
+				data: d.data,
+				directory: Directory.Data,
+			})
+
+			await FileOpener.open({ filePath: savedFile.uri })
+		},
+	})
+	downloadFileResource.reload()
+}
+
+const handleAttachmentRemove = (e) => {
+	e.preventDefault()
+	emit("update:modelValue", null)
+}
 </script>

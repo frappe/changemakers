@@ -61,7 +61,10 @@ import {
 	LoadingIndicator,
 	toast,
 } from "frappe-ui"
-import { useFileUploaderResource } from "@/composables/index"
+import {
+	useFileUploaderResource,
+	FileAttachmentUploader,
+} from "@/composables/index"
 import PhotoAttach from "@/components/PhotoAttach.vue"
 
 const props = defineProps({
@@ -99,6 +102,8 @@ const document = createDocumentResource({
 
 let formModel = ref({})
 let attachedImages = []
+let attachedFiles = []
+
 const isExistingDoc = computed(() => {
 	return Boolean(props.id)
 })
@@ -135,6 +140,7 @@ const formFields = createResource({
 		}
 
 		return fields.map((field) => ({
+			formDocType: props.doctype,
 			label: field.label,
 			model: field.fieldname,
 			component: shallowRef(FormField),
@@ -155,9 +161,17 @@ const formFields = createResource({
 const DocTypeList = createListResource({
 	doctype: props.doctype,
 	insert: {
-		onSuccess(d) {
-			console.log(d)
-			uploadAllImages(d.doctype, d.name)
+		async onSuccess(d) {
+			await uploadAllImages(d.doctype, d.name)
+
+			// upload file attachments
+			for (const file of attachedFiles) {
+				if (!file.uploaded) {
+					await uploadFileAttachment(d.doctype, d.name, file.model, file.value)
+					file.uploaded = true
+				}
+			}
+
 			router.back()
 		},
 		onError() {
@@ -191,23 +205,100 @@ async function uploadAllImages(documentType, documentName) {
 	}
 }
 
+async function uploadFileAttachment(doctype, docname, fieldname, file) {
+	// e.target.files[0]
+	try {
+		const fileAttachmentUploader = new FileAttachmentUploader(file)
+		fileAttachmentUploader.upload(doctype, docname, fieldname, (fileDoc) => {
+			console.log(
+				"File URL : " +
+					fileDoc.file_url +
+					"\n Name: " +
+					fileDoc.attached_to_name
+			)
+			DocTypeList.setValue.submit({
+				name: fileDoc.attached_to_name,
+				[fieldname]: fileDoc.file_url,
+				onSuccess: () => {
+					console.log("DocType field updated.")
+				},
+			})
+		})
+		console.log(fileAttachmentUploader.loading)
+		return fileAttachmentUploader.promise
+	} catch (e) {
+		console.error("unable to read file from system")
+	}
+}
+
 function handleCreateNew() {
+	// remove attachments from the form model
+	// so that they don't get submitted
+	const fileAttachmentFieldNames = attachedFiles.map((file) => file.model)
+
+	formModel.value = Object.fromEntries(
+		Object.entries(formModel.value).filter(
+			([key, value]) => !fileAttachmentFieldNames.includes(key)
+		)
+	)
+
 	DocTypeList.insert.submit(formModel.value)
 }
 
-function handleUpdate() {
+async function handleUpdate() {
 	if (document) {
-		document.setValue.submit(formModel.value)
+		// upload file attachments
+		for (const file of attachedFiles) {
+			if (!file.uploaded) {
+				await uploadFileAttachment(
+					props.doctype,
+					props.id,
+					file.model,
+					file.value
+				)
+				file.uploaded = true
+			}
+		}
 
-		// Maybe show an alert
+		const fileAttachmentFieldNames = attachedFiles.map((file) => file.model)
+		formModel.value = Object.fromEntries(
+			Object.entries(formModel.value).filter(
+				([key, value]) => !(fileAttachmentFieldNames.includes(key) && value)
+			)
+		)
+
+		await document.setValue.submit(formModel.value)
+
+		await document.get.promise
+		formModel.value = document.doc
+
 		router.back()
 	}
 }
 
 function handleFormSubmit() {
+	// Get the file attachment fields from this form
+	// and upload them
+	const fileAttachmentFieldNames = formFields.data
+		.filter((field) => field.type === "attach")
+		.map((field) => field.model)
+
+	const fileAttachmentFields = fileAttachmentFieldNames.map((fieldName) => {
+		const field = formModel.value[fieldName]
+		return {
+			model: fieldName,
+			value: field,
+			uploaded: false,
+		}
+	})
+
+	// append fileAttachmentFields to attachedFiles
+	attachedFiles = fileAttachmentFields
+
 	if (!props.id) {
 		handleCreateNew()
 	} else {
+		console.log("UPDATE: form submitted")
 		handleUpdate()
 	}
 }
