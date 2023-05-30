@@ -55,8 +55,8 @@
 	<!-- if props.readOnly, don't show ya make it disabled/non-editable if there is a value -->
 
 	<ErrorMessage
-		v-if="validation.meta.touched"
-		:message="validation.errorMessage"
+		v-if="validation?.meta?.touched"
+		:message="validation?.errorMessage"
 	/>
 </template>
 
