@@ -2,9 +2,27 @@
 	<ion-page>
 		<ion-content :fullscreen="true">
 			<div class="m-4 flex h-full flex-col justify-center">
-				<Card title="Login to Changemakers">
-					<div class="space-y-2">
+				<Card class="rounded-xl">
+					<div class="mb-4 flex justify-center align-middle">
+						<img
+							v-if="selectedOrg === 'Azim Premji Foundation'"
+							class="h-12 w-fit"
+							src="../../components/logos/apflogo.png"
+							alt="Azim Premji Foundation Logo"
+						/>
+						<img
+							v-else
+							class="h-12 w-fit"
+							src="../../components/logos/frappe.png"
+							alt="Frappe Logo"
+						/>
+					</div>
+					<h1 class="pb-5 text-center text-2xl font-bold text-gray-700">
+						Login to Changemakers
+					</h1>
+					<div class="space-y-1">
 						<Input
+							class="rounded-xl py-2"
 							v-model="selectedOrg"
 							label="Organisation"
 							type="select"
@@ -12,6 +30,7 @@
 						/>
 
 						<Input
+							class="mb-4 rounded-xl py-2"
 							v-if="selectedOrg"
 							v-model="selectedInstance"
 							label="Instance/Project"
@@ -20,7 +39,7 @@
 						/>
 
 						<Button
-							class="mt-2"
+							class="w-full rounded-xl py-2 font-semibold"
 							v-if="baseURL"
 							:loading="isAuthenticating"
 							@click="loginClick"
