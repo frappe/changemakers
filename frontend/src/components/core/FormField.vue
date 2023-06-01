@@ -76,8 +76,8 @@
 	/>
 
 	<ErrorMessage
-		v-if="validation.meta.touched"
-		:message="validation.errorMessage"
+		v-if="validation?.meta?.touched"
+		:message="validation?.errorMessage"
 	/>
 </template>
 
