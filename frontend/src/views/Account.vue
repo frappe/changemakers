@@ -9,10 +9,7 @@
 		</ion-header>
 		<ion-content :fullscreen="true">
 			<div v-if="session.user" class="m-6 flex flex-col">
-				<Card
-					:title="t('labels.preferences', 'Preferences')"
-					class="mb-4 rounded-2xl"
-				>
+				<Card class="mb-4 rounded-2xl">
 					<div class="flex flex-col items-center justify-center space-y-3 p-3">
 						<img
 							v-if="session.user.picture"
