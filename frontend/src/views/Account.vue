@@ -85,8 +85,8 @@ const availableLanguages = [
 
 const appVersion = createResource({
 	url: "changemakers.api.get_app_version",
+	auto: true,
 })
-appVersion.fetch()
 
 const logout = async () => {
 	try {
