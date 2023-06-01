@@ -12,7 +12,7 @@
 						/>
 						<img
 							v-else
-							class="h-12 w-fit"
+							class="h-12 w-fit p-2"
 							src="../../components/logos/frappe.png"
 							alt="Frappe Logo"
 						/>
