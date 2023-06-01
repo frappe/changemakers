@@ -3,7 +3,7 @@ from mimetypes import guess_type
 
 import frappe
 
-from changemakers import __version__ as mobile_version
+from changemakers import __mobile_version__ as mobile_version
 from changemakers.utils.form import get_doctype_title_field
 
 MOBILE_SUPPORTED_FIELD_TYPES = [
