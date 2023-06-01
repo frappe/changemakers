@@ -18,6 +18,17 @@
 								</h3>
 							</a>
 						</RouterLink>
+						<RouterLink :to="{ name: 'BeneficiaryList' }" v-slot="{ href }">
+							<a
+								:href="href"
+								class="flex flex-col items-center gap-3 rounded-lg bg-white p-[14px] shadow-md"
+							>
+								<FrappeIcons.BeneficiaryIcon />
+								<h3 class="text-base font-medium text-gray-900">
+									{{ t("labels.beneficiary", "Beneficiary") }}
+								</h3>
+							</a>
+						</RouterLink>
 					</div>
 				</div>
 

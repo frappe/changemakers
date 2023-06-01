@@ -24,7 +24,6 @@
 					>
 				</RouterLink>
 			</div>
-
 			<!-- If data is visible -->
 			<div v-if="documents.data" class="flex flex-col p-5">
 				<div class="mb-5 flex flex-row items-center space-x-2">
@@ -37,12 +36,19 @@
 						:modelValue="searchQuery"
 					/>
 
-					<Button
-						appearance="white"
-						icon="filter"
-						class="h-full w-fit rounded-2xl px-3 py-3"
-						@click="toggleShowFilters"
-					></Button>
+					<div class="relative">
+						<Button
+							appearance="white"
+							icon="filter"
+							class="h-full w-fit rounded-2xl px-3 py-3"
+							@click="toggleShowFilters"
+						></Button>
+
+						<div
+							v-if="areFiltersApplied"
+							class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-700"
+						></div>
+					</div>
 				</div>
 
 				<div v-for="(data, index) in documents.data" :key="data.name">
@@ -64,10 +70,16 @@
 								<FrappeIcons.RescueIcon class="text-gray-700" />
 								<div class="flex flex-col">
 									<h1 class="text-lg font-semibold text-gray-700">
-										{{ data.beneficiary }}
+										{{ data[titleFieldName] }}
 									</h1>
-									<h4 class="text-base text-gray-600">
-										{{ data.name }} | {{ data.rescue_by }}
+									<h4 class="space-x-1 divide-x-2 text-base text-gray-600">
+										<span
+											v-for="fieldname in fieldsToFetch.filter(
+												(field) => field !== titleFieldName
+											)"
+										>
+											{{ data[fieldname] }}
+										</span>
 									</h4>
 								</div>
 							</div>
@@ -86,7 +98,7 @@
 				v-else
 				class="flex h-full flex-col items-center justify-center gap-y-1.5"
 			>
-				<h3 class="font-medium">No rescue data yet</h3>
+				<h3 class="font-medium">No {{ doctype.toLowerCase() }} data yet</h3>
 				<RouterLink
 					:to="{ name: `New${doctype}Form` }"
 					v-slot="{ navigate }"
@@ -97,7 +109,7 @@
 						appearance="primary"
 						icon-left="plus"
 						class="h-10 w-1/2"
-						>Add Rescue Data</Button
+						>Add {{ doctype }}</Button
 					>
 				</RouterLink>
 			</div>
@@ -258,11 +270,13 @@ const filterFieldTypeOptionMap = {
 
 function applyFilters() {
 	fetchDocumentList()
+	toggleShowFilters()
 }
 
 function clearFilters() {
 	initializeFilters()
 	fetchDocumentList()
+	toggleShowFilters()
 }
 
 // filters.age = [props.doctype,filter_key,operator,filter_value]
@@ -333,6 +347,16 @@ const imageFieldName = computed(() => {
 		return null
 	}
 	return documentMeta.value["image_field"]
+})
+
+const areFiltersApplied = computed(() => {
+	for (const fieldname of Object.keys(untransformedFilters)) {
+		const filter = untransformedFilters[fieldname]
+		if (filter.type && filter.value) {
+			return true
+		}
+	}
+	return false
 })
 
 function getResourceParamsForDocumentsList() {
