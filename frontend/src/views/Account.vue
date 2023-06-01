@@ -14,7 +14,18 @@
 					class="mb-4 rounded-2xl"
 				>
 					<div class="flex flex-col items-center justify-center space-y-3 p-3">
-						<img :src="imageURL" class="h-20 w-20 rounded-full object-cover" />
+						<img
+							v-if="session.user.picture"
+							:src="session.user.picture"
+							class="h-20 w-20 rounded-full object-cover"
+						/>
+						<div
+							v-else
+							class="flex h-20 w-20 items-center justify-center rounded-full bg-blue-400 text-6xl font-medium text-white"
+						>
+							{{ session.user.given_name.charAt(0)
+							}}{{ session.user.family_name.charAt(0) }}
+						</div>
 						<h3 class="text-2xl font-medium">{{ session.user.name }}</h3>
 					</div>
 
@@ -35,6 +46,7 @@
 					>{{ t("auth.logout") }}</Button
 				>
 			</div>
+			<div></div>
 		</ion-content>
 	</ion-page>
 </template>
@@ -57,17 +69,6 @@ import { useRouter } from "vue-router"
 const session = inject(sessionInjectionKey)
 const router = useRouter()
 const { t, locale } = useI18n()
-
-// getting the Initials Avatar from the following website api. It takes both given and fai
-const imageURL = computed(() => {
-	if (session.user.picture !== null) {
-		return session.user.picture
-	} else {
-		return `https://avatar.oxro.io/avatar.svg?name=${session.user.given_name}+${
-			session.user.family_name == null ? "" : session.user.family_name
-		}&background=67B9FF&color=000`
-	}
-})
 
 const availableLanguages = [
 	{ value: "en", label: "English" },
