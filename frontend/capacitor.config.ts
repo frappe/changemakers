@@ -5,10 +5,6 @@ const config: CapacitorConfig = {
 	appName: "Changemakers",
 	webDir: "../changemakers/public/frontend",
 	bundledWebRuntime: false,
-	server: {
-		url: "http://172.31.8.142:8080/",
-		cleartext: true,
-	},
 	plugins: {
 		CapacitorHttp: {
 			enabled: true,
