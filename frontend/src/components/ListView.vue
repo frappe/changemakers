@@ -12,7 +12,9 @@
 						@click="router.back()"
 					>
 					</Button>
-					<h2 class="p-0 text-2xl font-semibold text-gray-900">Rescues</h2>
+					<h2 class="p-0 text-2xl font-semibold text-gray-900">
+						{{ doctype }}
+					</h2>
 				</div>
 				<RouterLink
 					v-if="documents.data"
@@ -31,7 +33,7 @@
 						type="text"
 						:placeholder="`Search ${doctype}s`"
 						icon-left="search"
-						class="w-full rounded-full bg-white p-[5px] focus:bg-white"
+						class="w-full rounded-2xl bg-white p-[5px] focus:bg-white"
 						@input="(v) => (searchQuery = v)"
 						:modelValue="searchQuery"
 					/>
@@ -40,7 +42,7 @@
 						<Button
 							appearance="white"
 							icon="filter"
-							class="h-full w-fit rounded-2xl px-3 py-3"
+							class="rounded-2 xl h-full w-fit px-3 py-3"
 							@click="toggleShowFilters"
 						></Button>
 
@@ -271,12 +273,14 @@ const filterFieldTypeOptionMap = {
 function applyFilters() {
 	fetchDocumentList()
 	toggleShowFilters()
+	areFiltersApplied.value = !areFiltersApplied.value
 }
 
 function clearFilters() {
 	initializeFilters()
 	fetchDocumentList()
 	toggleShowFilters()
+	areFiltersApplied.value = !areFiltersApplied.value
 }
 
 // filters.age = [props.doctype,filter_key,operator,filter_value]
@@ -349,15 +353,7 @@ const imageFieldName = computed(() => {
 	return documentMeta.value["image_field"]
 })
 
-const areFiltersApplied = computed(() => {
-	for (const fieldname of Object.keys(untransformedFilters)) {
-		const filter = untransformedFilters[fieldname]
-		if (filter.type && filter.value) {
-			return true
-		}
-	}
-	return false
-})
+const areFiltersApplied = ref(false)
 
 function getResourceParamsForDocumentsList() {
 	// transform untransformedFilters to filters
