@@ -8,19 +8,12 @@
 					@click="router.back()"
 				>
 				</Button>
-				<h2 class="p-0 text-2xl font-semibold text-gray-800">
-					Entitlement Request
-					<span class="ml-1 font-mono text-sm font-medium text-gray-700"
-						>#{{ props.id }}</span
-					>
+				<h2 class="p-0 text-2xl font-semibold text-gray-900">
+					New Awareness Camp
 				</h2>
 			</div>
 
-			<FormView
-				doctype="Entitlement Request"
-				:id="props.id"
-				submit-button-label="Save"
-			/>
+			<FormView doctype="Awareness Camp Record" />
 		</ion-content>
 	</ion-page>
 </template>
@@ -31,11 +24,4 @@ import { IonPage, IonContent } from "@ionic/vue"
 import FormView from "@/components/FormView.vue"
 
 const router = useRouter()
-
-const props = defineProps({
-	id: {
-		type: String,
-		required: true,
-	},
-})
 </script>

@@ -36,7 +36,7 @@
 					<h2 class="text-xl font-semibold text-gray-900">
 						{{ t("dashboard.services.header", "Services") }}
 					</h2>
-					<div>
+					<div class="flex flex-col gap-[2px]">
 						<RouterLink
 							:to="{ name: 'Entitlement RequestList' }"
 							v-slot="{ href }"
@@ -49,6 +49,26 @@
 									<FeatherIcon name="clipboard" class="h-6 w-6 text-gray-700" />
 									<h3 class="text-base font-medium text-gray-900">
 										{{ t("labels.entitlement", "Entitlement") }}
+									</h3>
+								</div>
+								<FeatherIcon
+									name="chevron-right"
+									class="h-6 w-6 text-gray-700"
+								/>
+							</a>
+						</RouterLink>
+						<RouterLink
+							:to="{ name: 'Awareness Camp RecordList' }"
+							v-slot="{ href }"
+						>
+							<a
+								:href="href"
+								class="flex items-center justify-between gap-3 rounded-b-xl bg-white p-[14px] shadow-md"
+							>
+								<div class="flex items-center gap-3">
+									<FrappeIcons.AwarenessCampIcon class="h-6 w-6" />
+									<h3 class="text-base font-medium text-gray-900">
+										{{ t("labels.awareness_camp", "Awareness Camp Records") }}
 									</h3>
 								</div>
 								<FeatherIcon
