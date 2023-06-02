@@ -8,8 +8,8 @@
 					@click="router.back()"
 				>
 				</Button>
-				<h2 class="p-0 text-2xl font-semibold text-gray-800">
-					Entitlement Request
+				<h2 class="flex flex-col p-0 text-2xl font-semibold text-gray-800">
+					<span> Awareness Camp Record </span>
 					<span class="ml-1 font-mono text-sm font-medium text-gray-700"
 						>#{{ props.id }}</span
 					>
@@ -17,7 +17,7 @@
 			</div>
 
 			<FormView
-				doctype="Entitlement Request"
+				doctype="Awareness Camp Record"
 				:id="props.id"
 				submit-button-label="Save"
 			/>

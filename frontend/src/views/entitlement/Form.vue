@@ -9,7 +9,7 @@
 				>
 				</Button>
 				<h2 class="p-0 text-2xl font-semibold text-gray-900">
-					New Beneficiary
+					New Entitlement
 				</h2>
 			</div>
 
