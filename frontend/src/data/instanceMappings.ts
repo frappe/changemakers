@@ -2,12 +2,12 @@
 const instanceMappings = {
 	"Azim Premji Foundation": {
 		Chennai: {
-			url: "https://apf-changemakers-staging.frappe.cloud",
-			clientID: "f592ecba60",
+			url: "https://chennai.dignifiedlife.in",
+			clientID: "b3c1f33238",
 		},
 		Bangalore: {
-			url: "https://apf-changemakers-staging.frappe.cloud",
-			clientID: "f592ecba60",
+			url: "https://bangalore.dignifiedlife.in",
+			clientID: "b3c1f33238",
 		},
 	},
 	Frappe: {
