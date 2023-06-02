@@ -69,7 +69,19 @@
 							@click="navigate"
 						>
 							<div class="flex flex-row items-center justify-start gap-[14px]">
-								<FrappeIcons.RescueIcon class="text-gray-700" />
+								<FrappeIcons.RescueIcon
+									v-if="doctype === 'Rescue'"
+									class="text-gray-700"
+								/>
+								<FrappeIcons.BeneficiaryIcon
+									v-else-if="doctype === 'Beneficiary'"
+									class="text-gray-700"
+								/>
+								<FeatherIcon
+									v-else-if="doctype === 'Entitlement Request'"
+									class="h-5 w-5 text-gray-700"
+									name="clipboard"
+								/>
 								<div class="flex flex-col">
 									<h1 class="text-lg font-semibold text-gray-700">
 										{{ data[titleFieldName] }}
@@ -100,7 +112,7 @@
 				v-else
 				class="flex h-full flex-col items-center justify-center gap-y-1.5"
 			>
-				<h3 class="font-medium">No {{ doctype.toLowerCase() }} data yet</h3>
+				<h3 class="font-medium">No {{ doctype.toLowerCase() }} yet</h3>
 				<RouterLink
 					:to="{ name: `New${doctype}Form` }"
 					v-slot="{ navigate }"

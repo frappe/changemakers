@@ -4,6 +4,7 @@ import Home from "../views/Home.vue"
 import accountRoutes from "./account"
 import rescueRoutes from "./rescue"
 import beneficiaryRoutes from "./beneficiary"
+import entitlementRoutes from "./entitlement"
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -33,6 +34,7 @@ const routes: Array<RouteRecordRaw> = [
 	...accountRoutes,
 	...rescueRoutes,
 	...beneficiaryRoutes,
+	...entitlementRoutes,
 ]
 
 const router = createRouter({
