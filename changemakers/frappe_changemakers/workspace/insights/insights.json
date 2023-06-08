@@ -1,0 +1,54 @@
+{
+ "charts": [
+  {
+   "chart_name": "Cases Per Week",
+   "label": "Cases Per Week"
+  },
+  {
+   "chart_name": "Entitlement Requests Per Week",
+   "label": "Entitlement Requests Per Week"
+  },
+  {
+   "chart_name": "Rescues Per Week",
+   "label": "Rescues Per Week"
+  }
+ ],
+ "content": "[{\"id\":\"pmxYIEuwKN\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Insights</span>\",\"col\":12}},{\"id\":\"L337kcNw-Y\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Beneficiaries\",\"col\":4}},{\"id\":\"_WWUaF6pb_\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Cases Closed\",\"col\":4}},{\"id\":\"_uT-YyM8so\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Rescues\",\"col\":4}},{\"id\":\"ImYiGtvacu\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Cases Per Week\",\"col\":12}},{\"id\":\"11qs3eKpxy\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Rescues Per Week\",\"col\":12}},{\"id\":\"UUCGJvJYq_\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Entitlement Requests Per Week\",\"col\":12}}]",
+ "creation": "2023-06-08 19:19:42.727092",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "equity",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Insights",
+ "links": [],
+ "modified": "2023-06-08 19:37:26.627924",
+ "modified_by": "hussain@frappe.io",
+ "module": "Frappe Changemakers",
+ "name": "Insights",
+ "number_cards": [
+  {
+   "label": "Total Cases Closed",
+   "number_card_name": "Closed Cases"
+  },
+  {
+   "label": "Beneficiaries",
+   "number_card_name": "Total Beneficiaries"
+  },
+  {
+   "label": "Total Rescues",
+   "number_card_name": "Total Rescues"
+  }
+ ],
+ "owner": "hussain@frappe.io",
+ "parent_page": "Changemakers",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 21.0,
+ "shortcuts": [],
+ "title": "Insights"
+}
