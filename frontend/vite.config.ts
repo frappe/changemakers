@@ -2,6 +2,9 @@ import path from "path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite"
+import { getProxyOptions } from "frappe-ui/src/utils/vite-dev-server"
+import { webserver_port } from "../../../sites/common_site_config.json"
+
 
 export default defineConfig({
 	plugins: [
@@ -12,6 +15,7 @@ export default defineConfig({
 	],
 	server: {
 		port: 8080,
+		proxy: getProxyOptions({ port: webserver_port }),
 	},
 	resolve: {
 		alias: {
