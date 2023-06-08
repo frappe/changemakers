@@ -7,12 +7,17 @@
 		<div
 			class="grid w-full grid-cols-5 items-center justify-between object-center"
 		>
-			<img
+			<a
+				target="_blank"
 				v-for="image in images"
 				:key="image.filename"
-				class="h-16 w-16 rounded-lg object-cover shadow-md"
-				:src="image.data"
-			/>
+				:href="image.url"
+			>
+				<img
+					class="h-16 w-16 rounded-lg object-cover shadow-md"
+					:src="image.url"
+				/>
+			</a>
 
 			<button
 				@click="takePicture"
