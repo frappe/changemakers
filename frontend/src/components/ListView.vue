@@ -27,7 +27,7 @@
 				</RouterLink>
 			</div>
 			<!-- If data is visible -->
-			<div v-if="documents.data" class="flex flex-col p-5">
+			<div v-if="documentMeta.meta && documents.data" class="flex flex-col p-5">
 				<div class="mb-5 flex flex-row items-center space-x-2">
 					<Input
 						type="text"
@@ -95,6 +95,7 @@
 											v-for="fieldname in fieldsToFetch.filter(
 												(field) => field !== titleFieldName
 											)"
+											:key="fieldname"
 										>
 											{{ data[fieldname] }}
 										</span>
@@ -231,7 +232,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, reactive } from "vue"
+import { ref, computed, reactive, watch } from "vue"
 import { createResource, FeatherIcon } from "frappe-ui"
 import { IonPage, IonContent, IonModal } from "@ionic/vue"
 import { useRouter } from "vue-router"
@@ -255,7 +256,7 @@ const props = defineProps({
 })
 
 const router = useRouter()
-const documentMeta = ref(null)
+const documentMeta = reactive({ meta: null })
 const untransformedFilters = reactive({})
 const searchQuery = ref("")
 const showFilters = ref(false)
@@ -329,10 +330,9 @@ const doctypeMetaResource = createResource({
 		doctype: props.doctype,
 	},
 	url: "frappe.desk.form.load.getdoctype",
-	cache: `${props.doctype}-Meta`,
 	auto: true,
 	onSuccess(data) {
-		documentMeta.value = data["docs"][0]
+		documentMeta.meta = data["docs"][0]
 		fetchDocumentList()
 	},
 })
@@ -342,10 +342,10 @@ function fetchDocumentList() {
 }
 
 const fieldsToFetch = computed(() => {
-	if (!documentMeta.value) {
+	if (!documentMeta.meta) {
 		return []
 	}
-	const fields = documentMeta.value["fields"]
+	const fields = documentMeta.meta["fields"]
 		.filter((docField) => docField.in_list_view)
 		.map((docField) => docField.fieldname)
 
@@ -356,17 +356,14 @@ const fieldsToFetch = computed(() => {
 })
 
 const titleFieldName = computed(() => {
-	if (!documentMeta.value) {
-		return null
-	}
-	return documentMeta.value["title_field"] ?? "name"
+	return documentMeta.meta?.title_field ?? "name"
 })
 
 const imageFieldName = computed(() => {
-	if (!documentMeta.value) {
+	if (!documentMeta.meta) {
 		return null
 	}
-	return documentMeta.value["image_field"]
+	return documentMeta.meta["image_field"]
 })
 
 const areFiltersApplied = ref(false)
@@ -388,10 +385,10 @@ function getResourceParamsForDocumentsList() {
 }
 
 function getOptionForField(fieldname) {
-	if (!documentMeta.value) {
+	if (!documentMeta.meta) {
 		return null
 	}
-	const field = documentMeta.value["fields"].find(
+	const field = documentMeta.meta["fields"].find(
 		(docField) => docField.fieldname === fieldname
 	)
 	if (!field) {

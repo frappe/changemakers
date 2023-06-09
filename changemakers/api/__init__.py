@@ -105,21 +105,15 @@ def get_attached_images(doctype: str, name: str) -> list:
 			"attached_to_name": name,
 			"is_folder": 0,
 		},
-		fields=["file_url", "attached_to_name as docname", "name"],
+		fields=["file_url", "attached_to_name as docname", "name", "file_name"],
 	)
 
 	out = []
-	for i in img_urls:
-		filedoc = frappe.get_doc("File", i.name)
-		base64content = base64.b64encode(filedoc.get_content())
-		content_type = guess_type(filedoc.file_name)[0]
-		name = filedoc.name
-
+	for image in img_urls:
+		content_type = guess_type(image.file_name)[0]
 		if content_type not in ("image/jpeg", "image/png"):
 			continue
-
-		data = f"data:{content_type};base64, " + base64content.decode("utf-8")
-		out.append({"data": data, "filename": name})
+		out.append({"url": image.file_url, "filename": image.name})
 
 	return out
 

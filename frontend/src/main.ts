@@ -1,7 +1,7 @@
 import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
-import { session, isLoggedIn } from "./data/session"
+import { session } from "./data/session"
 import dayjs from "@/utils/dayjs"
 
 import {
@@ -9,6 +9,7 @@ import {
 	Badge,
 	Input,
 	setConfig,
+	frappeRequest,
 	pageMetaPlugin,
 	resourcesPlugin,
 	Card,
@@ -23,16 +24,17 @@ import "@ionic/vue/css/core.css"
 import "./theme/variables.css"
 
 import "./main.css"
+import { userResource } from "./data/user"
 import {
 	dayjsInjectionKey,
 	sessionInjectionKey,
+	userResourceInjectionKey,
 } from "./typing/InjectionKeys"
 
 import { createI18n } from "vue-i18n"
 
 // Import messages from yaml files
 import messages from "@intlify/unplugin-vue-i18n/messages"
-import { customRequestFetcher } from "./utils/CustomRequestFetcher"
 
 const i18n = createI18n({
 	legacy: false,
@@ -44,7 +46,7 @@ const i18n = createI18n({
 const app = createApp(App)
 
 // FrappeUI Config
-setConfig("resourceFetcher", customRequestFetcher)
+setConfig("resourceFetcher", frappeRequest)
 app.use(resourcesPlugin)
 app.use(pageMetaPlugin)
 
@@ -58,6 +60,7 @@ app.use(IonicVue, { mode: "md" })
 
 // Globals
 app.provide(sessionInjectionKey, session)
+app.provide(userResourceInjectionKey, userResource)
 app.provide(dayjsInjectionKey, dayjs)
 
 app.config.globalProperties.$dayjs = dayjs
@@ -69,18 +72,3 @@ router.isReady().then(() => {
 
 // Internationalization
 app.use(i18n)
-
-router.beforeEach(async (to, from, next) => {
-	if (!isLoggedIn.value) {
-		// Try restoring session from storage
-		await session.initializeSessionFromPreferences()
-	}
-
-	if (to.name === "Login" && isLoggedIn.value) {
-		next({ name: "MyAccountPage" })
-	} else if (to.name !== "Login" && !isLoggedIn.value) {
-		next({ name: "Login" })
-	} else {
-		next()
-	}
-})

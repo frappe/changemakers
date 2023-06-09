@@ -42,11 +42,8 @@
 			class="space-x-2"
 			v-if="props.modelValue && typeof props.modelValue === 'string'"
 		>
-			<Button
-				appearance="minimal"
-				class="text-blue-600"
-				@click="downloadFileAttachment"
-				>Download {{ props.modelValue }}</Button
+			<a :href="props.modelValue" class="text-blue-600"
+				>Open {{ props.modelValue }}</a
 			>
 			<Button @click="handleAttachmentRemove" appearance="danger"
 				>Remove</Button
@@ -186,25 +183,6 @@ const downloadFileAttachment = async (e) => {
 	e.preventDefault()
 
 	if (props.type !== "attach") return
-
-	const fileURL = props.modelValue
-
-	let downloadFileResource = createResource({
-		url: "changemakers.api.download_base64_file",
-		params: {
-			file_url: fileURL,
-		},
-		async onSuccess(d) {
-			const savedFile = await Filesystem.writeFile({
-				path: d.name,
-				data: d.data,
-				directory: Directory.Data,
-			})
-
-			await FileOpener.open({ filePath: savedFile.uri })
-		},
-	})
-	downloadFileResource.reload()
 }
 
 const handleAttachmentRemove = (e) => {

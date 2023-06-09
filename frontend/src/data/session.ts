@@ -1,159 +1,57 @@
 import { computed, reactive } from "vue"
-import { Preferences } from "@capacitor/preferences"
-import { OAuth2Client } from "@byteowls/capacitor-oauth2"
+import { createResource } from "frappe-ui"
+import { userResource } from "./user"
+import router from "@/router"
 
-const SESSION_OBJECT_KEY = "userSession"
+export function sessionUser() {
+	const cookies = new URLSearchParams(document.cookie.split("; ").join("&"))
+	let _sessionUser = cookies.get("user_id")
+	if (_sessionUser === "Guest") {
+		_sessionUser = null
+	}
+	return _sessionUser
+}
 
-export interface User {
-	name: string
+interface LoginCredentials {
 	email: string
-	picture?: string
-	roles: string[]
-	given_name: string
-	family_name?: string
+	password: string
 }
 
 export interface Session {
-	user: User | null
-	baseURL: string
-	setInstanceDetails: (baseURL: string, clientID: string) => void
-	initializeSessionFromPreferences: () => void
-	authenticateWithFrappeOAuth: () => void
-	logout: () => void
-	refreshAccessToken: () => void
-	auth: Object
+	login: {
+		loading: boolean
+		submit: (credentials: LoginCredentials) => void
+		reset: () => void
+	}
+	logout: { loading: boolean; submit: () => void; reset: () => void }
+	user: null | string
+	isLoggedIn: boolean
 }
 
-export const session = reactive({
-	user: null,
-	auth: null,
-	authResponse: null,
-	baseURL: "",
-	clientID: "",
-	async authenticateWithFrappeOAuth() {
-		// clear authentication state
-		this.clearSessionState()
-
-		if (!(this.baseURL && this.clientID)) {
-			console.error("Please specify baseURL and clientID before authentication")
-		}
-
-		const oauth2Options = {
-			appId: this.clientID,
-			scope: "all",
-			authorizationBaseUrl: `${this.baseURL}/api/method/frappe.integrations.oauth2.authorize`,
-			responseType: "code",
-			redirectUrl: "io.frappe.changemakers://oauth/auth",
-			accessTokenEndpoint: `${this.baseURL}/api/method/frappe.integrations.oauth2.get_token`,
-		}
-
-		try {
-			const response = await OAuth2Client.authenticate(oauth2Options)
-			console.log("Successfully authenticated with response: ", response)
-
-			this.authResponse = response
-			this.auth = {
-				accessToken: response["access_token"],
-				refreshToken: response["access_token_response"]["refresh_token"],
+export const session: Session = reactive({
+	login: createResource({
+		url: "login",
+		makeParams({ email, password }) {
+			return {
+				usr: email,
+				pwd: password,
 			}
-
-			await this.fetchAndSetUserInfo()
-			await this.saveSessionToPreferences()
-		} catch (e) {
-			console.error(e)
-		}
-	},
-	async initializeSessionFromPreferences() {
-		const result = await Preferences.get({ key: SESSION_OBJECT_KEY })
-
-		if (!result.value) {
-			return false
-		}
-
-		const sessionObject = JSON.parse(result.value)
-		this.user = sessionObject.user
-		this.auth = sessionObject.auth
-		this.baseURL = sessionObject.baseURL
-		this.clientID = sessionObject.clientID
-	},
-	async saveSessionToPreferences() {
-		const sessionObject = JSON.stringify({
-			auth: this.auth,
-			user: this.user,
-			baseURL: this.baseURL,
-			clientID: this.clientID,
-		})
-		await Preferences.set({ key: SESSION_OBJECT_KEY, value: sessionObject })
-	},
-	async logout() {
-		if (!this.auth) {
-			throw Error("Login before you logout")
-		}
-
-		await OAuth2Client.logout({
-			logoutUrl: `${this.baseURL}/api/method/frappe.integrations.oauth2.revoke_token`,
-			additionalParameters: {
-				token: this.auth.accessToken,
-			},
-		})
-
-		// Clear session storage
-		await Preferences.remove({ key: SESSION_OBJECT_KEY })
-		this.clearSessionState()
-	},
-
-	async fetchAndSetUserInfo() {
-		if (!this.auth) {
-			return
-		}
-
-		try {
-			const response = await fetch(
-				`${this.baseURL}/api/method/frappe.integrations.oauth2.openid_profile`,
-				{
-					method: "GET",
-					headers: {
-						Authorization: `Bearer ${this.auth.accessToken}`,
-					},
-				}
-			)
-			this.user = await response.json()
-		} catch (e) {
-			console.error("Error fetching user information", e)
-		}
-	},
-	setInstanceDetails(baseURL, clientID) {
-		this.clientID = clientID
-		this.baseURL = baseURL
-	},
-	clearSessionState() {
-		this.user = null
-		this.auth = null
-		this.authResponse = null
-	},
-	async refreshAccessToken() {
-		if (!this.auth?.refreshToken) {
-			return
-		}
-
-		const response = await OAuth2Client.refreshToken({
-			accessTokenEndpoint: `${this.baseURL}/api/method/frappe.integrations.oauth2.get_token`,
-			appId: this.clientID,
-			refreshToken: this.auth.refreshToken,
-		})
-
-		this.authResponse = response
-		this.auth = {
-			accessToken: response["access_token"],
-			refreshToken: response["refresh_token"],
-		}
-
-		await this.saveSessionToPreferences()
-
-		return response
-	},
-})
-
-export const isLoggedIn = computed(() => {
-	return session.auth && session.user
+		},
+		onSuccess(data) {
+			userResource.reload()
+			session.user = sessionUser()
+			session.login.reset()
+			router.replace(data.default_route || "/tabs/dashboard")
+		},
+	}),
+	logout: createResource({
+		url: "logout",
+		onSuccess() {
+			userResource.reset()
+			session.user = sessionUser()
+			router.replace({ name: "Login" })
+		},
+	}),
+	user: sessionUser(),
+	isLoggedIn: computed(() => !!session.user),
 })

@@ -3,25 +3,46 @@
 		<h2 class="text-base text-gray-600">
 			{{ props.previewMode ? "Image Attachments" : "Attach Images" }}
 		</h2>
+
 		<!-- Capture Button + Preview of captured images -->
 		<div
 			class="grid w-full grid-cols-5 items-center justify-between object-center"
 		>
-			<img
-				v-for="image in images"
-				:key="image.filename"
-				class="h-16 w-16 rounded-lg object-cover shadow-md"
-				:src="image.data"
-			/>
+			<div v-for="(image, index) in images" :key="image.filename">
+				<!-- remove image button -->
+				<div
+					v-if="!props.id"
+					@click="handleImageRemove(index)"
+					class="mb-2 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-white shadow-md"
+				>
+					<PhX size="16" color="#74808B" />
+				</div>
 
-			<button
-				@click="takePicture"
+				<a target="_blank" :href="image.url">
+					<img
+						class="h-16 w-16 rounded-lg object-cover shadow-md"
+						:src="image.url"
+					/>
+				</a>
+			</div>
+
+			<label
 				v-if="images.length < 5 && !props.previewMode"
-				class="flex h-16 w-16 items-center justify-center rounded-lg shadow-md"
+				for="file-upload"
+				class="mt-8 flex h-16 w-16 cursor-pointer items-center justify-center rounded-lg shadow-md"
 			>
 				<PhCameraPlus size="24" color="#74808B" />
-			</button>
+			</label>
+			<input
+				ref="imageInput"
+				@change="handleImageInputChange"
+				class="hidden"
+				id="file-upload"
+				type="file"
+				accept="image/*"
+			/>
 		</div>
+
 		<div
 			v-if="images?.length == 0 && props.previewMode"
 			class="flex justify-center align-middle text-sm text-gray-600"
@@ -38,22 +59,12 @@
 </template>
 
 <script lang="ts" setup>
-import { Filesystem, Directory } from "@capacitor/filesystem"
-import { Camera, CameraResultType, CameraSource } from "@capacitor/camera"
-import { computed, reactive, ref, unref, onMounted, inject } from "vue"
-import { nanoid } from "nanoid"
-import { PhCameraPlus } from "@phosphor-icons/vue"
-import {
-	useFileUploaderResource,
-	FileAttachmentUploader,
-} from "@/composables/index"
+import { reactive, unref, onMounted, ref } from "vue"
+import { PhCameraPlus, PhX } from "@phosphor-icons/vue"
 import { createResource } from "frappe-ui"
-import { sessionInjectionKey } from "@/typing/InjectionKeys"
 
-const session = inject(sessionInjectionKey)
-
-const imageSource = ref()
 const images = reactive([])
+const imageInput = ref(null)
 
 const props = defineProps({
 	previewMode: {
@@ -89,60 +100,25 @@ onMounted(() => {
 
 const emit = defineEmits(["complete"])
 
-const takePicture = async () => {
-	const image = await Camera.getPhoto({
-		allowEditing: false,
-		resultType: CameraResultType.Base64,
-		source: CameraSource.Prompt,
+const handleImageInputChange = (e) => {
+	console.log(e.target.files)
+	const files = e.target.files
+
+	// create object url
+	const url = URL.createObjectURL(files[0])
+	images.push({
+		filename: files[0].name,
+		url,
+		uploaded: false,
 	})
-
-	// Can be set to the src of an image now
-	imageSource.value = "data:image/png;base64, " + image.base64String
-
-	// save the file
-	const filename = `${props.doctype}-photo-${nanoid()}.jpeg`
-
-	try {
-		const savedPhotoFile = await Filesystem.writeFile({
-			path: filename,
-			data: image.base64String,
-			directory: Directory.Data,
-		})
-
-		const imageData = await getBase64ImageFromFileSystem(savedPhotoFile.uri)
-		images.push({
-			filename: filename,
-			data: `data:image/jpeg;base64,${imageData}`,
-			uploaded: false,
-			base64String: imageData,
-		})
-	} catch (e) {
-		alert("Error saving or loading image file")
-		console.error(e)
-	}
 }
 
-// TODO: Rename to a generic utility
-const getBase64ImageFromFileSystem = async (uri) => {
-	const file = await Filesystem.readFile({ path: uri })
-	return file.data
+function handleImageRemove(index) {
+	images.splice(index, 1)
+	imageInput.value.value = ""
 }
 
 const handleComplete = () => {
 	emit("complete", { images: unref(images) })
 }
-
-// TODO
-// How the UX should look like? (robust, fault-tolerate)
-
-// 1. Let them attach the photos (max 5) first
-// 2. Store in file storage
-// 3. Use K-V store to store those as array
-//      * with key "<doctype>:new:attachments"
-//      * mark every photo un-uploaded
-// 4. Show Form View
-// 5. On create, save the form to backend
-// 6. Get the "name" of the newly created doctype
-// 7. Upload the photos one by one
-//      * mark them as uploaded after
 </script>
