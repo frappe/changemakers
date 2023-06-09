@@ -18,15 +18,17 @@
 				<template #afterForm>
 					<ErrorMessage
 						:message="
-							document?.get?.error ||
-							document?.setValue?.error ||
+							documentResource?.get?.error ||
+							documentResource?.setValue?.error ||
 							DocTypeList.insert.error
 						"
 					/>
 					<Button
 						class="mt-5"
 						appearance="primary"
-						:loading="DocTypeList.insert.loading || document?.setValue.loading"
+						:loading="
+							DocTypeList.insert.loading || documentResource?.setValue.loading
+						"
 					>
 						{{ props.submitButtonLabel }}
 					</Button>
@@ -94,7 +96,7 @@ interface DocField {
 	read_only?: boolean
 }
 
-const document = createDocumentResource({
+const documentResource = createDocumentResource({
 	doctype: props.doctype,
 	name: props.id,
 	fields: "*",
@@ -180,28 +182,17 @@ const DocTypeList = createListResource({
 	},
 })
 
-const uploadImage = async (doctype, name, fileName, base64ImageString) => {
-	const imageUploader = useFileUploaderResource({
-		content: base64ImageString,
-		documentType: doctype,
-		documentName: name,
-		fileName,
-	})
-	imageUploader.submit()
+const uploadImage = async (doctype, name, file) => {
+	const fileAttachmentUploader = new FileAttachmentUploader(file)
+	return fileAttachmentUploader.upload(doctype, name).promise
 }
 
 async function uploadAllImages(documentType, documentName) {
 	for (const image of attachedImages) {
 		if (!image.uploaded) {
-			await uploadImage(
-				documentType,
-				documentName,
-				image.filename,
-				image.base64String
-			)
+			await uploadImage(documentType, documentName, image.file)
 			image.uploaded = true
 		}
-		console.log(image.uploaded)
 	}
 }
 
@@ -210,12 +201,6 @@ async function uploadFileAttachment(doctype, docname, fieldname, file) {
 	try {
 		const fileAttachmentUploader = new FileAttachmentUploader(file)
 		fileAttachmentUploader.upload(doctype, docname, fieldname, (fileDoc) => {
-			console.log(
-				"File URL : " +
-					fileDoc.file_url +
-					"\n Name: " +
-					fileDoc.attached_to_name
-			)
 			DocTypeList.setValue.submit({
 				name: fileDoc.attached_to_name,
 				[fieldname]: fileDoc.file_url,
@@ -267,10 +252,10 @@ async function handleUpdate() {
 			)
 		)
 
-		await document.setValue.submit(formModel.value)
+		await documentResource.setValue.submit(formModel.value)
 
-		await document.get.promise
-		formModel.value = document.doc
+		await documentResource.get.promise
+		formModel.value = documentResource.doc
 
 		router.back()
 	}
@@ -305,9 +290,9 @@ function handleFormSubmit() {
 
 onMounted(async () => {
 	if (props.id) {
-		await document.get.promise
+		await documentResource.get.promise
 		await formFields.promise
-		formModel.value = document.doc
+		formModel.value = documentResource.doc
 	}
 })
 
@@ -316,7 +301,7 @@ const formIsReady = computed(() => {
 		return !formFields.loading && formFields.data
 	}
 
-	return document && !document.get.loading && document.doc
+	return document && !documentResource.get.loading && documentResource.doc
 })
 
 formFields.reload()
