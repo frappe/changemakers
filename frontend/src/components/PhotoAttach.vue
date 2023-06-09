@@ -101,7 +101,6 @@ onMounted(() => {
 const emit = defineEmits(["complete"])
 
 const handleImageInputChange = (e) => {
-	console.log(e.target.files)
 	const files = e.target.files
 
 	// create object url
@@ -110,6 +109,7 @@ const handleImageInputChange = (e) => {
 		filename: files[0].name,
 		url,
 		uploaded: false,
+		file: files[0],
 	})
 }
 
