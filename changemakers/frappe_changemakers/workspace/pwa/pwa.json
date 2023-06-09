@@ -1,0 +1,33 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"pILYW_n9dS\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Open PWA\",\"col\":12}}]",
+ "creation": "2023-06-09 15:31:02.321057",
+ "custom_blocks": [
+  {
+   "custom_block_name": "Open PWA Button",
+   "label": "Open PWA"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "color-energy-points",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PWA",
+ "links": [],
+ "modified": "2023-06-09 15:39:47.479283",
+ "modified_by": "hussain@frappe.io",
+ "module": "Frappe Changemakers",
+ "name": "PWA",
+ "number_cards": [],
+ "owner": "hussain@frappe.io",
+ "parent_page": "Changemakers",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 22.0,
+ "shortcuts": [],
+ "title": "PWA"
+}
