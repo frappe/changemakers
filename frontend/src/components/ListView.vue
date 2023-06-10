@@ -26,8 +26,12 @@
 					>
 				</RouterLink>
 			</div>
+			<pre>{{}}</pre>
 			<!-- If data is visible -->
-			<div v-if="documentMeta.meta && documents.data" class="flex flex-col p-5">
+			<div
+				v-if="documentMeta.meta && documents.data && documents.data.length > 0"
+				class="flex flex-col p-5"
+			>
 				<div class="mb-5 flex flex-row items-center space-x-2">
 					<Input
 						type="text"
@@ -127,7 +131,7 @@
 						@click="navigate"
 						appearance="primary"
 						icon-left="plus"
-						class="h-10 w-1/2"
+						class="h-10 w-fit"
 						>Add {{ doctype }}</Button
 					>
 				</RouterLink>

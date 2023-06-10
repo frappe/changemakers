@@ -89,7 +89,6 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, inject, reactive } from "vue"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
-import { Geolocation } from "@capacitor/geolocation"
 
 import {
 	Autocomplete,
@@ -133,9 +132,9 @@ function onBlur() {
 	props.validation.setTouched(true)
 }
 
-function handleGeoLocationFetchError(e) {
-	console.error(e)
-	// alert("Error getting device location!")
+function handleGeoLocationFetchError() {
+	// console.error(e)
+	alert("Error getting device location!")
 }
 
 function getFormattedGeolocation(geoCoordinates: {
@@ -192,12 +191,12 @@ onMounted(() => {
 	if (props.readOnly) {
 	}
 
-	if (props.type === "geolocation" && !props.modelValue) {
-		Geolocation.getCurrentPosition()
-			.then((position) => {
-				emit("update:modelValue", getFormattedGeolocation(position.coords))
-			})
-			.catch(handleGeoLocationFetchError)
+	if (props.type === "geolocation"  && !props.modelValue) {
+		//fetch geolocation
+		navigator.geolocation.getCurrentPosition((position) => {
+			emit("update:modelValue", getFormattedGeolocation(position.coords))
+		}, handleGeoLocationFetchError)
+
 	}
 })
 
