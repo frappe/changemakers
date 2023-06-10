@@ -29,7 +29,15 @@
 
 	<!-- Just to handle the attrs, maybe move to a separate component? -->
 	<div v-bind="$attrs" v-else-if="props.type === 'geolocation'">
-		<!-- automatically set the geolocation -->
+		<div v-if="props.modelValue">
+			<span class="mb-2 block text-left text-sm leading-4 text-gray-700">
+				{{ props.label }}
+			</span>
+			<a
+				:href="`https://www.google.com/maps/search/?api=1&query=${coordinates.latitude}%2C${coordinates.longitude}`"
+				>Open in Maps</a
+			>
+		</div>
 	</div>
 
 	<div v-else-if="props.type === 'attach'">
@@ -79,12 +87,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted, inject } from "vue"
+import { ref, computed, onMounted, inject, reactive } from "vue"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
-import write_blob from "capacitor-blob-writer"
 import { Geolocation } from "@capacitor/geolocation"
-import { Filesystem, Directory } from "@capacitor/filesystem"
-import { FileOpener, FileOpenerPlugin } from "@capacitor-community/file-opener"
 
 import {
 	Autocomplete,
@@ -140,6 +145,27 @@ function getFormattedGeolocation(geoCoordinates: {
 	return `{"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[${geoCoordinates.latitude},${geoCoordinates.longitude}]}}]}`
 }
 
+function extractCoordinatesFromString(featureString) {
+	// feature string: {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[${geoCoordinates.latitude},${geoCoordinates.longitude}]}}]}
+	const feature = JSON.parse(featureString)
+	const coordinates = feature.features[0].geometry.coordinates
+	return {
+		latitude: coordinates[0],
+		longitude: coordinates[1],
+	}
+}
+
+const coordinates = computed(() => {
+	if (!props.modelValue && props.type === "geolocation") {
+		return {
+			latitude: 0,
+			longitude: 0,
+		}
+	}
+
+	return extractCoordinatesFromString(props.modelValue)
+})
+
 const handleFile = (file) => {
 	console.log(file)
 }
@@ -166,7 +192,7 @@ onMounted(() => {
 	if (props.readOnly) {
 	}
 
-	if (props.type === "geolocation") {
+	if (props.type === "geolocation" && !props.modelValue) {
 		Geolocation.getCurrentPosition()
 			.then((position) => {
 				emit("update:modelValue", getFormattedGeolocation(position.coords))
