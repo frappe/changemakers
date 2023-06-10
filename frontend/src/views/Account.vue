@@ -6,35 +6,41 @@
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
-			<div v-if="user.data" class="m-6 flex flex-col">
-				<Card :title="t('labels.preferences', 'Preferences')" class="mb-4">
-					<div class="flex items-center justify-center py-5">
-						<Avatar
-							size="xl"
-							class="h-[100px] w-[100px]"
-							:imageURL="user.data.user_image"
-							:label="user.data.full_name"
-						/>
-					</div>
-					<div class="flex-col items-start justify-start">
-						<Input
-							:label="t('preferences.language')"
-							type="select"
-							:options="availableLanguages"
-							v-model="locale"
-						/>
-					</div>
-				</Card>
-				<Button appearance="white" @click="session.logout.submit()">{{
-					t("auth.logout")
-				}}</Button>
+			<div class="flex h-full flex-col justify-between">
+				<div v-if="user.data" class="m-6 flex flex-col">
+					<Card class="mb-4 rounded-xl">
+						<div class="flex items-center justify-center py-5">
+							<Avatar
+								size="xl"
+								class="h-[100px] w-[100px]"
+								:imageURL="user.data.user_image"
+								:label="user.data.full_name"
+							/>
+						</div>
+						<div class="flex-col items-start justify-start">
+							<Input
+								class="rounded-lg"
+								:label="t('preferences.language')"
+								type="select"
+								:options="availableLanguages"
+								v-model="locale"
+							/>
+						</div>
+					</Card>
+					<Button
+						class="rounded-xl py-2 font-semibold"
+						appearance="danger"
+						@click="session.logout.submit()"
+						>{{ t("auth.logout") }}</Button
+					>
+				</div>
+				<footer
+					class="flex flex-col items-center justify-center p-4 text-center text-sm text-gray-500"
+				>
+					<span>Frappe Changemakers</span>
+					<span>v{{ appVersion.data }}</span>
+				</footer>
 			</div>
-			<footer
-				class="flex flex-col items-center justify-center text-center text-sm text-gray-500"
-			>
-				<span>Frappe Changemakers</span>
-				<span>v{{ appVersion.data }}</span>
-			</footer>
 		</ion-content>
 	</ion-page>
 </template>
