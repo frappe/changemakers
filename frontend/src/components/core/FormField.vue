@@ -179,12 +179,6 @@ const handleFileSelect = async (e) => {
 	emit("update:modelValue", e.target.files[0])
 }
 
-const downloadFileAttachment = async (e) => {
-	e.preventDefault()
-
-	if (props.type !== "attach") return
-}
-
 const handleAttachmentRemove = (e) => {
 	e.preventDefault()
 	emit("update:modelValue", null)
