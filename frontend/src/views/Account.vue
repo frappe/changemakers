@@ -6,12 +6,12 @@
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
-			<pre>{{ user.data }}</pre>
 			<div v-if="user.data" class="m-6 flex flex-col">
 				<Card :title="t('labels.preferences', 'Preferences')" class="mb-4">
 					<div class="flex items-center justify-center py-5">
 						<Avatar
-							size="lg"
+							size="xl"
+							class="h-[100px] w-[100px]"
 							:imageURL="user.data.user_image"
 							:label="user.data.full_name"
 						/>

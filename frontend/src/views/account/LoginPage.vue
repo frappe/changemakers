@@ -2,9 +2,13 @@
 	<ion-page>
 		<ion-content :fullscreen="true">
 			<div class="m-4 flex h-full flex-col justify-center">
-				<Card title="Login to Changemakers">
+				<Card>
+					<h1 class="pb-5 text-center text-2xl font-bold text-gray-800">
+						Login to Changemakers
+					</h1>
 					<form class="flex flex-col space-y-3" @submit.prevent="submit">
 						<Input
+							class="rounded-xl py-2"
 							required
 							name="email"
 							type="text"
@@ -12,15 +16,19 @@
 							:label="t('auth.email')"
 						/>
 						<Input
+							class="rounded-xl py-2"
 							required
 							name="password"
 							type="password"
 							placeholder="••••••"
 							:label="t('auth.password')"
 						/>
-						<Button :loading="session.login.loading" appearance="primary">{{
-							t("auth.login")
-						}}</Button>
+						<Button
+							class="rounded-xl py-2"
+							:loading="session.login.loading"
+							appearance="primary"
+							>{{ t("auth.login") }}</Button
+						>
 					</form>
 				</Card>
 			</div>
