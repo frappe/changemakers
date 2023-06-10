@@ -70,5 +70,25 @@ router.isReady().then(() => {
 	app.mount("#app")
 })
 
+
+router.beforeEach(async (to, from, next) => {
+	let isLoggedIn = session.isLoggedIn
+	try {
+		userResource.reload()
+		await userResource.promise
+	} catch (error) {
+		isLoggedIn = false
+	}
+
+	if (to.name === "Login" && isLoggedIn) {
+		next({ name: "Home" })
+	} else if (to.name !== "Login" && !isLoggedIn) {
+		next({ name: "Login" })
+	} else {
+		next()
+	}
+})
+
+
 // Internationalization
 app.use(i18n)

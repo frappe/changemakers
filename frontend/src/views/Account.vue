@@ -6,8 +6,16 @@
 			</ion-toolbar>
 		</ion-header>
 		<ion-content :fullscreen="true">
+			<pre>{{ user.data }}</pre>
 			<div v-if="user.data" class="m-6 flex flex-col">
 				<Card :title="t('labels.preferences', 'Preferences')" class="mb-4">
+					<div class="flex items-center justify-center py-5">
+						<Avatar
+							size="lg"
+							:imageURL="user.data.user_image"
+							:label="user.data.full_name"
+						/>
+					</div>
 					<div class="flex-col items-start justify-start">
 						<Input
 							:label="t('preferences.language')"
@@ -34,7 +42,7 @@
 <script lang="ts" setup>
 import { inject } from "vue"
 import { useI18n } from "vue-i18n"
-import { createResource } from "frappe-ui"
+import { Avatar, createResource } from "frappe-ui"
 
 import {
 	sessionInjectionKey,

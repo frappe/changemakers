@@ -34,7 +34,7 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.11.7",
     "formvuelate": "^3.9.1",
-    "frappe-ui": "^0.0.105",
+    "frappe-ui": "^0.0.112",
     "ionicons": "^6.0.3",
     "nanoid": "^4.0.2",
     "vee-validate": "^4.5.8",

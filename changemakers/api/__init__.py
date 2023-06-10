@@ -27,7 +27,7 @@ def get_app_version():
 def get_current_user_info():
 	current_user = frappe.session.user
 	return frappe.db.get_value(
-		"User", current_user, ["first_name", "full_name"], as_dict=True
+		"User", current_user, ["first_name", "full_name", "user_image"], as_dict=True
 	)
 
 
