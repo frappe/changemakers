@@ -81,10 +81,6 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, inject } from "vue"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
-import write_blob from "capacitor-blob-writer"
-import { Geolocation } from "@capacitor/geolocation"
-import { Filesystem, Directory } from "@capacitor/filesystem"
-import { FileOpener, FileOpenerPlugin } from "@capacitor-community/file-opener"
 
 import {
 	Autocomplete,
@@ -128,9 +124,9 @@ function onBlur() {
 	props.validation.setTouched(true)
 }
 
-function handleGeoLocationFetchError(e) {
-	console.error(e)
-	// alert("Error getting device location!")
+function handleGeoLocationFetchError() {
+	// console.error(e)
+	alert("Error getting device location!")
 }
 
 function getFormattedGeolocation(geoCoordinates: {
@@ -167,11 +163,10 @@ onMounted(() => {
 	}
 
 	if (props.type === "geolocation") {
-		Geolocation.getCurrentPosition()
-			.then((position) => {
-				emit("update:modelValue", getFormattedGeolocation(position.coords))
-			})
-			.catch(handleGeoLocationFetchError)
+		//fetch geolocation
+		navigator.geolocation.getCurrentPosition((position) => {
+			emit("update:modelValue", getFormattedGeolocation(position.coords))
+		}, handleGeoLocationFetchError)
 	}
 })
 
