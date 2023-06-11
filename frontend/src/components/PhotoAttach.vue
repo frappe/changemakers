@@ -1,5 +1,5 @@
 <template>
-	<div class="mb-5 space-y-4 px-4 py-3">
+	<div class="mb-1 space-y-4 px-4 py-3">
 		<h2 class="text-base text-gray-600">
 			{{ props.previewMode ? "Image Attachments" : "Attach Images" }}
 		</h2>

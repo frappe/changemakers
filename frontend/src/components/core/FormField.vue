@@ -35,8 +35,16 @@
 			</span>
 			<a
 				:href="`https://www.google.com/maps/search/?api=1&query=${coordinates.latitude}%2C${coordinates.longitude}`"
-				>Open in Maps</a
 			>
+				<div>
+					<div
+						class="flex w-fit items-center rounded-xl bg-black py-2 px-5 text-white"
+					>
+						<FeatherIcon name="map" stroke-width="1.5" class="h-4 w-4" />
+						<div class="ml-3 text-sm">Open in Google Maps</div>
+					</div>
+				</div>
+			</a>
 		</div>
 	</div>
 
@@ -94,8 +102,8 @@ import {
 	Autocomplete,
 	ErrorMessage,
 	createResource,
-	FileUploader,
 	Button,
+	FeatherIcon,
 	toast,
 } from "frappe-ui"
 const props = defineProps({
