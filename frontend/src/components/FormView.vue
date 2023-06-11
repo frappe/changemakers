@@ -23,7 +23,7 @@
 							DocTypeList.insert.error
 						"
 					/>
-					<div class="sticky bottom-0 bg-white px-2 pt-3 pb-5">
+					<div class="sticky bottom-0 bg-white pt-3 pb-5">
 						<Button
 							class="w-full rounded-xl py-2"
 							appearance="primary"
