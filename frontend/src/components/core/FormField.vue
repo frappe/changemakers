@@ -118,6 +118,7 @@ import { CapacitorHttp } from "@capacitor/core"
 const emit = defineEmits(["input", "change", "update:modelValue"])
 const session = inject(sessionInjectionKey)
 
+let currentUser = ref()
 let doctypeList = ref([])
 
 const doctypeOptions = computed(() => {
@@ -171,6 +172,10 @@ const handleFile = (file) => {
 
 onMounted(() => {
 	if (props.type === "link" && props.doctype) {
+		if (props.doctype === "User") {
+			currentUser.value = session.user
+			emit("update:modelValue", currentUser.value)
+		}
 		doctypeList.value = createResource({
 			url: "changemakers.api.get_doctype_options",
 			params: {
@@ -191,12 +196,11 @@ onMounted(() => {
 	if (props.readOnly) {
 	}
 
-	if (props.type === "geolocation"  && !props.modelValue) {
+	if (props.type === "geolocation" && !props.modelValue) {
 		//fetch geolocation
 		navigator.geolocation.getCurrentPosition((position) => {
 			emit("update:modelValue", getFormattedGeolocation(position.coords))
 		}, handleGeoLocationFetchError)
-
 	}
 })
 
