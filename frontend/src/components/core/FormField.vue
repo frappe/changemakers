@@ -63,11 +63,11 @@
 					class="flex w-fit items-center gap-2 rounded-lg bg-black py-2 px-5 text-white"
 				>
 					<MemoIcon class="h-4 w-4" />
-					<span class="text-sm">Download Memo</span>
+					<span class="text-lg">Download Memo</span>
 				</div>
 			</a>
 			<Button
-				class="rounded-xl text-sm"
+				class="rounded-lg text-lg"
 				@click="handleAttachmentRemove"
 				appearance="danger"
 				>Remove</Button
@@ -76,6 +76,7 @@
 
 		<input
 			v-else
+			class="text-lg text-gray-800 file:mr-2 file:rounded-lg file:border-0 file:py-2 file:px-5 file:text-base file:font-medium file:text-gray-800"
 			type="file"
 			accept="application/pdf"
 			:value="modelValue"
@@ -128,8 +129,6 @@ const props = defineProps({
 	readOnly: Boolean,
 	formDocType: String,
 })
-
-import { CapacitorHttp } from "@capacitor/core"
 
 const emit = defineEmits(["input", "change", "update:modelValue"])
 const session = inject(sessionInjectionKey)
