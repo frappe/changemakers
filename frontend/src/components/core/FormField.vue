@@ -38,10 +38,10 @@
 			>
 				<div>
 					<div
-						class="flex w-fit items-center rounded-xl bg-black py-2 px-5 text-white"
+						class="flex w-fit items-center gap-2 rounded-lg bg-black py-2 px-5 text-white"
 					>
 						<FeatherIcon name="map" stroke-width="1.5" class="h-4 w-4" />
-						<div class="ml-3 text-sm">Open in Google Maps</div>
+						<span class="text-sm">Open in Google Maps</span>
 					</div>
 				</div>
 			</a>
@@ -55,13 +55,21 @@
 		</span>
 
 		<div
-			class="space-x-2"
+			class="flex space-x-2"
 			v-if="props.modelValue && typeof props.modelValue === 'string'"
 		>
-			<a :href="props.modelValue" class="text-blue-600"
-				>Open {{ props.modelValue }}</a
-			>
-			<Button @click="handleAttachmentRemove" appearance="danger"
+			<a :href="props.modelValue" class="text-blue-600">
+				<div
+					class="flex w-fit items-center gap-2 rounded-lg bg-black py-2 px-5 text-white"
+				>
+					<MemoIcon class="h-4 w-4" />
+					<span class="text-sm">Download Memo</span>
+				</div>
+			</a>
+			<Button
+				class="rounded-xl text-sm"
+				@click="handleAttachmentRemove"
+				appearance="danger"
 				>Remove</Button
 			>
 		</div>
@@ -97,7 +105,7 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, inject, reactive } from "vue"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
-
+import MemoIcon from "@/components/icons/MemoIcon.vue"
 import {
 	Autocomplete,
 	ErrorMessage,
