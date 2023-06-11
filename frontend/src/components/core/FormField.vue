@@ -20,8 +20,8 @@
 			:value="modelValue"
 			class="form-select block w-full"
 			v-bind="$attrs"
-			@change="(v) => emit('change', v.target.value)"
-			@input="(v) => emit('update:modelValue', v.target.value)"
+			@change="(v) => emit('change', formatDateTime(v.target.value))"
+			@input="(v) => emit('update:modelValue', formatDateTime(v.target.value))"
 			@blur="onBlur"
 			type="datetime-local"
 		/>
@@ -143,6 +143,14 @@ const doctypeOptions = computed(() => {
 
 	return []
 })
+
+function formatDateTime(value) {
+	const [date, time] = value.split(" ")
+	const [day, month, year] = date.split("-")
+	const [hours, minutes] = time.split(":")
+	const formattedValue = `${day}-${month}-${year} ${hours}:${minutes}`
+	return formattedValue
+}
 
 function onBlur() {
 	props.validation.setTouched(true)
