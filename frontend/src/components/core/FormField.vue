@@ -62,8 +62,8 @@
 				<div
 					class="flex w-fit items-center gap-2 rounded-lg bg-black py-2 px-5 text-white"
 				>
-					<MemoIcon class="h-4 w-4" />
-					<span class="text-lg">Download Memo</span>
+					<FeatherIcon name="download" class="h-4 w-4" />
+					<span class="text-lg">Download Attachment</span>
 				</div>
 			</a>
 			<Button
@@ -106,7 +106,6 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, inject, reactive } from "vue"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
-import MemoIcon from "@/components/icons/MemoIcon.vue"
 import {
 	Autocomplete,
 	ErrorMessage,
