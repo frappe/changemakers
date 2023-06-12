@@ -218,6 +218,11 @@ onMounted(() => {
 	if (props.readOnly) {
 	}
 
+	if (props.type === "datetime") {
+		const currentDate = new Date()
+		emit("update:modelValue", currentDate.toISOString().slice(0, 16))
+	}
+
 	if (props.type === "geolocation" && !props.modelValue) {
 		//fetch geolocation
 		navigator.geolocation.getCurrentPosition((position) => {
