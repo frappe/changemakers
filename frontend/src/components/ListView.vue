@@ -27,26 +27,34 @@
 				</RouterLink>
 			</div>
 			<pre>{{}}</pre>
-			<!-- If data is visible -->
-			<div
-				v-if="documentMeta.meta && documents.data && documents.data.length > 0"
-				class="flex flex-col p-5"
-			>
-				<div class="mb-5 flex flex-row items-center space-x-2">
-					<Input
-						type="text"
-						:placeholder="`Search ${doctype}s`"
-						icon-left="search"
-						class="w-full rounded-2xl bg-white p-[5px] focus:bg-white"
-						@input="(v) => (searchQuery = v)"
-						:modelValue="searchQuery"
-					/>
+			<div class="flex flex-col px-5 pt-4">
+				<div class="flex flex-row items-center space-x-2">
+					<div class="flex w-full items-center rounded-xl bg-white">
+						<Input
+							type="text"
+							:placeholder="`Search ${doctype}`"
+							icon-left="search"
+							class="w-full rounded-xl bg-white p-[5px] focus:bg-white"
+							@input="(v) => (searchQuery = v)"
+							@change="searchDocuments"
+							:modelValue="searchQuery"
+						/>
+						<div>
+							<Button
+								v-if="searchQuery"
+								class="rounded-xl"
+								icon="x"
+								appearance="minimal"
+								@click="clearSearch"
+							/>
+						</div>
+					</div>
 
 					<div class="relative">
 						<Button
 							appearance="white"
 							icon="filter"
-							class="rounded-2 xl h-full w-fit px-3 py-3"
+							class="h-full w-fit rounded-[12px] px-3 py-3"
 							@click="toggleShowFilters"
 						></Button>
 
@@ -56,7 +64,12 @@
 						></div>
 					</div>
 				</div>
-
+			</div>
+			<!-- If data is visible -->
+			<div
+				v-if="documentMeta.meta && documents.data && documents.data.length > 0"
+				class="flex flex-col p-5"
+			>
 				<div v-for="(data, index) in documents.data" :key="data.name">
 					<router-link
 						custom
@@ -257,7 +270,13 @@ const props = defineProps({
 		type: Object,
 		required: false,
 	},
+	searchField: {
+		type: String,
+		default: "name",
+	},
 })
+
+console.log(props.searchField)
 
 const router = useRouter()
 const documentMeta = reactive({ meta: null })
@@ -282,8 +301,6 @@ function initializeFilters() {
 
 initializeFilters()
 
-// For debugging and testing
-
 const filterFieldTypeOptionMap = {
 	number: [">", "<", "="],
 	link: ["="],
@@ -294,14 +311,14 @@ const filterFieldTypeOptionMap = {
 function applyFilters() {
 	fetchDocumentList()
 	toggleShowFilters()
-	areFiltersApplied.value = !areFiltersApplied.value
+	areFiltersApplied.value = true
 }
 
 function clearFilters() {
 	initializeFilters()
 	fetchDocumentList()
 	toggleShowFilters()
-	areFiltersApplied.value = !areFiltersApplied.value
+	areFiltersApplied.value = false
 }
 
 // filters.age = [props.doctype,filter_key,operator,filter_value]
@@ -403,5 +420,24 @@ function getOptionForField(fieldname) {
 		// split options by newline
 		return field.options.split("\n")
 	}
+}
+
+function searchDocuments() {
+	if (searchQuery.value) {
+		documents.submit({
+			doctype: props.doctype,
+			fields: fieldsToFetch.value,
+			filters: [
+				[props.doctype, props.searchField, "like", `%${searchQuery.value}%`],
+			],
+		})
+	} else {
+		fetchDocumentList()
+	}
+}
+
+function clearSearch() {
+	searchQuery.value = ""
+	searchDocuments()
 }
 </script>
