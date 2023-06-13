@@ -6,13 +6,13 @@
 			:id="props.id"
 			@complete="handleImageAttachComplete"
 		/>
-
+		<!-- <pre>{{ formFields.data }}</pre> -->
 		<template
 			v-if="(isExistingDoc || isImageAttachStepComplete) && formIsReady"
 		>
 			<SchemaFormWithValidation
 				@submit="handleFormSubmit"
-				class="mb-9 space-y-2 p-4"
+				class="mb-0 space-y-2 p-4"
 				:schema="formFields.data"
 			>
 				<template #afterForm>
@@ -23,7 +23,7 @@
 							DocTypeList.insert.error
 						"
 					/>
-					<div class="sticky bottom-0 bg-white pt-3 pb-5">
+					<div class="sticky bottom-0 w-full bg-white pt-3 pb-5">
 						<Button
 							class="w-full rounded-xl py-2"
 							appearance="primary"

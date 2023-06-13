@@ -103,6 +103,10 @@
 									v-else-if="doctype === 'Awareness Camp Record'"
 									class="h-6 w-6 text-gray-700"
 								/>
+								<FrappeIcons.TicketIcon
+									v-else-if="doctype === 'Case'"
+									class="h-6 w-6 text-gray-700"
+								/>
 								<div class="flex flex-col">
 									<h1 class="text-lg font-semibold text-gray-700">
 										{{ data[titleFieldName] }}
