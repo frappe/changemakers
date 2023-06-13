@@ -6,6 +6,7 @@
 			state: { type: 'link', doctype: 'State' },
 			age: { type: 'number' },
 		}"
+		searchField="first_name"
 	/>
 </template>
 
