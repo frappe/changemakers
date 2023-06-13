@@ -236,7 +236,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, reactive, watch } from "vue"
+import { ref, computed, reactive, onUpdated } from "vue"
 import { createResource, FeatherIcon } from "frappe-ui"
 import { IonPage, IonContent, IonModal } from "@ionic/vue"
 import { useRouter } from "vue-router"
@@ -404,4 +404,8 @@ function getOptionForField(fieldname) {
 		return field.options.split("\n")
 	}
 }
+
+onUpdated(() => {
+	fetchDocumentList()
+})
 </script>
