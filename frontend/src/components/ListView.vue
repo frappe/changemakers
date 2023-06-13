@@ -129,10 +129,23 @@
 					</router-link>
 				</div>
 			</div>
+			<!-- Empty state when no data in search only -->
+			<div
+				v-if="searchQuery && documents.data && documents.data.length === 0"
+				class="flex h-3/4 flex-col items-center justify-center gap-y-1.5"
+			>
+				<h3 class="font-medium text-gray-800">
+					No {{ doctype.toLowerCase() }} found
+				</h3>
+				<p class="text-sm text-gray-600">
+					Hmm... It seems theres no record like that!
+				</p>
+			</div>
+
 			<!-- If there is no data -->
 			<div
-				v-else
-				class="flex h-full flex-col items-center justify-center gap-y-1.5"
+				v-else-if="!documents.data || documents.data.length === 0"
+				class="flex h-3/4 flex-col items-center justify-center gap-y-1.5"
 			>
 				<h3 class="font-medium">No {{ doctype.toLowerCase() }} yet</h3>
 				<RouterLink
