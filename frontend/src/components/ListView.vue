@@ -26,7 +26,9 @@
 					>
 				</RouterLink>
 			</div>
-			<pre>{{}}</pre>
+			<!-- <pre>{{ documents }}</pre> -->
+
+			<!-- SEARCH & FILTER -->
 			<div class="flex flex-col px-5 pt-4">
 				<div class="flex flex-row items-center space-x-2">
 					<div class="flex w-full items-center rounded-xl bg-white">
@@ -114,7 +116,8 @@
 									<h4 class="space-x-1 divide-x-2 text-base text-gray-600">
 										<span
 											v-for="fieldname in fieldsToFetch.filter(
-												(field) => field !== titleFieldName
+												(field) =>
+													field !== titleFieldName && field !== 'status'
 											)"
 											:key="fieldname"
 										>
@@ -123,7 +126,8 @@
 									</h4>
 								</div>
 							</div>
-							<div>
+							<div class="flex items-center gap-2">
+								<Badge :colorMap="BadgeColorMap" :label="data['status']" />
 								<FeatherIcon
 									class="h-[18px] w-[18px] text-gray-700"
 									name="chevron-right"
@@ -267,7 +271,7 @@
 
 <script lang="ts" setup>
 import { ref, computed, reactive, watch } from "vue"
-import { createResource, FeatherIcon } from "frappe-ui"
+import { createResource, FeatherIcon, Badge } from "frappe-ui"
 import { IonPage, IonContent, IonModal } from "@ionic/vue"
 import { useRouter } from "vue-router"
 import { IonItem, IonList, IonSelect, IonSelectOption } from "@ionic/vue"
@@ -300,6 +304,14 @@ const documentMeta = reactive({ meta: null })
 const untransformedFilters = reactive({})
 const searchQuery = ref("")
 const showFilters = ref(false)
+
+const BadgeColorMap = {
+	New: "green",
+	"In Follow Up": "yellow",
+	Spam: "red",
+	Untraced: "orange",
+	Closed: "gray",
+}
 
 function toggleShowFilters() {
 	showFilters.value = !showFilters.value
