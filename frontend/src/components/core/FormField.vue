@@ -20,8 +20,8 @@
 			:value="modelValue"
 			class="form-select block w-full"
 			v-bind="$attrs"
-			@change="(v) => emit('change', v.target.value)"
-			@input="(v) => emit('update:modelValue', v.target.value)"
+			@change="(v) => emit('change', formatDateTime(v.target.value))"
+			@input="(v) => emit('update:modelValue', formatDateTime(v.target.value))"
 			@blur="onBlur"
 			type="datetime-local"
 		/>
@@ -35,8 +35,16 @@
 			</span>
 			<a
 				:href="`https://www.google.com/maps/search/?api=1&query=${coordinates.latitude}%2C${coordinates.longitude}`"
-				>Open in Maps</a
 			>
+				<div>
+					<div
+						class="flex w-fit items-center gap-2 rounded-lg bg-black py-2 px-5 text-white"
+					>
+						<FeatherIcon name="map" stroke-width="1.5" class="h-4 w-4" />
+						<span class="text-sm">Open in Google Maps</span>
+					</div>
+				</div>
+			</a>
 		</div>
 	</div>
 
@@ -47,19 +55,28 @@
 		</span>
 
 		<div
-			class="space-x-2"
+			class="flex space-x-2"
 			v-if="props.modelValue && typeof props.modelValue === 'string'"
 		>
-			<a :href="props.modelValue" class="text-blue-600"
-				>Open {{ props.modelValue }}</a
-			>
-			<Button @click="handleAttachmentRemove" appearance="danger"
+			<a :href="props.modelValue" class="text-blue-600">
+				<div
+					class="flex w-fit items-center gap-2 rounded-lg bg-black py-2 px-5 text-white"
+				>
+					<FeatherIcon name="download" class="h-4 w-4" />
+					<span class="text-lg">Download Attachment</span>
+				</div>
+			</a>
+			<Button
+				class="rounded-lg text-lg"
+				@click="handleAttachmentRemove"
+				appearance="danger"
 				>Remove</Button
 			>
 		</div>
 
 		<input
 			v-else
+			class="text-lg text-gray-800 file:mr-2 file:rounded-lg file:border-0 file:py-2 file:px-5 file:text-base file:font-medium file:text-gray-800"
 			type="file"
 			accept="application/pdf"
 			:value="modelValue"
@@ -89,13 +106,12 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, inject, reactive } from "vue"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
-
 import {
 	Autocomplete,
 	ErrorMessage,
 	createResource,
-	FileUploader,
 	Button,
+	FeatherIcon,
 	toast,
 } from "frappe-ui"
 const props = defineProps({
@@ -113,11 +129,10 @@ const props = defineProps({
 	formDocType: String,
 })
 
-import { CapacitorHttp } from "@capacitor/core"
-
 const emit = defineEmits(["input", "change", "update:modelValue"])
 const session = inject(sessionInjectionKey)
 
+let currentUser = ref()
 let doctypeList = ref([])
 
 const doctypeOptions = computed(() => {
@@ -127,6 +142,14 @@ const doctypeOptions = computed(() => {
 
 	return []
 })
+
+function formatDateTime(value) {
+	const [date, time] = value.split(" ")
+	const [day, month, year] = date.split("-")
+	const [hours, minutes] = time.split(":")
+	const formattedValue = `${day}-${month}-${year} ${hours}:${minutes}`
+	return formattedValue
+}
 
 function onBlur() {
 	props.validation.setTouched(true)
@@ -171,6 +194,10 @@ const handleFile = (file) => {
 
 onMounted(() => {
 	if (props.type === "link" && props.doctype) {
+		if (props.doctype === "User") {
+			currentUser.value = session.user
+			emit("update:modelValue", currentUser.value)
+		}
 		doctypeList.value = createResource({
 			url: "changemakers.api.get_doctype_options",
 			params: {
@@ -191,12 +218,16 @@ onMounted(() => {
 	if (props.readOnly) {
 	}
 
-	if (props.type === "geolocation"  && !props.modelValue) {
+	if (props.type === "datetime") {
+		const currentDate = new Date()
+		emit("update:modelValue", currentDate.toISOString().slice(0, 16))
+	}
+
+	if (props.type === "geolocation" && !props.modelValue) {
 		//fetch geolocation
 		navigator.geolocation.getCurrentPosition((position) => {
 			emit("update:modelValue", getFormattedGeolocation(position.coords))
 		}, handleGeoLocationFetchError)
-
 	}
 })
 
