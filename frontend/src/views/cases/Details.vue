@@ -9,7 +9,7 @@
 				>
 				</Button>
 				<h2 class="p-0 text-2xl font-semibold text-gray-800">
-					Rescue
+					Case
 					<span class="ml-1 font-mono text-sm font-medium text-gray-700"
 						>#{{ props.id }}</span
 					>
