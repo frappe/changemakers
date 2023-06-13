@@ -23,15 +23,17 @@
 							DocTypeList.insert.error
 						"
 					/>
-					<Button
-						class="mt-5"
-						appearance="primary"
-						:loading="
-							DocTypeList.insert.loading || documentResource?.setValue.loading
-						"
-					>
-						{{ props.submitButtonLabel }}
-					</Button>
+					<div class="sticky bottom-0 bg-white pt-3 pb-5">
+						<Button
+							class="w-full rounded-xl py-2"
+							appearance="primary"
+							:loading="
+								DocTypeList.insert.loading || documentResource?.setValue.loading
+							"
+						>
+							{{ props.submitButtonLabel }}
+						</Button>
+					</div>
 				</template>
 			</SchemaFormWithValidation>
 		</template>

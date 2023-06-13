@@ -46,7 +46,7 @@
 						<Button
 							appearance="white"
 							icon="filter"
-							class="rounded-2 xl h-full w-fit px-3 py-3"
+							class="h-full w-fit rounded-xl px-3 py-3"
 							@click="toggleShowFilters"
 						></Button>
 
