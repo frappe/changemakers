@@ -6,6 +6,7 @@ import rescueRoutes from "./rescue"
 import beneficiaryRoutes from "./beneficiary"
 import entitlementRoutes from "./entitlement"
 import awarenessCampRoutes from "./awarenessCamp"
+import caseRoutes from "./cases"
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -37,6 +38,7 @@ const routes: Array<RouteRecordRaw> = [
 	...beneficiaryRoutes,
 	...entitlementRoutes,
 	...awarenessCampRoutes,
+	...caseRoutes,
 ]
 
 const router = createRouter({

@@ -4,6 +4,8 @@ import BackButtonIcon from "@/components/icons/BackButton.vue"
 import DashboardIcon from "@/components/icons/Dashboard.vue"
 import ProfileIcon from "@/components/icons/Profile.vue"
 import AwarenessCampIcon from "@/components/icons/AwarenessCamp.vue"
+import TicketIcon from "@/components/icons/Ticket.vue"
+import NewTicketIcon from "@/components/icons/NewTicket.vue"
 
 export const FrappeIcons = {
 	BeneficiaryIcon,
@@ -11,5 +13,7 @@ export const FrappeIcons = {
 	AwarenessCampIcon,
 	BackButtonIcon,
 	DashboardIcon,
-	ProfileIcon
+	ProfileIcon,
+	TicketIcon,
+	NewTicketIcon,
 }
