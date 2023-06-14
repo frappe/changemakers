@@ -127,7 +127,11 @@
 								</div>
 							</div>
 							<div class="flex items-center gap-2">
-								<Badge :colorMap="BadgeColorMap" :label="data['status']" />
+								<Badge
+									v-if="data['status']"
+									:colorMap="BadgeColorMap"
+									:label="data['status']"
+								/>
 								<FeatherIcon
 									class="h-[18px] w-[18px] text-gray-700"
 									name="chevron-right"
@@ -270,7 +274,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, reactive, watch } from "vue"
+import { ref, computed, reactive, onUpdated } from "vue"
 import { createResource, FeatherIcon, Badge } from "frappe-ui"
 import { IonPage, IonContent, IonModal } from "@ionic/vue"
 import { useRouter } from "vue-router"
@@ -469,4 +473,8 @@ function clearSearch() {
 	searchQuery.value = ""
 	searchDocuments()
 }
+
+onUpdated(() => {
+	fetchDocumentList()
+})
 </script>

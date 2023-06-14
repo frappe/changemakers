@@ -12,7 +12,7 @@
 		>
 			<SchemaFormWithValidation
 				@submit="handleFormSubmit"
-				class="mb-0 space-y-2 p-4"
+				class="space-y-4 p-4"
 				:schema="formFields.data"
 			>
 				<template #afterForm>
