@@ -32,6 +32,38 @@
 					</div>
 				</div>
 
+				<!-- CASES -->
+				<div class="space-y-4">
+					<h2 class="text-xl font-semibold text-gray-900">
+						{{ t("dashboard.cases.header", "Cases") }}
+					</h2>
+					<div class="mt-3 grid grid-cols-2 gap-5">
+						<RouterLink :to="{ name: 'NewCaseForm' }" v-slot="{ href }">
+							<a
+								:href="href"
+								class="flex flex-col items-center gap-3 rounded-xl bg-white p-[14px] shadow-md"
+							>
+								<FrappeIcons.NewTicketIcon class="h-6 w-6" />
+								<h3 class="text-base font-medium text-gray-900">
+									New {{ t("labels.case", "Case") }}
+								</h3>
+							</a>
+						</RouterLink>
+						<RouterLink :to="{ name: 'CaseList' }" v-slot="{ href }">
+							<a
+								:href="href"
+								class="flex flex-col items-center gap-3 rounded-xl bg-white p-[14px] shadow-md"
+							>
+								<FrappeIcons.TicketIcon class="h-6 w-6" />
+								<h3 class="text-base font-medium text-gray-900">
+									View {{ t("labels.cases", "Cases") }}
+								</h3>
+							</a>
+						</RouterLink>
+					</div>
+				</div>
+
+				<!-- SERVICES -->
 				<div class="space-y-4">
 					<h2 class="text-xl font-semibold text-gray-900">
 						{{ t("dashboard.services.header", "Services") }}

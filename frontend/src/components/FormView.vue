@@ -6,7 +6,7 @@
 			:id="props.id"
 			@complete="handleImageAttachComplete"
 		/>
-
+		<!-- <pre>{{ formFields.data }}</pre> -->
 		<template
 			v-if="(isExistingDoc || isImageAttachStepComplete) && formIsReady"
 		>
@@ -23,7 +23,7 @@
 							DocTypeList.insert.error
 						"
 					/>
-					<div class="sticky bottom-0 bg-white pt-3 pb-5">
+					<div class="sticky bottom-0 w-full bg-white pt-3 pb-5">
 						<Button
 							class="w-full rounded-xl py-2"
 							appearance="primary"
