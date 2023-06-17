@@ -59,9 +59,9 @@
   },
   {
    "fieldname": "type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Type",
-   "options": "Shelter\nMedical\nFood\nEntitlement\nIdentified a Family\nLegal\nOther",
+   "options": "Case Type",
    "reqd": 1
   },
   {
@@ -303,7 +303,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-11 06:25:50.824377",
+ "modified": "2023-06-18 01:21:05.098039",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
