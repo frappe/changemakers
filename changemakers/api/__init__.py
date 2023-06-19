@@ -15,6 +15,8 @@ MOBILE_SUPPORTED_FIELD_TYPES = [
 	"Check",
 	"Geolocation",
 	"Attach",
+	"Small Text",
+	"Section Break",
 ]
 
 
