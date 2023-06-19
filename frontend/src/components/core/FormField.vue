@@ -83,10 +83,24 @@
 			@change="handleFileSelect"
 		/>
 	</div>
-
+	<div v-else-if="props.type === 'section-break'">
+		<h2 class="pt-2 text-lg font-semibold">{{ props.label }}</h2>
+	</div>
+	<div v-else-if="props.type === 'textarea'">
+		<span class="mb-2 block text-left text-sm leading-4 text-gray-700">
+			{{ props.label }}
+		</span>
+		<textarea
+			:value="modelValue"
+			class="form-textarea block h-20 w-full"
+			v-bind="$attrs"
+			@input="(v) => emit('update:modelValue', v.target.value)"
+			@change="(v) => emit('change', v.target.value)"
+			@blur="onBlur"
+		></textarea>
+	</div>
 	<Input
 		v-else
-		:readonly="props.readOnly"
 		:type="props.type"
 		:value="modelValue"
 		:label="props.label"
@@ -96,6 +110,10 @@
 		@blur="onBlur"
 		v-bind="$attrs"
 	/>
+	<!-- <div>
+		{{ props }}
+	</div> -->
+
 	<ErrorMessage
 		v-if="validation?.meta?.touched"
 		:message="validation?.errorMessage"

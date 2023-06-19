@@ -141,6 +141,8 @@ const formFields = createResource({
 			Datetime: "datetime",
 			Geolocation: "geolocation",
 			Attach: "attach",
+			"Small Text": "textarea",
+			"Section Break": "section-break",
 		}
 
 		return fields.map((field) => ({
