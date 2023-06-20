@@ -16,6 +16,7 @@
   {
    "fieldname": "beneficiary",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Beneficiary",
    "options": "Beneficiary",
    "unique": 1
@@ -47,7 +48,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-20 14:50:21.304482",
+ "modified": "2023-06-20 15:14:28.075888",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Attendee",
