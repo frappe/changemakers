@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "beneficiary",
+  "hotspot",
   "age",
   "gender"
  ],
@@ -23,6 +24,7 @@
    "fetch_from": "beneficiary.age",
    "fieldname": "age",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Age",
    "read_only": 1
   },
@@ -32,12 +34,20 @@
    "fieldtype": "Data",
    "label": "Gender",
    "read_only": 1
+  },
+  {
+   "fetch_from": "beneficiary.habitation",
+   "fieldname": "hotspot",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Hotspot",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-19 01:48:37.674384",
+ "modified": "2023-06-20 14:50:21.304482",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Attendee",
