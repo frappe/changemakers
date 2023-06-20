@@ -6,6 +6,13 @@ frappe.ui.form.on("Case", {
 		changemakers.utils.set_query_for_district(frm);
 		changemakers.utils.set_query_for_zone(frm);
 		changemakers.utils.set_query_for_ward(frm);
+		frm.set_query("type", () => {
+			return {
+				filters: {
+					is_enabled: 1,
+				},
+			};
+		});
 	},
 	state: changemakers.utils.handle_state_field,
 	district: changemakers.utils.handle_district_field,

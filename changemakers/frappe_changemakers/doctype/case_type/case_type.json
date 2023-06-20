@@ -7,7 +7,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "type"
+  "type",
+  "is_enabled"
  ],
  "fields": [
   {
@@ -15,10 +16,16 @@
    "fieldtype": "Data",
    "label": "Type",
    "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_enabled",
+   "fieldtype": "Check",
+   "label": "Is Enabled?"
   }
  ],
  "links": [],
- "modified": "2023-06-18 01:15:00.132154",
+ "modified": "2023-06-20 14:21:32.583819",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case Type",

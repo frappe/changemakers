@@ -10,6 +10,7 @@ app_license = "AGPL"
 
 fixtures = [
 	"Custom HTML Block",
+	"Case Type",
 	"State",
 	{"dt": "Client Script", "filters": {"name": "Action: Create User Profile"}},
 	{
