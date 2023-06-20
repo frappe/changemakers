@@ -1,0 +1,42 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Case Type",
+  "is_enabled": 1,
+  "modified": "2023-06-18 01:22:55.445919",
+  "name": "Shelter",
+  "type": "Shelter"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Case Type",
+  "is_enabled": 1,
+  "modified": "2023-06-18 01:23:01.138360",
+  "name": "Medical",
+  "type": "Medical"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Case Type",
+  "is_enabled": 1,
+  "modified": "2023-06-18 01:23:05.368430",
+  "name": "Food",
+  "type": "Food"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Case Type",
+  "is_enabled": 1,
+  "modified": "2023-06-18 01:23:46.368805",
+  "name": "Other",
+  "type": "Other"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Case Type",
+  "is_enabled": 1,
+  "modified": "2023-06-18 01:26:14.586694",
+  "name": "Hygiene",
+  "type": "Hygiene"
+ }
+]
