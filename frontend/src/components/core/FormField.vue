@@ -99,6 +99,65 @@
 			@blur="onBlur"
 		></textarea>
 	</div>
+	<div v-else-if="props.type === 'table'">
+		<span class="mb-2 block text-left text-sm leading-4 text-gray-700">
+			{{ props.label }}
+		</span>
+		<Button
+			class="mb-3 rounded-lg text-lg"
+			icon-left="plus"
+			@click="handleChildAdd($event)"
+			>Add Row
+		</Button>
+		<div class="rounded-xl border border-gray-300">
+			<div>
+				<div
+					v-for="(row, index) in props.modelValue"
+					:key="index"
+					:class="[
+						'px-4',
+						'py-2',
+						'flex',
+						'justify-between',
+						'text-lg',
+						'items-center',
+						'border-b',
+						index === props.modelValue.length - 1
+							? 'border-transparent pb-3'
+							: 'border-gray-300',
+						index === 0 ? 'pt-3' : '',
+					]"
+				>
+					<div class="flex gap-3">
+						<div>{{ row.idx }}.</div>
+						<div class="flex flex-col">
+							<div class="font-medium">
+								{{ row.service_type }}
+							</div>
+							<div class="text-base">
+								{{ row.comment }}
+							</div>
+						</div>
+					</div>
+					<div class="flex gap-2">
+						<Button
+							class="rounded-lg border border-gray-300 text-lg text-gray-600 drop-shadow-md"
+							@click="handleRowEdit($event, row)"
+							appearance="default"
+							icon-left="edit"
+							>Edit</Button
+						>
+						<Button
+							icon="trash"
+							appearance="danger"
+							class="rounded-lg border border-gray-300 text-lg text-gray-600 drop-shadow-md"
+							@click="handleRowDelete($event, row)"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<Input
 		v-else
 		:type="props.type"
@@ -110,10 +169,41 @@
 		@blur="onBlur"
 		v-bind="$attrs"
 	/>
-	<!-- <div>
-		{{ props }}
-	</div> -->
+	<!-- <pre>{{ childTableFields.data }}</pre> -->
+	<!-- <pre>{{ selectedRow }}</pre> -->
+	<!-- <pre>{{ props.modelValue }}</pre> -->
 
+	<div v-if="props.type === 'table' && toggleChildDetail">
+		<div
+			class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4"
+		>
+			<div class="z-10 w-full rounded-xl bg-white px-4 pt-2 pb-4">
+				<div v-for="field in childTableFields.data">
+					<Input
+						:type="field.type"
+						v-model="selectedRow[field.model]"
+						:value="selectedRow[field.model]"
+						:label="field.label"
+						:options="field.options"
+						@input="
+							(v) => {
+								selectedRow[field.model] = v
+							}
+						"
+						@blur="onBlur"
+						v-bind="$attrs"
+						class="pt-3"
+					/>
+				</div>
+				<Button
+					class="mt-3 w-full rounded-lg text-lg"
+					@click="updateChild"
+					appearance="primary"
+					>Save</Button
+				>
+			</div>
+		</div>
+	</div>
 	<ErrorMessage
 		v-if="validation?.meta?.touched"
 		:message="validation?.errorMessage"
@@ -121,16 +211,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted, inject, reactive } from "vue"
+import { ref, computed, onMounted, inject, shallowRef } from "vue"
 import { sessionInjectionKey } from "@/typing/InjectionKeys"
+import FormField from "@/components/core/FormField.vue"
 import {
 	Autocomplete,
 	ErrorMessage,
 	createResource,
 	Button,
 	FeatherIcon,
-	toast,
 } from "frappe-ui"
+import { SchemaFormWithValidation } from "@/utils/form"
+
 const props = defineProps({
 	type: String,
 	modelValue: [String, Number, Boolean, Object, Array],
@@ -151,6 +243,11 @@ const session = inject(sessionInjectionKey)
 
 let currentUser = ref()
 let doctypeList = ref([])
+let toggleChildDetail = ref(false)
+let childTableMeta = ref({ data: { docs: [] } })
+let selectedRow = ref({})
+let childTableFields = ref({})
+let newRow = ref({})
 
 const doctypeOptions = computed(() => {
 	if (props.doctype && doctypeList.value.data) {
@@ -209,6 +306,41 @@ const handleFile = (file) => {
 	console.log(file)
 }
 
+const handleRowEdit = (e, row) => {
+	e.preventDefault()
+	selectedRow.value = row
+	toggleChildDetail.value = !toggleChildDetail.value
+	console.log(row)
+}
+
+const handleChildAdd = (e) => {
+	e.preventDefault()
+	selectedRow.value = newRow.value
+	toggleChildDetail.value = !toggleChildDetail.value
+}
+
+function addChild() {
+	props.modelValue.push(newRow.value)
+	newRow.value = {}
+	toggleChildDetail.value = false
+}
+
+const updateChild = (e) => {
+	e.preventDefault()
+	if (!selectedRow.value.name) {
+		addChild()
+	}
+	toggleChildDetail.value = false
+}
+
+const handleRowDelete = (e, row) => {
+	e.preventDefault()
+	const index = props.modelValue.indexOf(row)
+	if (index > -1) {
+		props.modelValue.splice(index, 1)
+	}
+}
+
 onMounted(() => {
 	if (props.type === "link" && props.doctype) {
 		if (props.doctype === "User") {
@@ -245,6 +377,67 @@ onMounted(() => {
 		navigator.geolocation.getCurrentPosition((position) => {
 			emit("update:modelValue", getFormattedGeolocation(position.coords))
 		}, handleGeoLocationFetchError)
+	}
+
+	if (props.type === "table") {
+		interface DocField {
+			label: string
+			fieldname: string
+			idx: number
+			fieldtype: string
+			reqd?: boolean
+			default: string
+			options: string
+			read_only?: boolean
+		}
+
+		childTableMeta = createResource({
+			params: {
+				doctype: props.doctype,
+			},
+			url: "frappe.desk.form.load.getdoctype",
+			auto: true,
+		})
+
+		childTableFields = createResource({
+			url: "changemakers.api.get_form_fields",
+			params: {
+				doctype: props.doctype,
+			},
+			auto: true,
+			transform(fields: Array<DocField>) {
+				const FIELDTYPE_TYPE_MAP = {
+					Data: "text",
+					Int: "number",
+					Check: "checkbox",
+					Link: "link",
+					Select: "select",
+					Datetime: "datetime",
+					Geolocation: "geolocation",
+					Attach: "attach",
+					"Small Text": "textarea",
+					"Section Break": "section-break",
+					Table: "table",
+					Text: "textarea",
+				}
+				return fields.map((field) => ({
+					formDocType: props.doctype,
+					label: field.label,
+					model: field.fieldname,
+					component: shallowRef(FormField),
+					required: Boolean(field.reqd),
+					default: field.default,
+					type: FIELDTYPE_TYPE_MAP[field.fieldtype],
+					doctype: field.options,
+					readOnly: Boolean(field.read_only),
+					options:
+						(field.fieldtype != "Link" &&
+							field.options &&
+							field.options.split("\n")) ||
+						[],
+				}))
+			},
+		})
 	}
 })
 

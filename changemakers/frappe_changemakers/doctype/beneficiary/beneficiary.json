@@ -374,7 +374,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-03-05 11:24:00.841102",
+ "modified": "2023-06-22 12:02:49.606984",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",

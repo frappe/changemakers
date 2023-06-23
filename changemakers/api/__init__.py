@@ -17,6 +17,8 @@ MOBILE_SUPPORTED_FIELD_TYPES = [
 	"Attach",
 	"Small Text",
 	"Section Break",
+	"Table",
+	"Text",
 ]
 
 

@@ -1,12 +1,13 @@
 <template>
 	<div class="relative bg-white">
 		<PhotoAttach
+			v-if="props.photoRequired"
 			:previewMode="isExistingDoc || isImageAttachStepComplete"
 			:doctype="props.doctype"
 			:id="props.id"
 			@complete="handleImageAttachComplete"
 		/>
-		<!-- <pre>{{ formFields.data }}</pre> -->
+		<!-- <pre>{{ formFields }}</pre> -->
 		<template
 			v-if="(isExistingDoc || isImageAttachStepComplete) && formIsReady"
 		>
@@ -85,6 +86,11 @@ const props = defineProps({
 		required: false,
 		default: "Create",
 	},
+	photoRequired: {
+		type: Boolean,
+		required: false,
+		default: true,
+	},
 })
 
 interface DocField {
@@ -143,6 +149,8 @@ const formFields = createResource({
 			Attach: "attach",
 			"Small Text": "textarea",
 			"Section Break": "section-break",
+			Table: "table",
+			Text: "textarea",
 		}
 
 		return fields.map((field) => ({
