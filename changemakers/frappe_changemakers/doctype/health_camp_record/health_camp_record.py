@@ -12,10 +12,10 @@ class HealthCampRecord(Document):
 
 	def set_total_patients_screened(self):
 		self.total_patients_screened = (
-			(self.number_of_males or 0)
-			+ (self.number_of_females or 0)
-			+ (self.number_of_children or 0)
-			+ (self.number_of_others or 0)
+			(self.number_of_males)
+			+ (self.number_of_females)
+			+ (self.number_of_children)
+			+ (self.number_of_others)
 		)
 
 	def update_patient_count(self):
@@ -25,8 +25,9 @@ class HealthCampRecord(Document):
 		self.number_of_others = 0
 
 		for patient in self.healthcamp_attendees:
-			beneficiary_name = get_beneficiary_name(str(patient))
-			beneficiary = frappe.get_doc("Beneficiary", beneficiary_name)
+			beneficiary = frappe.db.get_value(
+				"Beneficiary", patient.beneficiary, ["age", "gender"], as_dict=True
+			)
 			if beneficiary.age > 13:
 				if beneficiary.gender == "Male":
 					self.number_of_males += 1
@@ -36,9 +37,3 @@ class HealthCampRecord(Document):
 					self.number_of_others += 1
 			else:
 				self.number_of_children += 1
-
-
-def get_beneficiary_name(patient):
-	start_index = patient.find("(") + 1
-	end_index = patient.find(")")
-	return patient[start_index:end_index]
