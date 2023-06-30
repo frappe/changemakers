@@ -60,7 +60,8 @@
   "other_employment_type",
   "section_break_uwdz",
   "bottom_save_button",
-  "column_break_veps"
+  "column_break_veps",
+  "health_camp_record"
  ],
  "fields": [
   {
@@ -358,6 +359,13 @@
   {
    "fieldname": "column_break_veps",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "health_camp_record",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Health Camp Record",
+   "options": "Health Camp Attendee"
   }
  ],
  "image_field": "image",
@@ -372,9 +380,14 @@
    "group": "Health",
    "link_doctype": "Hospitalisation Record",
    "link_fieldname": "beneficiary"
+  },
+  {
+   "group": "Health",
+   "link_doctype": "Health Camp Record",
+   "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-03-05 11:24:00.841102",
+ "modified": "2023-06-30 22:41:53.380509",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
