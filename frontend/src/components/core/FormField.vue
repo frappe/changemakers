@@ -110,14 +110,14 @@
 			>Add Row
 		</Button>
 		<div class="rounded-xl border border-gray-300">
-			<div v-if="props.modelValue.length === 0">
+			<div v-if="!props.modelValue || props.modelValue.length === 0">
 				<div
 					class="flex h-32 items-center justify-center text-lg text-gray-500"
 				>
 					No {{ props.label }} added yet.
 				</div>
 			</div>
-			<div>
+			<div v-else>
 				<div
 					v-for="(row, index) in props.modelValue"
 					:key="index"
@@ -178,7 +178,7 @@
 	/>
 	<!-- <pre>{{ childTableFields.data }}</pre> -->
 	<!-- <pre>{{ selectedRow }}</pre> -->
-	<!-- <pre>{{ props.modelValue }}</pre> -->
+	<!-- <pre>{{ type }}</pre> -->
 
 	<div v-if="props.type === 'table' && toggleChildDetail">
 		<div

@@ -7,7 +7,7 @@
 			:id="props.id"
 			@complete="handleImageAttachComplete"
 		/>
-		<!-- <pre>{{ formFields }}</pre> -->
+		<!-- <pre>{{ formIsReady }}</pre> -->
 		<template
 			v-if="(isExistingDoc || isImageAttachStepComplete) && formIsReady"
 		>
@@ -38,7 +38,6 @@
 				</template>
 			</SchemaFormWithValidation>
 		</template>
-
 		<!-- Loading Indicator -->
 		<div
 			v-else-if="
