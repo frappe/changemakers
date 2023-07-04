@@ -1,12 +1,13 @@
 <template>
 	<div class="relative bg-white">
 		<PhotoAttach
+			v-if="props.photoRequired"
 			:previewMode="isExistingDoc || isImageAttachStepComplete"
 			:doctype="props.doctype"
 			:id="props.id"
 			@complete="handleImageAttachComplete"
 		/>
-		<!-- <pre>{{ formFields.data }}</pre> -->
+		<!-- <pre>{{ formIsReady }}</pre> -->
 		<template
 			v-if="(isExistingDoc || isImageAttachStepComplete) && formIsReady"
 		>
@@ -37,7 +38,6 @@
 				</template>
 			</SchemaFormWithValidation>
 		</template>
-
 		<!-- Loading Indicator -->
 		<div
 			v-else-if="
@@ -84,6 +84,11 @@ const props = defineProps({
 		type: String,
 		required: false,
 		default: "Create",
+	},
+	photoRequired: {
+		type: Boolean,
+		required: false,
+		default: true,
 	},
 })
 
@@ -143,6 +148,8 @@ const formFields = createResource({
 			Attach: "attach",
 			"Small Text": "textarea",
 			"Section Break": "section-break",
+			Table: "table",
+			Text: "textarea",
 		}
 
 		return fields.map((field) => ({
