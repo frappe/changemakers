@@ -17,10 +17,11 @@
   "number_of_males",
   "number_of_children",
   "total_patients_screened",
-  "healthcamp_attendees",
   "column_break_rsms",
   "number_of_females",
   "number_of_others",
+  "section_break_aswu",
+  "healthcamp_attendees",
   "location_section",
   "camp_location",
   "column_break_fxnc",
@@ -211,11 +212,15 @@
    "fieldtype": "Table",
    "label": "Healthcamp Attendees",
    "options": "Health Camp Attendee"
+  },
+  {
+   "fieldname": "section_break_aswu",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-18 18:03:05.637821",
+ "modified": "2023-06-27 12:38:00.382742",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Record",
