@@ -59,9 +59,7 @@
   "employment_type",
   "other_employment_type",
   "section_break_uwdz",
-  "bottom_save_button",
-  "column_break_veps",
-  "health_camp_record"
+  "bottom_save_button"
  ],
  "fields": [
   {
@@ -92,6 +90,7 @@
   {
    "fieldname": "habitation",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Hotspot Name/Habitation",
    "options": "Habitation"
   },
@@ -355,17 +354,6 @@
    "fieldname": "bottom_save_button",
    "fieldtype": "Button",
    "label": "Save"
-  },
-  {
-   "fieldname": "column_break_veps",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "health_camp_record",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Health Camp Record",
-   "options": "Health Camp Attendee"
   }
  ],
  "image_field": "image",
@@ -387,7 +375,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-06-30 22:41:53.380509",
+ "modified": "2023-07-11 13:57:23.245991",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
@@ -506,7 +494,7 @@
   }
  ],
  "quick_entry": 1,
- "search_fields": "age,zone,ward",
+ "search_fields": "age,zone,ward,habitation",
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
