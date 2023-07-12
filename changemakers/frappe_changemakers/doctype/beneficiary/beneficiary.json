@@ -15,6 +15,7 @@
   "column_break_3",
   "gender",
   "age",
+  "languages_known",
   "column_break_4",
   "religion",
   "social_category",
@@ -354,6 +355,12 @@
    "fieldname": "bottom_save_button",
    "fieldtype": "Button",
    "label": "Save"
+  },
+  {
+   "fieldname": "languages_known",
+   "fieldtype": "Table MultiSelect",
+   "label": "Languages Known",
+   "options": "Language Multiselect"
   }
  ],
  "image_field": "image",
@@ -375,7 +382,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-07-11 13:57:23.245991",
+ "modified": "2023-07-12 12:19:27.711778",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
