@@ -18,13 +18,15 @@
   "amended_from",
   "location_section",
   "is_beneficiary_in_shelter_home",
+  "section_break_ajqf",
   "state",
   "zone",
   "column_break_eyby",
-  "shelter_home",
   "district",
-  "ward",
   "habitation",
+  "column_break_ouiz",
+  "ward",
+  "shelter_home",
   "beneficiary_details_section",
   "is_beneficiary_traced",
   "beneficiary",
@@ -76,6 +78,7 @@
    "label": "Is the beneficiary in shelter home?"
   },
   {
+   "depends_on": "eval:doc.is_beneficiary_in_shelter_home === 1",
    "fieldname": "shelter_home",
    "fieldtype": "Link",
    "label": "Shelter Home",
@@ -299,11 +302,19 @@
   {
    "fieldname": "column_break_qfjk",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ouiz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ajqf",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-18 01:21:05.098039",
+ "modified": "2023-07-08 01:09:06.876317",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
