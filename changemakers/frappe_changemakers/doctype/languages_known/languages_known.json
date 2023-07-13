@@ -22,7 +22,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-12 12:15:03.640146",
+ "modified": "2023-07-13 00:33:45.657027",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Languages Known",
@@ -42,6 +42,7 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

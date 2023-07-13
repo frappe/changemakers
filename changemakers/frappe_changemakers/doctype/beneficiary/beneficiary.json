@@ -368,6 +368,11 @@
  "links": [
   {
    "group": "General",
+   "link_doctype": "Daily Visit Update",
+   "link_fieldname": "beneficiary"
+  },
+  {
+   "group": "General",
    "link_doctype": "Entitlement Request",
    "link_fieldname": "beneficiary"
   },
@@ -382,7 +387,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-07-12 12:19:27.711778",
+ "modified": "2023-07-12 23:38:50.889079",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",

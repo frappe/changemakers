@@ -17,13 +17,14 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Language",
-   "options": "Languages Known"
+   "options": "Languages Known",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-07-12 12:20:57.205539",
+ "modified": "2023-07-13 00:33:06.838655",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Language Multiselect",
