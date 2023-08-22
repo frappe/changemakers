@@ -218,7 +218,7 @@
    "fieldname": "marital_status",
    "fieldtype": "Select",
    "label": "Marital Status",
-   "options": "Unmarried\nMarried\nDivorced\nSeparated\nWidowed\nUnknown"
+   "options": "Unknown\nUnmarried\nMarried\nDivorced\nSeparated\nWidowed"
   },
   {
    "fieldname": "image",
@@ -293,7 +293,7 @@
    "fieldname": "employment_type",
    "fieldtype": "Select",
    "label": "Employment Type",
-   "options": "Labor\nHospitality\nRestaurants\nHousework\nBegging\nOther"
+   "options": "\nLabor\nHospitality\nRestaurants\nHousework\nBegging\nOther"
   },
   {
    "depends_on": "eval:doc.is_employeed==1&&doc.employment_type==\"Other\"",
@@ -387,7 +387,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-07-12 23:38:50.889079",
+ "modified": "2023-08-22 10:28:30.184399",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",
