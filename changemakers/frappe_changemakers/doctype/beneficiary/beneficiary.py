@@ -8,10 +8,12 @@ from changemakers.utils.data import is_valid_indian_phone_number
 
 
 class Beneficiary(Document):
+	def before_save(self):
+		self.set_created_by()
+
 	def validate(self):
 		self.validate_age()
 		self.validate_phone_number_fields()
-		self.set_created_by()
 
 	def validate_age(self):
 		if not (self.age < 120):
