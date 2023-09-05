@@ -30,4 +30,5 @@ class Beneficiary(Document):
 
 	def set_created_by(self):
 		if not self.created_by:
-			self.created_by = self.owner
+			owner = frappe.db.get_value("User", self.owner, "full_name")
+			self.created_by = owner
