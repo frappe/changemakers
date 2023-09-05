@@ -11,6 +11,7 @@ class Beneficiary(Document):
 	def validate(self):
 		self.validate_age()
 		self.validate_phone_number_fields()
+		self.set_created_by()
 
 	def validate_age(self):
 		if not (self.age < 120):
@@ -24,3 +25,7 @@ class Beneficiary(Document):
 
 		if self.phone_number and not is_valid_indian_phone_number(self.phone_number):
 			frappe.throw(f"Value of {frappe.bold('Phone')} is not a valid Indian Phone number")
+
+	def set_created_by(self):
+		if not self.created_by:
+			self.created_by = self.owner
