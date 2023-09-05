@@ -6,4 +6,9 @@ from frappe.model.document import Document
 
 
 class Case(Document):
-	pass
+	def before_save(self):
+		self.set_created_by()
+
+	def set_created_by(self):
+		if not self.created_by:
+			self.created_by = self.owner

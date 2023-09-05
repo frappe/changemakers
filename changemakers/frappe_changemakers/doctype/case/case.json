@@ -46,6 +46,9 @@
   "follow_up_details_section",
   "family_meeting_outcome",
   "followups",
+  "data_cjaa",
+  "section_break_seoz",
+  "created_by",
   "section_break_yuho",
   "bottom_save_button",
   "column_break_qfjk"
@@ -310,11 +313,25 @@
   {
    "fieldname": "section_break_ajqf",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "data_cjaa",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "section_break_seoz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created By",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-08 01:09:06.876317",
+ "modified": "2023-09-05 17:04:47.689828",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",

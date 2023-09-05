@@ -43,6 +43,8 @@
   "police_memo",
   "section_break_zcfc",
   "other_remarks",
+  "section_break_ubix",
+  "created_by",
   "section_break_vjqi",
   "bottom_save_button",
   "amended_from",
@@ -273,12 +275,22 @@
    "fieldname": "bottom_save_button",
    "fieldtype": "Button",
    "label": "Save"
+  },
+  {
+   "fieldname": "section_break_ubix",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created by",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-03-05 11:31:01.409990",
+ "modified": "2023-09-05 17:08:57.368937",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Rescue",

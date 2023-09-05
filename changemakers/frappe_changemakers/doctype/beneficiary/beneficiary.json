@@ -59,6 +59,8 @@
   "column_break_40",
   "employment_type",
   "other_employment_type",
+  "section_break_vzck",
+  "created_by",
   "section_break_uwdz",
   "bottom_save_button"
  ],
@@ -86,6 +88,7 @@
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Ward/GP",
+   "length": 600,
    "options": "Ward"
   },
   {
@@ -361,6 +364,16 @@
    "fieldtype": "Table MultiSelect",
    "label": "Languages Known",
    "options": "Language Multiselect"
+  },
+  {
+   "fieldname": "section_break_vzck",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created By",
+   "read_only": 1
   }
  ],
  "image_field": "image",
@@ -387,7 +400,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-08-22 10:28:30.184399",
+ "modified": "2023-09-05 17:03:01.300560",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",

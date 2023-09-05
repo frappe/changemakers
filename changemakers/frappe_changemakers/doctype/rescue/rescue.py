@@ -12,6 +12,13 @@ class Rescue(Document):
 		self.validate_remarks_length()
 		self.set_location_coordinates()
 
+	def before_save(self):
+		self.set_created_by()
+
+	def set_created_by(self):
+		if not self.created_by:
+			self.created_by = self.owner
+
 	def validate_remarks_length(self):
 		if self.other_remarks and len(self.other_remarks) > 300:
 			frappe.throw("Other remarks cannot be more than 300 characters long.")

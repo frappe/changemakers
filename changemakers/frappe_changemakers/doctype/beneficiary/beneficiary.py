@@ -8,6 +8,9 @@ from changemakers.utils.data import is_valid_indian_phone_number
 
 
 class Beneficiary(Document):
+	def before_save(self):
+		self.set_created_by()
+
 	def validate(self):
 		self.validate_age()
 		self.validate_phone_number_fields()
@@ -24,3 +27,7 @@ class Beneficiary(Document):
 
 		if self.phone_number and not is_valid_indian_phone_number(self.phone_number):
 			frappe.throw(f"Value of {frappe.bold('Phone')} is not a valid Indian Phone number")
+
+	def set_created_by(self):
+		if not self.created_by:
+			self.created_by = self.owner
