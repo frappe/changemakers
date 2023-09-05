@@ -10,7 +10,9 @@
  "field_order": [
   "beneficiary",
   "date",
-  "daily_update"
+  "daily_update",
+  "section_break_naow",
+  "created_by"
  ],
  "fields": [
   {
@@ -36,11 +38,21 @@
    "fieldtype": "Text",
    "in_list_view": 1,
    "label": "Daily Update"
+  },
+  {
+   "fieldname": "section_break_naow",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created by",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-16 16:25:54.521737",
+ "modified": "2023-09-05 17:11:41.703890",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Daily Visit Update",
