@@ -20,12 +20,12 @@
   "is_beneficiary_in_shelter_home",
   "section_break_ajqf",
   "state",
-  "zone",
+  "ward",
   "column_break_eyby",
   "district",
   "habitation",
   "column_break_ouiz",
-  "ward",
+  "zone",
   "shelter_home",
   "beneficiary_details_section",
   "is_beneficiary_traced",
@@ -128,8 +128,7 @@
    "fieldname": "habitation",
    "fieldtype": "Link",
    "label": "Hotspot Name/Habitation",
-   "options": "Habitation",
-   "reqd": 1
+   "options": "Habitation"
   },
   {
    "fieldname": "amended_from",
@@ -331,7 +330,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-05 17:04:47.689828",
+ "modified": "2023-09-06 00:58:01.453261",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
