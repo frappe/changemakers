@@ -28,11 +28,10 @@
   "specified_camp_location",
   "section_break_xgxk",
   "state",
-  "zone",
-  "habitation",
-  "column_break_oahi",
   "district",
+  "zone",
   "ward",
+  "habitation",
   "medical_details_section",
   "total_medicines_dispensed",
   "total_referrals_done",
@@ -40,7 +39,9 @@
   "total_diagnostics_done",
   "section_break_syqt",
   "bottom_save_button",
-  "column_break_aqvh"
+  "column_break_aqvh",
+  "section_break_7w59",
+  "mcrc_details"
  ],
  "fields": [
   {
@@ -136,10 +137,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_oahi",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "district",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -216,11 +213,21 @@
   {
    "fieldname": "section_break_aswu",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_7w59",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "mcrc_details",
+   "fieldtype": "Table",
+   "label": "MCRC Details",
+   "options": "MCRC Daily Update"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-27 12:38:00.382742",
+ "modified": "2023-09-06 19:30:03.009355",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Record",

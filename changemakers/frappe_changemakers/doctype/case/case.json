@@ -18,14 +18,12 @@
   "amended_from",
   "location_section",
   "is_beneficiary_in_shelter_home",
-  "section_break_ajqf",
+  "section_break_grcq",
   "state",
-  "ward",
-  "column_break_eyby",
   "district",
-  "habitation",
-  "column_break_ouiz",
   "zone",
+  "ward",
+  "habitation",
   "shelter_home",
   "beneficiary_details_section",
   "is_beneficiary_traced",
@@ -200,10 +198,6 @@
    "label": "Location"
   },
   {
-   "fieldname": "column_break_eyby",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_break_zguo",
    "fieldtype": "Section Break",
    "label": "Case Details"
@@ -306,14 +300,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_ouiz",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_ajqf",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "data_cjaa",
    "fieldtype": "Data"
   },
@@ -326,11 +312,15 @@
    "fieldtype": "Data",
    "label": "Created By",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_grcq",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-06 00:58:01.453261",
+ "modified": "2023-09-06 14:05:10.045885",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",

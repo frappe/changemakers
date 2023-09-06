@@ -21,12 +21,10 @@
   "social_category",
   "location_section",
   "state",
-  "ward",
-  "column_break_8",
   "district",
-  "habitation",
-  "column_break_9",
   "zone",
+  "ward",
+  "habitation",
   "identity_section",
   "is_identity_proof_available",
   "column_break_17",
@@ -151,17 +149,9 @@
    "label": "Location"
   },
   {
-   "fieldname": "column_break_9",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "health_section",
    "fieldtype": "Section Break",
    "label": "Health"
-  },
-  {
-   "fieldname": "column_break_8",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "identity_section",
@@ -400,7 +390,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-09-05 17:03:01.300560",
+ "modified": "2023-09-06 19:31:11.618589",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",

@@ -26,11 +26,10 @@
   "coordinates",
   "section_break_sslw",
   "state",
-  "zone",
-  "habitation",
-  "column_break_itmb",
   "district",
+  "zone",
   "ward",
+  "habitation",
   "post_rescue_details_section",
   "was_referred_to_hospital",
   "hospital",
@@ -250,10 +249,6 @@
    "options": "Habitation"
   },
   {
-   "fieldname": "column_break_itmb",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "state",
    "fieldtype": "Link",
    "label": "State",
@@ -290,7 +285,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-05 17:08:57.368937",
+ "modified": "2023-09-06 19:28:44.208583",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Rescue",
