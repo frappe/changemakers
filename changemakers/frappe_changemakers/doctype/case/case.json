@@ -28,8 +28,9 @@
   "beneficiary_details_section",
   "is_beneficiary_traced",
   "beneficiary",
-  "gender",
+  "full_name",
   "column_break_jywm",
+  "gender",
   "age",
   "contact_number",
   "updates_section",
@@ -44,7 +45,6 @@
   "follow_up_details_section",
   "family_meeting_outcome",
   "followups",
-  "data_cjaa",
   "section_break_seoz",
   "created_by",
   "section_break_yuho",
@@ -300,10 +300,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "data_cjaa",
-   "fieldtype": "Data"
-  },
-  {
    "fieldname": "section_break_seoz",
    "fieldtype": "Section Break"
   },
@@ -316,11 +312,17 @@
   {
    "fieldname": "section_break_grcq",
    "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "beneficiary.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-06 14:05:10.045885",
+ "modified": "2023-09-06 21:55:35.529923",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",
