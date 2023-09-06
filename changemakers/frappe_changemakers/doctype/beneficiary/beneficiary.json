@@ -11,14 +11,15 @@
   "personal_information_section",
   "first_name",
   "last_name",
-  "phone_number",
+  "full_name",
   "column_break_3",
+  "phone_number",
   "gender",
   "age",
-  "languages_known",
   "column_break_4",
   "religion",
   "social_category",
+  "languages_known",
   "location_section",
   "state",
   "district",
@@ -364,6 +365,11 @@
    "fieldtype": "Data",
    "label": "Created By",
    "read_only": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
   }
  ],
  "image_field": "image",
@@ -390,7 +396,7 @@
    "link_fieldname": "beneficiary"
   }
  ],
- "modified": "2023-09-06 19:31:11.618589",
+ "modified": "2023-09-06 21:25:52.624848",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Beneficiary",

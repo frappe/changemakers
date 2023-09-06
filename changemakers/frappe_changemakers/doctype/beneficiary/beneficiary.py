@@ -10,6 +10,7 @@ from changemakers.utils.data import is_valid_indian_phone_number
 class Beneficiary(Document):
 	def before_save(self):
 		self.set_created_by()
+		self.full_name = f"{self.first_name} {self.last_name or ''}"
 
 	def validate(self):
 		self.validate_age()
