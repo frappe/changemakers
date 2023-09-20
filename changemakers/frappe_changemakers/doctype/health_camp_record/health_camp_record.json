@@ -39,9 +39,7 @@
   "total_diagnostics_done",
   "section_break_syqt",
   "bottom_save_button",
-  "column_break_aqvh",
-  "section_break_7w59",
-  "mcrc_details"
+  "column_break_aqvh"
  ],
  "fields": [
   {
@@ -213,21 +211,11 @@
   {
    "fieldname": "section_break_aswu",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_7w59",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "mcrc_details",
-   "fieldtype": "Table",
-   "label": "MCRC Details",
-   "options": "MCRC Daily Update"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-06 19:30:03.009355",
+ "modified": "2023-09-20 10:03:04.512323",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Record",
