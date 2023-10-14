@@ -20,14 +20,11 @@ class Case(Document):
 		total_amount = 0
 		for row in doc.get("payment_details"):
 			total_amount += row.amount
-			frappe.msgprint(f"Row Amount: {row.amount}")
-
-		frappe.msgprint(f"Total Amount: {total_amount}")
 		doc.total_amount = total_amount
 
 
 	def validate_total_amount(doc):
 		if doc.total_amount < 0:
-			frappe.throw("Total amount must be greater than zero.")
+			frappe.throw("Total amount must not be less than zero.")
 
 	

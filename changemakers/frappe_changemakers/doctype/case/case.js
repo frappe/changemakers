@@ -22,3 +22,17 @@ frappe.ui.form.on("Case", {
 		frm.save();
 	},
 });
+
+frappe.ui.form.on("payment_details", {
+	amount: function (frm, cdt, cdn) {
+		// When the "amount" field in the child table changes
+		var child = locals[cdt][cdn];
+		frm.doc.total_amount = 0; // Reset total amount
+
+		frm.doc.payment_details.forEach(function (row) {
+			frm.doc.total_amount += row.amount;
+		});
+
+		frm.refresh_field("total_amount");
+	},
+});
