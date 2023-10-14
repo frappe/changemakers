@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-14 12:52:50.195141",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "consultation",
+  "testing",
+  "medicine"
+ ],
+ "fields": [
+  {
+   "fieldname": "consultation",
+   "fieldtype": "Data",
+   "label": "Consultation"
+  },
+  {
+   "fieldname": "testing",
+   "fieldtype": "Data",
+   "label": "Testing"
+  },
+  {
+   "fieldname": "medicine",
+   "fieldtype": "Data",
+   "label": "Medicine"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-14 12:52:50.195141",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Payment Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

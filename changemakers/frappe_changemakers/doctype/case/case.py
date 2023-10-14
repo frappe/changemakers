@@ -8,8 +8,26 @@ from frappe.model.document import Document
 class Case(Document):
 	def before_save(self):
 		self.set_created_by()
+		self.calculate_total_amount()
+		self.validate_total_amount()
 
 	def set_created_by(self):
 		if not self.created_by:
 			owner = frappe.db.get_value("User", self.owner, "full_name")
 			self.created_by = owner
+   
+	def calculate_total_amount(doc):
+		total_amount = 0
+		for row in doc.get("payment_details"):
+			total_amount += row.amount
+			frappe.msgprint(f"Row Amount: {row.amount}")
+
+		frappe.msgprint(f"Total Amount: {total_amount}")
+		doc.total_amount = total_amount
+
+
+	def validate_total_amount(doc):
+		if doc.total_amount < 0:
+			frappe.throw("Total amount must be greater than zero.")
+
+	
