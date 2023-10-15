@@ -2,22 +2,25 @@
  {
   "docstatus": 0,
   "doctype": "Payment Type",
-  "modified": "2023-10-15 10:00:50.198793",
+  "modified": "2023-10-15 22:45:30.180618",
   "name": "Consultation",
-  "payment_name": "Consultation"
+  "payment_description": "Consultation",
+  "set_by": null
  },
  {
   "docstatus": 0,
   "doctype": "Payment Type",
-  "modified": "2023-10-15 10:01:21.868668",
+  "modified": "2023-10-15 22:46:01.908105",
   "name": "Testing",
-  "payment_name": "Testing"
+  "payment_description": "Testing",
+  "set_by": null
  },
  {
   "docstatus": 0,
   "doctype": "Payment Type",
-  "modified": "2023-10-15 10:01:42.912135",
+  "modified": "2023-10-15 22:46:27.122311",
   "name": "Medicine",
-  "payment_name": "Medicine"
+  "payment_description": "Medicine",
+  "set_by": null
  }
 ]

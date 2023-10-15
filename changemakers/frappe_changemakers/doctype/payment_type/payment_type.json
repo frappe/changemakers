@@ -7,18 +7,25 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "payment_name"
+  "set_by",
+  "payment_description"
  ],
  "fields": [
   {
-   "fieldname": "payment_name",
-   "fieldtype": "Data",
-   "label": "Payment Name"
+   "fieldname": "set_by",
+   "fieldtype": "Link",
+   "label": "Set By",
+   "options": "User"
+  },
+  {
+   "fieldname": "payment_description",
+   "fieldtype": "Small Text",
+   "label": "Payment Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-15 09:52:27.375296",
+ "modified": "2023-10-15 22:44:44.646867",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Payment Type",
