@@ -12,6 +12,7 @@ fixtures = [
 	"Custom HTML Block",
 	"Case Type",
 	"State",
+     "Payment Type",
 	{"dt": "Client Script", "filters": {"name": "Action: Create User Profile"}},
 	{
 		"dt": "Role",
@@ -32,6 +33,7 @@ fixtures = [
 			)
 		},
 	},
+
 ]
 
 # Includes in <head>

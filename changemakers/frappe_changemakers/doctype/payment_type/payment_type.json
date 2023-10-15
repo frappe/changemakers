@@ -7,30 +7,18 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "consultation",
-  "testing",
-  "medicine"
+  "payment_name"
  ],
  "fields": [
   {
-   "fieldname": "consultation",
+   "fieldname": "payment_name",
    "fieldtype": "Data",
-   "label": "Consultation"
-  },
-  {
-   "fieldname": "testing",
-   "fieldtype": "Data",
-   "label": "Testing"
-  },
-  {
-   "fieldname": "medicine",
-   "fieldtype": "Data",
-   "label": "Medicine"
+   "label": "Payment Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-14 12:52:50.195141",
+ "modified": "2023-10-15 09:52:27.375296",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Payment Type",

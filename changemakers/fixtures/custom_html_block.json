@@ -5,6 +5,7 @@
   "html": "<a class=\"btn btn-primary\" href=\"/c\" target=\"_blank\">Open PWA</a>",
   "modified": "2023-06-09 15:38:21.813843",
   "name": "Open PWA Button",
+  "private": 0,
   "roles": [],
   "script": null,
   "style": ".btn {\n    background-color: aquamarine;\n    padding: 10px 20px;\n    text-decoration: none;\n    color: darkslategrey;\n    font-weight: 600;\n    border-radius: 6px;\n}"

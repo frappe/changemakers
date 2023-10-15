@@ -1,0 +1,23 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Payment Type",
+  "modified": "2023-10-15 10:00:50.198793",
+  "name": "Consultation",
+  "payment_name": "Consultation"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Payment Type",
+  "modified": "2023-10-15 10:01:21.868668",
+  "name": "Testing",
+  "payment_name": "Testing"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Payment Type",
+  "modified": "2023-10-15 10:01:42.912135",
+  "name": "Medicine",
+  "payment_name": "Medicine"
+ }
+]

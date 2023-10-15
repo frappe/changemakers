@@ -7,32 +7,24 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "sno",
   "payment_type",
   "payment_details",
   "amount"
  ],
  "fields": [
   {
-   "fieldname": "sno",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Sno",
-   "reqd": 1
-  },
-  {
    "fieldname": "payment_type",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Payment Type",
+   "options": "Payment Type",
    "reqd": 1
   },
   {
    "fieldname": "payment_details",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Payment Details",
-   "reqd": 1
+   "label": "Payment Details"
   },
   {
    "fieldname": "amount",
@@ -45,7 +37,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-10-14 13:30:04.469922",
+ "modified": "2023-10-15 10:12:31.178405",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Payment Details",
