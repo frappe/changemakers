@@ -1,34 +1,30 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "prompt",
  "creation": "2023-10-14 12:52:50.195141",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "set_by",
-  "payment_description"
+  "description"
  ],
  "fields": [
   {
-   "fieldname": "set_by",
-   "fieldtype": "Link",
-   "label": "Set By",
-   "options": "User"
-  },
-  {
-   "fieldname": "payment_description",
+   "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Payment Description"
+   "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-15 22:44:44.646867",
+ "modified": "2023-10-17 09:20:27.707412",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Payment Type",
+ "name_case": "Title Case",
+ "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
   {
