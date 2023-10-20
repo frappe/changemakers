@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 class CRCAdmissions(Document):
-    def validate(self):
+    def before_save(self):
         self.calculate_actual_duration()
 
     def calculate_actual_duration(self):
