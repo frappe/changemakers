@@ -51,7 +51,7 @@
   },
   {
    "fieldname": "date_of_admission",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Date of Admission"
   },
   {
@@ -94,7 +94,7 @@
   },
   {
    "fieldname": "actual_duration",
-   "fieldtype": "Duration",
+   "fieldtype": "Data",
    "label": "Actual Duration"
   },
   {
@@ -128,7 +128,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-20 08:29:17.202954",
+ "modified": "2023-10-20 10:15:26.483705",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "CRC Admissions",

@@ -1,481 +1,481 @@
 {
- "actions": [],
- "allow_import": 1,
- "autoname": "autoincrement",
- "creation": "2022-12-23 16:33:03.271918",
- "default_view": "List",
- "doctype": "DocType",
- "editable_grid": 1,
- "engine": "InnoDB",
- "field_order": [
-  "section_break_zguo",
-  "title",
-  "description",
-  "column_break_fkgv",
-  "type",
-  "status",
-  "priority",
-  "amended_from",
-  "location_section",
-  "is_beneficiary_in_shelter_home",
-  "section_break_grcq",
-  "state",
-  "district",
-  "zone",
-  "ward",
-  "habitation",
-  "shelter_home",
-  "beneficiary_details_section",
-  "is_beneficiary_traced",
-  "beneficiary",
-  "full_name",
-  "column_break_jywm",
-  "gender",
-  "age",
-  "contact_number",
-  "updates_section",
-  "medical_update",
-  "food_update",
-  "entitlement",
-  "legal_update",
-  "column_break_vjme",
-  "shelter_update",
-  "admitted_to_shelter",
-  "other_update",
-  "payment_details_section",
-  "payment_details",
-  "total_amount",
-  "follow_up_details_section",
-  "family_meeting_outcome",
-  "followups",
-  "section_break_seoz",
-  "created_by",
-  "section_break_yuho",
-  "bottom_save_button",
-  "column_break_qfjk"
- ],
- "fields": [
-  {
-   "fieldname": "title",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Title",
-   "length": 30,
-   "reqd": 1
-  },
-  {
-   "fieldname": "type",
-   "fieldtype": "Link",
-   "label": "Type",
-   "options": "Case Type",
-   "reqd": 1
-  },
-  {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_beneficiary_in_shelter_home",
-   "fieldtype": "Check",
-   "label": "Is the beneficiary in shelter home?"
-  },
-  {
-   "depends_on": "eval:doc.is_beneficiary_in_shelter_home === 1",
-   "fieldname": "shelter_home",
-   "fieldtype": "Link",
-   "label": "Shelter Home",
-   "options": "Shelter Home"
-  },
-  {
-   "fetch_from": "shelter_home.state",
-   "fetch_if_empty": 1,
-   "fieldname": "state",
-   "fieldtype": "Link",
-   "label": "State",
-   "options": "State",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "shelter_home.district",
-   "fetch_if_empty": 1,
-   "fieldname": "district",
-   "fieldtype": "Link",
-   "label": "City/District",
-   "options": "District",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "shelter_home.zone",
-   "fetch_if_empty": 1,
-   "fieldname": "zone",
-   "fieldtype": "Link",
-   "label": "Zone/Block",
-   "options": "Zone",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "shelter_home.ward",
-   "fetch_if_empty": 1,
-   "fieldname": "ward",
-   "fieldtype": "Link",
-   "label": "Ward/GP",
-   "options": "Ward",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "shelter_home.",
-   "fieldname": "habitation",
-   "fieldtype": "Link",
-   "label": "Hotspot Name/Habitation",
-   "options": "Habitation"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Case",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "default": "Medium",
-   "fieldname": "priority",
-   "fieldtype": "Select",
-   "label": "Priority",
-   "options": "Urgent\nHigh\nMedium\nLow",
-   "reqd": 1
-  },
-  {
-   "default": "New",
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Status",
-   "options": "New\nIn Follow Up\nSpam\nUntraced\nClosed",
-   "reqd": 1
-  },
-  {
-   "fieldname": "beneficiary",
-   "fieldtype": "Link",
-   "label": "Beneficiary",
-   "mandatory_depends_on": "eval:doc.is_beneficiary_traced==true",
-   "options": "Beneficiary"
-  },
-  {
-   "fetch_from": "beneficiary.age",
-   "fieldname": "age",
-   "fieldtype": "Int",
-   "label": "Age",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "beneficiary.gender",
-   "fieldname": "gender",
-   "fieldtype": "Link",
-   "label": "Gender",
-   "options": "Gender",
-   "read_only": 1
-  },
-  {
-   "fetch_from": "beneficiary.phone_number",
-   "fieldname": "contact_number",
-   "fieldtype": "Data",
-   "label": "Contact Number",
-   "options": "Phone",
-   "read_only": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "is_beneficiary_traced",
-   "fieldtype": "Check",
-   "label": "Is Beneficiary Traced?"
-  },
-  {
-   "fieldname": "location_section",
-   "fieldtype": "Section Break",
-   "label": "Location"
-  },
-  {
-   "fieldname": "section_break_zguo",
-   "fieldtype": "Section Break",
-   "label": "Case Details"
-  },
-  {
-   "fieldname": "column_break_fkgv",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "beneficiary_details_section",
-   "fieldtype": "Section Break",
-   "label": "Beneficiary Details"
-  },
-  {
-   "fieldname": "column_break_jywm",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "follow_up_details_section",
-   "fieldtype": "Section Break",
-   "label": "Follow Up Details"
-  },
-  {
-   "fieldname": "followups",
-   "fieldtype": "Table",
-   "label": "Followups",
-   "options": "Case Followup"
-  },
-  {
-   "depends_on": "eval:doc.type=='Identified a Family'",
-   "fieldname": "family_meeting_outcome",
-   "fieldtype": "Select",
-   "label": "Family Meeting Outcome",
-   "options": "Meeting went well and the Beneficiary returned to home\nMeeting went well but the Beneficiary didn\u2019t go home\nFamily members did not come\nBeneficiary didn\u2019t go for the meeting\nMismatch"
-  },
-  {
-   "fieldname": "updates_section",
-   "fieldtype": "Section Break",
-   "label": "Updates"
-  },
-  {
-   "depends_on": "eval:doc.type==\"Shelter\" && doc.is_beneficiary_traced==true",
-   "fieldname": "shelter_update",
-   "fieldtype": "Select",
-   "label": "Shelter Update",
-   "options": "Not Willing To Come\nAdmitted"
-  },
-  {
-   "depends_on": "eval:doc.type==\"Shelter\" && doc.is_beneficiary_traced==true && doc.shelter_update==\"Admitted\"",
-   "fieldname": "admitted_to_shelter",
-   "fieldtype": "Link",
-   "label": "Admitted To Shelter",
-   "mandatory_depends_on": "eval:doc.shelter_update==\"Admitted\"",
-   "options": "Shelter Home"
-  },
-  {
-   "fieldname": "column_break_vjme",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "medical_update",
-   "fieldtype": "Select",
-   "label": "Medical Update",
-   "options": "Hospitalised\nTreatment Done\nReferred To Other Organisation"
-  },
-  {
-   "fieldname": "food_update",
-   "fieldtype": "Select",
-   "label": "Food Update",
-   "options": "Resolved and reported\nFood escalation"
-  },
-  {
-   "fieldname": "entitlement",
-   "fieldtype": "Select",
-   "label": "Entitlement Update",
-   "options": "In Process\nResolved"
-  },
-  {
-   "fieldname": "legal_update",
-   "fieldtype": "Select",
-   "label": "Legal Update",
-   "options": "Complaint registered\nReferred to agency"
-  },
-  {
-   "fieldname": "other_update",
-   "fieldtype": "Small Text",
-   "label": "Other Update"
-  },
-  {
-   "fieldname": "section_break_yuho",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "bottom_save_button",
-   "fieldtype": "Button",
-   "label": "Save"
-  },
-  {
-   "fieldname": "column_break_qfjk",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_seoz",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "created_by",
-   "fieldtype": "Data",
-   "label": "Created By",
-   "read_only": 1
-  },
-  {
-   "fieldname": "section_break_grcq",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fetch_from": "beneficiary.full_name",
-   "fieldname": "full_name",
-   "fieldtype": "Data",
-   "label": "Name"
-  },
-  {
-   "fieldname": "payment_details_section",
-   "fieldtype": "Section Break",
-   "label": "Payment Details"
-  },
-  {
-   "fieldname": "payment_details",
-   "fieldtype": "Table",
-   "label": "Payment Details",
-   "options": "Payment Details"
-  },
-  {
-   "fieldname": "total_amount",
-   "fieldtype": "Currency",
-   "label": "Total Amount",
-   "non_negative": 1,
-   "read_only": 1
-  }
- ],
- "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2023-10-20 11:20:19.046520",
- "modified_by": "Administrator",
- "module": "Frappe Changemakers",
- "name": "Case",
- "naming_rule": "Autoincrement",
- "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Admin (Partner)",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Partner SMT",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Social Worker",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Program Manager",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Healthcare Team Member",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "SMT(NGO)-Field Co-ordinator",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Medical Co-ordinator",
-   "select": 1,
-   "share": 1,
-   "write": 1
-  }
- ],
- "show_title_field_in_link": 1,
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": [
-  {
-   "color": "Cyan",
-   "title": "New"
-  },
-  {
-   "color": "Yellow",
-   "title": "In Follow Up"
-  },
-  {
-   "color": "Green",
-   "title": "Closed"
-  },
-  {
-   "color": "Red",
-   "title": "Spam"
-  },
-  {
-   "color": "Orange",
-   "title": "Untraced"
-  }
- ],
- "title_field": "title",
- "track_changes": 1,
- "track_seen": 1,
- "track_views": 1
+  "actions": [],
+  "allow_import": 1,
+  "autoname": "autoincrement",
+  "creation": "2022-12-23 16:33:03.271918",
+  "default_view": "List",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "section_break_zguo",
+    "title",
+    "description",
+    "column_break_fkgv",
+    "type",
+    "status",
+    "priority",
+    "amended_from",
+    "location_section",
+    "is_beneficiary_in_shelter_home",
+    "section_break_grcq",
+    "state",
+    "district",
+    "zone",
+    "ward",
+    "habitation",
+    "shelter_home",
+    "beneficiary_details_section",
+    "is_beneficiary_traced",
+    "beneficiary",
+    "full_name",
+    "column_break_jywm",
+    "gender",
+    "age",
+    "contact_number",
+    "updates_section",
+    "medical_update",
+    "food_update",
+    "entitlement",
+    "legal_update",
+    "column_break_vjme",
+    "shelter_update",
+    "admitted_to_shelter",
+    "other_update",
+    "payment_details_section",
+    "payment_details",
+    "total_amount",
+    "follow_up_details_section",
+    "family_meeting_outcome",
+    "followups",
+    "section_break_seoz",
+    "created_by",
+    "section_break_yuho",
+    "bottom_save_button",
+    "column_break_qfjk"
+  ],
+  "fields": [
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Title",
+      "length": 30,
+      "reqd": 1
+    },
+    {
+      "fieldname": "type",
+      "fieldtype": "Link",
+      "label": "Type",
+      "options": "Case Type",
+      "reqd": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "default": "0",
+      "fieldname": "is_beneficiary_in_shelter_home",
+      "fieldtype": "Check",
+      "label": "Is the beneficiary in shelter home?"
+    },
+    {
+      "depends_on": "eval:doc.is_beneficiary_in_shelter_home === 1",
+      "fieldname": "shelter_home",
+      "fieldtype": "Link",
+      "label": "Shelter Home",
+      "options": "Shelter Home"
+    },
+    {
+      "fetch_from": "shelter_home.state",
+      "fetch_if_empty": 1,
+      "fieldname": "state",
+      "fieldtype": "Link",
+      "label": "State",
+      "options": "State",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "shelter_home.district",
+      "fetch_if_empty": 1,
+      "fieldname": "district",
+      "fieldtype": "Link",
+      "label": "City/District",
+      "options": "District",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "shelter_home.zone",
+      "fetch_if_empty": 1,
+      "fieldname": "zone",
+      "fieldtype": "Link",
+      "label": "Zone/Block",
+      "options": "Zone",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "shelter_home.ward",
+      "fetch_if_empty": 1,
+      "fieldname": "ward",
+      "fieldtype": "Link",
+      "label": "Ward/GP",
+      "options": "Ward",
+      "reqd": 1
+    },
+    {
+      "fetch_from": "shelter_home.",
+      "fieldname": "habitation",
+      "fieldtype": "Link",
+      "label": "Hotspot Name/Habitation",
+      "options": "Habitation"
+    },
+    {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Case",
+      "print_hide": 1,
+      "read_only": 1
+    },
+    {
+      "default": "Medium",
+      "fieldname": "priority",
+      "fieldtype": "Select",
+      "label": "Priority",
+      "options": "Urgent\nHigh\nMedium\nLow",
+      "reqd": 1
+    },
+    {
+      "default": "New",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_preview": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "New\nIn Follow Up\nSpam\nUntraced\nClosed",
+      "reqd": 1
+    },
+    {
+      "fieldname": "beneficiary",
+      "fieldtype": "Link",
+      "label": "Beneficiary",
+      "mandatory_depends_on": "eval:doc.is_beneficiary_traced==true",
+      "options": "Beneficiary"
+    },
+    {
+      "fetch_from": "beneficiary.age",
+      "fieldname": "age",
+      "fieldtype": "Int",
+      "label": "Age",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "beneficiary.gender",
+      "fieldname": "gender",
+      "fieldtype": "Link",
+      "label": "Gender",
+      "options": "Gender",
+      "read_only": 1
+    },
+    {
+      "fetch_from": "beneficiary.phone_number",
+      "fieldname": "contact_number",
+      "fieldtype": "Data",
+      "label": "Contact Number",
+      "options": "Phone",
+      "read_only": 1
+    },
+    {
+      "default": "0",
+      "fieldname": "is_beneficiary_traced",
+      "fieldtype": "Check",
+      "label": "Is Beneficiary Traced?"
+    },
+    {
+      "fieldname": "location_section",
+      "fieldtype": "Section Break",
+      "label": "Location"
+    },
+    {
+      "fieldname": "section_break_zguo",
+      "fieldtype": "Section Break",
+      "label": "Case Details"
+    },
+    {
+      "fieldname": "column_break_fkgv",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "beneficiary_details_section",
+      "fieldtype": "Section Break",
+      "label": "Beneficiary Details"
+    },
+    {
+      "fieldname": "column_break_jywm",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "follow_up_details_section",
+      "fieldtype": "Section Break",
+      "label": "Follow Up Details"
+    },
+    {
+      "fieldname": "followups",
+      "fieldtype": "Table",
+      "label": "Followups",
+      "options": "Case Followup"
+    },
+    {
+      "depends_on": "eval:doc.type=='Identified a Family'",
+      "fieldname": "family_meeting_outcome",
+      "fieldtype": "Select",
+      "label": "Family Meeting Outcome",
+      "options": "Meeting went well and the Beneficiary returned to home\nMeeting went well but the Beneficiary didn\u2019t go home\nFamily members did not come\nBeneficiary didn\u2019t go for the meeting\nMismatch"
+    },
+    {
+      "fieldname": "updates_section",
+      "fieldtype": "Section Break",
+      "label": "Updates"
+    },
+    {
+      "depends_on": "eval:doc.type==\"Shelter\" && doc.is_beneficiary_traced==true",
+      "fieldname": "shelter_update",
+      "fieldtype": "Select",
+      "label": "Shelter Update",
+      "options": "Not Willing To Come\nAdmitted"
+    },
+    {
+      "depends_on": "eval:doc.type==\"Shelter\" && doc.is_beneficiary_traced==true && doc.shelter_update==\"Admitted\"",
+      "fieldname": "admitted_to_shelter",
+      "fieldtype": "Link",
+      "label": "Admitted To Shelter",
+      "mandatory_depends_on": "eval:doc.shelter_update==\"Admitted\"",
+      "options": "Shelter Home"
+    },
+    {
+      "fieldname": "column_break_vjme",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "medical_update",
+      "fieldtype": "Select",
+      "label": "Medical Update",
+      "options": "Hospitalised\nTreatment Done\nReferred To Other Organisation"
+    },
+    {
+      "fieldname": "food_update",
+      "fieldtype": "Select",
+      "label": "Food Update",
+      "options": "Resolved and reported\nFood escalation"
+    },
+    {
+      "fieldname": "entitlement",
+      "fieldtype": "Select",
+      "label": "Entitlement Update",
+      "options": "In Process\nResolved"
+    },
+    {
+      "fieldname": "legal_update",
+      "fieldtype": "Select",
+      "label": "Legal Update",
+      "options": "Complaint registered\nReferred to agency"
+    },
+    {
+      "fieldname": "other_update",
+      "fieldtype": "Small Text",
+      "label": "Other Update"
+    },
+    {
+      "fieldname": "section_break_yuho",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "bottom_save_button",
+      "fieldtype": "Button",
+      "label": "Save"
+    },
+    {
+      "fieldname": "column_break_qfjk",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "section_break_seoz",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "created_by",
+      "fieldtype": "Data",
+      "label": "Created By",
+      "read_only": 1
+    },
+    {
+      "fieldname": "section_break_grcq",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fetch_from": "beneficiary.full_name",
+      "fieldname": "full_name",
+      "fieldtype": "Data",
+      "label": "Name"
+    },
+    {
+      "fieldname": "payment_details_section",
+      "fieldtype": "Section Break",
+      "label": "Payment Details"
+    },
+    {
+      "fieldname": "payment_details",
+      "fieldtype": "Table",
+      "label": "Payment Details",
+      "options": "Payment Details"
+    },
+    {
+      "fieldname": "total_amount",
+      "fieldtype": "Currency",
+      "label": "Total Amount",
+      "non_negative": 1,
+      "read_only": 1
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2023-10-20 11:20:19.046520",
+  "modified_by": "Administrator",
+  "module": "Frappe Changemakers",
+  "name": "Case",
+  "naming_rule": "Autoincrement",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Admin (Partner)",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Partner SMT",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Social Worker",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Program Manager",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Healthcare Team Member",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "SMT(NGO)-Field Co-ordinator",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    },
+    {
+      "create": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Medical Co-ordinator",
+      "select": 1,
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "show_title_field_in_link": 1,
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [
+    {
+      "color": "Cyan",
+      "title": "New"
+    },
+    {
+      "color": "Yellow",
+      "title": "In Follow Up"
+    },
+    {
+      "color": "Green",
+      "title": "Closed"
+    },
+    {
+      "color": "Red",
+      "title": "Spam"
+    },
+    {
+      "color": "Orange",
+      "title": "Untraced"
+    }
+  ],
+  "title_field": "title",
+  "track_changes": 1,
+  "track_seen": 1,
+  "track_views": 1
 }
