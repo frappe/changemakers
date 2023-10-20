@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 
+
 class Case(Document):
     def before_save(self):
         self.set_created_by()
@@ -11,6 +12,7 @@ class Case(Document):
 
     def validate(self):
         self.validate_total_amount()
+        # self.calculate_total_amount()
 
     def set_created_by(self):
         if not self.created_by:

@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-20 07:46:14.511574",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name_of_facility",
+  "name_of_the_beneficiary",
+  "file_number",
+  "date_of_admission",
+  "column_break_1",
+  "doctors_name",
+  "section_break_3p905",
+  "type_of_admission",
+  "column_break_2",
+  "refered_by",
+  "section_break_hj8kk",
+  "medical_condition",
+  "descriptive",
+  "estimated_duration",
+  "actual_duration",
+  "section_break_hyfkr",
+  "date_of_discharge",
+  "column_break_3",
+  "exit_pathway"
+ ],
+ "fields": [
+  {
+   "fieldname": "name_of_facility",
+   "fieldtype": "Data",
+   "label": "Name of Facility"
+  },
+  {
+   "fieldname": "doctors_name",
+   "fieldtype": "Text",
+   "label": "Doctors name"
+  },
+  {
+   "fieldname": "name_of_the_beneficiary",
+   "fieldtype": "Link",
+   "label": "Name of the Beneficiary",
+   "options": "Beneficiary"
+  },
+  {
+   "fieldname": "file_number",
+   "fieldtype": "Data",
+   "label": "File Number"
+  },
+  {
+   "fieldname": "date_of_admission",
+   "fieldtype": "Data",
+   "label": "Date of Admission"
+  },
+  {
+   "fieldname": "section_break_3p905",
+   "fieldtype": "Section Break",
+   "label": "Types Of Admissions"
+  },
+  {
+   "fieldname": "type_of_admission",
+   "fieldtype": "Select",
+   "label": "Type of Admission",
+   "options": "Voluntary\nInvoluntary"
+  },
+  {
+   "fieldname": "refered_by",
+   "fieldtype": "Select",
+   "label": "Reffered By",
+   "options": "Police\nPS\nPartners,\nself"
+  },
+  {
+   "fieldname": "section_break_hj8kk",
+   "fieldtype": "Section Break",
+   "label": "Medical Conditions"
+  },
+  {
+   "fieldname": "medical_condition",
+   "fieldtype": "Table",
+   "label": "Medical Condition",
+   "options": "Patients Medical Condition"
+  },
+  {
+   "fieldname": "descriptive",
+   "fieldtype": "Text",
+   "label": "Discriptive(to be filled by Doctor)"
+  },
+  {
+   "fieldname": "estimated_duration",
+   "fieldtype": "Data",
+   "label": "Estimated Duration In Days"
+  },
+  {
+   "fieldname": "actual_duration",
+   "fieldtype": "Duration",
+   "label": "Actual Duration"
+  },
+  {
+   "fieldname": "section_break_hyfkr",
+   "fieldtype": "Section Break",
+   "label": "Exit Information"
+  },
+  {
+   "fieldname": "date_of_discharge",
+   "fieldtype": "Date",
+   "label": "Date of Discharge"
+  },
+  {
+   "fieldname": "exit_pathway",
+   "fieldtype": "Select",
+   "label": "Exit Pathway",
+   "options": "Family Reintegration\nDeath\nShelter\nHome"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-10-20 08:29:17.202954",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "CRC Admissions",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
