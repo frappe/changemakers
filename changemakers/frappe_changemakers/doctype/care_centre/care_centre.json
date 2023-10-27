@@ -46,6 +46,7 @@
   {
    "fieldname": "vacant_beds",
    "fieldtype": "Data",
+   "is_virtual": 1,
    "label": "Vacant Beds"
   },
   {
@@ -55,7 +56,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-27 11:34:50.997283",
+ "modified": "2023-10-27 16:51:16.266597",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Care Centre",

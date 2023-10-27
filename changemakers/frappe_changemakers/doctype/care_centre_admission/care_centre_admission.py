@@ -12,6 +12,7 @@ class CareCentreAdmission(Document):
     def validate(self):
         self.validate_duplication()
         self.validate_work_performed()
+        self.validate_capacity()
 
     def before_save(self):
         if self.discharge_date:
@@ -53,4 +54,11 @@ class CareCentreAdmission(Document):
         if self.status.lower() != "discharged":
             frappe.throw(
                 f"Beneficiary {self.beneficiary} has to be discharged before this document can be submitted"
+            )
+
+    def validate_capacity(self):
+        facility = frappe.get_doc("Care Centre", self.facility_name)
+        if not facility.vacant_beds:
+            frappe.throw(
+                f"Care Centre {self.facility_name} does not have any vacant beds left, please select a different facility."
             )

@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2023-10-25 11:06:54.099690",
  "default_view": "List",
  "doctype": "DocType",
@@ -13,6 +14,7 @@
   "section_break_oktc",
   "facility_name",
   "column_break_qkbc",
+  "naming_series",
   "column_break_aala",
   "status",
   "section_break_getk",
@@ -204,15 +206,24 @@
   {
    "fieldname": "column_break_gsff",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "CC-ADM-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "CC-ADM-"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-27 15:28:57.387518",
+ "modified": "2023-10-27 17:23:57.823622",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Care Centre Admission",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
