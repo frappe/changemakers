@@ -25,14 +25,13 @@
   "file_number",
   "exit_pathway",
   "section_break_tgsq",
-  "admission_type",
-  "column_break_sqpn",
   "column_break_mjah",
-  "referred_by",
-  "section_break_iuxv",
   "est_duration_days",
-  "column_break_ofbk",
   "actual_duration_days",
+  "column_break_sqpn",
+  "column_break_gsff",
+  "admission_type",
+  "referred_by",
   "section_break_pumi",
   "medical_conditions",
   "doctors_assessment",
@@ -146,35 +145,31 @@
    "max_height": "15rem"
   },
   {
-   "fieldname": "section_break_iuxv",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "est_duration_days",
    "fieldtype": "Int",
    "label": "Estimated Duration (Days)"
   },
   {
-   "fieldname": "column_break_ofbk",
-   "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "doc.status==='Discharged';",
+   "depends_on": "eval: doc.status == 'Discharged';",
    "fieldname": "actual_duration_days",
    "fieldtype": "Int",
-   "is_virtual": 1,
    "label": "Actual Duration (Days)",
-   "non_negative": 1
+   "non_negative": 1,
+   "read_only": 1
   },
   {
+   "depends_on": "eval: doc.status == 'Discharged';",
    "fieldname": "discharge_date",
    "fieldtype": "Date",
-   "label": "Date of Discharge"
+   "label": "Date of Discharge",
+   "mandatory_depends_on": "eval: doc.status == 'Discharged';"
   },
   {
+   "depends_on": "eval: doc.status == 'Discharged';",
    "fieldname": "exit_pathway",
    "fieldtype": "Select",
    "label": "Exit Pathway",
+   "mandatory_depends_on": "eval: doc.discharge_date && doc.status == 'Discharged';",
    "options": "\nFamily Reintegration\nDeath\nShelter Home"
   },
   {
@@ -199,18 +194,22 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "\nDoctor Review\nAdmitted\nDischarged",
+   "options": "\nAdmitted\nDischarged",
    "reqd": 1
   },
   {
    "fieldname": "column_break_mjah",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gsff",
    "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-27 13:25:38.436777",
+ "modified": "2023-10-27 15:28:57.387518",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Care Centre Admission",
