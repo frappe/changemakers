@@ -47,7 +47,8 @@
    "in_list_view": 1,
    "label": "Facility Name",
    "options": "Care Centre",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "doctor_name",
@@ -195,6 +196,7 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
    "options": "\nAdmitted\nDischarged",
    "reqd": 1
@@ -219,7 +221,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-27 17:23:57.823622",
+ "modified": "2023-10-27 18:05:20.959449",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Care Centre Admission",

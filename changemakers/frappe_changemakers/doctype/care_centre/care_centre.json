@@ -55,8 +55,13 @@
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2023-10-27 16:51:16.266597",
+ "links": [
+  {
+   "link_doctype": "Care Centre Admission",
+   "link_fieldname": "facility_name"
+  }
+ ],
+ "modified": "2023-10-27 17:41:48.472208",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Care Centre",
