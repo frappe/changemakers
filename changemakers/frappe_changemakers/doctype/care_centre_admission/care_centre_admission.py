@@ -23,6 +23,10 @@ class CareCentreAdmission(Document):
         self.validate_discharge_date()
 
     def validate_duplication(self):
+        """
+        Checking DB for existing admission record for same beneficiary and facility.
+        :return: None
+        """
         exists = frappe.db.exists(
             "Care Centre Admission",
             {
@@ -39,6 +43,10 @@ class CareCentreAdmission(Document):
             )
 
     def validate_work_performed(self):
+        """
+        Checking if work performed date is before admission date.
+        :return: None
+        """
         for idx, item in enumerate(self.work_performed):
             if getdate(item.date) < getdate(self.admission_date):
                 frappe.throw(
@@ -46,6 +54,10 @@ class CareCentreAdmission(Document):
                 )
 
     def validate_discharge_date(self):
+        """
+        Checking if discharge date is before admission date.
+        :return: None
+        """
         if not self.discharge_date or (self.discharge_date < self.admission_date):
             frappe.throw(
                 f"Date of discharge is mandatory for submission and has to be greater than or equal to admission date {self.admission_date}"
@@ -57,6 +69,10 @@ class CareCentreAdmission(Document):
             )
 
     def validate_capacity(self):
+        """
+        Checking if facility has enough capacity to admit beneficiary.
+        :return: None
+        """
         facility = frappe.get_doc("Care Centre", self.facility_name)
         if not facility.vacant_beds:
             frappe.throw(

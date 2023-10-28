@@ -8,6 +8,10 @@ from frappe.model.document import Document
 class CareCentre(Document):
     @property
     def vacant_beds(self):
+        """
+        Calculating vacant beds in a care centre facility.
+        :return: int or str if count is 0
+        """
         filters = {
             "facility_name": self.facility_name,
             "status": "Admitted",
