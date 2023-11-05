@@ -198,7 +198,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "\nAdmitted\nDischarged",
+   "options": "\nAdmitted\nHospitalised\nDischarged",
    "reqd": 1
   },
   {
@@ -221,7 +221,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-27 18:05:20.959449",
+ "modified": "2023-11-05 14:36:09.303010",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Care Centre Admission",

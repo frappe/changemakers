@@ -33,7 +33,7 @@ class CareCentreAdmission(Document):
                 "beneficiary": self.beneficiary,
                 "facility_name": self.facility_name,
                 "docstatus": 0,
-                "status": ("in", ("", "Admitted")),
+                "status": ("in", ("", "Admitted", "Hospitalised")),
             },
         )
 

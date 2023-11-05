@@ -14,7 +14,7 @@ class CareCentre(Document):
         """
         filters = {
             "facility_name": self.facility_name,
-            "status": "Admitted",
+            "status": ("in", ("Admitted", "Hospitalised")),
             "docstatus": 0,
         }
         occupants = frappe.get_all(
