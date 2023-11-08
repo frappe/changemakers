@@ -1,0 +1,308 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-10-25 11:06:54.099690",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "column_break_vnwn",
+  "column_break_xedh",
+  "amended_from",
+  "section_break_oktc",
+  "facility_name",
+  "column_break_qkbc",
+  "naming_series",
+  "column_break_aala",
+  "status",
+  "section_break_getk",
+  "beneficiary",
+  "admission_date",
+  "column_break_xcyq",
+  "doctor_name",
+  "discharge_date",
+  "column_break_msuj",
+  "file_number",
+  "exit_pathway",
+  "section_break_tgsq",
+  "column_break_mjah",
+  "est_duration_days",
+  "actual_duration_days",
+  "column_break_sqpn",
+  "column_break_gsff",
+  "admission_type",
+  "referred_by",
+  "section_break_pumi",
+  "medical_conditions",
+  "doctors_assessment",
+  "section_break_cjtk",
+  "work_performed"
+ ],
+ "fields": [
+  {
+   "fieldname": "facility_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Facility Name",
+   "options": "Care Centre",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "doctor_name",
+   "fieldtype": "Data",
+   "label": "Doctor's Name"
+  },
+  {
+   "fieldname": "beneficiary",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Beneficiary",
+   "options": "Beneficiary",
+   "reqd": 1
+  },
+  {
+   "fieldname": "file_number",
+   "fieldtype": "Data",
+   "label": "File Number"
+  },
+  {
+   "fieldname": "admission_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Admission",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_tgsq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Voluntary",
+   "fieldname": "admission_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type of Admission",
+   "options": "\nVoluntary\nInvoluntary",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sqpn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "referred_by",
+   "fieldtype": "Select",
+   "label": "Referred By",
+   "options": "\nPolice\nPS - Partners\nSelf"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Care Centre Admission",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vnwn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xedh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_getk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_oktc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qkbc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_msuj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_pumi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "medical_conditions",
+   "fieldtype": "Table MultiSelect",
+   "label": "Medical Conditions",
+   "options": "Medical Conditions Multiselect"
+  },
+  {
+   "fieldname": "doctors_assessment",
+   "fieldtype": "Text",
+   "label": "Doctor's Assessment",
+   "max_height": "15rem"
+  },
+  {
+   "fieldname": "est_duration_days",
+   "fieldtype": "Int",
+   "label": "Estimated Duration (Days)"
+  },
+  {
+   "depends_on": "eval: doc.status == 'Discharged';",
+   "fieldname": "actual_duration_days",
+   "fieldtype": "Int",
+   "label": "Actual Duration (Days)",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.status == 'Discharged';",
+   "fieldname": "discharge_date",
+   "fieldtype": "Date",
+   "label": "Date of Discharge",
+   "mandatory_depends_on": "eval: doc.status == 'Discharged';"
+  },
+  {
+   "depends_on": "eval: doc.status == 'Discharged';",
+   "fieldname": "exit_pathway",
+   "fieldtype": "Select",
+   "label": "Exit Pathway",
+   "mandatory_depends_on": "eval: doc.discharge_date && doc.status == 'Discharged';",
+   "options": "\nFamily Reintegration\nDeath\nShelter Home"
+  },
+  {
+   "fieldname": "column_break_aala",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_xcyq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cjtk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "work_performed",
+   "fieldtype": "Table",
+   "label": "Work Performed",
+   "options": "Care Centre Admission Detail"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nAdmitted\nHospitalised\nDischarged",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_mjah",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gsff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "CC-ADM-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "CC-ADM-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-11-05 14:36:09.303010",
+ "modified_by": "Administrator",
+ "module": "Frappe Changemakers",
+ "name": "Care Centre Admission",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Admin (Partner)",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Partner SMT",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Social Worker",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Program Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "SMT(NGO)-Field Co-ordinator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
