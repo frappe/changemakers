@@ -94,8 +94,7 @@
    "fieldname": "state",
    "fieldtype": "Link",
    "label": "State",
-   "options": "State",
-   "reqd": 1
+   "options": "State"
   },
   {
    "fetch_from": "shelter_home.district",
@@ -103,8 +102,7 @@
    "fieldname": "district",
    "fieldtype": "Link",
    "label": "City/District",
-   "options": "District",
-   "reqd": 1
+   "options": "District"
   },
   {
    "fetch_from": "shelter_home.zone",
@@ -112,8 +110,7 @@
    "fieldname": "zone",
    "fieldtype": "Link",
    "label": "Zone/Block",
-   "options": "Zone",
-   "reqd": 1
+   "options": "Zone"
   },
   {
    "fetch_from": "shelter_home.ward",
@@ -121,8 +118,7 @@
    "fieldname": "ward",
    "fieldtype": "Link",
    "label": "Ward/GP",
-   "options": "Ward",
-   "reqd": 1
+   "options": "Ward"
   },
   {
    "fetch_from": "shelter_home.",
@@ -145,8 +141,7 @@
    "fieldname": "priority",
    "fieldtype": "Select",
    "label": "Priority",
-   "options": "Urgent\nHigh\nMedium\nLow",
-   "reqd": 1
+   "options": "Urgent\nHigh\nMedium\nLow"
   },
   {
    "default": "New",
@@ -343,7 +338,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-20 11:20:19.046520",
+ "modified": "2023-11-22 14:09:11.970486",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Case",

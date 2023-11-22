@@ -115,39 +115,34 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "State",
-   "options": "State",
-   "reqd": 1
+   "options": "State"
   },
   {
    "fieldname": "zone",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Zone/Block",
-   "options": "Zone",
-   "reqd": 1
+   "options": "Zone"
   },
   {
    "fieldname": "habitation",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Hotspot Name/Habitation",
-   "options": "Habitation",
-   "reqd": 1
+   "options": "Habitation"
   },
   {
    "fieldname": "district",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "City/District",
-   "options": "District",
-   "reqd": 1
+   "options": "District"
   },
   {
    "fieldname": "ward",
    "fieldtype": "Link",
    "label": "Ward/GP",
-   "options": "Ward",
-   "reqd": 1
+   "options": "Ward"
   },
   {
    "fieldname": "medical_details_section",
@@ -215,7 +210,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-20 10:03:04.512323",
+ "modified": "2023-11-22 14:10:37.280810",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Health Camp Record",

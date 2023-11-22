@@ -142,8 +142,7 @@
   {
    "fieldname": "rescue_location",
    "fieldtype": "Geolocation",
-   "label": "Rescue Location",
-   "reqd": 1
+   "label": "Rescue Location"
   },
   {
    "fieldname": "police_station",
@@ -285,7 +284,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-06 19:28:44.208583",
+ "modified": "2023-11-22 14:07:10.457125",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Rescue",

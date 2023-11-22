@@ -92,22 +92,19 @@
    "fieldname": "state",
    "fieldtype": "Link",
    "label": "State",
-   "options": "State",
-   "reqd": 1
+   "options": "State"
   },
   {
    "fieldname": "zone",
    "fieldtype": "Link",
    "label": "Zone",
-   "options": "Zone",
-   "reqd": 1
+   "options": "Zone"
   },
   {
    "fieldname": "habitation",
    "fieldtype": "Link",
    "label": "Habitation",
-   "options": "Habitation",
-   "reqd": 1
+   "options": "Habitation"
   },
   {
    "fieldname": "column_break_zuln",
@@ -117,15 +114,13 @@
    "fieldname": "district",
    "fieldtype": "Link",
    "label": "District",
-   "options": "District",
-   "reqd": 1
+   "options": "District"
   },
   {
    "fieldname": "ward",
    "fieldtype": "Link",
    "label": "Ward",
-   "options": "Ward",
-   "reqd": 1
+   "options": "Ward"
   },
   {
    "fieldname": "num_attendees",
@@ -174,7 +169,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-03 22:52:03.311485",
+ "modified": "2023-11-22 14:10:00.297548",
  "modified_by": "Administrator",
  "module": "Frappe Changemakers",
  "name": "Awareness Camp Record",
