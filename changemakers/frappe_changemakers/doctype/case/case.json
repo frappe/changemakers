@@ -241,7 +241,7 @@
    "fieldname": "shelter_update",
    "fieldtype": "Select",
    "label": "Shelter Update",
-   "options": "Not Willing To Come\nAdmitted"
+   "options": "\nNot Willing To Come\nAdmitted"
   },
   {
    "depends_on": "eval:doc.type==\"Shelter\" && doc.is_beneficiary_traced==true && doc.shelter_update==\"Admitted\"",
@@ -259,25 +259,25 @@
    "fieldname": "medical_update",
    "fieldtype": "Select",
    "label": "Medical Update",
-   "options": "Hospitalised\nTreatment Done\nReferred To Other Organisation"
+   "options": "\nHospitalised\nTreatment Done\nReferred To Other Organisation"
   },
   {
    "fieldname": "food_update",
    "fieldtype": "Select",
    "label": "Food Update",
-   "options": "Resolved and reported\nFood escalation"
+   "options": "\nResolved and reported\nFood escalation"
   },
   {
    "fieldname": "entitlement",
    "fieldtype": "Select",
    "label": "Entitlement Update",
-   "options": "In Process\nResolved"
+   "options": "\nIn Process\nResolved"
   },
   {
    "fieldname": "legal_update",
    "fieldtype": "Select",
    "label": "Legal Update",
-   "options": "Complaint registered\nReferred to agency"
+   "options": "\nComplaint registered\nReferred to agency"
   },
   {
    "fieldname": "other_update",
